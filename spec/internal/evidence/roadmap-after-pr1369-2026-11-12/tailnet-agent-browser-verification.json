@@ -1,0 +1,53 @@
+{
+  "target": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "tool": "Agent Browser",
+  "namespace": "spinon-docs-1369-20261112",
+  "session": "spinon-roadmap-1369",
+  "verifiedAtUtc": "2026-11-12T01:31:35Z",
+  "roadmap": {
+    "title": "스피논 구현 로드맵",
+    "latestImplementationPR": 1369,
+    "mergeSha": "79cc6328fb61e0babbb6d55c164485145f0058f5",
+    "nextCardStage": "#1369 merged · next candidate not selected",
+    "officialComplete": "78/214",
+    "c114AndC11Unchecked": true,
+    "selectedLinkedPagesOpened": [
+      {
+        "route": "/spinon/plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+        "title": "C11.4 · repeated-text row-span 항목별 min-height:auto 조합 - 스피논 문서",
+        "containsPR1369": true,
+        "containsOfficialCount": true
+      },
+      {
+        "route": "/spinon/internal/0059-c11-grid-layout.html",
+        "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서",
+        "containsPR1369": true,
+        "containsOfficialCount": true
+      },
+      {
+        "route": "/spinon/STATUS.html",
+        "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+        "containsPR1369": true,
+        "containsOfficialCount": true
+      }
+    ]
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "screenshot": "tailnet-roadmap-desktop-agent-browser.png",
+      "sha256": "fff1f11a531bab7dd2bcfdb31c6b3b716a8bad2473b1d51cae6436e47521c68a"
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "screenshot": "tailnet-roadmap-mobile-agent-browser.png",
+      "sha256": "2ad7825f49b1ad8eeeca6f6e68b033efa91bcf90980c0fd64bc229f23bda1f8d"
+    }
+  ],
+  "scope": "Roadmap and selected docs preview only; not app-runtime evidence or a full-site validation"
+}

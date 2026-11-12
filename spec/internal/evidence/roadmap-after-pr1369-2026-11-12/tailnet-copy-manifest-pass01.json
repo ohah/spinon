@@ -1,0 +1,1633 @@
+{
+  "schema": "spinon.tailnet-preview-selected-sync/v1",
+  "sourceCommit": "65894cc451cf71069b6dac19da2114b7cfcb3003",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "previewServerPid": 90711,
+  "previewServerPort": 8768,
+  "selectedSite": "build/spinon/roadmap-after-pr1369-2026-11-12/site",
+  "backupDirectory": "backup/roadmap-after-pr1369-2026-11-12",
+  "fullSiteBuildClaim": false,
+  "fullDocsDeadLinkCheck": false,
+  "fileCount": 168,
+  "changedFileCount": 148,
+  "backedUpFileCount": 14,
+  "addedFileCount": 134,
+  "unchangedFileCount": 20,
+  "deletedFileCount": 0,
+  "records": [
+    {
+      "source": "spec/public/roadmap.html",
+      "destination": "roadmap.html",
+      "bytes": 677931,
+      "sha256": "273035797db8c9a14dc0c95b5d993089ea335318605892677be1d57e363114df",
+      "before": {
+        "bytes": 676550,
+        "sha256": "dfa25514288ce53368e4a38c4d77d7d054fc178b716e6c834b52e14252ac9af9"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/roadmap.html",
+      "action": "replaced"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "destination": "STATUS.md",
+      "bytes": 776234,
+      "sha256": "6aeb03f3d3cbde581caf025ec22b21adf4b2b34235d1c6506fc4bbe5da322248",
+      "before": {
+        "bytes": 774090,
+        "sha256": "8367f693850e2878e047bd972ebcd61424ec06314a4ebc810e3ab46b74698e75"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/STATUS.md",
+      "action": "replaced"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "destination": "spec/STATUS.md",
+      "bytes": 776234,
+      "sha256": "6aeb03f3d3cbde581caf025ec22b21adf4b2b34235d1c6506fc4bbe5da322248",
+      "before": {
+        "bytes": 774090,
+        "sha256": "8367f693850e2878e047bd972ebcd61424ec06314a4ebc810e3ab46b74698e75"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/spec/STATUS.md",
+      "action": "replaced"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "destination": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 248518,
+      "sha256": "d6068a9602af25291ec27ef3b7ab3ff36bef4ce87dbb4d6d2d0ab5ad9767e2b4",
+      "before": {
+        "bytes": 246946,
+        "sha256": "c7942ed6a11c6bb850c6e3a6c8cc8f4b376125cde805b57469c3d0c2b416dd91"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/plan/c11-4-grid-track-sizing.md",
+      "action": "replaced"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.md",
+      "destination": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.md",
+      "bytes": 9578,
+      "sha256": "a1ca55cce06b75926d631bf56d6c9bcb30b263aee2f3b26407fb8f7f7f95bb1e",
+      "before": {
+        "bytes": 9578,
+        "sha256": "a1ca55cce06b75926d631bf56d6c9bcb30b263aee2f3b26407fb8f7f7f95bb1e"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.md",
+      "destination": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.md",
+      "bytes": 9152,
+      "sha256": "20768e444cdb11af9c893f2681937482c3dbcab9792b100dc18e9563efba75d4",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-plan-review-20.md",
+      "destination": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-plan-review-20.md",
+      "bytes": 5427,
+      "sha256": "1533c121953b52740dec6e87ccaefab06afb90136f6505dc0740cd8fcaa28a82",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/plan-pr-diff-review-30.md",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/plan-pr-diff-review-30.md",
+      "bytes": 6121,
+      "sha256": "e9372463c57b68bcf85836adbf3b97d4458fc72f6d747fa8da03a42e43e07c43",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "destination": "internal/0059-c11-grid-layout.md",
+      "bytes": 608245,
+      "sha256": "95afde05fc4f0e78d3150b0339b49c03f35e05139d626312f81464ba10991eca",
+      "before": {
+        "bytes": 605528,
+        "sha256": "afc232bf09415af1d7c1f1cfcc8bf998b41fface5b083d70e1992f8b30849185"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/internal/0059-c11-grid-layout.md",
+      "action": "replaced"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "destination": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "before": {
+        "bytes": 638,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "destination": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "before": {
+        "bytes": 568,
+        "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/capture-chrome.mjs",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/capture-chrome.mjs",
+      "bytes": 5382,
+      "sha256": "7b9b872ab8415917488dc996d8fbba21d5b9f3dc25b791cd6c7e308635e16354",
+      "before": {
+        "bytes": 5382,
+        "sha256": "7b9b872ab8415917488dc996d8fbba21d5b9f3dc25b791cd6c7e308635e16354"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/chrome157-mixed-minimum-observation.ndjson.gz",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/chrome157-mixed-minimum-observation.ndjson.gz",
+      "bytes": 3704727,
+      "sha256": "fd3239a3e8da295457c127387b23610f27e2d378b4bc621db09bba87e1c90202",
+      "before": {
+        "bytes": 3704727,
+        "sha256": "fd3239a3e8da295457c127387b23610f27e2d378b4bc621db09bba87e1c90202"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/chrome157-mixed-minimum-sample.png",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/chrome157-mixed-minimum-sample.png",
+      "bytes": 17190,
+      "sha256": "a3f4b4aa27e785eaf52f30abb3fb350e00532f5dc35f2bd65ad4815ea2a0fcc7",
+      "before": {
+        "bytes": 17190,
+        "sha256": "a3f4b4aa27e785eaf52f30abb3fb350e00532f5dc35f2bd65ad4815ea2a0fcc7"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/plan-pr-diff-review-30.md",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/plan-pr-diff-review-30.md",
+      "bytes": 6121,
+      "sha256": "e9372463c57b68bcf85836adbf3b97d4458fc72f6d747fa8da03a42e43e07c43",
+      "before": {
+        "bytes": 6121,
+        "sha256": "e9372463c57b68bcf85836adbf3b97d4458fc72f6d747fa8da03a42e43e07c43"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/README.md",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/README.md",
+      "bytes": 4515,
+      "sha256": "1b57e2b9c7a0ece16d8e8b38f29a3d16d61f73c4019f425d764c16eaea9b5126",
+      "before": {
+        "bytes": 4515,
+        "sha256": "1b57e2b9c7a0ece16d8e8b38f29a3d16d61f73c4019f425d764c16eaea9b5126"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/SHA256SUMS",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/SHA256SUMS",
+      "bytes": 2096,
+      "sha256": "2a42aa97e6e05eb00f142a5ab088f7dcbed29107cdcd11af4153b3ae9305e899",
+      "before": {
+        "bytes": 2096,
+        "sha256": "2a42aa97e6e05eb00f142a5ab088f7dcbed29107cdcd11af4153b3ae9305e899"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/verification.json",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/verification.json",
+      "bytes": 3673,
+      "sha256": "3c135e0b552c614ff20357eb895f9df69ddf09df8355c0f0b520893260ea9636",
+      "before": {
+        "bytes": 3673,
+        "sha256": "3c135e0b552c614ff20357eb895f9df69ddf09df8355c0f0b520893260ea9636"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py",
+      "bytes": 18222,
+      "sha256": "21cef660c5d53f0d6052c891cf409e2a08523443c4137aa5319567761b0c743c",
+      "before": {
+        "bytes": 18222,
+        "sha256": "21cef660c5d53f0d6052c891cf409e2a08523443c4137aa5319567761b0c743c"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/android-build.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/android-build.log",
+      "bytes": 5269,
+      "sha256": "449268dcc3e44e47789c2203273412c7c626fa9d2a944fce4ee69c8460515ef5",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/android-emulator.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/android-emulator.log",
+      "bytes": 11262,
+      "sha256": "615b99b939b0c2a46223a5de8a0dc0f49ffe44a2eeadca7b0a1f13a3058b9c40",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/android-smoke.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/android-smoke.log",
+      "bytes": 6354,
+      "sha256": "a6194325077200de12cfb479ff9ef0d462e706c8eae86a0faaf9a3b03c8a2cb9",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/android-smoke.png",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/android-smoke.png",
+      "bytes": 29021,
+      "sha256": "bdf48a02f6b5b4e62511c5a68a85c0fed67f1c2140c1cc5e2902f74d030c2fe5",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-pr-diff-review-30.md",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-pr-diff-review-30.md",
+      "bytes": 6076,
+      "sha256": "af8f602df3ee82834f717481b0d2b80bb572a80f16385b24b87e26194083318c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.md",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.md",
+      "bytes": 4139,
+      "sha256": "81484b96d3841fe4b1c7a1b5e741974a2aaf5f046a261a654102582eb68db882",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/ios-build.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/ios-build.log",
+      "bytes": 67199,
+      "sha256": "acda512d4a15824c305202c592f086e8142cfea566fafbc514731083229a1ecd",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/ios-smoke.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/ios-smoke.log",
+      "bytes": 288,
+      "sha256": "bc65615d9cbb3a81d631e762341d0ef50cdd86d74fda39fe26b16fa81cdb33b5",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/ios-smoke.png",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/ios-smoke.png",
+      "bytes": 82653,
+      "sha256": "d8f8ebe7248173ac017e9eaa498bbd7f90f2a146a66abb264f429fa7cfd5f09e",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/merge-PR1369.md",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/merge-PR1369.md",
+      "bytes": 954,
+      "sha256": "1b455bfeccdc95b984f0f8a4decf3607f23fb9c38924cdbd8626e260148577b4",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c11-1-regression-after-fix.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c11-1-regression-after-fix.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c11-1-regression-after-fix.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c11-1-regression-after-fix.log",
+      "bytes": 1363,
+      "sha256": "80676b63a3bf31b1d24f9ed0e8d7314da735d26658005b9247d9b51c2e70a61e",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c15-layout-baseline.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c15-layout-baseline.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c15-layout-baseline.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c15-layout-baseline.log",
+      "bytes": 3844,
+      "sha256": "cd6c31fe69c7a14e9de0e4df69f79bc3ad0640b365cb5cc75a0b472c83b34459",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c15-layout-failure-repro.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c15-layout-failure-repro.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c15-layout-failure-repro.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/c15-layout-failure-repro.log",
+      "bytes": 1018,
+      "sha256": "023d2c1ef60f08d899f1aa6f4bacc3ee3ecb6d3b739b84b1e7c3801f068ac8f4",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/clippy-baseline-lints-excluded.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/clippy-baseline-lints-excluded.log",
+      "bytes": 72,
+      "sha256": "d7dae192715495fa89ccbe279af3efb9792c1dae1768228e369035e68a1df673",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/clippy-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/clippy-final.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/clippy-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/clippy-final.log",
+      "bytes": 4167,
+      "sha256": "24484569e108a7cc761b8a77e0134e5765a9effe26a2cdae12e9cb20310be0ee",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-after-review-fix-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-after-review-fix-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-after-review-fix-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-after-review-fix-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-after-review-fix.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-after-review-fix.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-after-review-fix.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-after-review-fix.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-before-pr.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-before-pr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/diff-check-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-after-review-fix-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-after-review-fix-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-after-review-fix-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-after-review-fix-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-after-review-fix.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-after-review-fix.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-after-review-fix.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-after-review-fix.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-before-pr.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-before-pr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/format-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/four-fit-rejection-after-fix.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/four-fit-rejection-after-fix.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/four-fit-rejection-after-fix.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/four-fit-rejection-after-fix.log",
+      "bytes": 325,
+      "sha256": "ce60cdb5f21b00d18fb805bfb507e1ed9a2fdeb66dafec490742815cfa06d84f",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/layout-six-fit-helper-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/layout-six-fit-helper-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/layout-six-fit-helper-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/layout-six-fit-helper-final.log",
+      "bytes": 660,
+      "sha256": "3fc8ee27bbc595240bdeff9f9eddb03eb2cbcce76dd51b64451cf4b321cbc05e",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-01.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-01.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-01.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-01.log",
+      "bytes": 783,
+      "sha256": "04dca3165f02c434ba4dbb7628dd3211220f879714aa5dfc9cf62007e186c2bd",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-02.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-02.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-02.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-02.log",
+      "bytes": 792,
+      "sha256": "893ee2866793760c131ccfa99efe337b8012dcd4b47009b573111b45b95ca3fd",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-03.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-03.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-03.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-03.log",
+      "bytes": 795,
+      "sha256": "1beb3d9426fa31e787f65813a3c106c3f9a25547f2795fd6238d7d0f685eda68",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-04.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-04.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-04.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-04.log",
+      "bytes": 795,
+      "sha256": "ed1fba7b1a0d25013da60246d87d8b9bb0ea6bef387b8fa9e6521df16330f5ed",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-05.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-05.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-05.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-05.log",
+      "bytes": 795,
+      "sha256": "4c039978e38e3f0b79a0611d06154fd7284a69579bb22618aa14111ec5bf58c6",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-06.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-06.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-06.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-06.log",
+      "bytes": 795,
+      "sha256": "1b186d071fd01382d3dedd500211437bbe30bd8618d6aafed047a1685eef0f90",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-07.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-07.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-07.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-07.log",
+      "bytes": 795,
+      "sha256": "e9c208b7049ac1404d915c751430180526f4ccf29ad7bbf3c704803a2c351368",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-08.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-08.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-08.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-08.log",
+      "bytes": 795,
+      "sha256": "3dc9dcae78639206ee8881ed5eaae605caf4ffed11bb8555768ccb1e96898891",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-09.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-09.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-09.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-09.log",
+      "bytes": 795,
+      "sha256": "f53267df64389e9ab6a04aa586b48bc90d9bfe3279b800ee8b205e18fe7836b4",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-10.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-10.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-10.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-10.log",
+      "bytes": 795,
+      "sha256": "9419b31186e5406ff0d7544cda9329e3020f4c362872fb5de9c3c914b97693f3",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-11.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-11.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-11.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-11.log",
+      "bytes": 795,
+      "sha256": "c884c07c7eda773a4e4a16e073fc1525d3466321050cf0db2d07edfb500d8c4e",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-12.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-12.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-12.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-12.log",
+      "bytes": 795,
+      "sha256": "d66b812dae9124b31d4a164cc6bb721353c901f41375b4e0be451df7f5d5f4a0",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-matrix-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-matrix-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-metadata-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-metadata-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-metadata-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-metadata-final.log",
+      "bytes": 930,
+      "sha256": "646f85f0e601e247f3cb1ba232bdbf34cbf30d5b84cfa065e49e101db4e111a3",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-metadata.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-metadata.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-metadata.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-metadata.log",
+      "bytes": 316,
+      "sha256": "4b343b639f6bf2ba1b121449e65d978289618671c9827f903b71ea07b5789bf3",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection-control-after-fix.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection-control-after-fix.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection-control-after-fix.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection-control-after-fix.log",
+      "bytes": 315,
+      "sha256": "2970c75ce95f2b2c739521887bcc03541a21bcd883a440d5563417f3a1a7aeed",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection-final.log",
+      "bytes": 929,
+      "sha256": "b54fb08899cff241e2063646840c3ea51c1f5ad42de75da8fa03ce23de17f991",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/mixed-rejection.log",
+      "bytes": 315,
+      "sha256": "7eea0ed82d2adab8244a2938a123d75e8edd51a485cec9cc1cc57014835973d2",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run-after-review-fix.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run-after-review-fix.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run-after-review-fix.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run-after-review-fix.log",
+      "bytes": 487,
+      "sha256": "f5958c320a7e5a39edd45bda42b1f4fef8e353facf9b187670f0146cf1ce4fdf",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run-final.log",
+      "bytes": 913,
+      "sha256": "7e108b0730c7789fbb9ae59a7402320fdbe2be81fcff1246019b2c0f307231b2",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/runtime-no-run.log",
+      "bytes": 913,
+      "sha256": "0000e2a86afa7f7af1827736460bce6d454438816ce3cd0e807a3d4128047e26",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/six-fit-auto-placement-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/six-fit-auto-placement-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/six-fit-auto-placement-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/six-fit-auto-placement-final.log",
+      "bytes": 1538,
+      "sha256": "68afd681ea3dabb9e744daf77d742f9c642c1c1853392ad4f33f66fdc90d20a9",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/span-regressions-initial-diagnostic.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/span-regressions-initial-diagnostic.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/span-regressions-initial-diagnostic.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/span-regressions-initial-diagnostic.log",
+      "bytes": 14346,
+      "sha256": "e74d208c9ebbaf7ac270f34d967a87defe34d7707299602ad191b97367c1d69d",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-layout-crate-tests.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-layout-crate-tests.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-layout-crate-tests.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-layout-crate-tests.log",
+      "bytes": 66625,
+      "sha256": "425ae46aab653827b6b8c37a4059f50357ce2cab112b5e94591962a427a9a196",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-six-fit-helper-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-six-fit-helper-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-six-fit-helper-final.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-six-fit-helper-final.log",
+      "bytes": 857,
+      "sha256": "3e68a1c1c466f93b8031a0dc264ed1e556d8cdee19f38d858c5f88dabe8fbf63",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-after-fix.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-after-fix.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-after-fix.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-after-fix.log",
+      "bytes": 68894,
+      "sha256": "2386eee0d772e3d962d4a23c282c0c5992bf933bd9eec29bd48dedc900e9ccc4",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-baseline.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-baseline.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-baseline.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-baseline.log",
+      "bytes": 75237,
+      "sha256": "d210e408a9c16b9e1a94b69522b32a01f7a398948ecaa8fb28d4a3488c2c9612",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-tests.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-tests.exit-code",
+      "bytes": 4,
+      "sha256": "39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-tests.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/style-to-layout-tests.log",
+      "bytes": 68894,
+      "sha256": "46a1296a74957cd9c735f588effbdad5164d7537795a38589357aef3add193db",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/three-fit-matrix-after-fix.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/three-fit-matrix-after-fix.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/three-fit-matrix-after-fix.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/three-fit-matrix-after-fix.log",
+      "bytes": 518,
+      "sha256": "064f4e9d83301e4b193760823f1241db4bdc43412929b8274a5e7a402b905c31",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-1.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-1.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-1.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-1.log",
+      "bytes": 595,
+      "sha256": "00bac4f1b375d1e2659dd30b7c0777892a845baf427f14571b663093cb3f58e3",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-2.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-2.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-2.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-2.log",
+      "bytes": 600,
+      "sha256": "a3b769caefb69c049031af9dbd06db66765543ded620de189ace49ddab21c544",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-3.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-3.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-3.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-3.log",
+      "bytes": 600,
+      "sha256": "f6ccf8a3542794bd96e5918e34e2ecd14c0128b5647911b4ff890964dbc14e03",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-4.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-4.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-4.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-4.log",
+      "bytes": 599,
+      "sha256": "2aa9eb602c30a87fdefe744fed69f41e90da12282ea87d53d3f74f7b29fe6b87",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-1.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-1.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-1.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-1.log",
+      "bytes": 805,
+      "sha256": "9fb060b4be9035af2ab4b2d2df9ca754e36c26032637fcee65b6a015aefc81aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-2.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-2.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-2.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-2.log",
+      "bytes": 810,
+      "sha256": "010e0c2c65da59ec298debdda795eaefad5891840006b165d0e39de825a5d14e",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-3.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-3.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-3.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-3.log",
+      "bytes": 810,
+      "sha256": "6e2c70eecd37d2533ca65766ef39e81109304e81eb5eec14599b22fdbf1e63ad",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-4.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-4.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-4.log",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-final-4.log",
+      "bytes": 809,
+      "sha256": "d5895708de1e373817774ce98a9990443280885bc6bcab4b7fa1bc540a5170b0",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-matrix-final.exit-code",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/mixed-matrix-logs/uniform-matrix-final.exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/README.md",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/README.md",
+      "bytes": 4377,
+      "sha256": "b518db540b1c7c31429d7e64442564106812dc2d36357b30c9e4e5f899f0d5e3",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/STATUS.html",
+      "destination": "STATUS.html",
+      "bytes": 942767,
+      "sha256": "b325315ec62c84b638fcd616f3b56629f0682975c0396c390fe9855211ddf1c2",
+      "before": {
+        "bytes": 943469,
+        "sha256": "0da19fd7c0b6a9634e221a20c959dfb91115fc5d8e5e57ffb9ec73fb5bf77da5"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/STATUS.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/spec/STATUS.html",
+      "destination": "spec/STATUS.html",
+      "bytes": 942669,
+      "sha256": "6bbe17f55f250ecbdca44aa30ad20641e8b71df7fe3209c7e5aee8a180f73214",
+      "before": {
+        "bytes": 944254,
+        "sha256": "4af6e04bdb27d7b03eed95f225fee61590f86037cfea559f26caf6f8d0a7eb8a"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/spec/STATUS.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/plan/c11-4-grid-track-sizing.html",
+      "destination": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 404319,
+      "sha256": "0288de94bdc1e097108ac9082724e640e8cd79ed7297728d292ed3e99fdf5241",
+      "before": {
+        "bytes": 406906,
+        "sha256": "ff48f11c1ee36997e9880591feab6d34811a7af34e3743bb1fbf45f89f7ddbbd"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/plan/c11-4-grid-track-sizing.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.html",
+      "destination": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.html",
+      "bytes": 34465,
+      "sha256": "e325c136ceeab322991714b73ecb1a5526d05fa996cff340985a50aed074031a",
+      "before": {
+        "bytes": 34014,
+        "sha256": "5f2168e36e418b6aa82eb0e13f09d970de7db38b8307802cec25bd12a47e4ce6"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+      "destination": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+      "bytes": 34901,
+      "sha256": "398d58f95f0576554d3a907fb60bc3c1320ea236e10f20cfd56adbe2d1cb3dfe",
+      "before": {
+        "bytes": 36823,
+        "sha256": "87f6a2f223b82249d0def686e2b90ee94034f563dd0b2321e704d4e1fcdf18f4"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-plan-review-20.html",
+      "destination": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-plan-review-20.html",
+      "bytes": 28116,
+      "sha256": "05d6d53e73ef1b666f75bf7f2e92f448d7911d45dc11cd9a2f158a801fc275e9",
+      "before": {
+        "bytes": 31358,
+        "sha256": "fc02c0bc9cc087aef72c7905e95cb76b6e065d079545e6474aeaac2d7ac20102"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-plan-review-20.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/internal/0059-c11-grid-layout.html",
+      "destination": "internal/0059-c11-grid-layout.html",
+      "bytes": 859807,
+      "sha256": "541acec14b46509605571586cc529114d150786d6d606245da7c347395214d01",
+      "before": {
+        "bytes": 859464,
+        "sha256": "596db4bbb114be8e7e04e8e13cecd80879a8e3997e6181b0fc8140976bde8d97"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/internal/0059-c11-grid-layout.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "bytes": 30606,
+      "sha256": "e71f3f82444c7b5325d6a50dc329ef3c69e3bbdf1c0ab61b400c1b0c11badbd0",
+      "before": {
+        "bytes": 33728,
+        "sha256": "99331d8802936d1f72220e9f0dceaff6a24a2fd105bd5b123c53add0a92cfb75"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/plan-pr-diff-review-30.html",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/plan-pr-diff-review-30.html",
+      "bytes": 29341,
+      "sha256": "d98bb166e0aa641ca6c9ca89db16e393013f9c79c395942bb42670be5bc82b38",
+      "before": {
+        "bytes": 32576,
+        "sha256": "53890ba0a06242aa720cddd1a61c206b0043b705613fa4647f86e9e8a3c9d96c"
+      },
+      "backup": "backup/roadmap-after-pr1369-2026-11-12/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/plan-pr-diff-review-30.html",
+      "action": "replaced"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/README.html",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/README.html",
+      "bytes": 26921,
+      "sha256": "dece32401f3e5dd77818cbac481e1e14ebbddb63f67ba73b39ddb7b9e7307e73",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/merge-PR1369.html",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/merge-PR1369.html",
+      "bytes": 23257,
+      "sha256": "458bfa6d91db9d0b396391e98080166740baa0bdf564929b97a2580647d7467f",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.html",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.html",
+      "bytes": 26470,
+      "sha256": "d9b2ad054fa9d68f5cfc10fb75591d22429760786f9027794271a04e6121e305",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-pr-diff-review-30.html",
+      "destination": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-pr-diff-review-30.html",
+      "bytes": 29456,
+      "sha256": "8137ed8277e9dd007cd7622ee90a1264bc05f4b5d8e147f07098b873ea0eedb9",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/css/styles.8d918fd78e.css",
+      "destination": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "before": {
+        "bytes": 73952,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/a.877e354479.js",
+      "destination": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "before": {
+        "bytes": 217085,
+        "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/a.877e354479.js.LICENSE.txt",
+      "destination": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "before": {
+        "bytes": 384,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/i.25208e7c92.js",
+      "destination": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "before": {
+        "bytes": 100,
+        "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-04cbcabea10a.9495cf5f86.js",
+      "destination": "static/js/async/route-04cbcabea10a.9495cf5f86.js",
+      "bytes": 397324,
+      "sha256": "01dd731d2d8385caf0578b06613ba16129ac82579df72f1c6a0321ad6d0c1ed8",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-273fd5282e24.b9ce60d7b5.js",
+      "destination": "static/js/async/route-273fd5282e24.b9ce60d7b5.js",
+      "bytes": 15316,
+      "sha256": "060026b17dc9a2db215adc894e035ee87285d7babbc9c116fd029f6ac2a73cea",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-42916645fbdc.db814f8b7f.js",
+      "destination": "static/js/async/route-42916645fbdc.db814f8b7f.js",
+      "bytes": 12442,
+      "sha256": "7a5a8aa6e971439a539d7530f925d55b65f22a76afe8a48fa310eb78bf33c21c",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-6c33a3943990.bb429e27fd.js",
+      "destination": "static/js/async/route-6c33a3943990.bb429e27fd.js",
+      "bytes": 1020975,
+      "sha256": "c4ba36d0e186a8dd31398bc613d4ac699df7c2cc8389bb9336a2ff970f225309",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-72100ed629d7.da54a292f8.js",
+      "destination": "static/js/async/route-72100ed629d7.da54a292f8.js",
+      "bytes": 8406,
+      "sha256": "9de4a989cc92d393f8389c064007fb8ebfc9155f9e1a110404ae19f05879d273",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-7968958cd8fd.c6da1b2a6b.js",
+      "destination": "static/js/async/route-7968958cd8fd.c6da1b2a6b.js",
+      "bytes": 12253,
+      "sha256": "2fd199ebcda0fe6e43eb3f34a15cea46851bb15342423c66670c20488b0b0ba5",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-7ce2535ac56d.c2b7f2d2c6.js",
+      "destination": "static/js/async/route-7ce2535ac56d.c2b7f2d2c6.js",
+      "bytes": 1020797,
+      "sha256": "90d0b05b59886b47725d26f6d05da7061446f3e0dfcb95018e0a501deba9704b",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-87c087dd75b9.f106c8c903.js",
+      "destination": "static/js/async/route-87c087dd75b9.f106c8c903.js",
+      "bytes": 10260,
+      "sha256": "ebe89e61e53c6564da46f319b99b2de1ce33b6a797c7edfeff96a8c7a87192bb",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-97ad12973595.21ae4e81a8.js",
+      "destination": "static/js/async/route-97ad12973595.21ae4e81a8.js",
+      "bytes": 7478,
+      "sha256": "fd79969b3af53a69c6fe924b58bddeab153dcfc4f68db5055507d5dd378f1b54",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-c4dae6800800.ebd9316742.js",
+      "destination": "static/js/async/route-c4dae6800800.ebd9316742.js",
+      "bytes": 902428,
+      "sha256": "aed625a7b3ae075e5fdb546254a94a7fad662f808ce7039fa6540edf9f18ef91",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-cb9e89dc6cbe.6872e06094.js",
+      "destination": "static/js/async/route-cb9e89dc6cbe.6872e06094.js",
+      "bytes": 10924,
+      "sha256": "6f3a93b8b9799b38059a6bf6275eb353a25e5d80d575aa4d35e8cafb471b715e",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-f6ff55a7c59a.4f7a31909f.js",
+      "destination": "static/js/async/route-f6ff55a7c59a.4f7a31909f.js",
+      "bytes": 16432,
+      "sha256": "6223bf0dc1ab3f20bc3e910858f48b93e189779bf3029a93ac8f2fe1ac4d94c0",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/async/route-ffba20ca13af.9d3cd1230c.js",
+      "destination": "static/js/async/route-ffba20ca13af.9d3cd1230c.js",
+      "bytes": 2710,
+      "sha256": "b579056c80728122402a1bcccabb79f810bd43c290fb739dcb3e6a384087dd76",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/index.ee27640401.js",
+      "destination": "static/js/index.ee27640401.js",
+      "bytes": 105107,
+      "sha256": "6c4a0fc9b45010b02352bf5f1e52c9bc0a10b9839d8fd513e6f740e43673181f",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/lib-react.9cdf8f49ce.js",
+      "destination": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "before": {
+        "bytes": 218364,
+        "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "destination": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "before": {
+        "bytes": 1209,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/lib-router.1e14e568cb.js",
+      "destination": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "before": {
+        "bytes": 35370,
+        "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "destination": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "before": {
+        "bytes": 222,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/js/styles.2da0941fcb.js",
+      "destination": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "before": {
+        "bytes": 472,
+        "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+      },
+      "backup": null,
+      "action": "unchanged"
+    },
+    {
+      "source": "build/spinon/roadmap-after-pr1369-2026-11-12/site/static/search_index.ko.6110277f.json",
+      "destination": "static/search_index.ko.6110277f.json",
+      "bytes": 1971527,
+      "sha256": "6110277fd561721c82dcbd917fbd340c381d79a248cf4e4238b32b0806559229",
+      "before": null,
+      "backup": null,
+      "action": "added"
+    }
+  ]
+}
