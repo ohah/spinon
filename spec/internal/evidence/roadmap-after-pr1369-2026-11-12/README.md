@@ -25,6 +25,7 @@
 - [Desktop Tailnet 화면](./tailnet-roadmap-desktop-agent-browser.png), SHA-256 `fff1f11a531bab7dd2bcfdb31c6b3b716a8bad2473b1d51cae6436e47521c68a`
 - [Mobile Tailnet 화면](./tailnet-roadmap-mobile-agent-browser.png), SHA-256 `2ad7825f49b1ad8eeeca6f6e68b033efa91bcf90980c0fd64bc229f23bda1f8d`
 - [Agent Browser page verification](./tailnet-agent-browser-verification.json) · [process cleanup record](./resource-cleanup.json).
+- PR [#1370](https://github.com/ohah/spinon/pull/1370)의 본문도 Agent Browser로 열어 desktop `1440×1000`·mobile `390×844` 이미지가 모두 `complete=true`와 기대 `naturalWidth`로 렌더링됨을 확인했다. [PR image verification](./pr-image-agent-browser-verification.json).
 
 완료 뒤 Agent Browser 세션을 닫고, 이 검증에서 시작된 ADB server가 남지 않게 종료했다. 새로 만든 Rspress build output 16,226,641 bytes / 168 files도 검증 뒤 제거했다. 사용자 Tailnet preview server와 공유 simulator profiles는 유지했다.
 
