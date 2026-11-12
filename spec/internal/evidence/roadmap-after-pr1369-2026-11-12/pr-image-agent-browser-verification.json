@@ -1,0 +1,25 @@
+{
+  "target": "https://github.com/ohah/spinon/pull/1370",
+  "tool": "Agent Browser",
+  "namespace": "spinon-pr1370-20261112",
+  "session": "spinon-pr1370-review",
+  "verifiedAtUtc": "2026-11-12T01:38:18Z",
+  "images": [
+    {
+      "alt": "Tailnet roadmap desktop",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/docs/c11-4-mixed-minimum-post-merge-20261112/spec/internal/evidence/roadmap-after-pr1369-2026-11-12/tailnet-roadmap-desktop-agent-browser.png",
+      "complete": true,
+      "naturalWidth": 1440,
+      "naturalHeight": 1000
+    },
+    {
+      "alt": "Tailnet roadmap mobile",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/docs/c11-4-mixed-minimum-post-merge-20261112/spec/internal/evidence/roadmap-after-pr1369-2026-11-12/tailnet-roadmap-mobile-agent-browser.png",
+      "complete": true,
+      "naturalWidth": 390,
+      "naturalHeight": 844
+    }
+  ],
+  "allImagesLoadedAtExpectedSize": true,
+  "closedAfterVerification": true
+}
