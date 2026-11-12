@@ -1,5 +1,5 @@
 {
-  "verifiedAtUtc": "2026-11-12T01:38:18Z",
+  "verifiedAtUtc": "2026-11-12T01:43:54Z",
   "agentBrowser": {
     "sessions": [
       {
@@ -15,7 +15,10 @@
         "namespaceProcessesAfterClose": 0
       }
     ],
-    "agentBrowserBinaryProcessAfterClose": 0,
+    "taskNamespaceProcessesAfterClose": 0,
+    "unrelatedAgentBrowserProcessesObserved": true,
+    "unrelatedAgentBrowserNamespace": "noori-public-r7-gui-r1",
+    "unrelatedProcessesAction": "preserved; outside this task",
     "screenshotsRetainedAsEvidence": [
       "tailnet-roadmap-desktop-agent-browser.png",
       "tailnet-roadmap-mobile-agent-browser.png"
@@ -32,8 +35,10 @@
   },
   "ios": {
     "bootedDevices": 0,
+    "simulatorAppProcesses": 0,
     "s03OrPilotNamedAvailableDevice": false,
-    "sharedSimulatorProfiles": "preserved"
+    "sharedSimulatorProfiles": "preserved",
+    "coreSimulatorServices": "preserved system services; no simulator device was booted"
   },
   "selectedRspressBuildOutput": {
     "path": "build/spinon/roadmap-after-pr1369-2026-11-12",
@@ -46,5 +51,5 @@
     "port": 8768,
     "action": "preserved and left serving the updated preview"
   },
-  "scope": "Both task-created Agent Browser sessions, the ADB server, and selected build output were cleaned up. Pre-existing Terminal Browser and shared system/simulator services were not changed."
+  "scope": "Both task-created Agent Browser sessions, the ADB server, and selected build output were cleaned up. Unrelated Agent Browser and pre-existing Terminal Browser processes, the Tailnet preview server, shared simulator profiles, and CoreSimulator system services were preserved. No iOS Simulator app or device was active."
 }
