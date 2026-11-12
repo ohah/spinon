@@ -1,0 +1,119 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-four-fit-mixed-auto-min-precomparison-verification/v1",
+  "capturedAtUtc": "2026-11-12T06:44:24.038Z",
+  "source": {
+    "browserCli": "agent-browser 0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "devicePixelRatio": 1,
+    "viewportCssPx": [
+      1280,
+      900
+    ],
+    "fixturePath": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-four-fit-mixed-auto-minimum-precomparison.html",
+    "fixtureBytes": 10574,
+    "fixtureSha256": "66593c91c6861a227afec578f4d9b3cde2d27d87e396462c6ca63a7b374f0e6b",
+    "observationPath": "chrome157-four-fit-mixed-observation.ndjson.gz",
+    "observationBytes": 4964039,
+    "observationSha256": "312497ced752c543ba367b57995c49bf00fe51bb5bcdd22f5302af0d7fc22570",
+    "uniformControlObservationPath": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-auto-minimum-precomparison-2026-11-11/chrome157-observation.ndjson"
+  },
+  "sceneCount": 138240,
+  "uniqueTrackLists": 720,
+  "uniqueFitPositionSets": 15,
+  "uniqueTypedCapOrders": 24,
+  "tailOrders": 2,
+  "sceneCountsByTopology": {
+    "span2Six-forward": 46080,
+    "span2Six-reverse": 46080,
+    "span2Span3Six-forward": 23040,
+    "span2Span3Six-reverse": 23040
+  },
+  "maskCountsByTopology": {
+    "span2Six-forward": 32,
+    "span2Six-reverse": 32,
+    "span2Span3Six-forward": 16,
+    "span2Span3Six-reverse": 16
+  },
+  "scenesPerTopologyMask": 1440,
+  "uniformEndpointScenesRechecked": 11520,
+  "eligibleAutomaticMinimumItems": 645120,
+  "automaticMinimumContentFloorViolations": 0,
+  "zeroMinimumContentFloorShortfalls": {
+    "span2Six": 28032,
+    "span2Span3Six": 9216
+  },
+  "gridEndOverflowOccurrences": 1392,
+  "gridEndOverflowOccurrencesByMinimumHeight": {
+    "auto": 0,
+    "zero": 1392
+  },
+  "mixedMaskGeometryChangesFromAllZero": {
+    "span2Six|1": 1256,
+    "span2Six|2": 1152,
+    "span2Six|3": 1296,
+    "span2Six|4": 1200,
+    "span2Six|5": 1416,
+    "span2Six|6": 1312,
+    "span2Six|7": 1416,
+    "span2Six|8": 1356,
+    "span2Six|9": 1436,
+    "span2Six|10": 1428,
+    "span2Six|11": 1440,
+    "span2Six|12": 1392,
+    "span2Six|13": 1440,
+    "span2Six|14": 1428,
+    "span2Six|15": 1440,
+    "span2Six|16": 1224,
+    "span2Six|17": 1440,
+    "span2Six|18": 1392,
+    "span2Six|19": 1440,
+    "span2Six|20": 1440,
+    "span2Six|21": 1440,
+    "span2Six|22": 1440,
+    "span2Six|23": 1440,
+    "span2Six|24": 1368,
+    "span2Six|25": 1440,
+    "span2Six|26": 1440,
+    "span2Six|27": 1440,
+    "span2Six|28": 1416,
+    "span2Six|29": 1440,
+    "span2Six|30": 1440,
+    "span2Six|31": 1440,
+    "span2Span3Six|1": 1264,
+    "span2Span3Six|2": 1152,
+    "span2Span3Six|3": 1296,
+    "span2Span3Six|4": 1158,
+    "span2Span3Six|5": 1440,
+    "span2Span3Six|6": 1440,
+    "span2Span3Six|7": 1440,
+    "span2Span3Six|8": 1416,
+    "span2Span3Six|9": 1440,
+    "span2Span3Six|10": 1440,
+    "span2Span3Six|11": 1440,
+    "span2Span3Six|12": 1416,
+    "span2Span3Six|13": 1440,
+    "span2Span3Six|14": 1440,
+    "span2Span3Six|15": 1440
+  },
+  "maxErrorsCssPx": {
+    "spanFrameVsCoveredRows": 0.0004500000000007276,
+    "sourceOrderGeometry": 0.0,
+    "nonAutoAlignmentGeometry": 0.0,
+    "uniformZeroAndAutoEndpoints": 0.0
+  },
+  "acceptance": {
+    "all138240ScenesCaptured": true,
+    "all720FourFitTrackListsPresent": true,
+    "allPerItemMasksPresent": true,
+    "automaticMinimumItemsPreserveContentFloor": true,
+    "sourceOrderAndAlignmentInvariants": true,
+    "coveredRowFramesMatch": true,
+    "uniformEndpointsMatchExistingMatrix": true
+  },
+  "limits": [
+    "Agent Browser Chrome CSS observation only; no Spinon implementation result.",
+    "Fixed four-fit typed-cap multiset, two row-span topology families, and definite 40x220px one-column Grid.",
+    "No public CSS support, WPT, Android/iOS runtime geometry, device pixels, or C11.4 completion claim."
+  ]
+}

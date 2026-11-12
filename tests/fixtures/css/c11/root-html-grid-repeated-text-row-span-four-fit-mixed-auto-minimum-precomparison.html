@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11.4 repeated-text row-span four-fit mixed automatic minimum precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #grid {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: grid;
+        box-sizing: border-box;
+        width: 40px;
+        height: 220px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        direction: ltr;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+
+      .item {
+        display: block;
+        box-sizing: border-box;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        grid-column: 1 / 2;
+        background: #345;
+      }
+
+      .item.auto-minimum {
+        min-height: auto;
+      }
+
+      .empty {
+        height: 10px;
+        background: #123;
+      }
+
+      .payload {
+        display: block;
+        box-sizing: border-box;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        color: #000;
+        background: #abc;
+        font-family: monospace;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        word-break: normal;
+        direction: ltr;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      (() => {
+        const content = {
+          A: "AAAA BBBB CCCC DDDD EEEE FFFF",
+          B: "AAAAAA BBBBB CCCC DDD",
+          C: "AAAAA BBBB CCC DDDD",
+          D: "AAAA BBB CCCCC DDDD",
+          E: "AAA BBBB CCCCCC",
+        };
+        const capPermutations = [];
+        const permute = (values, index = 0) => {
+          if (index === values.length) {
+            capPermutations.push([...values]);
+            return;
+          }
+          for (let next = index; next < values.length; next += 1) {
+            [values[index], values[next]] = [values[next], values[index]];
+            permute(values, index + 1);
+            [values[index], values[next]] = [values[next], values[index]];
+          }
+        };
+        const caps = ["0px", "10px", "20%", "30px"];
+        permute(caps);
+
+        const tailOrders = [
+          ["min-content", "auto"],
+          ["auto", "min-content"],
+        ];
+        const topologyMap = {
+          span2Six: [
+            ["A", 2, 2],
+            ["B", 3, 2],
+            ["C", 4, 2],
+            ["D", 5, 2],
+            ["E", 6, 2],
+          ],
+          span2Span3Six: [
+            ["A", 2, 2],
+            ["B", 3, 2],
+            ["C", 4, 3],
+            ["D", 5, 3],
+          ],
+        };
+        const topologies = Object.entries(topologyMap).flatMap(([name, items]) => {
+          const maskItemIds = items.map(([id]) => id).sort();
+          return [
+            { name: `${name}-forward`, items, maskItemIds },
+            { name: `${name}-reverse`, items: [...items].reverse(), maskItemIds },
+          ];
+        });
+
+        const trackLists = [];
+        for (let firstFitPosition = 0; firstFitPosition < 6; firstFitPosition += 1) {
+          for (let secondFitPosition = firstFitPosition + 1; secondFitPosition < 6; secondFitPosition += 1) {
+            for (let thirdFitPosition = secondFitPosition + 1; thirdFitPosition < 6; thirdFitPosition += 1) {
+              for (let fourthFitPosition = thirdFitPosition + 1; fourthFitPosition < 6; fourthFitPosition += 1) {
+                const fitPositions = [firstFitPosition, secondFitPosition, thirdFitPosition, fourthFitPosition];
+                for (const fitCaps of capPermutations) {
+                  for (const tail of tailOrders) {
+                    const tracks = Array(6);
+                    fitPositions.forEach((position, index) => {
+                      tracks[position] = `fit-content(${fitCaps[index]})`;
+                    });
+                    let tailIndex = 0;
+                    for (let index = 0; index < tracks.length; index += 1) {
+                      if (tracks[index] === undefined) {
+                        tracks[index] = tail[tailIndex++];
+                      }
+                    }
+                    trackLists.push({
+                      tracks,
+                      fitPositions: fitPositions.map((position) => position + 1),
+                      fitCaps,
+                      tail: [...tail],
+                    });
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        window.__c114FourFitMixedTrackListCount = trackLists.length;
+        window.__c114FourFitMixedSceneCount = trackLists.length * 192;
+
+        function sceneAt(index) {
+          if (!Number.isInteger(index) || index < 0 || index >= window.__c114FourFitMixedSceneCount) {
+            throw new Error(`unknown four-fit mixed scene ${index}`);
+          }
+          const list = trackLists[Math.floor(index / 192)];
+          const withinList = index % 192;
+          const alignContent = withinList < 96 ? "start" : "stretch";
+          let remaining = withinList % 96;
+          let topology;
+          let minimumMask;
+          for (const candidate of topologies) {
+            const maskCount = 2 ** candidate.maskItemIds.length;
+            if (remaining < maskCount) {
+              topology = candidate;
+              minimumMask = remaining;
+              break;
+            }
+            remaining -= maskCount;
+          }
+          if (!topology || minimumMask === undefined) throw new Error(`invalid four-fit mixed scene index ${index}`);
+          const autoItems = topology.maskItemIds.filter((_, bit) => (minimumMask & (1 << bit)) !== 0);
+          return {
+            trackList: list.tracks.join(" "),
+            trackMembers: list.tracks,
+            fitPositions: list.fitPositions,
+            fitCaps: list.fitCaps,
+            tail: list.tail,
+            alignContent,
+            topology: topology.name,
+            items: topology.items,
+            minimumMask,
+            maskItemIds: topology.maskItemIds,
+            autoItems,
+          };
+        }
+        window.c114FourFitMixedSceneAt = sceneAt;
+
+        function rectValues(rect, origin) {
+          return [rect.x, rect.y, rect.width, rect.height].map((value, index) => {
+            const offset = index < 2 ? origin[index] : 0;
+            return Number((value - offset).toFixed(6));
+          });
+        }
+
+        function createGrid(scene) {
+          const grid = document.createElement("div");
+          grid.id = "grid";
+          grid.style.gridAutoRows = scene.trackList;
+          grid.style.alignContent = scene.alignContent;
+
+          const empty = document.createElement("div");
+          empty.className = "item empty";
+          empty.dataset.item = "empty";
+          empty.style.gridRow = "1 / 2";
+          grid.append(empty);
+
+          for (const [id, start, span] of scene.items) {
+            const item = document.createElement("div");
+            item.className = `item${scene.autoItems.includes(id) ? " auto-minimum" : ""}`;
+            item.dataset.item = id;
+            item.style.gridRow = `${start} / span ${span}`;
+            const payload = document.createElement("div");
+            payload.className = "payload";
+            payload.dataset.payload = id;
+            payload.append(document.createTextNode(content[id]));
+            item.append(payload);
+            grid.append(item);
+          }
+          return grid;
+        }
+
+        function observeScene(scene, index) {
+          const grid = createGrid(scene);
+          document.body.append(grid);
+          const gridRect = grid.getBoundingClientRect();
+          const style = getComputedStyle(grid);
+          const rowValues = style.gridTemplateRows
+            .trim()
+            .split(/\s+/)
+            .map((value) => Number.parseFloat(value));
+          const items = [...grid.querySelectorAll(".item")].map((item) => {
+            const itemRect = item.getBoundingClientRect();
+            const payload = item.querySelector(".payload");
+            let payloadFrame = null;
+            let lineRects = [];
+            if (payload) {
+              const payloadRect = payload.getBoundingClientRect();
+              payloadFrame = rectValues(payloadRect, [gridRect.x, gridRect.y]);
+              const range = document.createRange();
+              range.selectNodeContents(payload.firstChild);
+              lineRects = [...range.getClientRects()].map((rect) =>
+                rectValues(rect, [gridRect.x, gridRect.y]),
+              );
+            }
+            return {
+              id: item.dataset.item,
+              frame: rectValues(itemRect, [gridRect.x, gridRect.y]),
+              minHeight: getComputedStyle(item).minHeight,
+              text: payload?.textContent ?? "",
+              payloadFrame,
+              lineRects,
+            };
+          });
+          const result = {
+            index,
+            scene,
+            userAgent: navigator.userAgent,
+            devicePixelRatio: window.devicePixelRatio,
+            gridFrame: rectValues(gridRect, [0, 0]),
+            computedAutoRows: style.gridAutoRows,
+            computedAlignContent: style.alignContent,
+            usedRows: style.gridTemplateRows,
+            rowValues,
+            items,
+          };
+          grid.remove();
+          return result;
+        }
+
+        window.runC114FourFitMixedBatch = (start, count) => {
+          const end = Math.min(start + count, window.__c114FourFitMixedSceneCount);
+          const results = [];
+          for (let index = start; index < end; index += 1) {
+            results.push(observeScene(sceneAt(index), index));
+          }
+          return { start, end, total: window.__c114FourFitMixedSceneCount, results };
+        };
+
+        window.showC114FourFitMixedScene = (index) => {
+          document.querySelector("#grid")?.remove();
+          const scene = sceneAt(index);
+          if (!scene) throw new Error(`unknown scene ${index}`);
+          const grid = createGrid(scene);
+          document.body.append(grid);
+          return { index, scene };
+        };
+      })();
+    </script>
+  </body>
+</html>
