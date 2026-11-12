@@ -1,0 +1,52 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "agentBrowserVersion": "0.31.1",
+  "session": "spinon-roadmap-pr1372-check-20261112",
+  "sessionPid": 59498,
+  "desktop": {
+    "viewport": [1440, 1000],
+    "documentWidth": 1440,
+    "documentScrollWidth": 1440,
+    "pr1372Visible": true,
+    "pr1372MergeShaVisible": true,
+    "pr1369HistoryVisible": true,
+    "pr1369MergeShaVisible": true,
+    "officialCount78of214Visible": true,
+    "c114IncompleteVisible": true,
+    "screenshot": "tailnet-roadmap-desktop-agent-browser-final.png",
+    "screenshotSize": [1440, 1000]
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentWidth": 390,
+    "documentScrollWidth": 390,
+    "bodyScrollWidth": 390,
+    "cardVisible": true,
+    "kanbanFrameClientWidth": 362,
+    "kanbanFrameScrollWidth": 1120,
+    "kanbanFrameOverflowX": "auto",
+    "kanbanFrameMaxScrollLeft": 758,
+    "kanbanFrameReachedMaxScrollLeft": true,
+    "screenshot": "tailnet-roadmap-mobile-agent-browser-final.png",
+    "screenshotSize": [390, 844]
+  },
+  "linkedPages": [
+    {
+      "route": "/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/merge-PR1372.html",
+      "httpStatus": 200,
+      "mergeShaVisible": true,
+      "images": [
+        { "width": 1080, "height": 2400, "loaded": true },
+        { "width": 1080, "height": 2400, "loaded": true },
+        { "width": 1206, "height": 2622, "loaded": true },
+        { "width": 1206, "height": 2622, "loaded": true }
+      ]
+    },
+    {
+      "route": "/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/merge-PR1369.html",
+      "httpStatus": 200,
+      "mergeShaVisible": true
+    }
+  ],
+  "fullDocsLinkValidation": false
+}
