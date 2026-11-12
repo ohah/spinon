@@ -5,6 +5,13 @@ use super::repeated_text_row_track_stages;
 mod fit_content_span_distribution;
 #[path = "rounding/fit_content_span_sizing.rs"]
 mod fit_content_span_sizing;
+#[path = "rounding/mixed_minimum.rs"]
+mod mixed_minimum;
+
+use mixed_minimum::{
+    blink_layout_unit_ceil_units, compare_layout_unit_potential, has_mixed_span_minimum_modes,
+    snapped_rows_match_final_tracks,
+};
 
 #[derive(Clone, Copy)]
 pub(super) enum ResidualRounding {
@@ -87,6 +94,24 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     let five_fit_row_span =
         raw_row_sizes.len() == 7 && fit_content_count == 5 && stages.has_spanning_item;
     let five_fit_span_auto_minimum = five_fit_row_span && stages.has_span_auto_minimum;
+    let five_fit_mixed_minimum = five_fit_row_span && has_mixed_span_minimum_modes(input, grid_id);
+    let five_fit_has_fractional_auto_track = if five_fit_row_span {
+        match &container.auto_rows {
+            crate::GridAutoRows::TrackList(tracks) if !tracks.is_empty() => {
+                pre_alignment_sizes.iter().enumerate().any(|(row, size)| {
+                    row >= container.rows.len()
+                        && matches!(
+                            tracks[(row - container.rows.len()) % tracks.len()],
+                            GridTrackSize::Auto
+                        )
+                        && blink_layout_unit_is_fractional(*size)
+                })
+            }
+            _ => false,
+        }
+    } else {
+        false
+    };
     let six_fit_row_span =
         raw_row_sizes.len() == 7 && fit_content_count == 6 && stages.has_spanning_item;
     let fit_content_span_rows = (five_fit_row_span || six_fit_row_span).then(|| {
@@ -106,13 +131,13 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
             } else {
                 rows
             };
-            if snapped_rows
-                .iter()
-                .zip(&stages.final_tracks)
-                .any(|(units, track)| {
-                    (blink_layout_unit_to_px(*units) - track.base_size).abs() > 0.02
-                })
-            {
+            if !snapped_rows_match_final_tracks(
+                &snapped_rows,
+                &stages.final_tracks,
+                container,
+                grid_frame.height,
+                five_fit_mixed_minimum && stages.stretch_applied,
+            ) {
                 return None;
             }
             return Some(snapped_rows);
@@ -121,23 +146,6 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         Some(None) | None => {}
     }
     let four_fit_has_fractional_auto_track = if four_fit_row_span {
-        match &container.auto_rows {
-            crate::GridAutoRows::TrackList(tracks) if !tracks.is_empty() => {
-                pre_alignment_sizes.iter().enumerate().any(|(row, size)| {
-                    row >= container.rows.len()
-                        && matches!(
-                            tracks[(row - container.rows.len()) % tracks.len()],
-                            GridTrackSize::Auto
-                        )
-                        && blink_layout_unit_is_fractional(*size)
-                })
-            }
-            _ => false,
-        }
-    } else {
-        false
-    };
-    let five_fit_has_fractional_auto_track = if five_fit_row_span {
         match &container.auto_rows {
             crate::GridAutoRows::TrackList(tracks) if !tracks.is_empty() => {
                 pre_alignment_sizes.iter().enumerate().any(|(row, size)| {
@@ -175,17 +183,20 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
             _ if five_fit_row_span => ResidualRounding::NearestFiveFitAutoLaterTrack,
             _ => ResidualRounding::Nearest,
         },
-    )?;
+    );
+    let pre_alignment_units = pre_alignment_units?;
     let snapped_rows = if stages.stretch_applied {
         blink_layout_unit_stretch_auto_rows(container, grid_frame.height, pre_alignment_units)?
     } else {
         pre_alignment_units
     };
-    if snapped_rows
-        .iter()
-        .zip(&stages.final_tracks)
-        .any(|(units, track)| (blink_layout_unit_to_px(*units) - track.base_size).abs() > 0.02)
-    {
+    if !snapped_rows_match_final_tracks(
+        &snapped_rows,
+        &stages.final_tracks,
+        container,
+        grid_frame.height,
+        five_fit_mixed_minimum && stages.stretch_applied,
+    ) {
         return None;
     }
     Some(snapped_rows)
@@ -310,7 +321,7 @@ pub(super) fn blink_layout_unit_distribute_rows_from_stages(
         | ResidualRounding::UpAutoLaterTrack
         | ResidualRounding::UpLaterTrack
         | ResidualRounding::UpAutoMinimumLaterTrack
-        | ResidualRounding::UpFiveFitAutoLaterTrack => (raw_total * 64.0).ceil() as i64,
+        | ResidualRounding::UpFiveFitAutoLaterTrack => blink_layout_unit_ceil_units(raw_total),
     };
     let leftover_units = target_total - floor_total;
     if leftover_units < 0 || leftover_units as usize > growth_potentials.len() {
@@ -319,8 +330,7 @@ pub(super) fn blink_layout_unit_distribute_rows_from_stages(
     // Blink는 growth potential 순서로 1/64px 잔여분을 나눈다. Taffy는 같은 크기를
     // f32로 유지하므로 여기서 잔여 단위를 배분한다.
     growth_potentials.sort_by(|left, right| {
-        left.1
-            .total_cmp(&right.1)
+        compare_layout_unit_potential(left.1, right.1)
             .then_with(|| {
                 if matches!(residual_rounding, ResidualRounding::UpLaterTrack) {
                     std::cmp::Ordering::Equal

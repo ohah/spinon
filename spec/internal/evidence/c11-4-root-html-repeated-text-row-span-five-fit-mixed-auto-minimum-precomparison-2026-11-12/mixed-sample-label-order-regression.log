@@ -1,0 +1,33 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.99s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+
+running 1 test
+five-fit mixed track lists: 50 / 80
+five-fit mixed track lists: 60 / 80
+five-fit mixed track lists: 70 / 80
+five-fit mixed track lists: 80 / 80
+five-fit mixed chunk 40..80: floor shortfalls zero/auto=[120, 0]; Grid-end overflows zero/auto=[2, 0]
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::five_fit_mixed_auto_minimum::matrix::parsed_root_html_five_fit_mixed_minimum_matrix_chunk_02_matches_chrome ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 696 filtered out; finished in 33.93s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-46c865be5d69b8a3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-c0518cc1463587c5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

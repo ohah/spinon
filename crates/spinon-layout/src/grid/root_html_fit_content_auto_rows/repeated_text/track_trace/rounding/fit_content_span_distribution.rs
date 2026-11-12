@@ -106,6 +106,7 @@ pub(super) fn apply_phase<'a>(
             &mut extra_space,
             grows_growth_limit,
             true,
+            None,
         );
 
         if extra_space > 0 {
@@ -123,8 +124,20 @@ pub(super) fn apply_phase<'a>(
             }
             beyond_order.sort_by(|left, right| {
                 compare_potential(
-                    growth_potential(&tracks[*left], grows_growth_limit, false, 0),
-                    growth_potential(&tracks[*right], grows_growth_limit, false, 0),
+                    distribution_potential(
+                        &tracks[*left],
+                        grows_growth_limit,
+                        false,
+                        0,
+                        Some(phase),
+                    ),
+                    distribution_potential(
+                        &tracks[*right],
+                        grows_growth_limit,
+                        false,
+                        0,
+                        Some(phase),
+                    ),
                 )
             });
             distribute_shares(
@@ -134,6 +147,7 @@ pub(super) fn apply_phase<'a>(
                 &mut extra_space,
                 grows_growth_limit,
                 false,
+                Some(phase),
             );
         }
 
@@ -170,15 +184,17 @@ fn distribute_shares(
     extra_space: &mut i64,
     grows_growth_limit: bool,
     enforce_infinite_growth: bool,
+    beyond_phase: Option<ContributionPhase>,
 ) {
     let mut growable_count = order
         .iter()
         .filter(|index| {
-            is_positive_potential(growth_potential(
+            is_positive_potential(distribution_potential(
                 &tracks[**index],
                 grows_growth_limit,
                 enforce_infinite_growth,
                 item_increases[**index],
+                beyond_phase,
             ))
         })
         .count();
@@ -187,11 +203,12 @@ fn distribute_shares(
         if growable_count == 0 || *extra_space == 0 {
             break;
         }
-        let potential = growth_potential(
+        let potential = distribution_potential(
             &tracks[index],
             grows_growth_limit,
             enforce_infinite_growth,
             item_increases[index],
+            beyond_phase,
         );
         if !is_positive_potential(potential) {
             continue;
@@ -207,6 +224,39 @@ fn distribute_shares(
         growable_count -= 1;
         share_ratio_sum -= 1;
     }
+}
+
+fn distribution_potential(
+    track: &UnitTrack,
+    grows_growth_limit: bool,
+    enforce_infinite_growth: bool,
+    item_increase: i64,
+    beyond_phase: Option<ContributionPhase>,
+) -> Option<i64> {
+    if !grows_growth_limit {
+        match beyond_phase {
+            Some(ContributionPhase::Minimum | ContributionPhase::ContentBasedMinimum) => {
+                // Grid's minimum and content-based-minimum contributions may grow intrinsic
+                // max tracks beyond their growth limit; fit-content limits do not apply here.
+                return None;
+            }
+            Some(ContributionPhase::MaxContentMinimum) => {
+                // Max-content contributions remain limited by fit-content() where present.
+                return track
+                    .functions
+                    .fit_content_limit
+                    .map(|limit| (limit - track.base_size - item_increase).max(0));
+            }
+            Some(ContributionPhase::IntrinsicMaximum | ContributionPhase::MaxContentMaximum)
+            | None => {}
+        }
+    }
+    growth_potential(
+        track,
+        grows_growth_limit,
+        enforce_infinite_growth,
+        item_increase,
+    )
 }
 
 fn is_affected(functions: TrackFunctions, phase: ContributionPhase) -> bool {

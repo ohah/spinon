@@ -27,6 +27,37 @@ pub(super) fn simulate_blink_row_sizes(
     grid_height: f32,
     pre_alignment_tracks: &[crate::LayoutGridTrackSizingTrackState],
 ) -> Option<Vec<i64>> {
+    simulate_blink_row_sizes_with_growth_limit_trace(
+        input,
+        container,
+        output,
+        grid_id,
+        grid_height,
+        pre_alignment_tracks,
+        false,
+    )
+    .or_else(|| {
+        simulate_blink_row_sizes_with_growth_limit_trace(
+            input,
+            container,
+            output,
+            grid_id,
+            grid_height,
+            pre_alignment_tracks,
+            true,
+        )
+    })
+}
+
+fn simulate_blink_row_sizes_with_growth_limit_trace(
+    input: &crate::LayoutInput,
+    container: &crate::GridContainerInput,
+    output: &crate::LayoutOutput,
+    grid_id: crate::NodeId,
+    grid_height: f32,
+    pre_alignment_tracks: &[crate::LayoutGridTrackSizingTrackState],
+    sync_growth_limits: bool,
+) -> Option<Vec<i64>> {
     let crate::GridAutoRows::TrackList(auto_rows) = &container.auto_rows else {
         return None;
     };
@@ -130,8 +161,12 @@ pub(super) fn simulate_blink_row_sizes(
                 track.growth_limit = Some(track.base_size);
             }
         }
-        if !tracks_match_stage(&tracks, stage)? {
+        let stage_matches = tracks_match_stage_base_sizes(&tracks, stage);
+        if stage_matches != Some(true) {
             return None;
+        }
+        if sync_growth_limits {
+            sync_growth_limits_from_stage(&mut tracks, stage)?;
         }
     }
 
@@ -143,7 +178,8 @@ pub(super) fn simulate_blink_row_sizes(
         }
         track.base_size = track.base_size.max(track.growth_limit?);
     }
-    if !tracks_match_values(&tracks, pre_alignment_tracks)? {
+    let values_match = tracks_match_values(&tracks, pre_alignment_tracks);
+    if values_match != Some(true) {
         return None;
     }
     Some(tracks.into_iter().map(|track| track.base_size).collect())
@@ -226,7 +262,7 @@ fn visible_track_states(
     )
 }
 
-fn tracks_match_stage(
+fn tracks_match_stage_base_sizes(
     tracks: &[UnitTrack],
     stage: &crate::LayoutGridTrackSizingStageTrace,
 ) -> Option<bool> {
@@ -234,14 +270,30 @@ fn tracks_match_stage(
     if values.len() != tracks.len() {
         return Some(false);
     }
-    Some(tracks.iter().zip(values).all(|(model, traced)| {
-        (units_to_px(model.base_size) - traced.base_size).abs() <= 0.02
-            && match (model.growth_limit, traced.growth_limit) {
-                (None, None) => true,
-                (Some(model), Some(traced)) => (units_to_px(model) - traced).abs() <= 0.02,
-                _ => false,
-            }
-    }))
+    Some(
+        tracks
+            .iter()
+            .zip(values)
+            .all(|(model, traced)| (units_to_px(model.base_size) - traced.base_size).abs() <= 0.02),
+    )
+}
+
+fn sync_growth_limits_from_stage(
+    tracks: &mut [UnitTrack],
+    stage: &crate::LayoutGridTrackSizingStageTrace,
+) -> Option<()> {
+    let traced_tracks = visible_track_states(stage)?;
+    if traced_tracks.len() != tracks.len() {
+        return None;
+    }
+    for (model, traced) in tracks.iter_mut().zip(traced_tracks) {
+        model.growth_limit = match traced.growth_limit {
+            Some(value) => Some(layout_unit_from_px(value)?),
+            None => None,
+        };
+        model.infinitely_growable = traced.infinitely_growable;
+    }
+    Some(())
 }
 
 fn tracks_match_values(

@@ -1,0 +1,54 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+
+running 4 tests
+six-fit matrix track lists: 570 / 720
+six-fit matrix track lists: 390 / 540
+six-fit matrix track lists: 210 / 360
+six-fit matrix track lists: 30 / 180
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_1_matches_chrome has been running for over 60 seconds
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_2_matches_chrome has been running for over 60 seconds
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_3_matches_chrome has been running for over 60 seconds
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_4_matches_chrome has been running for over 60 seconds
+six-fit matrix track lists: 600 / 720
+six-fit matrix track lists: 420 / 540
+six-fit matrix track lists: 240 / 360
+six-fit matrix track lists: 60 / 180
+six-fit matrix track lists: 630 / 720
+six-fit matrix track lists: 450 / 540
+six-fit matrix track lists: 270 / 360
+six-fit matrix track lists: 90 / 180
+six-fit matrix track lists: 660 / 720
+six-fit matrix track lists: 480 / 540
+six-fit matrix track lists: 300 / 360
+six-fit matrix track lists: 120 / 180
+six-fit matrix track lists: 690 / 720
+six-fit matrix track lists: 510 / 540
+six-fit matrix track lists: 330 / 360
+six-fit matrix track lists: 150 / 180
+six-fit matrix track lists: 720 / 720
+six-fit chunk 540..720 payload-floor violations: candidate=0, baseline=848
+six-fit matrix track lists: 540 / 540
+six-fit chunk 360..540 payload-floor violations: candidate=0, baseline=1216
+six-fit matrix track lists: 360 / 360
+six-fit chunk 180..360 payload-floor violations: candidate=0, baseline=1168
+six-fit matrix track lists: 180 / 180
+six-fit chunk 0..180 payload-floor violations: candidate=0, baseline=1568
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_4_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_3_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_2_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_1_matches_chrome ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 693 filtered out; finished in 186.93s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-46c865be5d69b8a3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-c0518cc1463587c5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
