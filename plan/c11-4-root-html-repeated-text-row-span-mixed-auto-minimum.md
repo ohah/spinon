@@ -1,6 +1,6 @@
 # C11.4 · repeated-text row-span 항목별 `min-height:auto` 조합
 
-**상태:** 계획 PR에서 범위와 Chrome 비교를 검토 중 · 제품 코드는 아직 변경하지 않음 · C11.4/C11 미완료 · 공식 완료 `78/214` 유지
+**상태:** mixed per-item minimum bounded slice가 구현 PR [#1369](https://github.com/ohah/spinon/pull/1369)로 병합됐다 (merge SHA `79cc6328fb61e0babbb6d55c164485145f0058f5`). 138,240 RuntimeSession scene과 기존 회귀를 확인했으며 플랫폼 확인은 기본 Root HTML boot smoke다. C11.4/C11 체크는 미완료, 공식 완료 `78/214`, 내부 contract `0.1.0`은 유지한다.
 
 **선행 구현:** [six-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.md) · PR [#1365](https://github.com/ohah/spinon/pull/1365)
 
@@ -50,17 +50,17 @@ Agent Browser가 138,240 scene 전부를 기록했고 독립 verifier가 입력 
 - track count·cap·type, row/span·column placement, child 수, nested/inline/replaced content, font/text grammar, scrollable overflow, writing mode, gap, dimensions, owner/revision/trace 등 기존 #1365 경계는 계속 fail-closed한다.
 - 잘못되거나 stale한 mixed revision은 partial geometry/trace를 게시하지 않고, 같은 RuntimeSession의 다음 valid revision에서 회복해야 한다.
 
-## 구현과 검증 관문
+## 구현과 검증 결과
 
-1. 계획 PR을 병합하고 계획 검토 20개와 실제 계획 PR diff 검토 30개를 각각 기록한 뒤 제품 코드를 바꾼다.
-2. Style projection과 Layout은 per-item `0px|auto` 값을 보존하고 기존 six-fit row-span 전용 admission 안에서만 mask를 허용한다. Six-fit auto-placement, 1–5-fit row-span, 다른 cap multiset 또는 generic Grid admission을 넓히지 않는다.
-3. 기본 Root HTML RuntimeSession에서 Chrome과 같은 138,240-scene mask/cap/topology/alignment/source-order matrix를 재생한다. 720 authored cap order를 모두 유지하고 item별 computed minimum·trace contribution·covered row·payload floor·owner/revision을 확인한다.
-4. 기존 six-fit uniform 11,520 scene, 1–5-fit span, 1–6-fit auto-placement, repeated-text, row rounding, trace/rejection/recovery와 Grid layout 회귀를 별도 재실행한다. Invalid minimum, control `auto`, unsupported child/topology, stale trace는 atomic reject 후 같은 session에서 valid scene으로 회복해야 한다.
-5. 변경 crate의 focused Rust tests, `cargo fmt --all -- --check`, 영향 crate Clippy를 실행한다. broader suite에 baseline failure가 있으면 후보와 base tree를 분리해 기록한다.
-6. 가능하면 동일 source revision으로 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 Root HTML light/dark smoke를 확인한다. 기본 route smoke는 이 mask matrix geometry나 surface-pixel parity로 해석하지 않는다. 이번 작업이 시작한 Simulator와 Agent Browser 세션은 종료하고 전용 테스트 앱/AVD가 있으면 제거한다.
-7. 구현 후 계획 검토와 겹치지 않는 runtime 실패 관점 20개, 실제 implementation PR diff 30개를 각각 기록한다. PR 본문에 실행 경계·가능한 화면을 넣고 Agent Browser에서 이미지 표시를 확인한다.
-8. 병합 후 `spec/STATUS.md`, 내부 계약 0059, 이 plan/evidence와 공개 roadmap을 실제 merge SHA·실행 결과와 동기화한다. C11.4/C11 checkbox, 공식 `78/214`, contract `0.1.0`은 유지한다. Tailnet preview를 바꿀 때 선택 파일만 백업·hash 검증해 동기화한다.
+1. 계획 및 구현 작업은 별도 PR로 진행했고, 구현/runtime 실패 관점 20개와 실제 implementation PR diff 30개 검토를 각각 남겼다.
+2. Style projection과 Layout은 per-item `0px|auto`를 보존하며 mixed mask는 exact six-fit row-span profile에서만 admission한다. Six-fit auto-placement와 1–5-fit row-span admission은 변경하지 않았다.
+3. 기본 Root HTML RuntimeSession에서 720 authored cap order, 두 topology의 모든 mask, 두 alignment와 forward/reverse source order를 합쳐 138,240/138,240 scene을 확인했다. 각 item의 computed minimum, trace contribution, covered-row 합, Chrome frame/payload floor와 owner/revision을 검증했다.
+4. 기존 uniform six-fit 11,520 scene, six-fit auto-placement 5,760 scene, three-fit row-span 11,520 scene 회귀 및 invalid minimum·control `auto`·unsupported cap의 fail-closed 동작과 same-session recovery를 확인했다.
+5. Focused Rust tests, `cargo fmt --all -- --check`, runtime feature compile은 통과했다. Strict all-targets Clippy는 변경 밖 테스트 helper의 기존 lint 6건에서 중단됐다. 지정한 두 baseline lint 종류만 제외한 변경 범위 실행은 통과했고, broad style-to-layout/layout suite의 기존 실패는 base/candidate 증거와 함께 기록했다.
+6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source revision으로 기본 Root HTML boot smoke를 확인했다. 이는 mixed-mask geometry나 surface-pixel parity가 아니다. 작업용 Android 설치물과 AVD는 제거·종료했고 공유 AVD와 iOS Simulator 프로필, 기존 iOS 앱 설치는 보존했다.
+7. 구현/runtime 실패 관점 20개와 실제 implementation PR diff 30개를 별도로 기록했다. PR 본문 화면은 기본 Root HTML boot smoke라고 명시했고 Agent Browser에서 두 이미지가 로드됨을 확인했다.
+8. 구현 PR [#1369](https://github.com/ohah/spinon/pull/1369)은 `2026-11-12T01:02:45Z` Rebase and merge로 병합됐다 (merge SHA `79cc6328fb61e0babbb6d55c164485145f0058f5`). 이어 `spec/STATUS.md`, 내부 계약 0059, 이 plan/evidence와 공개 roadmap의 병합 상태를 동기화한다. C11.4/C11 checkbox, 공식 `78/214`, contract `0.1.0`은 유지한다. Tailnet preview를 바꿀 때는 선택 경로만 backup·hash 검증으로 동기화한다.
 
 ## 완료 판정
 
-138,240 RuntimeSession scene, 720 cap order, 모든 per-item mask, uniform control 회귀, source-order/alignment invariants, span-frame·payload floor, atomic rejection/recovery, existing profile 회귀, focused Rust/Clippy/rustfmt, 가능한 Android/iOS smoke, 별도 runtime 20개와 PR diff 30개, 명세·로드맵 동기화와 merge 결과를 확인한 경우에만 이 bounded slice를 구현 완료로 기록한다. 이는 일반 CSS Grid의 임의 automatic minimum, public CSS 지원, WPT 전체 적합성 또는 C11.4/C11 완료가 아니다.
+138,240 RuntimeSession scene, 720 cap order, 모든 per-item mask, uniform control 회귀, source-order/alignment invariants, span-frame·payload floor, atomic rejection/recovery, existing profile 회귀, focused Rust/Clippy/rustfmt, 기본 Root HTML Android/iOS smoke, 별도 runtime 20개와 PR diff 30개, 명세·로드맵 동기화와 merge 결과를 구현 PR [#1369](https://github.com/ohah/spinon/pull/1369)에서 확인했다. GitHub workflow/status checks는 0개, strict Clippy에는 기존 helper lint 여섯 건, broad crate suite에는 baseline 실패가 있어 모두 green으로 확대 해석하지 않는다. 플랫폼 smoke는 mixed-minimum feature geometry 또는 surface pixels가 아니다. 이 bounded slice는 일반 CSS Grid의 임의 automatic minimum, public CSS 지원, WPT 전체 적합성 또는 C11.4/C11 완료가 아니다.
