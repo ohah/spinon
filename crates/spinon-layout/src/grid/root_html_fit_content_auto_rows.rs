@@ -119,6 +119,17 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
                 LayoutDimension::Auto | LayoutDimension::Fixed(0.0)
             )
         });
+    let repeated_text_span_five_fit_minimum_mask_profile = repeated_text_span_profile
+        && profiles::supports_five_fit_row_span_track_list(tracks)
+        && visible_children.first().is_some_and(|item_id| {
+            input.nodes[index[item_id]].style.min_height == LayoutDimension::Fixed(0.0)
+        })
+        && visible_children.iter().copied().skip(1).all(|item_id| {
+            matches!(
+                input.nodes[index[&item_id]].style.min_height,
+                LayoutDimension::Auto | LayoutDimension::Fixed(0.0)
+            )
+        });
     let repeated_text_span_auto_minimum_candidate =
         (repeated_text_span_profile
             && matches!(
@@ -131,7 +142,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && visible_children.iter().copied().skip(1).all(|item_id| {
                 input.nodes[index[&item_id]].style.min_height == LayoutDimension::Auto
             }))
-            || repeated_text_span_six_fit_minimum_mask_profile;
+            || repeated_text_span_six_fit_minimum_mask_profile
+            || repeated_text_span_five_fit_minimum_mask_profile;
     let repeated_text_span_auto_minimum_profile = repeated_text_span_auto_minimum_candidate
         && visible_children.first().is_some_and(|item_id| {
             input.nodes[index[item_id]].style.min_height == LayoutDimension::Fixed(0.0)

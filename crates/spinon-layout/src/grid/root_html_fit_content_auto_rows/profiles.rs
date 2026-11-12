@@ -249,6 +249,10 @@ pub(super) fn supports_six_fit_row_span_track_list(tracks: &[GridTrackSize]) -> 
     six_fit_span::supports_six_fit_row_span_track_list(tracks)
 }
 
+pub(super) fn supports_five_fit_row_span_track_list(tracks: &[GridTrackSize]) -> bool {
+    five_fit_span::supports_five_fit_row_span_track_list(tracks)
+}
+
 pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
     tracks: &[GridTrackSize],
 ) -> bool {

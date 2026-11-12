@@ -1,0 +1,119 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-five-fit-mixed-auto-min-precomparison-verification/v1",
+  "capturedAtUtc": "2026-11-12T02:03:46.485Z",
+  "source": {
+    "browserCli": "agent-browser 0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "devicePixelRatio": 1,
+    "viewportCssPx": [
+      1280,
+      900
+    ],
+    "fixturePath": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison.html",
+    "fixtureBytes": 10548,
+    "fixtureSha256": "33ce9cdc4b25949d2ba0b4342b98146931e6265c22b7869d7673961a17b5c96e",
+    "observationPath": "chrome157-five-fit-mixed-observation.ndjson.gz",
+    "observationBytes": 14508142,
+    "observationSha256": "fa9e2d0194c8f2739df8eb9dd1bf7576bd6aa7c92bb927701d4f757bc876f35a",
+    "uniformControlObservationPath": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-precomparison-2026-11-11/chrome157-observation.ndjson.gz"
+  },
+  "sceneCount": 414720,
+  "uniqueTrackLists": 2160,
+  "uniqueFitPositionSets": 6,
+  "uniqueTypedCapOrders": 120,
+  "singletonTailValues": 3,
+  "sceneCountsByTopology": {
+    "span2Six-forward": 138240,
+    "span2Six-reverse": 138240,
+    "span2Span3Six-forward": 69120,
+    "span2Span3Six-reverse": 69120
+  },
+  "maskCountsByTopology": {
+    "span2Six-forward": 32,
+    "span2Six-reverse": 32,
+    "span2Span3Six-forward": 16,
+    "span2Span3Six-reverse": 16
+  },
+  "scenesPerTopologyMask": 4320,
+  "uniformEndpointScenesRechecked": 34560,
+  "eligibleAutomaticMinimumItems": 1935360,
+  "automaticMinimumContentFloorViolations": 0,
+  "zeroMinimumContentFloorShortfalls": {
+    "span2Six": 97920,
+    "span2Span3Six": 34560
+  },
+  "gridEndOverflowOccurrences": 1440,
+  "gridEndOverflowOccurrencesByMinimumHeight": {
+    "auto": 0,
+    "zero": 1440
+  },
+  "mixedMaskGeometryChangesFromAllZero": {
+    "span2Six|1": 3700,
+    "span2Six|2": 3600,
+    "span2Six|3": 3840,
+    "span2Six|4": 3744,
+    "span2Six|5": 4176,
+    "span2Six|6": 3944,
+    "span2Six|7": 4176,
+    "span2Six|8": 4104,
+    "span2Six|9": 4300,
+    "span2Six|10": 4248,
+    "span2Six|11": 4320,
+    "span2Six|12": 4176,
+    "span2Six|13": 4320,
+    "span2Six|14": 4248,
+    "span2Six|15": 4320,
+    "span2Six|16": 3600,
+    "span2Six|17": 4260,
+    "span2Six|18": 4128,
+    "span2Six|19": 4320,
+    "span2Six|20": 4320,
+    "span2Six|21": 4320,
+    "span2Six|22": 4320,
+    "span2Six|23": 4320,
+    "span2Six|24": 3984,
+    "span2Six|25": 4320,
+    "span2Six|26": 4320,
+    "span2Six|27": 4320,
+    "span2Six|28": 4176,
+    "span2Six|29": 4320,
+    "span2Six|30": 4320,
+    "span2Six|31": 4320,
+    "span2Span3Six|1": 3764,
+    "span2Span3Six|2": 3384,
+    "span2Span3Six|3": 3744,
+    "span2Span3Six|4": 3660,
+    "span2Span3Six|5": 4308,
+    "span2Span3Six|6": 4248,
+    "span2Span3Six|7": 4224,
+    "span2Span3Six|8": 4176,
+    "span2Span3Six|9": 4320,
+    "span2Span3Six|10": 4320,
+    "span2Span3Six|11": 4320,
+    "span2Span3Six|12": 4208,
+    "span2Span3Six|13": 4320,
+    "span2Span3Six|14": 4320,
+    "span2Span3Six|15": 4320
+  },
+  "maxErrorsCssPx": {
+    "spanFrameVsCoveredRows": 0.0004500000000007276,
+    "sourceOrderGeometry": 0.0,
+    "nonAutoAlignmentGeometry": 0.0,
+    "uniformZeroAndAutoEndpoints": 0.0
+  },
+  "acceptance": {
+    "all414720ScenesCaptured": true,
+    "allFiveFitListsAndTypedOrdersPresent": true,
+    "allPerItemMasksPresent": true,
+    "automaticMinimumItemsPreserveContentFloor": true,
+    "sourceOrderAndAlignmentInvariants": true,
+    "coveredRowFramesMatch": true,
+    "uniformEndpointsMatchExistingMatrix": true
+  },
+  "limits": [
+    "Agent Browser Chrome CSS observation only; no Spinon implementation result.",
+    "Fixed five-fit typed-cap multiset, two row-span topology families, and definite 40x220px one-column Grid.",
+    "No public CSS support, WPT, Android/iOS runtime geometry, device pixels, or C11.4 completion claim."
+  ]
+}

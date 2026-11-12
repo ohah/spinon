@@ -9,6 +9,9 @@ use spinon_style::{
 #[cfg(all(test, feature = "c11-4-grid-track-sizing-fixture-test"))]
 #[path = "repeated_text_span/automatic_minimum.rs"]
 mod automatic_minimum;
+#[cfg(all(test, feature = "c11-4-grid-track-sizing-fixture-test"))]
+#[path = "repeated_text_span/five_fit_mixed_auto_minimum.rs"]
+mod five_fit_mixed_auto_minimum;
 #[cfg(test)]
 #[path = "repeated_text_span/rejections.rs"]
 mod rejections;

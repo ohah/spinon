@@ -1,0 +1,78 @@
+{
+  "record": "metadata",
+  "schema": "spinon.c11-4.repeated-text-row-span-five-fit-mixed-auto-min-precomparison/v1",
+  "capturedAtUtc": "2026-11-12T02:03:46.485Z",
+  "browserCli": "agent-browser 0.31.1",
+  "namespace": "spinon5mix12",
+  "session": "5mixpre",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "devicePixelRatio": 1,
+  "viewportCssPx": [
+    1280,
+    900
+  ],
+  "fixturePath": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison.html",
+  "fixtureBytes": 10548,
+  "fixtureSha256": "33ce9cdc4b25949d2ba0b4342b98146931e6265c22b7869d7673961a17b5c96e",
+  "sceneCount": 414720,
+  "uniqueTrackListCount": 2160,
+  "fitPositionSets": 6,
+  "orderedCapAssignments": 120,
+  "singletonTailValues": [
+    "min-content",
+    "max-content",
+    "auto"
+  ],
+  "capValues": [
+    "0px",
+    "10px",
+    "20%",
+    "30px",
+    "40px"
+  ],
+  "alignments": [
+    "start",
+    "stretch"
+  ],
+  "topologies": [
+    "span2Six-forward",
+    "span2Six-reverse",
+    "span2Span3Six-forward",
+    "span2Span3Six-reverse"
+  ],
+  "minimumAssignments": {
+    "span2Six": 32,
+    "span2Span3Six": 16
+  },
+  "minimumMaskBitOrder": {
+    "span2Six": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "span2Span3Six": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "observationPath": "chrome157-five-fit-mixed-observation.ndjson.gz",
+  "observationBytes": 14508142,
+  "observationSha256": "fa9e2d0194c8f2739df8eb9dd1bf7576bd6aa7c92bb927701d4f757bc876f35a",
+  "topologySceneCounts": {
+    "span2Six-forward": 138240,
+    "span2Six-reverse": 138240,
+    "span2Span3Six-forward": 69120,
+    "span2Span3Six-reverse": 69120
+  },
+  "distinctMasksObserved": {
+    "span2Six-forward": 32,
+    "span2Six-reverse": 32,
+    "span2Span3Six-forward": 16,
+    "span2Span3Six-reverse": 16
+  }
+}

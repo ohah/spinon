@@ -1,0 +1,78 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.89s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+
+running 4 tests
+five-fit matrix track lists: 550 / 1080
+five-fit matrix track lists: 1100 / 1620
+five-fit matrix track lists: 1650 / 2160
+five-fit matrix track lists: 50 / 540
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::matrix::parsed_root_html_five_fit_row_span_matrix_chunk_1_matches_chrome has been running for over 60 seconds
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::matrix::parsed_root_html_five_fit_row_span_matrix_chunk_2_matches_chrome has been running for over 60 seconds
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::matrix::parsed_root_html_five_fit_row_span_matrix_chunk_3_matches_chrome has been running for over 60 seconds
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::matrix::parsed_root_html_five_fit_row_span_matrix_chunk_4_matches_chrome has been running for over 60 seconds
+five-fit matrix track lists: 600 / 1080
+five-fit matrix track lists: 1150 / 1620
+five-fit matrix track lists: 1700 / 2160
+five-fit matrix track lists: 100 / 540
+five-fit matrix track lists: 650 / 1080
+five-fit matrix track lists: 1200 / 1620
+five-fit matrix track lists: 1750 / 2160
+five-fit matrix track lists: 150 / 540
+five-fit matrix track lists: 700 / 1080
+five-fit matrix track lists: 1250 / 1620
+five-fit matrix track lists: 1800 / 2160
+five-fit matrix track lists: 200 / 540
+five-fit matrix track lists: 750 / 1080
+five-fit matrix track lists: 1300 / 1620
+five-fit matrix track lists: 1850 / 2160
+five-fit matrix track lists: 250 / 540
+five-fit matrix track lists: 800 / 1080
+five-fit matrix track lists: 1350 / 1620
+five-fit matrix track lists: 1900 / 2160
+five-fit matrix track lists: 300 / 540
+five-fit matrix track lists: 850 / 1080
+five-fit matrix track lists: 1400 / 1620
+five-fit matrix track lists: 1950 / 2160
+five-fit matrix track lists: 350 / 540
+five-fit matrix track lists: 900 / 1080
+five-fit matrix track lists: 1450 / 1620
+five-fit matrix track lists: 2000 / 2160
+five-fit matrix track lists: 400 / 540
+five-fit matrix track lists: 950 / 1080
+five-fit matrix track lists: 1500 / 1620
+five-fit matrix track lists: 2050 / 2160
+five-fit matrix track lists: 450 / 540
+five-fit matrix track lists: 1000 / 1080
+five-fit matrix track lists: 1550 / 1620
+five-fit matrix track lists: 2100 / 2160
+five-fit matrix track lists: 500 / 540
+five-fit matrix track lists: 1050 / 1080
+five-fit matrix track lists: 1600 / 1620
+five-fit matrix track lists: 2150 / 2160
+five-fit matrix track lists: 540 / 540
+five-fit chunk 0..540 payload-floor violations: candidate=0, baseline=3152
+five-fit matrix track lists: 2160 / 2160
+five-fit chunk 1620..2160 payload-floor violations: candidate=0, baseline=2800
+five-fit matrix track lists: 1620 / 1620
+five-fit chunk 1080..1620 payload-floor violations: candidate=0, baseline=2784
+five-fit matrix track lists: 1080 / 1080
+five-fit chunk 540..1080 payload-floor violations: candidate=0, baseline=4512
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::matrix::parsed_root_html_five_fit_row_span_matrix_chunk_1_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::matrix::parsed_root_html_five_fit_row_span_matrix_chunk_4_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::matrix::parsed_root_html_five_fit_row_span_matrix_chunk_3_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::matrix::parsed_root_html_five_fit_row_span_matrix_chunk_2_matches_chrome ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 693 filtered out; finished in 560.19s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-46c865be5d69b8a3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-c0518cc1463587c5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

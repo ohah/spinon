@@ -1,0 +1,15 @@
+{
+  "schema": "spinon.c11-4.five-fit-mixed-runtime-sample-manifest/v1",
+  "sourcePath": "chrome157-five-fit-mixed-observation.ndjson.gz",
+  "sourceSha256": "fa9e2d0194c8f2739df8eb9dd1bf7576bd6aa7c92bb927701d4f757bc876f35a",
+  "outputPath": "runtime-matrix-3984.ndjson.gz",
+  "outputCompressedBytes": 178268,
+  "outputSha256": "df2eb2aafe6f992f0481a89c3e0f673c81391d13531182222b4f101080a162b3",
+  "outputSceneCount": 3984,
+  "outputTrackListCount": 120,
+  "representativePositionTailContexts": 18,
+  "partialMasksVerifiedPerRepresentativeContext": {
+    "span2Six": 30,
+    "span2Span3Six": 14
+  }
+}

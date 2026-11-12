@@ -1,0 +1,5 @@
+avd=spinon_api37_2_presenttime_probe_20261018
+api=37
+abi=arm64-v8a
+density=Physical density: 420
+emulator_flags=-read-only -no-snapshot-load -no-snapshot-save -gpu swiftshader_indirect

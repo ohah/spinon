@@ -1,0 +1,23 @@
+Monitoring boot status for iPhone 17 Pro (ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D).
+[2026-11-12 04:55:09 +0000] Status=2, isTerminal=NO, Elapsed=00:01.
+	Waiting on Data Migration
+		Reason:(null)
+		Migration Elapsed:00:00 seconds
+
+[2026-11-12 04:55:10 +0000] Status=4, isTerminal=NO, Elapsed=00:02.
+	Waiting on System App
+
+[2026-11-12 04:55:10 +0000] Status=4, isTerminal=NO, Elapsed=00:02.
+	Waiting on System App
+
+[2026-11-12 04:55:11 +0000] Status=4, isTerminal=NO, Elapsed=00:03.
+	Waiting on System App
+
+[2026-11-12 04:55:12 +0000] Status=4294967295, isTerminal=YES, Elapsed=00:04.
+	Finished
+
+dev.spinon.bootstrap: 48418
+dev.spinon.bootstrap: 48526
+simulator=ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D
+original_appearance=light
+result=light-dark captured; simulator shutdown by trap

@@ -109,14 +109,14 @@ fn parsed_root_html_five_fit_row_span_rejects_out_of_profile_mutations_atomicall
 }
 
 #[test]
-fn parsed_root_html_five_fit_row_span_mixed_minimum_rejection_is_atomic_and_recovers() {
+fn parsed_root_html_five_fit_row_span_mixed_minimum_is_accepted_and_recovers_atomically() {
     use spinon_style::{CssColorScheme, CssMediaEnvironment};
 
     let record = candidate_record();
     let source = replace_once(
         &source_for_track_list(record["scene"]["trackList"].as_str().unwrap()),
         "</style>",
-        "@media (prefers-color-scheme: dark) { #grid .item[data-item=\"B\"] { min-height:0; } } </style>",
+        "@media (prefers-color-scheme: dark) { #grid .item[data-item=\"B\"] { min-height:0; } } @media (min-height:10000px) { #grid .item[data-item=\"C\"] { min-height:1px; } } </style>",
     );
     let (session, initial) = run(&source);
     assert_eq!(
@@ -131,6 +131,18 @@ fn parsed_root_html_five_fit_row_span_mixed_minimum_rejection_is_atomic_and_reco
     session
         .set_root_html_environment(1280.0, 320.0, 1.0, media)
         .expect("dark media selects the mixed automatic-minimum profile");
+    let mixed = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(
+        mixed.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "five-fit mixed zero/auto values are supported: {:?}",
+        mixed.error
+    );
+    assert!(mixed.completed.is_some());
+
+    session
+        .set_root_html_environment(1280.0, 10_000.0, 1.0, media)
+        .expect("height media activates an unsupported fixed minimum");
     let rejected = session.wait_for_layout_snapshot(Duration::from_secs(5));
     assert_eq!(rejected.state, crate::session::RuntimeLayoutState::Failed);
     assert!(
@@ -138,10 +150,9 @@ fn parsed_root_html_five_fit_row_span_mixed_minimum_rejection_is_atomic_and_reco
         "rejection publishes no partial layout"
     );
 
-    media.color_scheme = CssColorScheme::Light;
     session
         .set_root_html_environment(1280.0, 320.0, 1.0, media)
-        .expect("light media restores the all-zero baseline");
+        .expect("same-session valid mixed profile restores after rejection");
     let recovered = session.wait_for_layout_snapshot(Duration::from_secs(5));
     assert_eq!(
         recovered.state,

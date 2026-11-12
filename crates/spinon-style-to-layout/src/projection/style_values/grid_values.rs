@@ -906,6 +906,16 @@ pub(super) fn root_html_fit_content_auto_rows_with_six_fit_row_span_tracks(
     )
 }
 
+pub(super) fn root_html_fit_content_auto_rows_with_five_fit_row_span_tracks(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if five_fit_span::supports_repeated_five_fit_row_span_track_list(tracks)
+    )
+}
+
 fn root_html_fit_content_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
     !tracks.is_empty()
         && tracks.len() <= spinon_layout::GRID_MAX_TRACKS
