@@ -73,6 +73,8 @@ pub(super) fn validate(
         grid_values::root_html_fit_content_auto_rows_with_six_fit_row_span_tracks(grid);
     let five_fit_row_span_track_list =
         grid_values::root_html_fit_content_auto_rows_with_five_fit_row_span_tracks(grid);
+    let four_fit_row_span_track_list =
+        grid_values::root_html_fit_content_auto_rows_with_four_fit_row_span_tracks(grid);
     let six_member_candidate =
         six_member_auto_placement_list || six_fit_auto_placement_list || six_member_span_list;
     let span_fit_positions = match &grid.auto_rows {
@@ -276,6 +278,13 @@ pub(super) fn validate(
             five_fit_row_span_track_list,
             repeated_text_span_profile,
         );
+    let repeated_text_span_four_fit_minimum_mask_profile =
+        repeated_text::span_four_fit_minimum_mask_profile(
+            &items,
+            &styles,
+            four_fit_row_span_track_list,
+            repeated_text_span_profile,
+        );
     let repeated_text_span_auto_minimum_candidate = repeated_text::span_auto_minimum_items_candidate(
         &items,
         &styles,
@@ -283,7 +292,8 @@ pub(super) fn validate(
         repeated_text_span_profile,
     )
         || repeated_text_span_six_fit_minimum_mask_profile
-        || repeated_text_span_five_fit_minimum_mask_profile;
+        || repeated_text_span_five_fit_minimum_mask_profile
+        || repeated_text_span_four_fit_minimum_mask_profile;
     let repeated_text_span_auto_minimum_profile = repeated_text::span_auto_minimum_profile(
         &items,
         &styles,
@@ -291,7 +301,8 @@ pub(super) fn validate(
         repeated_text_span_profile,
     )
         || repeated_text_span_six_fit_minimum_mask_profile
-        || repeated_text_span_five_fit_minimum_mask_profile;
+        || repeated_text_span_five_fit_minimum_mask_profile
+        || repeated_text_span_four_fit_minimum_mask_profile;
     if (four_member_list && items.len() != 6)
         || (six_member_candidate && items.len() != 9 && !repeated_text_span_profile)
         || (two_fit_span_track_list && !repeated_text_span_profile && !repeated_text_profile)

@@ -1,8 +1,8 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-11-12 다음 bounded 후보 · four-fit row-span item별 automatic minimum
+## 2026-11-12 현재 bounded 작업 · four-fit row-span item별 automatic minimum
 
-five-fit row-span item별 minimum mask 구현 PR [#1372](https://github.com/ohah/spinon/pull/1372)이 병합된 뒤 fit-count별 경계로 돌아가 four-fit row-span mixed mask를 다음 후보로 정했다. four-fit uniform 구현 PR [#1357](https://github.com/ohah/spinon/pull/1357)은 이미 병합됐지만 item별 `min-height:0|auto` 조합은 거부한다. Chrome 157 Agent Browser 사전 비교 138,240 scenes에서 auto item floor 위반 0, source-order/non-auto stretch geometry 차이 0 CSS px, span/covered-row 최대 차이 0.00045 CSS px, 기존 uniform endpoint 11,520개의 최대 차이 0 CSS px를 확인했다. 이는 browser observation이며 제품 구현을 뜻하지 않는다. [집중 계획](./c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md) · [계획 실패 관점 20개](./c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-plan-review-20.md) · [Chrome 사전 비교와 verifier](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-precomparison-2026-11-12/README.md)
+five-fit row-span item별 minimum mask 구현 PR [#1372](https://github.com/ohah/spinon/pull/1372)이 병합된 뒤 fit-count별 경계로 돌아가 four-fit row-span mixed mask를 선택했다. 계획 PR [#1374](https://github.com/ohah/spinon/pull/1374)은 `2026-11-12T06:53:45Z` Rebase and merge됐고 merge SHA는 `97a5ca9b5a5c2d4a585ff76ee12bfb73547bb40b`다. four-fit uniform 구현 PR [#1357](https://github.com/ohah/spinon/pull/1357)은 이미 병합됐지만 item별 `min-height:0|auto` 조합은 거부한다. Chrome 157 Agent Browser 사전 비교 138,240 scenes에서 auto item floor 위반 0, source-order/non-auto stretch geometry 차이 0 CSS px, span/covered-row 최대 차이 0.00045 CSS px, 기존 uniform endpoint 11,520개의 최대 차이 0 CSS px를 확인했다. 이는 browser observation이며 제품 구현을 뜻하지 않는다. [집중 계획](./c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md) · [계획 실패 관점 20개](./c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-plan-review-20.md) · [Chrome 사전 비교와 verifier](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-precomparison-2026-11-12/README.md)
 
 ## 2026-11-10 Root HTML repeated-text row-span · positions 4–6 min-height:auto 계획 후보
 

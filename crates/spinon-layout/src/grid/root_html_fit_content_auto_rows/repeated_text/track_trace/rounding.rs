@@ -91,6 +91,9 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     let three_fit_span_auto_minimum = span_auto_minimum && fit_content_count == 3;
     let four_fit_row_span = raw_row_sizes.len() == 7 && fit_content_count == 4;
     let four_fit_span_auto_minimum = four_fit_row_span && stages.has_span_auto_minimum;
+    let four_fit_mixed_minimum = four_fit_row_span
+        && stages.has_spanning_item
+        && has_mixed_span_minimum_modes(input, grid_id);
     let five_fit_row_span =
         raw_row_sizes.len() == 7 && fit_content_count == 5 && stages.has_spanning_item;
     let five_fit_span_auto_minimum = five_fit_row_span && stages.has_span_auto_minimum;
@@ -112,39 +115,6 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     } else {
         false
     };
-    let six_fit_row_span =
-        raw_row_sizes.len() == 7 && fit_content_count == 6 && stages.has_spanning_item;
-    let fit_content_span_rows = (five_fit_row_span || six_fit_row_span).then(|| {
-        fit_content_span_sizing::simulate_blink_row_sizes(
-            input,
-            container,
-            output,
-            grid_id,
-            grid_frame.height,
-            &stages.pre_alignment_tracks,
-        )
-    });
-    match fit_content_span_rows {
-        Some(Some(rows)) => {
-            let snapped_rows = if stages.stretch_applied {
-                blink_layout_unit_stretch_auto_rows(container, grid_frame.height, rows)?
-            } else {
-                rows
-            };
-            if !snapped_rows_match_final_tracks(
-                &snapped_rows,
-                &stages.final_tracks,
-                container,
-                grid_frame.height,
-                five_fit_mixed_minimum && stages.stretch_applied,
-            ) {
-                return None;
-            }
-            return Some(snapped_rows);
-        }
-        Some(None) if six_fit_row_span => return None,
-        Some(None) | None => {}
-    }
     let four_fit_has_fractional_auto_track = if four_fit_row_span {
         match &container.auto_rows {
             crate::GridAutoRows::TrackList(tracks) if !tracks.is_empty() => {
@@ -162,27 +132,87 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     } else {
         false
     };
+    let residual_rounding = match &container.auto_rows {
+        crate::GridAutoRows::TrackList(_) if fit_content_count == 2 => ResidualRounding::Up,
+        _ if five_fit_span_auto_minimum => ResidualRounding::UpAutoMinimumLaterTrack,
+        _ if one_fit_span_auto_minimum
+            || three_fit_span_auto_minimum
+            || four_fit_span_auto_minimum =>
+        {
+            ResidualRounding::UpLaterTrack
+        }
+        _ if four_fit_has_fractional_auto_track => ResidualRounding::UpAutoLaterTrack,
+        _ if four_fit_row_span => ResidualRounding::NearestAutoLaterTrack,
+        _ if five_fit_has_fractional_auto_track => ResidualRounding::UpFiveFitAutoLaterTrack,
+        _ if five_fit_row_span => ResidualRounding::NearestFiveFitAutoLaterTrack,
+        _ => ResidualRounding::Nearest,
+    };
+    let six_fit_row_span =
+        raw_row_sizes.len() == 7 && fit_content_count == 6 && stages.has_spanning_item;
+    let fit_content_span_rows = (four_fit_mixed_minimum || five_fit_row_span || six_fit_row_span)
+        .then(|| {
+            fit_content_span_sizing::simulate_blink_row_sizes(
+                input,
+                container,
+                output,
+                grid_id,
+                grid_frame.height,
+                &stages.pre_alignment_tracks,
+            )
+        });
+    match fit_content_span_rows {
+        Some(Some(rows)) => {
+            let rows = if four_fit_mixed_minimum {
+                let target_total = blink_layout_unit_round_total(
+                    pre_alignment_sizes
+                        .iter()
+                        .map(|size| f64::from(*size))
+                        .sum(),
+                    residual_rounding,
+                );
+                let simulated_total = rows.iter().sum::<i64>();
+                if simulated_total < target_total {
+                    let fallback_units = blink_layout_unit_distribute_rows_from_stages(
+                        container,
+                        grid_frame,
+                        &pre_alignment_sizes,
+                        &stages.intrinsic_tracks,
+                        &stages.pre_alignment_tracks,
+                        residual_rounding,
+                    )?;
+                    restore_missing_residual_units(rows, &fallback_units, target_total)?
+                } else {
+                    rows
+                }
+            } else {
+                rows
+            };
+            let snapped_rows = if stages.stretch_applied {
+                blink_layout_unit_stretch_auto_rows(container, grid_frame.height, rows)?
+            } else {
+                rows
+            };
+            if !snapped_rows_match_final_tracks(
+                &snapped_rows,
+                &stages.final_tracks,
+                container,
+                grid_frame.height,
+                (four_fit_mixed_minimum || five_fit_mixed_minimum) && stages.stretch_applied,
+            ) {
+                return None;
+            }
+            return Some(snapped_rows);
+        }
+        Some(None) if four_fit_mixed_minimum || six_fit_row_span => return None,
+        Some(None) | None => {}
+    }
     let pre_alignment_units = blink_layout_unit_distribute_rows_from_stages(
         container,
         grid_frame,
         &pre_alignment_sizes,
         &stages.intrinsic_tracks,
         &stages.pre_alignment_tracks,
-        match &container.auto_rows {
-            crate::GridAutoRows::TrackList(_) if fit_content_count == 2 => ResidualRounding::Up,
-            _ if five_fit_span_auto_minimum => ResidualRounding::UpAutoMinimumLaterTrack,
-            _ if one_fit_span_auto_minimum
-                || three_fit_span_auto_minimum
-                || four_fit_span_auto_minimum =>
-            {
-                ResidualRounding::UpLaterTrack
-            }
-            _ if four_fit_has_fractional_auto_track => ResidualRounding::UpAutoLaterTrack,
-            _ if four_fit_row_span => ResidualRounding::NearestAutoLaterTrack,
-            _ if five_fit_has_fractional_auto_track => ResidualRounding::UpFiveFitAutoLaterTrack,
-            _ if five_fit_row_span => ResidualRounding::NearestFiveFitAutoLaterTrack,
-            _ => ResidualRounding::Nearest,
-        },
+        residual_rounding,
     );
     let pre_alignment_units = pre_alignment_units?;
     let snapped_rows = if stages.stretch_applied {
@@ -195,7 +225,7 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         &stages.final_tracks,
         container,
         grid_frame.height,
-        five_fit_mixed_minimum && stages.stretch_applied,
+        (four_fit_mixed_minimum || five_fit_mixed_minimum) && stages.stretch_applied,
     ) {
         return None;
     }
@@ -313,16 +343,7 @@ pub(super) fn blink_layout_unit_distribute_rows_from_stages(
     // Blink는 각 track-sizing 단계에서 intrinsic 기여분을 1/64px LayoutUnit으로 배분한다.
     // 분수 몫은 최종 f32 합을 최근접 반올림하면 버려질 수 있는 1단위를 뒤쪽의 제한 없는
     // track에 남길 수 있다.
-    let target_total = match residual_rounding {
-        ResidualRounding::Nearest
-        | ResidualRounding::NearestAutoLaterTrack
-        | ResidualRounding::NearestFiveFitAutoLaterTrack => (raw_total * 64.0).round() as i64,
-        ResidualRounding::Up
-        | ResidualRounding::UpAutoLaterTrack
-        | ResidualRounding::UpLaterTrack
-        | ResidualRounding::UpAutoMinimumLaterTrack
-        | ResidualRounding::UpFiveFitAutoLaterTrack => blink_layout_unit_ceil_units(raw_total),
-    };
+    let target_total = blink_layout_unit_round_total(raw_total, residual_rounding);
     let leftover_units = target_total - floor_total;
     if leftover_units < 0 || leftover_units as usize > growth_potentials.len() {
         return None;
@@ -344,6 +365,49 @@ pub(super) fn blink_layout_unit_distribute_rows_from_stages(
         quantized[*row] += 1;
     }
     Some(quantized)
+}
+
+fn blink_layout_unit_round_total(raw_total: f64, residual_rounding: ResidualRounding) -> i64 {
+    match residual_rounding {
+        ResidualRounding::Nearest
+        | ResidualRounding::NearestAutoLaterTrack
+        | ResidualRounding::NearestFiveFitAutoLaterTrack => (raw_total * 64.0).round() as i64,
+        ResidualRounding::Up
+        | ResidualRounding::UpAutoLaterTrack
+        | ResidualRounding::UpLaterTrack
+        | ResidualRounding::UpAutoMinimumLaterTrack
+        | ResidualRounding::UpFiveFitAutoLaterTrack => blink_layout_unit_ceil_units(raw_total),
+    }
+}
+
+fn restore_missing_residual_units(
+    mut simulated: Vec<i64>,
+    fallback_units: &[i64],
+    target_total: i64,
+) -> Option<Vec<i64>> {
+    if simulated.len() != fallback_units.len() || fallback_units.iter().sum::<i64>() != target_total
+    {
+        return None;
+    }
+
+    let mut missing_units = target_total - simulated.iter().sum::<i64>();
+    if missing_units <= 0 {
+        return Some(simulated);
+    }
+
+    // 성장 한도를 Taffy trace와 맞춘 뒤 사라진 잔여 단위만 복원한다. span replay가 이미
+    // 선택한 행별 분배는 유지하고, 기존 성장 잠재력 기반 분배가 선택한 증가분을 사용한다.
+    for row in (0..simulated.len()).rev() {
+        let available_units = (fallback_units[row] - simulated[row]).max(0);
+        let restored_units = available_units.min(missing_units);
+        simulated[row] += restored_units;
+        missing_units -= restored_units;
+        if missing_units == 0 {
+            break;
+        }
+    }
+
+    (missing_units == 0).then_some(simulated)
 }
 
 pub(super) fn blink_layout_unit_stretch_auto_rows(

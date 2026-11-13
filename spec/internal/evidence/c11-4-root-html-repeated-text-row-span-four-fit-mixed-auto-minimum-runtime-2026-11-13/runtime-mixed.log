@@ -1,0 +1,46 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.30s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+
+running 6 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::four_fit_mixed_auto_minimum::matrix::parsed_root_html_four_fit_mixed_minimum_metadata_covers_balanced_3840_scene_sample ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::four_fit_mixed_auto_minimum::matrix::parsed_root_html_four_fit_mixed_minimum_earlier_span_residual_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::four_fit_mixed_auto_minimum::matrix::parsed_root_html_four_fit_mixed_minimum_later_span_residual_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::four_fit_mixed_auto_minimum::matrix::parsed_root_html_four_fit_mixed_minimum_stretched_auto_tail_rounding_matches_chrome ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::four_fit_mixed_auto_minimum::rejections::parsed_root_html_four_fit_mixed_minimum_rejects_control_and_invalid_item_then_recovers ... ok
+four-fit mixed track lists: 1 / 20
+four-fit mixed track lists: 2 / 20
+four-fit mixed track lists: 3 / 20
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::four_fit_mixed_auto_minimum::matrix::parsed_root_html_four_fit_mixed_minimum_matrix_chunk_matches_chrome has been running for over 60 seconds
+four-fit mixed track lists: 4 / 20
+four-fit mixed track lists: 5 / 20
+four-fit mixed track lists: 6 / 20
+four-fit mixed track lists: 7 / 20
+four-fit mixed track lists: 8 / 20
+four-fit mixed track lists: 9 / 20
+four-fit mixed track lists: 10 / 20
+four-fit mixed track lists: 11 / 20
+four-fit mixed track lists: 12 / 20
+four-fit mixed track lists: 13 / 20
+four-fit mixed track lists: 14 / 20
+four-fit mixed track lists: 15 / 20
+four-fit mixed track lists: 16 / 20
+four-fit mixed track lists: 17 / 20
+four-fit mixed track lists: 18 / 20
+four-fit mixed track lists: 19 / 20
+four-fit mixed track lists: 20 / 20
+four-fit mixed 3,840 scenes: floor shortfalls zero/auto=[1024, 0]; Grid-end overflows zero/auto=[8, 0]
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::four_fit_mixed_auto_minimum::matrix::parsed_root_html_four_fit_mixed_minimum_matrix_chunk_matches_chrome ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 697 filtered out; finished in 340.41s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-46c865be5d69b8a3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-c0518cc1463587c5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

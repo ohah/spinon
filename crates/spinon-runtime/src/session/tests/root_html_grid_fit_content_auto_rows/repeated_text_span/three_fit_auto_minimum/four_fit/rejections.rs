@@ -97,7 +97,7 @@ fn parsed_root_html_four_fit_row_span_rejects_out_of_profile_mutations_atomicall
 }
 
 #[test]
-fn parsed_root_html_four_fit_auto_minimum_rejects_mixed_items_then_recovers() {
+fn parsed_root_html_four_fit_auto_minimum_accepts_mixed_items_then_recovers() {
     use spinon_style::{CssColorScheme, CssMediaEnvironment};
 
     let source = replace_once(
@@ -124,9 +124,15 @@ fn parsed_root_html_four_fit_auto_minimum_rejects_mixed_items_then_recovers() {
     session
         .set_root_html_environment(1280.0, 633.0, 1.0, media)
         .expect("dark media query produces mixed item minimums");
-    let rejected = session.wait_for_layout_snapshot(Duration::from_secs(5));
-    assert_eq!(rejected.state, crate::session::RuntimeLayoutState::Failed);
-    assert!(rejected.completed.is_none(), "rejection is atomic");
+    let mixed = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(
+        mixed.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "mixed per-item minimum is admitted: {:?}",
+        mixed.error
+    );
+    let mixed_completed = mixed.completed.as_ref().expect("mixed layout is published");
+    assert_ne!(mixed_completed.key, initial_key);
 
     media.color_scheme = CssColorScheme::Light;
     session
@@ -140,7 +146,7 @@ fn parsed_root_html_four_fit_auto_minimum_rejects_mixed_items_then_recovers() {
         recovered.error
     );
     let recovered_completed = recovered.completed.expect("recovered layout is published");
-    assert_ne!(recovered_completed.key, initial_key);
+    assert_ne!(recovered_completed.key, mixed_completed.key);
     assert_frame(
         frame_for_paint(
             recovered_completed.render_snapshot.as_ref().unwrap(),

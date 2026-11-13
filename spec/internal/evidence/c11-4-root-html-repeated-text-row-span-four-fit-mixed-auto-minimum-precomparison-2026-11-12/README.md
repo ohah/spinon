@@ -42,6 +42,22 @@ node spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixe
 python3 spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py
 ```
 
+## RuntimeSession 실행 표본
+
+RuntimeSession 검증은 전체 138,240개 Chrome oracle이 아니라 계획에 정한 20개 완전 track-list context의 3,840 scenes를 사용한다. 표본은 15개 fit-position set을 모두 포함하고, 24 cap order 중 결정적으로 선택한 20개와 두 tail order를 포함한다. 각 context는 네 topology와 item별 mask, source-order, alignment 조합 192개를 전부 보존한다.
+
+- 선택 표본: [runtime-matrix-3840.ndjson.gz](./runtime-matrix-3840.ndjson.gz)
+- 표본 작성기: [build-runtime-sample.py](./build-runtime-sample.py)
+- 독립 표본 verifier: [verify-runtime-sample.py](./verify-runtime-sample.py)
+- 원본 Chrome oracle SHA-256: `312497ced752c543ba367b57995c49bf00fe51bb5bcdd22f5302af0d7fc22570`
+
+```sh
+python3 spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-precomparison-2026-11-12/build-runtime-sample.py
+python3 spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-runtime-sample.py
+```
+
+표본 검증기는 원본 oracle hash, 선택 규칙, 모든 3,840 records의 원본 scene 내용·순서, 20개 track list, mask 집합 및 topology 변형을 확인한다. RuntimeSession이 이 표본과 일치했다는 주장은 별도 실행 결과와 함께 기록한다.
+
 ## 한계
 
 두 fixed row-span topology, 네 typed fit caps, 두 intrinsic tail order, 한 definite Grid와 고정 text/font/placement만 포함한다. 일반 CSS admission, 다른 fit 개수, auto-placement, WPT 전체, Android/iOS runtime geometry, device pixels, compositor parity, 실기기·hardware GPU와 C11.4/C11 완료는 확인하지 않는다.

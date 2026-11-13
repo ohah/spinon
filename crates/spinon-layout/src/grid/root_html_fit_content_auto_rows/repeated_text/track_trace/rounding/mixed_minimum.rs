@@ -64,7 +64,7 @@ fn singleton_stretched_auto_row_index(
     }
 }
 
-fn mixed_five_fit_stretch_rows_match_trace(
+fn mixed_span_stretch_rows_match_trace(
     row_size_units: &[i64],
     final_tracks: &[crate::LayoutGridTrackSizingTrackState],
     container: &crate::GridContainerInput,
@@ -119,7 +119,7 @@ pub(super) fn snapped_rows_match_final_tracks(
     if allow_mixed_auto_tail_residual
         && singleton_stretched_auto_row_index(container, row_size_units.len()).is_some()
     {
-        return mixed_five_fit_stretch_rows_match_trace(
+        return mixed_span_stretch_rows_match_trace(
             row_size_units,
             final_tracks,
             container,
