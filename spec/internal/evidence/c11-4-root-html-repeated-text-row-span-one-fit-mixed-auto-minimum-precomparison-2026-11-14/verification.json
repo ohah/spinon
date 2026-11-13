@@ -1,0 +1,73 @@
+{
+  "schema": "spinon.c11-4.one-fit-row-span-mixed-minimum-independent-verification/v1",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-one-fit-mixed-auto-minimum-precomparison.html",
+    "sha256": "62c7b45a23492316cfc351a2679bb09c2cb4aaac56bb879e27999979522fbc4c"
+  },
+  "observation": {
+    "path": "chrome157-one-fit-mixed-observation.ndjson.gz",
+    "bytes": 4158251,
+    "sha256": "1f2d46320fea6c530261f6ee041988cd9d567d87437c0a40040447f2f5c5abc7"
+  },
+  "sampleScreenshot": {
+    "path": "chrome157-one-fit-mixed-sample.png",
+    "sha256": "4fc3b7bf091d477d48571f5428cced2b5003315a2ea13d903c6fa39f668e7347"
+  },
+  "baselineHashes": [
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-precomparison-2026-11-10/chrome157-observation.ndjson",
+      "sha256": "92d8e21d547aa104c2577d6265258f75b07404a5e49791f225fdf17aa3900195"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-observation.ndjson",
+      "sha256": "38ecb38b3b73b4edfc2f3d496ba6267b6b617ce52be53bc55b61a3c92cca0ae9"
+    }
+  ],
+  "sceneCount": 120960,
+  "uniqueTrackLists": 900,
+  "scenesByTopology": {
+    "span2-forward": 2880,
+    "span2-reversed": 2880,
+    "span2-before-span3": 5760,
+    "span3-before-span2": 5760,
+    "span2-six-forward": 34560,
+    "span2-six-reversed": 34560,
+    "span2-span3-six-forward": 17280,
+    "span2-span3-six-reversed": 17280
+  },
+  "minimumMaskCountsByTopology": {
+    "span2-forward": 4,
+    "span2-reversed": 4,
+    "span2-before-span3": 8,
+    "span3-before-span2": 8,
+    "span2-six-forward": 32,
+    "span2-six-reversed": 32,
+    "span2-span3-six-forward": 16,
+    "span2-span3-six-reversed": 16
+  },
+  "scenesByFitPosition": {
+    "1": 5760,
+    "2": 5760,
+    "3": 5760,
+    "4": 34560,
+    "5": 34560,
+    "6": 34560
+  },
+  "uniformEndpointScenesCompared": 14400,
+  "maximumUniformEndpointDeltaCssPx": 0.0,
+  "candidateEligibleAutoMinimumItemOccurrences": 169344,
+  "candidateContentFloorViolations": 0,
+  "mixedScenesWithGeometryChangeFromZero": 90096,
+  "sourceOrderPairs": 60480,
+  "maximumSourceOrderDeltaCssPx": 0.0,
+  "alignmentPairs": 60480,
+  "maximumNonAutoStretchDeltaCssPx": 0.0,
+  "maximumAutoStretchDeltaCssPx": 180,
+  "maximumSpanRowSumErrorCssPx": 0.0002499999999940883,
+  "gridEndOverflowScenes": 0,
+  "maximumGridEndOverflowCssPx": 0.0,
+  "representativeSampleIndex": 25,
+  "representativeSampleShowsGridEndOverflow": false,
+  "toleranceCssPx": 0.01
+}

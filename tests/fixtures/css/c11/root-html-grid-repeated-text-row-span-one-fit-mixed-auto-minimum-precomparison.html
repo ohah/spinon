@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11.4 repeated-text row-span one-fit mixed automatic minimum precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #grid {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: grid;
+        box-sizing: border-box;
+        width: 40px;
+        height: 220px;
+        border: 0;
+        outline: 1px solid #e5484d;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        direction: ltr;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+
+      .item {
+        display: block;
+        box-sizing: border-box;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        grid-column: 1 / 2;
+        background: #345;
+      }
+
+      .item.auto-minimum {
+        min-height: auto;
+      }
+
+      .empty {
+        height: 10px;
+        background: #123;
+      }
+
+      .payload {
+        display: block;
+        box-sizing: border-box;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        color: #000;
+        background: #abc;
+        font-family: monospace;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        word-break: normal;
+        direction: ltr;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      (() => {
+        const threeRowContent = {
+          A: "A A A A A A",
+          B: "A A A A A A A A",
+          C: "A A A A A A A A A A A A",
+        };
+        const sixRowContent = {
+          A: "A A A A A A A A A A A A A A A A",
+          B: "A A A A A A A A A A A A A A",
+          C: "A A A A A A A A A A A A",
+          D: "A A A A A A A A A A",
+          E: "A A A A A A A A",
+        };
+        const tailSeed = [
+          "min-content",
+          "min-content",
+          "max-content",
+          "max-content",
+          "auto",
+        ];
+        const tailPermutations = new Map();
+        const permute = (values, index = 0) => {
+          if (index === values.length) {
+            tailPermutations.set(values.join(" "), [...values]);
+            return;
+          }
+          for (let next = index; next < values.length; next += 1) {
+            [values[index], values[next]] = [values[next], values[index]];
+            permute(values, index + 1);
+            [values[index], values[next]] = [values[next], values[index]];
+          }
+        };
+        permute(tailSeed);
+        const orderedTails = [...tailPermutations.values()].sort((left, right) =>
+          left.join(" ").localeCompare(right.join(" ")),
+        );
+        const threeRowProfiles = [
+          {
+            name: "span2-forward",
+            items: [["A", 2, 2], ["B", 3, 2]],
+          },
+          {
+            name: "span2-reversed",
+            items: [["B", 3, 2], ["A", 2, 2]],
+          },
+          {
+            name: "span2-before-span3",
+            items: [["A", 2, 2], ["B", 3, 2], ["C", 2, 3]],
+          },
+          {
+            name: "span3-before-span2",
+            items: [["C", 2, 3], ["B", 3, 2], ["A", 2, 2]],
+          },
+        ];
+        const sixRowProfiles = [
+          {
+            name: "span2-six-forward",
+            items: [["A", 2, 2], ["B", 3, 2], ["C", 4, 2], ["D", 5, 2], ["E", 6, 2]],
+          },
+          {
+            name: "span2-six-reversed",
+            items: [["E", 6, 2], ["D", 5, 2], ["C", 4, 2], ["B", 3, 2], ["A", 2, 2]],
+          },
+          {
+            name: "span2-span3-six-forward",
+            items: [["A", 2, 2], ["B", 3, 2], ["C", 4, 3], ["D", 5, 3]],
+          },
+          {
+            name: "span2-span3-six-reversed",
+            items: [["D", 5, 3], ["C", 4, 3], ["B", 3, 2], ["A", 2, 2]],
+          },
+        ];
+        const scenes = [];
+        const trackLists = new Set();
+
+        for (let fitPosition = 1; fitPosition <= 6; fitPosition += 1) {
+          const caps = fitPosition <= 3
+            ? ["20px", "20%", "0%", "120%"]
+            : ["0px", "0%", "10px", "20px", "20%", "120%"];
+          const profiles = fitPosition <= 3 ? threeRowProfiles : sixRowProfiles;
+          for (const tail of orderedTails) {
+            for (const cap of caps) {
+              const tracks = [...tail];
+              tracks.splice(fitPosition - 1, 0, "fit-content(" + cap + ")");
+              const trackList = tracks.join(" ");
+              trackLists.add(trackList);
+              for (const alignContent of ["start", "stretch"]) {
+                for (const profile of profiles) {
+                  const maskItemIds = [...new Set(profile.items.map(([id]) => id))].sort();
+                  const maskCount = 2 ** maskItemIds.length;
+                  for (let minimumMask = 0; minimumMask < maskCount; minimumMask += 1) {
+                    const autoItems = maskItemIds.filter((_, bit) =>
+                      (minimumMask & (1 << bit)) !== 0,
+                    );
+                    scenes.push({
+                      key: [trackList, alignContent, profile.name, minimumMask].join("|"),
+                      fitPosition,
+                      cap,
+                      tail: [...tail],
+                      trackList,
+                      trackMembers: tracks,
+                      alignContent,
+                      topology: profile.name,
+                      rowProfile: fitPosition <= 3 ? "three-row" : "six-row",
+                      items: profile.items,
+                      maskItemIds,
+                      minimumMask,
+                      autoItems,
+                    });
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        function rectValues(rect, origin) {
+          return [rect.x, rect.y, rect.width, rect.height].map((value, index) => {
+            const offset = index < 2 ? origin[index] : 0;
+            return Number((value - offset).toFixed(6));
+          });
+        }
+
+        function createGrid(scene, hidden) {
+          const grid = document.createElement("div");
+          grid.id = "grid";
+          grid.dataset.scene = scene.topology;
+          grid.style.gridAutoRows = scene.trackList;
+          grid.style.alignContent = scene.alignContent;
+          if (hidden) {
+            Object.assign(grid.style, {
+              position: "absolute",
+              left: "-10000px",
+              top: "0px",
+            });
+          }
+
+          const empty = document.createElement("div");
+          empty.className = "item empty";
+          empty.dataset.item = "empty";
+          Object.assign(empty.style, {
+            gridRow: "1 / 2",
+            gridColumn: "1 / 2",
+            minHeight: "0px",
+          });
+          grid.append(empty);
+
+          const content = scene.rowProfile === "three-row" ? threeRowContent : sixRowContent;
+          for (const [id, start, span] of scene.items) {
+            const item = document.createElement("div");
+            item.className = scene.autoItems.includes(id)
+              ? "item auto-minimum"
+              : "item";
+            item.dataset.item = id;
+            Object.assign(item.style, {
+              gridRow: start + " / span " + span,
+              gridColumn: "1 / 2",
+            });
+            const payload = document.createElement("div");
+            payload.className = "payload";
+            payload.dataset.payload = id;
+            payload.append(document.createTextNode(content[id]));
+            item.append(payload);
+            grid.append(item);
+          }
+          return grid;
+        }
+
+        function observeScene(scene, index) {
+          const grid = createGrid(scene, true);
+          document.body.append(grid);
+          const gridRect = grid.getBoundingClientRect();
+          const gridStyle = getComputedStyle(grid);
+          const rowValues = gridStyle.gridTemplateRows
+            .trim()
+            .split(/\s+/)
+            .map((value) => Number.parseFloat(value));
+          const items = [...grid.querySelectorAll(".item")].map((item) => {
+            const itemRect = item.getBoundingClientRect();
+            const style = getComputedStyle(item);
+            const payload = item.querySelector(".payload");
+            let payloadFrame = null;
+            let lineRects = [];
+            if (payload) {
+              const payloadRect = payload.getBoundingClientRect();
+              payloadFrame = rectValues(payloadRect, [gridRect.x, gridRect.y]);
+              const range = document.createRange();
+              range.selectNodeContents(payload.firstChild);
+              lineRects = [...range.getClientRects()].map((rect) =>
+                rectValues(rect, [gridRect.x, gridRect.y]),
+              );
+            }
+            return {
+              id: item.dataset.item,
+              minHeight: style.minHeight,
+              rowStart: style.gridRowStart,
+              rowEnd: style.gridRowEnd,
+              frame: rectValues(itemRect, [gridRect.x, gridRect.y]),
+              payloadFrame,
+              lineRects,
+            };
+          });
+          const result = {
+            index,
+            scene,
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            devicePixelRatio: window.devicePixelRatio,
+            gridFrame: rectValues(gridRect, [gridRect.x, gridRect.y]),
+            computedAutoRows: gridStyle.gridAutoRows,
+            computedAlignContent: gridStyle.alignContent,
+            usedRows: gridStyle.gridTemplateRows,
+            rowValues,
+            items,
+          };
+          grid.remove();
+          return result;
+        }
+
+        window.__c114OneFitMixedTrackListCount = trackLists.size;
+        window.__c114OneFitMixedSceneCount = scenes.length;
+        window.c114OneFitMixedSceneAt = (index) => scenes[index];
+        window.runC114OneFitMixedBatch = (start, count) => {
+          const end = Math.min(start + count, scenes.length);
+          const results = [];
+          for (let index = start; index < end; index += 1) {
+            results.push(observeScene(scenes[index], index));
+          }
+          return { start, end, total: scenes.length, results };
+        };
+        window.showC114OneFitMixedScene = (index) => {
+          const scene = scenes[index];
+          if (!scene) throw new Error("unknown one-fit mixed scene " + index);
+          document.body.replaceChildren();
+          const label = document.createElement("pre");
+          label.textContent = JSON.stringify({
+            index,
+            trackList: scene.trackList,
+            fitPosition: scene.fitPosition,
+            alignContent: scene.alignContent,
+            topology: scene.topology,
+            minimumMask: scene.minimumMask,
+            autoItems: scene.autoItems,
+          }, null, 2);
+          document.body.append(label);
+          const grid = createGrid(scene, false);
+          Object.assign(grid.style, {
+            top: "200px",
+            transform: "scale(3)",
+            transformOrigin: "top left",
+          });
+          document.body.append(grid);
+          return true;
+        };
+      })();
+    </script>
+  </body>
+</html>
