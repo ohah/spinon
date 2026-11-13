@@ -1,0 +1,37 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "session": "spinon-tailnet-pr1375-20261114",
+  "sessionClosed": true,
+  "activeSessionsAfterClose": 0,
+  "agentBrowserChromeProcessAfterClose": false,
+  "currentCard": {
+    "pr": 1375,
+    "mergeSha": "22161976cab0bfd68a1d545eeb616441a0ab7a0e",
+    "officialCount": "78/214",
+    "c11Incomplete": true,
+    "nextBoundedCandidateSelected": false,
+    "historyPr1372Visible": true
+  },
+  "desktop": {
+    "viewport": [1440, 900],
+    "screenshot": "tailnet-roadmap-desktop-agent-browser.png",
+    "sha256": "3526bb793774e1d8290677ff1d2d5f6de6c4ef866e4bfd7ef85d1490fd23fed5"
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentScrollWidth": 390,
+    "horizontalDocumentOverflow": false,
+    "kanban": {
+      "clientWidth": 362,
+      "scrollWidth": 1120,
+      "overflowX": "auto",
+      "scrollLeftAtEnd": 758,
+      "maxScrollLeft": 758
+    },
+    "screenshot": "tailnet-roadmap-mobile-agent-browser.png",
+    "sha256": "b155ce1be9e495514bdd2c71fe6e93572ad537de40b12d6aca22c6b25095c93b",
+    "kanbanScrollScreenshot": "tailnet-roadmap-mobile-kanban-scroll-agent-browser.png",
+    "kanbanScrollSha256": "1a17ccb503ddc1174620d6c737951298e42ad30ff9aff6196de48c116b57965d"
+  }
+}

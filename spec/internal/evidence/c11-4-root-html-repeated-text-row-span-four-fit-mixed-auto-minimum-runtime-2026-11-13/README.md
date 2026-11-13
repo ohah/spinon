@@ -1,6 +1,8 @@
 # C11.4 four-fit mixed minimum 런타임·플랫폼 실행 근거
 
-이 기록은 four-fit repeated-text row-span의 item별 `min-height: 0|auto` 구현 후보를 확인한다. 이 검증은 제한된 Root HTML fixture 범위이며, 일반 CSS Grid 적합성이나 C11.4/C11 전체 완료를 뜻하지 않는다.
+이 기록은 four-fit repeated-text row-span의 item별 `min-height: 0|auto` 제한 구현과 그 검증 범위를 기록한다. 이 검증은 제한된 Root HTML fixture 범위이며, 일반 CSS Grid 적합성이나 C11.4/C11 전체 완료를 뜻하지 않는다.
+
+구현 PR [#1375](https://github.com/ohah/spinon/pull/1375)은 `2026-11-13T14:51:55Z` Rebase and merge됐고 merge SHA는 `22161976cab0bfd68a1d545eeb616441a0ab7a0e`다. [병합 기록](./merge-PR1375.md)을 확인한다.
 
 ## RuntimeSession 후보 검증
 

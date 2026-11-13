@@ -1,0 +1,1032 @@
+{
+  "sourceHead": "22161976cab0bfd68a1d545eeb616441a0ab7a0e",
+  "sourceTree": "3aafe576ae6dcc479b482bdd51ceba7bf2513be6",
+  "trackedDiffSha256": "ea1018fc2a4bc288161e6d381dfe2e30ae82a21f648161e6a0a58e0c803c3ac8",
+  "selectedRootFileCount": 89,
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr1375-final-2026-11-14/publication",
+  "routeCount": 140,
+  "totalBytes": 21618566,
+  "officialCount": "78/214",
+  "c11Complete": false,
+  "checkedRoadmapLinks": [
+    {
+      "href": "/spinon/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "sha256": "f8631bc76e4ce26fba6feb72ab8c3d49aa26e288dd6004d419556b72f12a6757"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "c136b6f087ea27818ffef23f9e318b9b512884806bfe9c6408c8cd556462dcdf"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "sha256": "b48cf50ca47d603ac11dd72a8367d712068ab13873b912103aa00a6141d47b5c"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "sha256": "74e2ad67db67652edd68813ff7b5afd49247888d9db692d6c9b00b463b7e92a3"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "sha256": "c509ceef607062177f74f9e1236e3bb4447a84338dff306491d720f85484055c"
+    }
+  ],
+  "excludedRoutes": [
+    {
+      "path": "index.html and 404.html",
+      "reason": "existing Tailnet preview entry and fallback are outside this selected roadmap update"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "reason": "unrelated to the #1375 current card; preserve existing route"
+    }
+  ],
+  "fullDocsLinkValidation": false,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "kind": "generated-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "rspress:internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 875765,
+      "sha256": "c136b6f087ea27818ffef23f9e318b9b512884806bfe9c6408c8cd556462dcdf"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 614352,
+      "sha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 5269,
+      "sha256": "cc676639456dda4348ee876b714b89a42d13fcd649f5dae8e3dbba7061748f9b"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "kind": "source-page-or-asset",
+      "bytes": 2802,
+      "sha256": "b765cdc287389d66bbf13513d3e665dea91d6b77a0314f0ddad1de99f62bd9ab"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 32125,
+      "sha256": "78446b38c4f16720f4f544c301abecb86ef02b05e8300f626d5dc26c2f5b0ccf"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "kind": "source-page-or-asset",
+      "bytes": 2668,
+      "sha256": "9694cfcc20bf9f3779989ce238b5ea3c8c4fc0a70b052ea2252408ffb25f3012"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 6386,
+      "sha256": "8e7f82b164a5763f724a4b881863d1bffd46f9c846ea604a8643c76df7743281"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "kind": "source-page-or-asset",
+      "bytes": 28906,
+      "sha256": "9440c3c1b23c458b80abddb799bed623c7ae8782c03965f07200e834bfb86732"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 165,
+      "sha256": "555d7dbcf9af968bf6b351381c1a2293035cdfb3bb2bbd23e0b75f6ab9746b33"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "kind": "source-page-or-asset",
+      "bytes": 7816,
+      "sha256": "c90e50724cdb1162da6d19a0ac4330120b61e8fcf5c7df1f559a6a7ddbb2ca89"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 6382,
+      "sha256": "9c27ef6ac7b69911bd2bf593e67cffaede45e2c0d4ba83c88c58e081c837da8d"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "kind": "source-page-or-asset",
+      "bytes": 28641,
+      "sha256": "c594ed7142b098a45bc708d1247015bce9e851ad98fbfb90484ec77c7addd357"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "kind": "source-page-or-asset",
+      "bytes": 3770,
+      "sha256": "0ea235654cdd09b9f50ccef7531a2b07a7133fe418a475821f3939d45a4d6c39"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "kind": "source-page-or-asset",
+      "bytes": 7883,
+      "sha256": "afad65d7a4c4a3d2ccd372c98e3312534d3f656ba9efe864aae559e384cacfff"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 278095,
+      "sha256": "2adb578879743b6695499e0d7a452b82c42c2f14818760fbcda3195d6fec9ec9"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36399,
+      "sha256": "6fbac594a3cb3dd2c382f11ead31c3095eaf69eecf0cb0bccbe8dba826e3c069"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6473,
+      "sha256": "696e0afbd6335858a687fa1d478ed67c70eb1d017815be20456a275306937a1f"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 126074,
+      "sha256": "01631a6fd3aeb525d2a06c75b08bca5bbb0092267162a38b8363041fdabc81c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 54988,
+      "sha256": "839b1e2cf38ff9fd788cd26070db964d419a0372b11ce36023ea0b8af5a22e1c"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "kind": "source-page-or-asset",
+      "bytes": 39340,
+      "sha256": "91ff3b0350273883dc10714d61063b010b521115279f8d42672efa356e7de927"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 88244,
+      "sha256": "64350660cc0ac710725fd0938bbc886db17cf7d7797d27e7404a67130ee8c937"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "kind": "source-page-or-asset",
+      "bytes": 82355,
+      "sha256": "29a65e1e98331936c2cd37cb1303ddf1ff14112d4037cd25c88daf6a4688cebb"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "kind": "source-page-or-asset",
+      "bytes": 44560,
+      "sha256": "43155738973323c129adfbb8f56e9fe6006aed9c7b63f4e200bbb734a7cfa65e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 44708,
+      "sha256": "438ef879c9acbb41fd096979b8cd06fa4e793d4c166f2129598875ea9bc51899"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "kind": "source-page-or-asset",
+      "bytes": 82392,
+      "sha256": "632b64233df4c9ec72f5103c708e2d29f5f20cc48f519e526a240debae9f13e0"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 37,
+      "sha256": "de4bff81535245d8f1ba1805a98de2a5e97836ff423bcecfc16d796fce75896a"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 194692,
+      "sha256": "3a13aade618bb7424563828814cc4bd62345521e78fed321c5e0f51151aa654c"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 30647,
+      "sha256": "74e2ad67db67652edd68813ff7b5afd49247888d9db692d6c9b00b463b7e92a3"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "kind": "source-page-or-asset",
+      "bytes": 1115,
+      "sha256": "fcb9d6d540b9588bb15004dec6e53f3a0909c0c4c1338a0db91f76b4d92c72bc"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 38858,
+      "sha256": "eef2c9cc5e43ba725a199dabf10ec4fb055d8d8dc68c98fb149acd6ea84a2859"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 7827,
+      "sha256": "6d373182625b0f43f6cbb066c938f17afc405158388bdc1738ef9aa2413eadc3"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37872,
+      "sha256": "b48cf50ca47d603ac11dd72a8367d712068ab13873b912103aa00a6141d47b5c"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5874,
+      "sha256": "5d8d53b4091932998854a1a5f7bd7ad655f97f65224b208140c2ec3e00b96686"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "kind": "source-page-or-asset",
+      "bytes": 2981,
+      "sha256": "8652e462dc743fa0e511acce5c625cc7025ef12119c92c649b0dfb856307ec38"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "kind": "source-page-or-asset",
+      "bytes": 2731,
+      "sha256": "71f9ae52bd2c677273cb2e50a821e9c3a28fb4781fd129b2e5f7adf341f76f18"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/agent-browser-verification.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/agent-browser-verification.json",
+      "kind": "source-page-or-asset",
+      "bytes": 1297,
+      "sha256": "6f1096c6c89f04bb98599f1e88e8b6b0bab7029b8077fc17aa49d6b7b0aa9d57"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/copy-and-backup.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/copy-and-backup.json",
+      "kind": "source-page-or-asset",
+      "bytes": 27678,
+      "sha256": "4637200c4fccd595a929e4e4b0f7564a66a937f6b328da19fb19d8201eb7c45e"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 40638,
+      "sha256": "679fd6e30681141aa04a247044cf43bc695c283da55760da415ff788f8495f4d"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4500,
+      "sha256": "f12221037c66f1727ac8a78555c5c79b4a3f6c3339639bbdc476f678c31aa10f"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/preflight.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/preflight.json",
+      "kind": "source-page-or-asset",
+      "bytes": 41921,
+      "sha256": "7f72366954fdbf02b1aac9e8be9ad57d234bfadda8104e32c95d2a5fb9f8f441"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.html",
+      "source": "rspress:internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 31882,
+      "sha256": "18de348f360f92d2c7506fcd37c12d63583b62304083ee44a33d741e7da4a0d1"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 2956,
+      "sha256": "9793aeaa8b2c548af8ce62afd2c304c4acf9ea0420a1cdce010a0e423b0a7e5f"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/selected-publication.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/selected-publication.json",
+      "kind": "source-page-or-asset",
+      "bytes": 51042,
+      "sha256": "ef2e3eca944fbc708ddca5fe61966afcf4541b266bd7a302ed654116b81e5df4"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/selected-root.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/selected-root.json",
+      "kind": "source-page-or-asset",
+      "bytes": 28427,
+      "sha256": "fae54ff2239ca259a207be6f3d36c0f272b77733eb821186a9103cbe360f7a9c"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/served-verification.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/served-verification.json",
+      "kind": "source-page-or-asset",
+      "bytes": 73023,
+      "sha256": "b1ba5a502e0120e2bef580225cfb60008a66949d97098e49c7a05fab166b6557"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/simulator-cleanup.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/simulator-cleanup.json",
+      "kind": "source-page-or-asset",
+      "bytes": 1598,
+      "sha256": "d2b50b2d5d5ba3895625d1278fe30107000cfac6201f0782f309d0556aac3317"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/tailnet-roadmap-desktop-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/tailnet-roadmap-desktop-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 159714,
+      "sha256": "3526bb793774e1d8290677ff1d2d5f6de6c4ef866e4bfd7ef85d1490fd23fed5"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/tailnet-roadmap-mobile-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/tailnet-roadmap-mobile-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 71691,
+      "sha256": "b155ce1be9e495514bdd2c71fe6e93572ad537de40b12d6aca22c6b25095c93b"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/tailnet-roadmap-mobile-kanban-scroll-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/tailnet-roadmap-mobile-kanban-scroll-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 71407,
+      "sha256": "1a17ccb503ddc1174620d6c737951298e42ad30ff9aff6196de48c116b57965d"
+    },
+    {
+      "path": "logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "source": "rspress:plan/c11-4-grid-track-sizing.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 412871,
+      "sha256": "4e65c37af37a44b85101aec119949a6581005d700cd1e03cd695a320fac9357a"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "source": "selected-root:plan/c11-4-grid-track-sizing.md",
+      "kind": "source-page-or-asset",
+      "bytes": 249696,
+      "sha256": "91a68e037f45dfd41ab5c027d34f50eab600a9720d552c0066b4c00e1ebd3088"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "source": "rspress:plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 46738,
+      "sha256": "f8631bc76e4ce26fba6feb72ab8c3d49aa26e288dd6004d419556b72f12a6757"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "kind": "source-page-or-asset",
+      "bytes": 12863,
+      "sha256": "f34a8d821841e6834331518eba760172a9ecb9888a67f56bda5f18db7bf0df4a"
+    },
+    {
+      "path": "public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 875929,
+      "sha256": "d89fd01a7d6f891c541f9e7428a88baa1c94b828aef7314e403ceeee57147c5c"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 614352,
+      "sha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 5269,
+      "sha256": "cc676639456dda4348ee876b714b89a42d13fcd649f5dae8e3dbba7061748f9b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "kind": "source-page-or-asset",
+      "bytes": 2802,
+      "sha256": "b765cdc287389d66bbf13513d3e665dea91d6b77a0314f0ddad1de99f62bd9ab"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 32135,
+      "sha256": "920faac97aa872143154bd33fe5d5583176624d0b682bbaf2659fef0002e54a0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "kind": "source-page-or-asset",
+      "bytes": 2668,
+      "sha256": "9694cfcc20bf9f3779989ce238b5ea3c8c4fc0a70b052ea2252408ffb25f3012"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 6386,
+      "sha256": "8e7f82b164a5763f724a4b881863d1bffd46f9c846ea604a8643c76df7743281"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "kind": "source-page-or-asset",
+      "bytes": 28906,
+      "sha256": "9440c3c1b23c458b80abddb799bed623c7ae8782c03965f07200e834bfb86732"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 165,
+      "sha256": "555d7dbcf9af968bf6b351381c1a2293035cdfb3bb2bbd23e0b75f6ab9746b33"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "kind": "source-page-or-asset",
+      "bytes": 7816,
+      "sha256": "c90e50724cdb1162da6d19a0ac4330120b61e8fcf5c7df1f559a6a7ddbb2ca89"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 6382,
+      "sha256": "9c27ef6ac7b69911bd2bf593e67cffaede45e2c0d4ba83c88c58e081c837da8d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "kind": "source-page-or-asset",
+      "bytes": 28641,
+      "sha256": "c594ed7142b098a45bc708d1247015bce9e851ad98fbfb90484ec77c7addd357"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "kind": "source-page-or-asset",
+      "bytes": 3770,
+      "sha256": "0ea235654cdd09b9f50ccef7531a2b07a7133fe418a475821f3939d45a4d6c39"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "kind": "source-page-or-asset",
+      "bytes": 7883,
+      "sha256": "afad65d7a4c4a3d2ccd372c98e3312534d3f656ba9efe864aae559e384cacfff"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 278095,
+      "sha256": "2adb578879743b6695499e0d7a452b82c42c2f14818760fbcda3195d6fec9ec9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36419,
+      "sha256": "485079b632966bbded94f4c2dfa0e13c5cf9f80879a8ab7d914c2f9384271f00"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6473,
+      "sha256": "696e0afbd6335858a687fa1d478ed67c70eb1d017815be20456a275306937a1f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 126074,
+      "sha256": "01631a6fd3aeb525d2a06c75b08bca5bbb0092267162a38b8363041fdabc81c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 54988,
+      "sha256": "839b1e2cf38ff9fd788cd26070db964d419a0372b11ce36023ea0b8af5a22e1c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "kind": "source-page-or-asset",
+      "bytes": 39340,
+      "sha256": "91ff3b0350273883dc10714d61063b010b521115279f8d42672efa356e7de927"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 88244,
+      "sha256": "64350660cc0ac710725fd0938bbc886db17cf7d7797d27e7404a67130ee8c937"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "kind": "source-page-or-asset",
+      "bytes": 82355,
+      "sha256": "29a65e1e98331936c2cd37cb1303ddf1ff14112d4037cd25c88daf6a4688cebb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "kind": "source-page-or-asset",
+      "bytes": 44560,
+      "sha256": "43155738973323c129adfbb8f56e9fe6006aed9c7b63f4e200bbb734a7cfa65e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 44708,
+      "sha256": "438ef879c9acbb41fd096979b8cd06fa4e793d4c166f2129598875ea9bc51899"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "kind": "source-page-or-asset",
+      "bytes": 82392,
+      "sha256": "632b64233df4c9ec72f5103c708e2d29f5f20cc48f519e526a240debae9f13e0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 37,
+      "sha256": "de4bff81535245d8f1ba1805a98de2a5e97836ff423bcecfc16d796fce75896a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 194692,
+      "sha256": "3a13aade618bb7424563828814cc4bd62345521e78fed321c5e0f51151aa654c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 30657,
+      "sha256": "e639a3f559f0efb9f3251885b99d6ea6155d0b9e8bbbade0884262689f3a4f1c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "kind": "source-page-or-asset",
+      "bytes": 1115,
+      "sha256": "fcb9d6d540b9588bb15004dec6e53f3a0909c0c4c1338a0db91f76b4d92c72bc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 38868,
+      "sha256": "83423b3b62e2e5ce162142f2aa022905b8d4687b5b598f0ace5179cfe1f09ddd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 7827,
+      "sha256": "6d373182625b0f43f6cbb066c938f17afc405158388bdc1738ef9aa2413eadc3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37817,
+      "sha256": "860422aa79bc539c3f70865bdb66fa1e3999140fe2658abaa6f55c708133005a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5874,
+      "sha256": "5d8d53b4091932998854a1a5f7bd7ad655f97f65224b208140c2ec3e00b96686"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "kind": "source-page-or-asset",
+      "bytes": 2981,
+      "sha256": "8652e462dc743fa0e511acce5c625cc7025ef12119c92c649b0dfb856307ec38"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "kind": "source-page-or-asset",
+      "bytes": 2731,
+      "sha256": "71f9ae52bd2c677273cb2e50a821e9c3a28fb4781fd129b2e5f7adf341f76f18"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "source": "rspress:spec/plan/c11-4-grid-track-sizing.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 412924,
+      "sha256": "ed600f27f74a7637a92d81014ac5f9a3ee76b09ebadbfbf8c5fbd59768868951"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "source": "selected-root:plan/c11-4-grid-track-sizing.md",
+      "kind": "source-page-or-asset",
+      "bytes": 249696,
+      "sha256": "91a68e037f45dfd41ab5c027d34f50eab600a9720d552c0066b4c00e1ebd3088"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "source": "rspress:spec/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 46721,
+      "sha256": "77460ccf6f07916a247fc3cf9233eb3e1f9cebc3a7cbe518887f873cfc73ddae"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "kind": "source-page-or-asset",
+      "bytes": 12863,
+      "sha256": "f34a8d821841e6834331518eba760172a9ecb9888a67f56bda5f18db7bf0df4a"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 954233,
+      "sha256": "435d039702e95727a1325f1e867082e777977b3b5a3764add7fae799be529baa"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 779444,
+      "sha256": "8900cf6ddbca4cb304b87b33a1643a2fa7fa381ad6c8d19d75e9916e5808ec6f"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "kind": "generated-page-or-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "source": "rspress:static/js/a.877e354479.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "source": "rspress:static/js/a.877e354479.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "rspress:static/js/async/i.25208e7c92.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.27a6d619a7.js",
+      "source": "rspress:static/js/async/route-04cbcabea10a.27a6d619a7.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 399173,
+      "sha256": "5e8f51dec373058199f2d36c0d864fe8630dcf09143b05b1b668fb6db02d3399"
+    },
+    {
+      "path": "static/js/async/route-0b0148dcc33f.9336803b81.js",
+      "source": "rspress:static/js/async/route-0b0148dcc33f.9336803b81.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 12032,
+      "sha256": "36271c2b328d77dfccf0290b6f81918cd3dfcfa709517490a98c5d178780b0a5"
+    },
+    {
+      "path": "static/js/async/route-31c078db30a7.152dd842da.js",
+      "source": "rspress:static/js/async/route-31c078db30a7.152dd842da.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5544,
+      "sha256": "46233815c67bd4ce9882906bec4d60ced856c17440df3cba35ae36b789bb63b4"
+    },
+    {
+      "path": "static/js/async/route-4017025ae96a.e1adf16356.js",
+      "source": "rspress:static/js/async/route-4017025ae96a.e1adf16356.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 20570,
+      "sha256": "8a7f7ccccd5abf7b21f247f1a6a38b1c156bf969cd1b08e2249cdcd16f6e148d"
+    },
+    {
+      "path": "static/js/async/route-527cd6760b1d.d5d517b066.js",
+      "source": "rspress:static/js/async/route-527cd6760b1d.d5d517b066.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14691,
+      "sha256": "6be1a3eac0f833ce3fc0d929beb76acfce823b1d770e71372ee55b08ff0e939f"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.cafdefe0ab.js",
+      "source": "rspress:static/js/async/route-6c33a3943990.cafdefe0ab.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1025123,
+      "sha256": "ea8f3259945c9c1f6b6c881bc4069f21e6b0833d270a17764d6c55f911725d13"
+    },
+    {
+      "path": "static/js/async/route-7298cf69fcb9.ed4c7a3299.js",
+      "source": "rspress:static/js/async/route-7298cf69fcb9.ed4c7a3299.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14699,
+      "sha256": "a94da323c9abf5a8d82adf54446946414ac01421c084c958e2b53747e7a9550c"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.e906b678db.js",
+      "source": "rspress:static/js/async/route-739571cd2ae5.e906b678db.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 911824,
+      "sha256": "c9013ad7e46b6b9f57ca73cfd22ad65d23bfc006a9bbcb75c9ded48816280933"
+    },
+    {
+      "path": "static/js/async/route-79928e1dacd1.23dafe977b.js",
+      "source": "rspress:static/js/async/route-79928e1dacd1.23dafe977b.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11764,
+      "sha256": "056f2cbe95ba6ee3f14d6f0e124fba2aae8974e8c1670cc61825f878baddd634"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.1c7f17f9e2.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.1c7f17f9e2.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1025423,
+      "sha256": "5f0ec6ac103b25daa2cf2d50c7f59dd28010ab7342a1827152d133a8b9459b3c"
+    },
+    {
+      "path": "static/js/async/route-86e14dc9e361.b7f787897d.js",
+      "source": "rspress:static/js/async/route-86e14dc9e361.b7f787897d.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11730,
+      "sha256": "33520b2edd2a9c2ab512e8363b1c8b1baa74d8f54e91737f78adb4ed7194e798"
+    },
+    {
+      "path": "static/js/async/route-9a0cbf6d2172.18bbf85514.js",
+      "source": "rspress:static/js/async/route-9a0cbf6d2172.18bbf85514.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5820,
+      "sha256": "3e8f9764a4927063b674c1c23ccc23657693d222e9e11ee0659b42a498d7857b"
+    },
+    {
+      "path": "static/js/async/route-9c2c77370949.6d20175987.js",
+      "source": "rspress:static/js/async/route-9c2c77370949.6d20175987.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5812,
+      "sha256": "de9b2c50ab5b7f1017b81fa1b3e8865b8712a6bb8681c25834501f6c7192a396"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.556b8ea796.js",
+      "source": "rspress:static/js/async/route-a48746cae70c.556b8ea796.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1008,
+      "sha256": "dfa15ca0627b9ec816c2bc6b3dde491da0c6869159b53267246b225e2adb4fec"
+    },
+    {
+      "path": "static/js/async/route-ae62585142c9.fe55987585.js",
+      "source": "rspress:static/js/async/route-ae62585142c9.fe55987585.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 12015,
+      "sha256": "4be9a56c10da8432c3552962ab3f21fc56bd63dd8bac6b084057b70f237ffa87"
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.e226639c3e.js",
+      "source": "rspress:static/js/async/route-b7ce154f07b0.e226639c3e.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 399191,
+      "sha256": "af937fb72a0c155ea4c1db68c7eb78a5b24ba20342692c5339cf84baab94d92c"
+    },
+    {
+      "path": "static/js/async/route-c0f9bdfc9245.3c88a154f2.js",
+      "source": "rspress:static/js/async/route-c0f9bdfc9245.3c88a154f2.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 2882,
+      "sha256": "aa72c007166817de07915af45dfb2539b427ce5bf6aa666f92c0fdb6a849a0d4"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.8f4de2b208.js",
+      "source": "rspress:static/js/async/route-c4dae6800800.8f4de2b208.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 911775,
+      "sha256": "2895b36bf9d48c36588ab15a65b2a75295173ecf31c0e907bb608160145a6cce"
+    },
+    {
+      "path": "static/js/async/route-dfe079832357.2630e4d5f8.js",
+      "source": "rspress:static/js/async/route-dfe079832357.2630e4d5f8.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 20575,
+      "sha256": "8215545c5e228b6653a86180c72a7ac676d73b23763a43924f905793536189f1"
+    },
+    {
+      "path": "static/js/async/route-eda7e75192dc.b8b46a0a79.js",
+      "source": "rspress:static/js/async/route-eda7e75192dc.b8b46a0a79.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 2892,
+      "sha256": "19973da10e157604621d83ba7dcee03b14ece28671a30e695bfe5482b6dd3d9c"
+    },
+    {
+      "path": "static/js/async/route-f244d4392510.cef33db497.js",
+      "source": "rspress:static/js/async/route-f244d4392510.cef33db497.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 6993,
+      "sha256": "a0e479cc7cc2d8ed6337f2a6dfd5c61fcea6de4e119cfc40c50275f6c00048d1"
+    },
+    {
+      "path": "static/js/index.29c28ed516.js",
+      "source": "rspress:static/js/index.29c28ed516.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 198904,
+      "sha256": "6651ef3c2eebc02b7d667f60229a2e37e7c63a84b6b370feb82c54f8f95de00c"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "source": "rspress:static/js/styles.d2a6dfa6a0.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2"
+    },
+    {
+      "path": "static/search_index.ko.0197e353.json",
+      "source": "rspress:static/search_index.ko.0197e353.json",
+      "kind": "generated-page-or-asset",
+      "bytes": 2812041,
+      "sha256": "0197e353c8ab216b26315e2f6f931ef0223823dd5c9ea55ebf3e1ef2633f5a40"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 953417,
+      "sha256": "c509ceef607062177f74f9e1236e3bb4447a84338dff306491d720f85484055c"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 779444,
+      "sha256": "8900cf6ddbca4cb304b87b33a1643a2fa7fa381ad6c8d19d75e9916e5808ec6f"
+    }
+  ]
+}
