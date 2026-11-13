@@ -1,0 +1,22 @@
+{
+  "browser": "Agent Browser",
+  "version": "0.31.1",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "heading": "스피논을 만드는 순서",
+  "mergeSha": "cbf3b8579b7aa4915998378acd2d0b03c7916077",
+  "officialCount": "78/214",
+  "c11_4Complete": false,
+  "nextBoundedSliceSelected": false,
+  "currentWorkboard": "0/2 active tasks; no bounded C11.4 slice selected",
+  "checkedRoutes": [
+    "/spinon/roadmap.html",
+    "/spinon/plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.html",
+    "/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.html",
+    "/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/merge-PR1378.html"
+  ],
+  "screenshot": "tailnet-roadmap-agent-browser.png",
+  "screenshotWidth": 1280,
+  "screenshotHeight": 633,
+  "browserSessionClosed": true
+}

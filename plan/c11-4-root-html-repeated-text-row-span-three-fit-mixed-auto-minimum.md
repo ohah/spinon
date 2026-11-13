@@ -1,6 +1,6 @@
 # C11.4 · three-fit repeated-text row-span item별 mixed `min-height:0|auto`
 
-**상태:** 구현 진행 중 · Chrome 157 사전 oracle 138,240/138,240 scenes와 독립 검증 완료 · 계획 검토 20개 및 계획 PR diff 검토 30개 완료 · RuntimeSession mixed 표본 6,912/6,912와 uniform endpoint 11,520/11,520 통과 · three-/one-/two-/four-/five-/six-fit 인접 회귀 통과(세부 분모는 [실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.md)) · Android/iOS Simulator 화면 smoke 통과 · 구현/runtime 검토 20개 및 candidate PR diff 검토 30개 완료 · CI/PR/merge 상태 확인 남음 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 구현 PR [#1378](https://github.com/ohah/spinon/pull/1378) 병합 · `2026-11-13T19:42:09Z` Rebase and merge · merge SHA `cbf3b8579b7aa4915998378acd2d0b03c7916077` · Chrome 157 사전 oracle 138,240/138,240 scenes · RuntimeSession mixed sample 6,912/6,912 및 uniform endpoint 11,520/11,520 · 인접 회귀와 Android/iOS Simulator 화면 smoke 통과 · 세부 분모와 한계는 [실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.md) · [병합 기록](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/merge-PR1378.md) · PR check/workflow 0건(CI green 아님) · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **선행 uniform 구현:** [three-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.md) · 구현 PR [#1338](https://github.com/ohah/spinon/pull/1338)
 
@@ -40,7 +40,7 @@
 7. **Fail-closed와 atomic recovery:** 잘못된 fit count·cap·tail·order·percentage basis, invalid mask/nonzero fixed minimum, control auto, wrong span, extra owner/item, altered font/text/overflow/writing context와 unsupported placement를 거부한다. 실패 revision은 partial layout/render output을 게시하지 않고 같은 RuntimeSession의 다음 valid revision에서 복구한다.
 8. **Rounding boundary:** Chrome과 RuntimeSession의 three-fit tie/remainder behavior를 fractional·half boundary에서 비교한다. Shared rounding policy를 넓히지 않으며, mismatch가 발견되면 재현 scene·oracle 근거·별도 regression을 먼저 만든다.
 9. **Simulator 화면 검증:** Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 실제 Root HTML route에 mask-16 대표 scene과 red Grid border를 넣는다. `min-height:0`인 D의 text가 Grid 끝 10px 밖까지 paint되는지, E의 `auto`가 자신의 payload floor를 유지하는지 OS screenshots와 runtime logs로 확인한다. 이는 browser oracle이나 PixelCopy/Metal pixel parity를 대체하지 않는다. Android AVD가 없으면 task-owned disposable AVD를 만들고 사용 후 삭제한다. 앱·시뮬레이터·Agent Browser 세션은 실행 후 종료하고 상태를 재확인한다.
-10. **구현 검토와 문서:** 구현 뒤 새로운 실패 관점 20개의 implementation/runtime review와 별도 PR diff 30개 검토를 수행하고 source revision·hash·PR head를 대조한다. PR에는 내부 계약 0059와 실행 근거를 연결한다. 병합 후 `spec/STATUS.md`, `spec/public/roadmap.html`, 이 계획, 내부 계약 설명과 Tailnet preview를 실제 병합 결과로 동기화한다. C11.4/C11 완료 체크, 공식 `78/214`, 숫자 계약 `0.1.0`은 이 slice만으로 올리지 않는다.
+10. **구현 검토와 문서:** 새 실패 관점 20개의 implementation/runtime review와 별도 PR diff 30개 검토를 수행하고 source revision·hash·PR head를 대조했다. PR #1378 병합 뒤 `spec/STATUS.md`, `spec/public/roadmap.html`, 이 계획, 내부 계약 설명과 Tailnet preview를 병합 결과에 맞춰 동기화한다. C11.4/C11 완료 체크, 공식 `78/214`, 숫자 계약 `0.1.0`은 이 slice만으로 올리지 않는다.
 
 ## 검증 명령 범주
 

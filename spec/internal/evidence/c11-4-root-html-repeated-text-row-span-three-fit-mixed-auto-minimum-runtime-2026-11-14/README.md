@@ -49,8 +49,13 @@ RuntimeSession은 three-fit mixed 전체 oracle 138,240개를 실행하지 않�
 - 최종 확인 때 booted Simulator, ADB device, 이 작업의 앱·빌드 process는 없었다.
 - 작업용 iOS Simulator는 삭제했고 read-only Android AVD는 중지했다. 공용 CoreSimulator/ADB 서비스와 다른 workspace의 기존 브라우저 세션은 이 작업 자원이 아니어서 종료하지 않았다.
 
+## 병합
+
+- 구현 PR [#1378](https://github.com/ohah/spinon/pull/1378)은 `2026-11-13T19:42:09Z` Rebase and merge로 병합됐다. merge SHA는 `cbf3b8579b7aa4915998378acd2d0b03c7916077`이다. [병합 메타데이터](./merge-PR1378.md)에 source head, base, check 상태를 기록했다.
+- PR check/workflow rollup은 0건이었다. CI green으로 기록하지 않는다.
+
 ## 계약·검토
 
-- 내부 계약 candidate는 [0059 C11.4 절](../../0059-c11-grid-layout.md)에 있다. public API/FFI와 numeric contract version은 바꾸지 않는다.
-- 계획 검토 20개와 [구현/runtime 검토 20개](../../../../plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-implementation-review-20.md)를 마쳤다. 이 candidate의 [PR diff 실패 관점 30개](./pr-diff-review-30.md)도 별도로 기록했다.
+- 병합된 bounded slice는 [0059 C11.4 절](../../0059-c11-grid-layout.md)에 기록했다. public API/FFI와 numeric contract version은 바꾸지 않는다.
+- 계획 검토 20개와 [구현/runtime 검토 20개](../../../../plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-implementation-review-20.md)를 마쳤다. 이 구현 PR의 [PR diff 실패 관점 30개](./pr-diff-review-30.md)도 별도로 기록했다.
 - 공식 구현 상태 `78/214`와 C11.4/C11 미완료는 유지한다.

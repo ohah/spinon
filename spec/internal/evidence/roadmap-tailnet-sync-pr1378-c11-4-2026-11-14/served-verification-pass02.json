@@ -1,0 +1,2167 @@
+{
+  "sourceHead": "cbf3b8579b7aa4915998378acd2d0b03c7916077",
+  "sourceTree": "b7ee3035818e546a467c0816818974c7a707715d",
+  "selectedInputsSha256": "ffbd278f31c86891193587363416b2501be1fb7e4735ae8e963200f4fe055272",
+  "tailscaleBackendState": "Running",
+  "previewServerVerified": true,
+  "previewPidUnchanged": 90711,
+  "routeCount": 215,
+  "matchedCount": 215,
+  "mismatchCount": 0,
+  "allVerified": true,
+  "backupsVerified": 18,
+  "backupHashesMatch": true,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 638,
+      "servedBytes": 638,
+      "localSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matched": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 877869,
+      "servedBytes": 877869,
+      "localSha256": "4ed2f0041d357a7d8ba9d8b8de513afceab96372e07193a6df56c74b272ec1ea",
+      "servedSha256": "4ed2f0041d357a7d8ba9d8b8de513afceab96372e07193a6df56c74b272ec1ea",
+      "matched": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 617587,
+      "servedBytes": 617587,
+      "localSha256": "e2917c74fe776f11fea24502f3040ea2834aed475189340a2e22ee1d276e5606",
+      "servedSha256": "e2917c74fe776f11fea24502f3040ea2834aed475189340a2e22ee1d276e5606",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/agent-browser-lifecycle.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 287,
+      "servedBytes": 287,
+      "localSha256": "158db6cfe2477d8a4ff2aedb9b008cc261e3044cde1633d87b1ca6ee50c840c0",
+      "servedSha256": "158db6cfe2477d8a4ff2aedb9b008cc261e3044cde1633d87b1ca6ee50c840c0",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/build-runtime-sample.py",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 6094,
+      "servedBytes": 6094,
+      "localSha256": "312a8f7e8fe8473b2822c8228fc0b8d329eafe153733ee71ef9e2e6beaa6ce84",
+      "servedSha256": "312a8f7e8fe8473b2822c8228fc0b8d329eafe153733ee71ef9e2e6beaa6ce84",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-chrome.mjs",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 10413,
+      "servedBytes": 10413,
+      "localSha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190",
+      "servedSha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-manifest.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 3037,
+      "servedBytes": 3037,
+      "localSha256": "a1e9666f57eb77b50db4692e38b96e8c7deedd0b615b9ff2f8fbd3065fa84d62",
+      "servedSha256": "a1e9666f57eb77b50db4692e38b96e8c7deedd0b615b9ff2f8fbd3065fa84d62",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/chrome157-three-fit-mixed-observation.ndjson.gz",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 4877880,
+      "servedBytes": 4877880,
+      "localSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+      "servedSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/chrome157-three-fit-mixed-sample.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 18023,
+      "servedBytes": 18023,
+      "localSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "servedSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 31689,
+      "servedBytes": 31689,
+      "localSha256": "4f6c825abfec7f1a280ac04ddcb0db713aaeb87427961ab1e9a12de4ede73c08",
+      "servedSha256": "4f6c825abfec7f1a280ac04ddcb0db713aaeb87427961ab1e9a12de4ede73c08",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/README.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 4405,
+      "servedBytes": 4405,
+      "localSha256": "083b1574ed60f5275ff4d0c1d061d5f5b788e2db0896cc7ae39e8aa95757bb81",
+      "servedSha256": "083b1574ed60f5275ff4d0c1d061d5f5b788e2db0896cc7ae39e8aa95757bb81",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/representative-scene-54448.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 4787,
+      "servedBytes": 4787,
+      "localSha256": "f646fd83db1a523582bc2be6b18aed4aa982e04b02521169459ea0172d4b5933",
+      "servedSha256": "f646fd83db1a523582bc2be6b18aed4aa982e04b02521169459ea0172d4b5933",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/runtime-matrix-6912.ndjson.gz",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 274851,
+      "servedBytes": 274851,
+      "localSha256": "6f47cdc9113914dbae393cd41642c6bb34d460e1fecde8a334542f8ea144a47c",
+      "servedSha256": "6f47cdc9113914dbae393cd41642c6bb34d460e1fecde8a334542f8ea144a47c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/SHA256SUMS",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1663,
+      "servedBytes": 1663,
+      "localSha256": "7de1a3062b2b5767d4879e35aedf4c817fc325cc03da9501773d21ceb0f32062",
+      "servedSha256": "7de1a3062b2b5767d4879e35aedf4c817fc325cc03da9501773d21ceb0f32062",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verification.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 1630,
+      "servedBytes": 1630,
+      "localSha256": "b31217b97143259c80a873f957817a2aafc5fd738a3910d2450e304b857da38a",
+      "servedSha256": "b31217b97143259c80a873f957817a2aafc5fd738a3910d2450e304b857da38a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verify-chrome-matrix.py",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 18265,
+      "servedBytes": 18265,
+      "localSha256": "ac677a6a7f7c390d80c80f4575a59310d129426b144159f39234ed9d897c921e",
+      "servedSha256": "ac677a6a7f7c390d80c80f4575a59310d129426b144159f39234ed9d897c921e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verify-runtime-sample.py",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 8576,
+      "servedBytes": 8576,
+      "localSha256": "147032ab6082fd89d75a06344311a17c17282d05fc886a60cadc11cc89c1a032",
+      "servedSha256": "147032ab6082fd89d75a06344311a17c17282d05fc886a60cadc11cc89c1a032",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-build-default-profile.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 5344,
+      "servedBytes": 5344,
+      "localSha256": "c84b4fdb5c58153f95332f841525f46a5407fdea8bd1ea5801a5b02d729a4e8c",
+      "servedSha256": "c84b4fdb5c58153f95332f841525f46a5407fdea8bd1ea5801a5b02d729a4e8c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-build.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 5176,
+      "servedBytes": 5176,
+      "localSha256": "6190d290e866abc543c2096a60a49ad92095a3664b909db1d68a77e6cca9cc69",
+      "servedSha256": "6190d290e866abc543c2096a60a49ad92095a3664b909db1d68a77e6cca9cc69",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-emulator.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 9678,
+      "servedBytes": 9678,
+      "localSha256": "94c745c3dcb8068ad9e8e7a6a26d4a13d6862e102c5e35fe510a57037b0571a9",
+      "servedSha256": "94c745c3dcb8068ad9e8e7a6a26d4a13d6862e102c5e35fe510a57037b0571a9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-environment.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 208,
+      "servedBytes": 208,
+      "localSha256": "ead59415be2a8ecad1be977183ed50c7fcd8c7947775a11bbbe5faf2a3e2ac87",
+      "servedSha256": "ead59415be2a8ecad1be977183ed50c7fcd8c7947775a11bbbe5faf2a3e2ac87",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-install.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 36,
+      "servedBytes": 36,
+      "localSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "servedSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-launch.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 73,
+      "servedBytes": 73,
+      "localSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "servedSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-mask16-default-profile.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 100247,
+      "servedBytes": 100247,
+      "localSha256": "c6e352f95e250c9f6a51878cc09facb979b65ed8444d5d002b282a5da9ef7c54",
+      "servedSha256": "c6e352f95e250c9f6a51878cc09facb979b65ed8444d5d002b282a5da9ef7c54",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-mask16.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 97182,
+      "servedBytes": 97182,
+      "localSha256": "66f44f657a0a9b0f28149238dae96228e78283665c0fe5b2cf2cb323c7d6264c",
+      "servedSha256": "66f44f657a0a9b0f28149238dae96228e78283665c0fe5b2cf2cb323c7d6264c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-runtime-default-profile.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 4410,
+      "servedBytes": 4410,
+      "localSha256": "a7394b5aa0f92d3bbadd034eb12295f99c532e0d3c692f2ba7cf3e3f59d60110",
+      "servedSha256": "a7394b5aa0f92d3bbadd034eb12295f99c532e0d3c692f2ba7cf3e3f59d60110",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-runtime.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 4411,
+      "servedBytes": 4411,
+      "localSha256": "fd17da3420a10819c2069b10f12529668fb8548d2319ed3bfa566dc9ab229653",
+      "servedSha256": "fd17da3420a10819c2069b10f12529668fb8548d2319ed3bfa566dc9ab229653",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/asset-restoration.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 215,
+      "servedBytes": 215,
+      "localSha256": "a0cfb8850399bf20d795616018bb6c0c16c89c56c4a08fb6181e7ce3cae40ebe",
+      "servedSha256": "a0cfb8850399bf20d795616018bb6c0c16c89c56c4a08fb6181e7ce3cae40ebe",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/build-artifact-restoration.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 440,
+      "servedBytes": 440,
+      "localSha256": "6c3623b14b41bdcfed7835b9d74cf6dd0d7da886ccdd4cacae4e2ee9ac9408e6",
+      "servedSha256": "6c3623b14b41bdcfed7835b9d74cf6dd0d7da886ccdd4cacae4e2ee9ac9408e6",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-layout-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 288,
+      "servedBytes": 288,
+      "localSha256": "0afc5c9ba6996f939015e6703cbbf39ec0c0e650069c6e67db57c16e242e78e8",
+      "servedSha256": "0afc5c9ba6996f939015e6703cbbf39ec0c0e650069c6e67db57c16e242e78e8",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-layout-final.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126",
+      "servedSha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-runtime-fixture-all-targets-blocked.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 3741,
+      "servedBytes": 3741,
+      "localSha256": "3654b2c05197b9da3cb70f822a65cf8aa914dee5ccceae99a73f7a15dfac1a23",
+      "servedSha256": "3654b2c05197b9da3cb70f822a65cf8aa914dee5ccceae99a73f7a15dfac1a23",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-runtime-fixture-lib.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "servedSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-layout-fixture.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "servedSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-render-fixture.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "servedSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-render.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "servedSha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1393,
+      "servedBytes": 1393,
+      "localSha256": "d22b39c4b3421ed84b1ece40a0fa10c7b3f7b6aead0495589227978103c7382a",
+      "servedSha256": "d22b39c4b3421ed84b1ece40a0fa10c7b3f7b6aead0495589227978103c7382a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1168,
+      "servedBytes": 1168,
+      "localSha256": "f35299bfdd4cd901bdb2be08fb0b6910fe9eceaf64351bdae3a7df38d451ccd0",
+      "servedSha256": "f35299bfdd4cd901bdb2be08fb0b6910fe9eceaf64351bdae3a7df38d451ccd0",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk03.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1399,
+      "servedBytes": 1399,
+      "localSha256": "4b6ac8c5e11beff2abcb4333f6d44ed23e078ba1b4a13e1657c70ef9582ac6c2",
+      "servedSha256": "4b6ac8c5e11beff2abcb4333f6d44ed23e078ba1b4a13e1657c70ef9582ac6c2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/format-check-final-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 222,
+      "servedBytes": 222,
+      "localSha256": "b6bc820b92c366740c04d8abc85da39f67fa766a28e4e01007b68b9ea7b70dc5",
+      "servedSha256": "b6bc820b92c366740c04d8abc85da39f67fa766a28e4e01007b68b9ea7b70dc5",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/format-check-final-pass.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 47,
+      "servedBytes": 47,
+      "localSha256": "5993ea3468a91b4aa11c4736522d70c3947a36b5553808aec6e3ec71b1568428",
+      "servedSha256": "5993ea3468a91b4aa11c4736522d70c3947a36b5553808aec6e3ec71b1568428",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/four-fit-mixed-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1955,
+      "servedBytes": 1955,
+      "localSha256": "066cf2083a6992334820ad0dd723f58d593d98234e151dab4665f637b9c526a2",
+      "servedSha256": "066cf2083a6992334820ad0dd723f58d593d98234e151dab4665f637b9c526a2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/git-diff-check-final.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 67,
+      "servedBytes": 67,
+      "localSha256": "05faebae4bc1d0cf378a5a36143e1ed3f2f5f06c1ddb15f44147ebe49d759409",
+      "servedSha256": "05faebae4bc1d0cf378a5a36143e1ed3f2f5f06c1ddb15f44147ebe49d759409",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-boot.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 8069,
+      "servedBytes": 8069,
+      "localSha256": "a7708ed94afce407af45f0973b5f2f3b2c6f8b86c3eb049a7c51bc927c6cfeb9",
+      "servedSha256": "a7708ed94afce407af45f0973b5f2f3b2c6f8b86c3eb049a7c51bc927c6cfeb9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-build-default-profile.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 68463,
+      "servedBytes": 68463,
+      "localSha256": "d8980dd7cb56f1f406e6a76c158ada4be3985ef04c34f80b539d7f66c3cc3ba7",
+      "servedSha256": "d8980dd7cb56f1f406e6a76c158ada4be3985ef04c34f80b539d7f66c3cc3ba7",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-build.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 68183,
+      "servedBytes": 68183,
+      "localSha256": "002cf2266ed5d1c7d203606f032499cacceafe7fc2632141381751488cee06b9",
+      "servedSha256": "002cf2266ed5d1c7d203606f032499cacceafe7fc2632141381751488cee06b9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-environment.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 83,
+      "servedBytes": 83,
+      "localSha256": "1e5aa402fa211a912221e503d3e45175e666958e62abf1d4f8718c0f6c5f714a",
+      "servedSha256": "1e5aa402fa211a912221e503d3e45175e666958e62abf1d4f8718c0f6c5f714a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-launch.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 28,
+      "servedBytes": 28,
+      "localSha256": "fc013923f179c3a27e310e07b370b7a7ced4e337417606642575b99f435795d0",
+      "servedSha256": "fc013923f179c3a27e310e07b370b7a7ced4e337417606642575b99f435795d0",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-mask16-default-profile.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 152543,
+      "servedBytes": 152543,
+      "localSha256": "a9699a0c445ee02c4d90b643037dc7e4f70b294fbe713b145a274c2fef3f7b9f",
+      "servedSha256": "a9699a0c445ee02c4d90b643037dc7e4f70b294fbe713b145a274c2fef3f7b9f",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-mask16.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 283579,
+      "servedBytes": 283579,
+      "localSha256": "0ebc987c728cc17be33f9191acd19b2c8664e8d642ccb8ff583dc99a238f1f50",
+      "servedSha256": "0ebc987c728cc17be33f9191acd19b2c8664e8d642ccb8ff583dc99a238f1f50",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-runtime-default-profile.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 38541,
+      "servedBytes": 38541,
+      "localSha256": "8cca586e038eb2a04de4e3f80cb30d9a0603e7ec2b7e080b86f9d426fe711720",
+      "servedSha256": "8cca586e038eb2a04de4e3f80cb30d9a0603e7ec2b7e080b86f9d426fe711720",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-runtime.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 38330,
+      "servedBytes": 38330,
+      "localSha256": "e9d6edd4e82f9e490c9d5e4341feddec8c9ced46854b7198d8517c0841ea0aa1",
+      "servedSha256": "e9d6edd4e82f9e490c9d5e4341feddec8c9ced46854b7198d8517c0841ea0aa1",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-screenshot.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 227,
+      "servedBytes": 227,
+      "localSha256": "d79e4f5a019fa5c356a030bbff96aa4875b24082818d3ab9265c2d77ff9796be",
+      "servedSha256": "d79e4f5a019fa5c356a030bbff96aa4875b24082818d3ab9265c2d77ff9796be",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/layout-tests.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 802,
+      "servedBytes": 802,
+      "localSha256": "d4468432e8e3ede6981dad2e4a7e89be204374d97fba9c4efb9db448077545c3",
+      "servedSha256": "d4468432e8e3ede6981dad2e4a7e89be204374d97fba9c4efb9db448077545c3",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/log-whitespace-normalization.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 190,
+      "servedBytes": 190,
+      "localSha256": "a065e056521eba79c62050dcfb8c61d096c3d38c29b85967f0e452ee738c2193",
+      "servedSha256": "a065e056521eba79c62050dcfb8c61d096c3d38c29b85967f0e452ee738c2193",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/merge-PR1378.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 28449,
+      "servedBytes": 28449,
+      "localSha256": "239ad3d66cddda5d0f3b715975b8f26af3e803af6c94b4a02894d2c602405da9",
+      "servedSha256": "239ad3d66cddda5d0f3b715975b8f26af3e803af6c94b4a02894d2c602405da9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/merge-PR1378.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1180,
+      "servedBytes": 1180,
+      "localSha256": "e5ab32874615a70b356445db4158281f5d2bdc1a88f0e02b9d7413b7bcd63403",
+      "servedSha256": "e5ab32874615a70b356445db4158281f5d2bdc1a88f0e02b9d7413b7bcd63403",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/one-fit-row-span-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1123,
+      "servedBytes": 1123,
+      "localSha256": "e3c77201e041221f53121ca2ababe5c8fa0be795492c05e6986b3cafebe3379a",
+      "servedSha256": "e3c77201e041221f53121ca2ababe5c8fa0be795492c05e6986b3cafebe3379a",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/pr-diff-review-30.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 35228,
+      "servedBytes": 35228,
+      "localSha256": "b0d8febfdff5a63bb5cb78a73b740efb9e9649c9107facaed1f308105a947e59",
+      "servedSha256": "b0d8febfdff5a63bb5cb78a73b740efb9e9649c9107facaed1f308105a947e59",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/pr-diff-review-30.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 6884,
+      "servedBytes": 6884,
+      "localSha256": "01e9942e5b57c55b2cb1d25d49950e58c0aadba209ad8185b8cf26f04b9ba439",
+      "servedSha256": "01e9942e5b57c55b2cb1d25d49950e58c0aadba209ad8185b8cf26f04b9ba439",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 35697,
+      "servedBytes": 35697,
+      "localSha256": "36d1cfd3baff99243d836d1eb86fd705ec7dd2470539ebf6be08a63e8623daf3",
+      "servedSha256": "36d1cfd3baff99243d836d1eb86fd705ec7dd2470539ebf6be08a63e8623daf3",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 6130,
+      "servedBytes": 6130,
+      "localSha256": "7b2ac4755a8a3fb44632c5efa01bfa157bbdb083201e9dd7cef9205274b1e835",
+      "servedSha256": "7b2ac4755a8a3fb44632c5efa01bfa157bbdb083201e9dd7cef9205274b1e835",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/root-html-mask16-simulator-fixture.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 3422,
+      "servedBytes": 3422,
+      "localSha256": "c2c15cfb1454d80ee56d2d19d945c962dd3aef2acde889fb5637a9c1bf7a874b",
+      "servedSha256": "c2c15cfb1454d80ee56d2d19d945c962dd3aef2acde889fb5637a9c1bf7a874b",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/run-mask16-simulators.sh",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 9937,
+      "servedBytes": 9937,
+      "localSha256": "fc755e6585160f401eceb9e4daf07f37ed7cf32a777687e04249e8f51f8aeea2",
+      "servedSha256": "fc755e6585160f401eceb9e4daf07f37ed7cf32a777687e04249e8f51f8aeea2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/runtime-matrix-test-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 2451,
+      "servedBytes": 2451,
+      "localSha256": "03f539773d7bdba3bb3de669756175e7b3ee1e94ae301e8e76897614bc956274",
+      "servedSha256": "03f539773d7bdba3bb3de669756175e7b3ee1e94ae301e8e76897614bc956274",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/runtime-matrix-test-pass02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 2301,
+      "servedBytes": 2301,
+      "localSha256": "36494a040486a8374063bcc4177e12249ee9d13361bbaeb9653982410efe37d2",
+      "servedSha256": "36494a040486a8374063bcc4177e12249ee9d13361bbaeb9653982410efe37d2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/screenshot-sha256.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 468,
+      "servedBytes": 468,
+      "localSha256": "2f267145376548d93f6037e1d20f60ea119bbed4ab0e94ee26755b50d1323276",
+      "servedSha256": "2f267145376548d93f6037e1d20f60ea119bbed4ab0e94ee26755b50d1323276",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1669,
+      "servedBytes": 1669,
+      "localSha256": "5c5992aaabd20e4cbb0fe1038ac221ebd73a09af23ddb8d1c236afc9918567b1",
+      "servedSha256": "5c5992aaabd20e4cbb0fe1038ac221ebd73a09af23ddb8d1c236afc9918567b1",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-fail02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1607,
+      "servedBytes": 1607,
+      "localSha256": "e8977f31f31d0d864fab687f1d2b92555952f1e1e1de0ce8d8bcd07623913e60",
+      "servedSha256": "e8977f31f31d0d864fab687f1d2b92555952f1e1e1de0ce8d8bcd07623913e60",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-pass01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1018,
+      "servedBytes": 1018,
+      "localSha256": "4db6f8ae0dc6003173e3f5ebf70d560d01c4338b908be656577f861209611eeb",
+      "servedSha256": "4db6f8ae0dc6003173e3f5ebf70d560d01c4338b908be656577f861209611eeb",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-compile-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 873,
+      "servedBytes": 873,
+      "localSha256": "fe5b94ac79fcc5475e80111914e4eadd03037dd969d2a8a1c8ae620f4c18eade",
+      "servedSha256": "fe5b94ac79fcc5475e80111914e4eadd03037dd969d2a8a1c8ae620f4c18eade",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 531,
+      "servedBytes": 531,
+      "localSha256": "9b91552ab3e59927db09c4958199bf882b06cc3b4b3972c17e1217192b25d958",
+      "servedSha256": "9b91552ab3e59927db09c4958199bf882b06cc3b4b3972c17e1217192b25d958",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 727,
+      "servedBytes": 727,
+      "localSha256": "a4ba58fbab73108c219edd6f45950900fde04eb7556338ecb1cb729fc4da2ec6",
+      "servedSha256": "a4ba58fbab73108c219edd6f45950900fde04eb7556338ecb1cb729fc4da2ec6",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail03.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 593,
+      "servedBytes": 593,
+      "localSha256": "d3907778fcc1d602fae161855456a4256afb4e28d65504669b55cd8b0a653ede",
+      "servedSha256": "d3907778fcc1d602fae161855456a4256afb4e28d65504669b55cd8b0a653ede",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-pass01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 405,
+      "servedBytes": 405,
+      "localSha256": "fb95a3499b11995dcc1df48c9178a691edf7b02ddd7de0737dd9125ae4554afd",
+      "servedSha256": "fb95a3499b11995dcc1df48c9178a691edf7b02ddd7de0737dd9125ae4554afd",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-pass02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 918,
+      "servedBytes": 918,
+      "localSha256": "175fa4f070f6bc4fb0f11d732ebcbb0d96580f813d1526a14d3016021fd9ac4d",
+      "servedSha256": "175fa4f070f6bc4fb0f11d732ebcbb0d96580f813d1526a14d3016021fd9ac4d",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-chunk01-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1396,
+      "servedBytes": 1396,
+      "localSha256": "544ae53a0b061f493a8f0d2c8ffc4cc03901b8638c4479f17af33096f23a0cc2",
+      "servedSha256": "544ae53a0b061f493a8f0d2c8ffc4cc03901b8638c4479f17af33096f23a0cc2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-metadata-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 929,
+      "servedBytes": 929,
+      "localSha256": "f66cde98a32ae19a27e5fdf3d3243ca8d623ca1c3732fe6f8bffa1818deed5f2",
+      "servedSha256": "f66cde98a32ae19a27e5fdf3d3243ca8d623ca1c3732fe6f8bffa1818deed5f2",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-rejection-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 928,
+      "servedBytes": 928,
+      "localSha256": "c1ffa90d9ef834798e0acc32f8b70b57720e5cf9a50c283e642d24ca70387b2c",
+      "servedSha256": "c1ffa90d9ef834798e0acc32f8b70b57720e5cf9a50c283e642d24ca70387b2c",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/style-tests.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 993,
+      "servedBytes": 993,
+      "localSha256": "516cf966c022c6ef953b565c41cb7b90769346fe21d07acaafa48a54a1177eee",
+      "servedSha256": "516cf966c022c6ef953b565c41cb7b90769346fe21d07acaafa48a54a1177eee",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/three-fit-auto-placement-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1105,
+      "servedBytes": 1105,
+      "localSha256": "270c7111cf4ca52baab0d7fe30b5d69c34f7dde259fde1482924c084be0d5a1e",
+      "servedSha256": "270c7111cf4ca52baab0d7fe30b5d69c34f7dde259fde1482924c084be0d5a1e",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/three-fit-uniform-runtime-matrix.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1131,
+      "servedBytes": 1131,
+      "localSha256": "dc9d2173416c0451be428bdf4c035af1d3cf0c5ec10321e9908f97a4e5a8d6d9",
+      "servedSha256": "dc9d2173416c0451be428bdf4c035af1d3cf0c5ec10321e9908f97a4e5a8d6d9",
+      "matched": true
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/two-fit-row-span-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1085,
+      "servedBytes": 1085,
+      "localSha256": "efe8948d78f8a92b970382d3076e969bd1f23f0bd17b855a547569e5f87fb9c9",
+      "servedSha256": "efe8948d78f8a92b970382d3076e969bd1f23f0bd17b855a547569e5f87fb9c9",
+      "matched": true
+    },
+    {
+      "path": "logo.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 568,
+      "servedBytes": 568,
+      "localSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-implementation-review-20.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 36748,
+      "servedBytes": 36748,
+      "localSha256": "a2b23ca84801066ff82ba8524356730919f215c35021333a6324b5a5c2b896c7",
+      "servedSha256": "a2b23ca84801066ff82ba8524356730919f215c35021333a6324b5a5c2b896c7",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-implementation-review-20.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 6642,
+      "servedBytes": 6642,
+      "localSha256": "afbf9d6aabfac4a63647f39c0b88653ea7f2aa01b0c92b9887ddd0989967c6d6",
+      "servedSha256": "afbf9d6aabfac4a63647f39c0b88653ea7f2aa01b0c92b9887ddd0989967c6d6",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-plan-review-20.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 32950,
+      "servedBytes": 32950,
+      "localSha256": "cbbfa3493a4fb824040d5b39c4656352bd6215d950bfb6f0f223342504f72882",
+      "servedSha256": "cbbfa3493a4fb824040d5b39c4656352bd6215d950bfb6f0f223342504f72882",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-plan-review-20.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 5607,
+      "servedBytes": 5607,
+      "localSha256": "d3cbe595cdd725b44d6c84a92f21d9acade324293c5bbbbd51effa197ce7c163",
+      "servedSha256": "d3cbe595cdd725b44d6c84a92f21d9acade324293c5bbbbd51effa197ce7c163",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 43082,
+      "servedBytes": 43082,
+      "localSha256": "29261bb3a64400e1021f511aedc40a5b3a77bd2dc0aea82e53882c0848784c41",
+      "servedSha256": "29261bb3a64400e1021f511aedc40a5b3a77bd2dc0aea82e53882c0848784c41",
+      "matched": true
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 12528,
+      "servedBytes": 12528,
+      "localSha256": "17421e29ade56a37692443cb485c200c6050c7a88cec7fa4d6fffe6309480505",
+      "servedSha256": "17421e29ade56a37692443cb485c200c6050c7a88cec7fa4d6fffe6309480505",
+      "matched": true
+    },
+    {
+      "path": "public/icon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 638,
+      "servedBytes": 638,
+      "localSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matched": true
+    },
+    {
+      "path": "public/logo.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 568,
+      "servedBytes": 568,
+      "localSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matched": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 682851,
+      "servedBytes": 682851,
+      "localSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "servedSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "matched": true
+    },
+    {
+      "path": "public/roadmap.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 4835,
+      "servedBytes": 4835,
+      "localSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "servedSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matched": true
+    },
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 682851,
+      "servedBytes": 682851,
+      "localSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "servedSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "matched": true
+    },
+    {
+      "path": "roadmap.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 4835,
+      "servedBytes": 4835,
+      "localSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "servedSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 878017,
+      "servedBytes": 878017,
+      "localSha256": "1ceac0aa6acd5490782200f0e1bb4694a5139dbca9efe580c662f92d6babd560",
+      "servedSha256": "1ceac0aa6acd5490782200f0e1bb4694a5139dbca9efe580c662f92d6babd560",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 617587,
+      "servedBytes": 617587,
+      "localSha256": "e2917c74fe776f11fea24502f3040ea2834aed475189340a2e22ee1d276e5606",
+      "servedSha256": "e2917c74fe776f11fea24502f3040ea2834aed475189340a2e22ee1d276e5606",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/agent-browser-lifecycle.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 287,
+      "servedBytes": 287,
+      "localSha256": "158db6cfe2477d8a4ff2aedb9b008cc261e3044cde1633d87b1ca6ee50c840c0",
+      "servedSha256": "158db6cfe2477d8a4ff2aedb9b008cc261e3044cde1633d87b1ca6ee50c840c0",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/build-runtime-sample.py",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 6094,
+      "servedBytes": 6094,
+      "localSha256": "312a8f7e8fe8473b2822c8228fc0b8d329eafe153733ee71ef9e2e6beaa6ce84",
+      "servedSha256": "312a8f7e8fe8473b2822c8228fc0b8d329eafe153733ee71ef9e2e6beaa6ce84",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-chrome.mjs",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 10413,
+      "servedBytes": 10413,
+      "localSha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190",
+      "servedSha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-manifest.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 3037,
+      "servedBytes": 3037,
+      "localSha256": "a1e9666f57eb77b50db4692e38b96e8c7deedd0b615b9ff2f8fbd3065fa84d62",
+      "servedSha256": "a1e9666f57eb77b50db4692e38b96e8c7deedd0b615b9ff2f8fbd3065fa84d62",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/chrome157-three-fit-mixed-observation.ndjson.gz",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 4877880,
+      "servedBytes": 4877880,
+      "localSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+      "servedSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/chrome157-three-fit-mixed-sample.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 18023,
+      "servedBytes": 18023,
+      "localSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "servedSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 31704,
+      "servedBytes": 31704,
+      "localSha256": "4f4dc48e0af1828a4d472e0b5b2102b4d2bad2db0dce59ed89b42cf2b1308a1d",
+      "servedSha256": "4f4dc48e0af1828a4d472e0b5b2102b4d2bad2db0dce59ed89b42cf2b1308a1d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/README.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 4405,
+      "servedBytes": 4405,
+      "localSha256": "083b1574ed60f5275ff4d0c1d061d5f5b788e2db0896cc7ae39e8aa95757bb81",
+      "servedSha256": "083b1574ed60f5275ff4d0c1d061d5f5b788e2db0896cc7ae39e8aa95757bb81",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/representative-scene-54448.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 4787,
+      "servedBytes": 4787,
+      "localSha256": "f646fd83db1a523582bc2be6b18aed4aa982e04b02521169459ea0172d4b5933",
+      "servedSha256": "f646fd83db1a523582bc2be6b18aed4aa982e04b02521169459ea0172d4b5933",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/runtime-matrix-6912.ndjson.gz",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 274851,
+      "servedBytes": 274851,
+      "localSha256": "6f47cdc9113914dbae393cd41642c6bb34d460e1fecde8a334542f8ea144a47c",
+      "servedSha256": "6f47cdc9113914dbae393cd41642c6bb34d460e1fecde8a334542f8ea144a47c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/SHA256SUMS",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1663,
+      "servedBytes": 1663,
+      "localSha256": "7de1a3062b2b5767d4879e35aedf4c817fc325cc03da9501773d21ceb0f32062",
+      "servedSha256": "7de1a3062b2b5767d4879e35aedf4c817fc325cc03da9501773d21ceb0f32062",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verification.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 1630,
+      "servedBytes": 1630,
+      "localSha256": "b31217b97143259c80a873f957817a2aafc5fd738a3910d2450e304b857da38a",
+      "servedSha256": "b31217b97143259c80a873f957817a2aafc5fd738a3910d2450e304b857da38a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verify-chrome-matrix.py",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 18265,
+      "servedBytes": 18265,
+      "localSha256": "ac677a6a7f7c390d80c80f4575a59310d129426b144159f39234ed9d897c921e",
+      "servedSha256": "ac677a6a7f7c390d80c80f4575a59310d129426b144159f39234ed9d897c921e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verify-runtime-sample.py",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 8576,
+      "servedBytes": 8576,
+      "localSha256": "147032ab6082fd89d75a06344311a17c17282d05fc886a60cadc11cc89c1a032",
+      "servedSha256": "147032ab6082fd89d75a06344311a17c17282d05fc886a60cadc11cc89c1a032",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-build-default-profile.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 5344,
+      "servedBytes": 5344,
+      "localSha256": "c84b4fdb5c58153f95332f841525f46a5407fdea8bd1ea5801a5b02d729a4e8c",
+      "servedSha256": "c84b4fdb5c58153f95332f841525f46a5407fdea8bd1ea5801a5b02d729a4e8c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-build.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 5176,
+      "servedBytes": 5176,
+      "localSha256": "6190d290e866abc543c2096a60a49ad92095a3664b909db1d68a77e6cca9cc69",
+      "servedSha256": "6190d290e866abc543c2096a60a49ad92095a3664b909db1d68a77e6cca9cc69",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-emulator.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 9678,
+      "servedBytes": 9678,
+      "localSha256": "94c745c3dcb8068ad9e8e7a6a26d4a13d6862e102c5e35fe510a57037b0571a9",
+      "servedSha256": "94c745c3dcb8068ad9e8e7a6a26d4a13d6862e102c5e35fe510a57037b0571a9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-environment.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 208,
+      "servedBytes": 208,
+      "localSha256": "ead59415be2a8ecad1be977183ed50c7fcd8c7947775a11bbbe5faf2a3e2ac87",
+      "servedSha256": "ead59415be2a8ecad1be977183ed50c7fcd8c7947775a11bbbe5faf2a3e2ac87",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-install.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 36,
+      "servedBytes": 36,
+      "localSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "servedSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-launch.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 73,
+      "servedBytes": 73,
+      "localSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "servedSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-mask16-default-profile.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 100247,
+      "servedBytes": 100247,
+      "localSha256": "c6e352f95e250c9f6a51878cc09facb979b65ed8444d5d002b282a5da9ef7c54",
+      "servedSha256": "c6e352f95e250c9f6a51878cc09facb979b65ed8444d5d002b282a5da9ef7c54",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-mask16.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 97182,
+      "servedBytes": 97182,
+      "localSha256": "66f44f657a0a9b0f28149238dae96228e78283665c0fe5b2cf2cb323c7d6264c",
+      "servedSha256": "66f44f657a0a9b0f28149238dae96228e78283665c0fe5b2cf2cb323c7d6264c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-runtime-default-profile.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 4410,
+      "servedBytes": 4410,
+      "localSha256": "a7394b5aa0f92d3bbadd034eb12295f99c532e0d3c692f2ba7cf3e3f59d60110",
+      "servedSha256": "a7394b5aa0f92d3bbadd034eb12295f99c532e0d3c692f2ba7cf3e3f59d60110",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-runtime.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 4411,
+      "servedBytes": 4411,
+      "localSha256": "fd17da3420a10819c2069b10f12529668fb8548d2319ed3bfa566dc9ab229653",
+      "servedSha256": "fd17da3420a10819c2069b10f12529668fb8548d2319ed3bfa566dc9ab229653",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/asset-restoration.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 215,
+      "servedBytes": 215,
+      "localSha256": "a0cfb8850399bf20d795616018bb6c0c16c89c56c4a08fb6181e7ce3cae40ebe",
+      "servedSha256": "a0cfb8850399bf20d795616018bb6c0c16c89c56c4a08fb6181e7ce3cae40ebe",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/build-artifact-restoration.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 440,
+      "servedBytes": 440,
+      "localSha256": "6c3623b14b41bdcfed7835b9d74cf6dd0d7da886ccdd4cacae4e2ee9ac9408e6",
+      "servedSha256": "6c3623b14b41bdcfed7835b9d74cf6dd0d7da886ccdd4cacae4e2ee9ac9408e6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-layout-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 288,
+      "servedBytes": 288,
+      "localSha256": "0afc5c9ba6996f939015e6703cbbf39ec0c0e650069c6e67db57c16e242e78e8",
+      "servedSha256": "0afc5c9ba6996f939015e6703cbbf39ec0c0e650069c6e67db57c16e242e78e8",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-layout-final.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126",
+      "servedSha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-runtime-fixture-all-targets-blocked.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 3741,
+      "servedBytes": 3741,
+      "localSha256": "3654b2c05197b9da3cb70f822a65cf8aa914dee5ccceae99a73f7a15dfac1a23",
+      "servedSha256": "3654b2c05197b9da3cb70f822a65cf8aa914dee5ccceae99a73f7a15dfac1a23",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-runtime-fixture-lib.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "servedSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-layout-fixture.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "servedSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-render-fixture.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "servedSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-render.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 72,
+      "servedBytes": 72,
+      "localSha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "servedSha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1393,
+      "servedBytes": 1393,
+      "localSha256": "d22b39c4b3421ed84b1ece40a0fa10c7b3f7b6aead0495589227978103c7382a",
+      "servedSha256": "d22b39c4b3421ed84b1ece40a0fa10c7b3f7b6aead0495589227978103c7382a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1168,
+      "servedBytes": 1168,
+      "localSha256": "f35299bfdd4cd901bdb2be08fb0b6910fe9eceaf64351bdae3a7df38d451ccd0",
+      "servedSha256": "f35299bfdd4cd901bdb2be08fb0b6910fe9eceaf64351bdae3a7df38d451ccd0",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk03.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1399,
+      "servedBytes": 1399,
+      "localSha256": "4b6ac8c5e11beff2abcb4333f6d44ed23e078ba1b4a13e1657c70ef9582ac6c2",
+      "servedSha256": "4b6ac8c5e11beff2abcb4333f6d44ed23e078ba1b4a13e1657c70ef9582ac6c2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/format-check-final-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 222,
+      "servedBytes": 222,
+      "localSha256": "b6bc820b92c366740c04d8abc85da39f67fa766a28e4e01007b68b9ea7b70dc5",
+      "servedSha256": "b6bc820b92c366740c04d8abc85da39f67fa766a28e4e01007b68b9ea7b70dc5",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/format-check-final-pass.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 47,
+      "servedBytes": 47,
+      "localSha256": "5993ea3468a91b4aa11c4736522d70c3947a36b5553808aec6e3ec71b1568428",
+      "servedSha256": "5993ea3468a91b4aa11c4736522d70c3947a36b5553808aec6e3ec71b1568428",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/four-fit-mixed-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1955,
+      "servedBytes": 1955,
+      "localSha256": "066cf2083a6992334820ad0dd723f58d593d98234e151dab4665f637b9c526a2",
+      "servedSha256": "066cf2083a6992334820ad0dd723f58d593d98234e151dab4665f637b9c526a2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/git-diff-check-final.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 67,
+      "servedBytes": 67,
+      "localSha256": "05faebae4bc1d0cf378a5a36143e1ed3f2f5f06c1ddb15f44147ebe49d759409",
+      "servedSha256": "05faebae4bc1d0cf378a5a36143e1ed3f2f5f06c1ddb15f44147ebe49d759409",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-boot.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 8069,
+      "servedBytes": 8069,
+      "localSha256": "a7708ed94afce407af45f0973b5f2f3b2c6f8b86c3eb049a7c51bc927c6cfeb9",
+      "servedSha256": "a7708ed94afce407af45f0973b5f2f3b2c6f8b86c3eb049a7c51bc927c6cfeb9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-build-default-profile.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 68463,
+      "servedBytes": 68463,
+      "localSha256": "d8980dd7cb56f1f406e6a76c158ada4be3985ef04c34f80b539d7f66c3cc3ba7",
+      "servedSha256": "d8980dd7cb56f1f406e6a76c158ada4be3985ef04c34f80b539d7f66c3cc3ba7",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-build.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 68183,
+      "servedBytes": 68183,
+      "localSha256": "002cf2266ed5d1c7d203606f032499cacceafe7fc2632141381751488cee06b9",
+      "servedSha256": "002cf2266ed5d1c7d203606f032499cacceafe7fc2632141381751488cee06b9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-environment.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 83,
+      "servedBytes": 83,
+      "localSha256": "1e5aa402fa211a912221e503d3e45175e666958e62abf1d4f8718c0f6c5f714a",
+      "servedSha256": "1e5aa402fa211a912221e503d3e45175e666958e62abf1d4f8718c0f6c5f714a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-launch.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 28,
+      "servedBytes": 28,
+      "localSha256": "fc013923f179c3a27e310e07b370b7a7ced4e337417606642575b99f435795d0",
+      "servedSha256": "fc013923f179c3a27e310e07b370b7a7ced4e337417606642575b99f435795d0",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-mask16-default-profile.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 152543,
+      "servedBytes": 152543,
+      "localSha256": "a9699a0c445ee02c4d90b643037dc7e4f70b294fbe713b145a274c2fef3f7b9f",
+      "servedSha256": "a9699a0c445ee02c4d90b643037dc7e4f70b294fbe713b145a274c2fef3f7b9f",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-mask16.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 283579,
+      "servedBytes": 283579,
+      "localSha256": "0ebc987c728cc17be33f9191acd19b2c8664e8d642ccb8ff583dc99a238f1f50",
+      "servedSha256": "0ebc987c728cc17be33f9191acd19b2c8664e8d642ccb8ff583dc99a238f1f50",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-runtime-default-profile.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 38541,
+      "servedBytes": 38541,
+      "localSha256": "8cca586e038eb2a04de4e3f80cb30d9a0603e7ec2b7e080b86f9d426fe711720",
+      "servedSha256": "8cca586e038eb2a04de4e3f80cb30d9a0603e7ec2b7e080b86f9d426fe711720",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-runtime.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 38330,
+      "servedBytes": 38330,
+      "localSha256": "e9d6edd4e82f9e490c9d5e4341feddec8c9ced46854b7198d8517c0841ea0aa1",
+      "servedSha256": "e9d6edd4e82f9e490c9d5e4341feddec8c9ced46854b7198d8517c0841ea0aa1",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-screenshot.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 227,
+      "servedBytes": 227,
+      "localSha256": "d79e4f5a019fa5c356a030bbff96aa4875b24082818d3ab9265c2d77ff9796be",
+      "servedSha256": "d79e4f5a019fa5c356a030bbff96aa4875b24082818d3ab9265c2d77ff9796be",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/layout-tests.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 802,
+      "servedBytes": 802,
+      "localSha256": "d4468432e8e3ede6981dad2e4a7e89be204374d97fba9c4efb9db448077545c3",
+      "servedSha256": "d4468432e8e3ede6981dad2e4a7e89be204374d97fba9c4efb9db448077545c3",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/log-whitespace-normalization.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 190,
+      "servedBytes": 190,
+      "localSha256": "a065e056521eba79c62050dcfb8c61d096c3d38c29b85967f0e452ee738c2193",
+      "servedSha256": "a065e056521eba79c62050dcfb8c61d096c3d38c29b85967f0e452ee738c2193",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/one-fit-row-span-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1123,
+      "servedBytes": 1123,
+      "localSha256": "e3c77201e041221f53121ca2ababe5c8fa0be795492c05e6986b3cafebe3379a",
+      "servedSha256": "e3c77201e041221f53121ca2ababe5c8fa0be795492c05e6986b3cafebe3379a",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/pr-diff-review-30.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 35244,
+      "servedBytes": 35244,
+      "localSha256": "b8f6e5341ff633d46b3703eec5a3c8a7c75d31cee2064cb59f754b08e1204919",
+      "servedSha256": "b8f6e5341ff633d46b3703eec5a3c8a7c75d31cee2064cb59f754b08e1204919",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/pr-diff-review-30.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 6884,
+      "servedBytes": 6884,
+      "localSha256": "01e9942e5b57c55b2cb1d25d49950e58c0aadba209ad8185b8cf26f04b9ba439",
+      "servedSha256": "01e9942e5b57c55b2cb1d25d49950e58c0aadba209ad8185b8cf26f04b9ba439",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 35594,
+      "servedBytes": 35594,
+      "localSha256": "41cc35d9ec16f7af2e5491bc03ad977708faff9bf1f302ebe5141cbf33cb4df8",
+      "servedSha256": "41cc35d9ec16f7af2e5491bc03ad977708faff9bf1f302ebe5141cbf33cb4df8",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 6130,
+      "servedBytes": 6130,
+      "localSha256": "7b2ac4755a8a3fb44632c5efa01bfa157bbdb083201e9dd7cef9205274b1e835",
+      "servedSha256": "7b2ac4755a8a3fb44632c5efa01bfa157bbdb083201e9dd7cef9205274b1e835",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/root-html-mask16-simulator-fixture.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 3422,
+      "servedBytes": 3422,
+      "localSha256": "c2c15cfb1454d80ee56d2d19d945c962dd3aef2acde889fb5637a9c1bf7a874b",
+      "servedSha256": "c2c15cfb1454d80ee56d2d19d945c962dd3aef2acde889fb5637a9c1bf7a874b",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/run-mask16-simulators.sh",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 9937,
+      "servedBytes": 9937,
+      "localSha256": "fc755e6585160f401eceb9e4daf07f37ed7cf32a777687e04249e8f51f8aeea2",
+      "servedSha256": "fc755e6585160f401eceb9e4daf07f37ed7cf32a777687e04249e8f51f8aeea2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/runtime-matrix-test-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 2451,
+      "servedBytes": 2451,
+      "localSha256": "03f539773d7bdba3bb3de669756175e7b3ee1e94ae301e8e76897614bc956274",
+      "servedSha256": "03f539773d7bdba3bb3de669756175e7b3ee1e94ae301e8e76897614bc956274",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/runtime-matrix-test-pass02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 2301,
+      "servedBytes": 2301,
+      "localSha256": "36494a040486a8374063bcc4177e12249ee9d13361bbaeb9653982410efe37d2",
+      "servedSha256": "36494a040486a8374063bcc4177e12249ee9d13361bbaeb9653982410efe37d2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/screenshot-sha256.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 468,
+      "servedBytes": 468,
+      "localSha256": "2f267145376548d93f6037e1d20f60ea119bbed4ab0e94ee26755b50d1323276",
+      "servedSha256": "2f267145376548d93f6037e1d20f60ea119bbed4ab0e94ee26755b50d1323276",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1669,
+      "servedBytes": 1669,
+      "localSha256": "5c5992aaabd20e4cbb0fe1038ac221ebd73a09af23ddb8d1c236afc9918567b1",
+      "servedSha256": "5c5992aaabd20e4cbb0fe1038ac221ebd73a09af23ddb8d1c236afc9918567b1",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-fail02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1607,
+      "servedBytes": 1607,
+      "localSha256": "e8977f31f31d0d864fab687f1d2b92555952f1e1e1de0ce8d8bcd07623913e60",
+      "servedSha256": "e8977f31f31d0d864fab687f1d2b92555952f1e1e1de0ce8d8bcd07623913e60",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-pass01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1018,
+      "servedBytes": 1018,
+      "localSha256": "4db6f8ae0dc6003173e3f5ebf70d560d01c4338b908be656577f861209611eeb",
+      "servedSha256": "4db6f8ae0dc6003173e3f5ebf70d560d01c4338b908be656577f861209611eeb",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-compile-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 873,
+      "servedBytes": 873,
+      "localSha256": "fe5b94ac79fcc5475e80111914e4eadd03037dd969d2a8a1c8ae620f4c18eade",
+      "servedSha256": "fe5b94ac79fcc5475e80111914e4eadd03037dd969d2a8a1c8ae620f4c18eade",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 531,
+      "servedBytes": 531,
+      "localSha256": "9b91552ab3e59927db09c4958199bf882b06cc3b4b3972c17e1217192b25d958",
+      "servedSha256": "9b91552ab3e59927db09c4958199bf882b06cc3b4b3972c17e1217192b25d958",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 727,
+      "servedBytes": 727,
+      "localSha256": "a4ba58fbab73108c219edd6f45950900fde04eb7556338ecb1cb729fc4da2ec6",
+      "servedSha256": "a4ba58fbab73108c219edd6f45950900fde04eb7556338ecb1cb729fc4da2ec6",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail03.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 593,
+      "servedBytes": 593,
+      "localSha256": "d3907778fcc1d602fae161855456a4256afb4e28d65504669b55cd8b0a653ede",
+      "servedSha256": "d3907778fcc1d602fae161855456a4256afb4e28d65504669b55cd8b0a653ede",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-pass01.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 405,
+      "servedBytes": 405,
+      "localSha256": "fb95a3499b11995dcc1df48c9178a691edf7b02ddd7de0737dd9125ae4554afd",
+      "servedSha256": "fb95a3499b11995dcc1df48c9178a691edf7b02ddd7de0737dd9125ae4554afd",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-pass02.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 918,
+      "servedBytes": 918,
+      "localSha256": "175fa4f070f6bc4fb0f11d732ebcbb0d96580f813d1526a14d3016021fd9ac4d",
+      "servedSha256": "175fa4f070f6bc4fb0f11d732ebcbb0d96580f813d1526a14d3016021fd9ac4d",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-chunk01-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1396,
+      "servedBytes": 1396,
+      "localSha256": "544ae53a0b061f493a8f0d2c8ffc4cc03901b8638c4479f17af33096f23a0cc2",
+      "servedSha256": "544ae53a0b061f493a8f0d2c8ffc4cc03901b8638c4479f17af33096f23a0cc2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-metadata-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 929,
+      "servedBytes": 929,
+      "localSha256": "f66cde98a32ae19a27e5fdf3d3243ca8d623ca1c3732fe6f8bffa1818deed5f2",
+      "servedSha256": "f66cde98a32ae19a27e5fdf3d3243ca8d623ca1c3732fe6f8bffa1818deed5f2",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-rejection-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 928,
+      "servedBytes": 928,
+      "localSha256": "c1ffa90d9ef834798e0acc32f8b70b57720e5cf9a50c283e642d24ca70387b2c",
+      "servedSha256": "c1ffa90d9ef834798e0acc32f8b70b57720e5cf9a50c283e642d24ca70387b2c",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/style-tests.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 993,
+      "servedBytes": 993,
+      "localSha256": "516cf966c022c6ef953b565c41cb7b90769346fe21d07acaafa48a54a1177eee",
+      "servedSha256": "516cf966c022c6ef953b565c41cb7b90769346fe21d07acaafa48a54a1177eee",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/three-fit-auto-placement-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1105,
+      "servedBytes": 1105,
+      "localSha256": "270c7111cf4ca52baab0d7fe30b5d69c34f7dde259fde1482924c084be0d5a1e",
+      "servedSha256": "270c7111cf4ca52baab0d7fe30b5d69c34f7dde259fde1482924c084be0d5a1e",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/three-fit-uniform-runtime-matrix.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1131,
+      "servedBytes": 1131,
+      "localSha256": "dc9d2173416c0451be428bdf4c035af1d3cf0c5ec10321e9908f97a4e5a8d6d9",
+      "servedSha256": "dc9d2173416c0451be428bdf4c035af1d3cf0c5ec10321e9908f97a4e5a8d6d9",
+      "matched": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/two-fit-row-span-regression.log",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1085,
+      "servedBytes": 1085,
+      "localSha256": "efe8948d78f8a92b970382d3076e969bd1f23f0bd17b855a547569e5f87fb9c9",
+      "servedSha256": "efe8948d78f8a92b970382d3076e969bd1f23f0bd17b855a547569e5f87fb9c9",
+      "matched": true
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 43064,
+      "servedBytes": 43064,
+      "localSha256": "0a8f1566a93dd9752b88ca4cb7fef4118663fee3c7726c7b2bfce4d95999a546",
+      "servedSha256": "0a8f1566a93dd9752b88ca4cb7fef4118663fee3c7726c7b2bfce4d95999a546",
+      "matched": true
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 12528,
+      "servedBytes": 12528,
+      "localSha256": "17421e29ade56a37692443cb485c200c6050c7a88cec7fa4d6fffe6309480505",
+      "servedSha256": "17421e29ade56a37692443cb485c200c6050c7a88cec7fa4d6fffe6309480505",
+      "matched": true
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 638,
+      "servedBytes": 638,
+      "localSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "matched": true
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 568,
+      "servedBytes": 568,
+      "localSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "matched": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 682851,
+      "servedBytes": 682851,
+      "localSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "servedSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "matched": true
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "localBytes": 4835,
+      "servedBytes": 4835,
+      "localSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "servedSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "matched": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 953537,
+      "servedBytes": 953537,
+      "localSha256": "d936c9c1b23250836aad3cd411241b77fcbc34138643652f0a3c7307306b1487",
+      "servedSha256": "d936c9c1b23250836aad3cd411241b77fcbc34138643652f0a3c7307306b1487",
+      "matched": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 780918,
+      "servedBytes": 780918,
+      "localSha256": "84f92807edd10476142687a2a163b86926368b3d9d606ad4a3e57295c74ee4e3",
+      "servedSha256": "84f92807edd10476142687a2a163b86926368b3d9d606ad4a3e57295c74ee4e3",
+      "matched": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "localBytes": 73952,
+      "servedBytes": 73952,
+      "localSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "servedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "matched": true
+    },
+    {
+      "path": "static/image/chrome157-three-fit-mixed-sample.e1612ce9fd.png",
+      "status": 200,
+      "contentType": "image/png",
+      "localBytes": 18023,
+      "servedBytes": 18023,
+      "localSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "servedSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "matched": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 217061,
+      "servedBytes": 217061,
+      "localSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "servedSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "matched": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 384,
+      "servedBytes": 384,
+      "localSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "servedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 98,
+      "servedBytes": 98,
+      "localSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "servedSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-018927d4f64a.7eb9a008d1.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 8551,
+      "servedBytes": 8551,
+      "localSha256": "b927230d3c2998d3c27077e57e5c335a3542d5e4d0638dee892a727dfecd59a5",
+      "servedSha256": "b927230d3c2998d3c27077e57e5c335a3542d5e4d0638dee892a727dfecd59a5",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-148027058311.11468ff0a5.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 8557,
+      "servedBytes": 8557,
+      "localSha256": "59970e2db2dffceaec8572e77ed8ca62629b4f23e9b6c4be0351a015d7cf8ff5",
+      "servedSha256": "59970e2db2dffceaec8572e77ed8ca62629b4f23e9b6c4be0351a015d7cf8ff5",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-19a46d7be20e.a8b02955dc.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 10263,
+      "servedBytes": 10263,
+      "localSha256": "f8e9677ec383058755fed54c53cc4048f1c76b96b510efa0589c1cec95aa4fec",
+      "servedSha256": "f8e9677ec383058755fed54c53cc4048f1c76b96b510efa0589c1cec95aa4fec",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-26bb6dd199ec.62788b51f4.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 19515,
+      "servedBytes": 19515,
+      "localSha256": "cab4f7e675034585a689379378425c8f098b2b6285c5f1dcf61ccc5db1863751",
+      "servedSha256": "cab4f7e675034585a689379378425c8f098b2b6285c5f1dcf61ccc5db1863751",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-3b56b2cb3547.30cff0ec8d.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 19516,
+      "servedBytes": 19516,
+      "localSha256": "efbf3447d5888b0e35df32a8e1caff8882bbabf135ab607f59db8f0586deff11",
+      "servedSha256": "efbf3447d5888b0e35df32a8e1caff8882bbabf135ab607f59db8f0586deff11",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-55013a112a6d.bcbe29079e.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 13213,
+      "servedBytes": 13213,
+      "localSha256": "17e6878553f55ca918c900b0a5cd0368aa9ccd9c8ef1b8e38e269d6a5e86163f",
+      "servedSha256": "17e6878553f55ca918c900b0a5cd0368aa9ccd9c8ef1b8e38e269d6a5e86163f",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-57f3aab3777d.d143c8612d.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 12190,
+      "servedBytes": 12190,
+      "localSha256": "8dc68db81154665f305658b020457aa384cf247c892128d7bf6f30f9ca65a6c3",
+      "servedSha256": "8dc68db81154665f305658b020457aa384cf247c892128d7bf6f30f9ca65a6c3",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.372c26927a.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 1027017,
+      "servedBytes": 1027017,
+      "localSha256": "722917820096df4d6439528b27b27d43fe00b439bdb74f250f78c7878f97fe0e",
+      "servedSha256": "722917820096df4d6439528b27b27d43fe00b439bdb74f250f78c7878f97fe0e",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-72b447d693bd.fc3f20d0d3.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 3112,
+      "servedBytes": 3112,
+      "localSha256": "f07205b537ef037481ee6f85c040a68bd8a8d0cea60a83d6f09e77e26f53b9c2",
+      "servedSha256": "f07205b537ef037481ee6f85c040a68bd8a8d0cea60a83d6f09e77e26f53b9c2",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.60f5343904.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 916532,
+      "servedBytes": 916532,
+      "localSha256": "19faa42c849164406cdc409d3c607b6dadf4551067939f54d1d42d8aa4f34984",
+      "servedSha256": "19faa42c849164406cdc409d3c607b6dadf4551067939f54d1d42d8aa4f34984",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.e09c1d28d8.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 1027314,
+      "servedBytes": 1027314,
+      "localSha256": "2ee17b222d96ffa84f8cb6fb8e0d6e6c84116ce8740bd5017bd35c7cbb6ddb74",
+      "servedSha256": "2ee17b222d96ffa84f8cb6fb8e0d6e6c84116ce8740bd5017bd35c7cbb6ddb74",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-948accffa7a7.7b9e9bc8f0.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 13176,
+      "servedBytes": 13176,
+      "localSha256": "b9816f00ac18a113efd799e2d1e4b64e02c04b5c408a38de374f00b649b08bf1",
+      "servedSha256": "b9816f00ac18a113efd799e2d1e4b64e02c04b5c408a38de374f00b649b08bf1",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.906bab10d1.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 1006,
+      "servedBytes": 1006,
+      "localSha256": "73008dedc9d64ff8e962abd66e9459d634e69624be6aa97a74fdc86991eebd1c",
+      "servedSha256": "73008dedc9d64ff8e962abd66e9459d634e69624be6aa97a74fdc86991eebd1c",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-b15d96929922.3a1d3656d3.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 13168,
+      "servedBytes": 13168,
+      "localSha256": "5d0c8718a76ca66985777fd6ec9d28a2a83f6af4c9bca4337fb0f376e2319b81",
+      "servedSha256": "5d0c8718a76ca66985777fd6ec9d28a2a83f6af4c9bca4337fb0f376e2319b81",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.dbfc20b208.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 916517,
+      "servedBytes": 916517,
+      "localSha256": "96f3f9cc2af33e25432bd9e9ca80f43c718cf324f40eb57660564d6c7ed8171b",
+      "servedSha256": "96f3f9cc2af33e25432bd9e9ca80f43c718cf324f40eb57660564d6c7ed8171b",
+      "matched": true
+    },
+    {
+      "path": "static/js/async/route-f50e82b8b3b0.36c641adf4.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 13313,
+      "servedBytes": 13313,
+      "localSha256": "ea3b121f864d678a6ee68a55dffc247d0cb673748c62d99fa16c47ba60e06f57",
+      "servedSha256": "ea3b121f864d678a6ee68a55dffc247d0cb673748c62d99fa16c47ba60e06f57",
+      "matched": true
+    },
+    {
+      "path": "static/js/index.8ca95a9215.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 135324,
+      "servedBytes": 135324,
+      "localSha256": "b0ceef4af6e385145377b23ddb6f49c2e749e15a2bf278e795b57d8636a20e70",
+      "servedSha256": "b0ceef4af6e385145377b23ddb6f49c2e749e15a2bf278e795b57d8636a20e70",
+      "matched": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 218366,
+      "servedBytes": 218366,
+      "localSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "servedSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "matched": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 1209,
+      "servedBytes": 1209,
+      "localSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "servedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "matched": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 35366,
+      "servedBytes": 35366,
+      "localSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "servedSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "matched": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 222,
+      "servedBytes": 222,
+      "localSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "servedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "matched": true
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "localBytes": 471,
+      "servedBytes": 471,
+      "localSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "servedSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "matched": true
+    },
+    {
+      "path": "static/search_index.ko.fe3ff9b2.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "localBytes": 2374396,
+      "servedBytes": 2374396,
+      "localSha256": "fe3ff9b2852b6f65f913e2e1c02f2608d3272760c7d2dd535c91e52f83b3b7b9",
+      "servedSha256": "fe3ff9b2852b6f65f913e2e1c02f2608d3272760c7d2dd535c91e52f83b3b7b9",
+      "matched": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 952744,
+      "servedBytes": 952744,
+      "localSha256": "4f83e2281b1aaec5c838cd616fc0f6ce70bda0372831e142145dfad56f6ba1fc",
+      "servedSha256": "4f83e2281b1aaec5c838cd616fc0f6ce70bda0372831e142145dfad56f6ba1fc",
+      "matched": true
+    },
+    {
+      "path": "STATUS.md",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "localBytes": 780918,
+      "servedBytes": 780918,
+      "localSha256": "84f92807edd10476142687a2a163b86926368b3d9d606ad4a3e57295c74ee4e3",
+      "servedSha256": "84f92807edd10476142687a2a163b86926368b3d9d606ad4a3e57295c74ee4e3",
+      "matched": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "localBytes": 10632,
+      "servedBytes": 10632,
+      "localSha256": "48347ce72ac8fc9f13716ce8854f50c0b7b8f5f1236e01ae2b5b8550ac78cf27",
+      "servedSha256": "48347ce72ac8fc9f13716ce8854f50c0b7b8f5f1236e01ae2b5b8550ac78cf27",
+      "matched": true
+    }
+  ]
+}

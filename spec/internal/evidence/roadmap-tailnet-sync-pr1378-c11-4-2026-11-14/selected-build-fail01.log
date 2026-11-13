@@ -1,0 +1,14 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+error   build failed in 1.62s (web)
+ready   built in 1.62s (node)
+error   Build error:
+× [rsbuild:html] Failed to read the favicon file at <repo>/build/spinon/roadmap-tailnet-sync-pr1378-c11-4-2026-11-14/pass01/root/public/icon.svg.
+
+error   Rspack build failed.
+    at file://<repo>/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:4309:141
+    at file://<repo>/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9074:31
+    at callback1 (file://<repo>/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9082:78)
+    at file://<repo>/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9088:36
+    at file://<repo>/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:12604:36
