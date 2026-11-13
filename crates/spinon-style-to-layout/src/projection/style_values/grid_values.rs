@@ -916,6 +916,36 @@ pub(super) fn root_html_fit_content_auto_rows_with_five_fit_row_span_tracks(
     )
 }
 
+pub(super) fn root_html_fit_content_auto_rows_with_four_fit_row_span_tracks(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if root_html_fit_content_four_fit_row_span_track_list(tracks)
+    )
+}
+
+fn root_html_fit_content_four_fit_row_span_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    tracks.len() == 6
+        && tracks
+            .iter()
+            .filter(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
+            .count()
+            == 4
+        && tracks
+            .iter()
+            .filter(|track| matches!(track, ComputedCssGridTrackSize::MinContent))
+            .count()
+            == 1
+        && tracks
+            .iter()
+            .filter(|track| matches!(track, ComputedCssGridTrackSize::Auto))
+            .count()
+            == 1
+        && root_html_fit_content_four_fit_span_caps_are_supported(tracks)
+}
+
 fn root_html_fit_content_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
     !tracks.is_empty()
         && tracks.len() <= spinon_layout::GRID_MAX_TRACKS

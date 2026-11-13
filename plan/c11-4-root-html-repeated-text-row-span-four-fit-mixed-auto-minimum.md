@@ -1,6 +1,6 @@
 # C11.4 · four-fit repeated-text row-span item별 `min-height:0|auto`
 
-**상태:** Chrome 157 사전 비교 138,240/138,240 scenes와 독립 검증 완료 · 구현 전 계획 실패 관점 20개 검토 완료 · 계획 PR diff 리뷰/생성 대기 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 계획 PR [#1374](https://github.com/ohah/spinon/pull/1374) Rebase and merge 완료 (`2026-11-12T06:53:45Z`, merge SHA `97a5ca9b5a5c2d4a585ff76ee12bfb73547bb40b`) · Chrome 157 사전 비교 138,240/138,240 scenes, plan review 20개와 PR diff review 30개 완료 · mixed RuntimeSession 3,840/3,840, uniform endpoint 11,520/11,520 및 auto-placement 5,760/5,760 검증 통과 · iOS 26.2 startup smoke 통과 · Android API 37.2 공유 snapshot AVD에서 기본 route light/dark startup smoke 통과 (mixed fixture 미검증; fresh cold boot와 GUI launch 실패 기록 별도 보존) · implementation/runtime review 20개와 이 PR diff review 30개 완료 · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **선행 uniform 구현:** [four-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-four-fit-auto-minimum.md) · 구현 PR [#1357](https://github.com/ohah/spinon/pull/1357)
 
@@ -55,8 +55,8 @@ Mask bit 순서는 semantic item ID 순서 A, B, C, D, E이며 두 번째 topolo
 6. **독립 geometry assertion:** 각 span frame은 실제 covered used rows의 합과 일치하고, eligible automatic minimum item은 payload content floor 아래로 내려가지 않는다. Source-order reversal은 semantic ID별 geometry를 보존한다. `align-content:stretch`는 `auto` maximum track 외의 track을 늘리지 않는다. Chrome/RuntimeSession 허용 오차는 `0.01 CSS px`다. Grid-end overflow는 별도 집계해 사전 관측과 대조하며 예상값을 선험적으로 0으로 강제하지 않는다.
 7. **Rejection과 atomic recovery:** 잘못된 fit count/cap/tail/order/percentage basis, control auto, mixed non-0/auto 값, wrong span, extra owner/item, altered font/text/overflow/writing context와 unsupported placement를 거부한다. 실패 revision은 부분 output을 게시하지 않고 같은 RuntimeSession의 다음 valid revision에서 복구해야 한다.
 8. **Rounding boundary:** 기존 four-fit rounding behavior가 mixed mask에서도 Chrome 결과와 맞는지 exact half/fractional edge를 확인한다. 변경된 four-fit rounding 조건이나 shared rounding policy는 재현된 mismatch, 추가 독립 oracle, rounding edge regression 없이는 넓히지 않는다.
-9. **Platform smoke:** 사용 전에 현재 booted device/app 상태를 기록하고 Android API 37 ARM64 AVD와 iOS 26.2 Simulator에서 기본 Root HTML route를 빌드해 light/dark `layout-ready`와 draw/present를 확인한다. 기본 route는 mixed feature fixture를 실행하지 않으므로 플랫폼 결과는 startup smoke로만 보고한다. 사용한 task-owned simulator/browser session은 종료 후 device/session/process 상태를 재확인한다. Simulator profile이나 데이터를 삭제하지 않는다.
-10. **검토·문서:** 구현 후 새로운 failure mode 20개의 implementation/runtime 검토와 별도의 30개 PR diff 검토를 수행하고 local/remote diff hash와 PR head를 대조한다. Merge 후 내부 contract 0059, `spec/STATUS.md`, `spec/public/roadmap.html`, 이 계획 및 Tailnet preview를 실제 결과로 동기화한다. C11.4/C11 완료 체크, 공식 `78/214`, 숫자 contract `0.1.0`은 이 slice만으로 바꾸지 않는다.
+9. **Platform smoke:** 사용 전에 현재 booted device/app 상태를 기록하고 Android API 37 ARM64 AVD와 iOS 26.2 Simulator에서 기본 Root HTML route를 빌드해 light/dark `layout-ready`와 draw/present를 확인한다. 기본 route는 mixed feature fixture를 실행하지 않으므로 플랫폼 결과는 startup smoke로만 보고한다. 사용한 task-owned simulator/browser session은 종료 후 device/session/process 상태를 재확인하고, 임시 profile은 더 이상 재사용하지 않을 때 제거한다. 기존 공유 profile은 향후 테스트에서 사용할 때만 보존하고 그 이유를 기록한다.
+10. **검토·문서:** 구현 후 새로운 failure mode 20개의 implementation/runtime 검토와 별도의 30개 PR diff 검토를 수행하고 local/remote diff hash와 PR head를 대조한다. PR에는 내부 contract 0059와 실행 근거를 함께 넣는다. Merge 후 `spec/STATUS.md`, `spec/public/roadmap.html`, 이 계획 및 Tailnet preview를 실제 병합 결과로 동기화한다. C11.4/C11 완료 체크, 공식 `78/214`, 숫자 contract `0.1.0`은 이 slice만으로 바꾸지 않는다.
 
 ### 검증 명령 범주
 

@@ -253,6 +253,30 @@ pub(super) fn supports_five_fit_row_span_track_list(tracks: &[GridTrackSize]) ->
     five_fit_span::supports_five_fit_row_span_track_list(tracks)
 }
 
+pub(super) fn supports_four_fit_row_span_track_list(tracks: &[GridTrackSize]) -> bool {
+    if tracks.len() != 6
+        || tracks
+            .iter()
+            .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+            .count()
+            != 4
+        || tracks
+            .iter()
+            .filter(|track| matches!(track, GridTrackSize::MinContent))
+            .count()
+            != 1
+        || tracks
+            .iter()
+            .filter(|track| matches!(track, GridTrackSize::Auto))
+            .count()
+            != 1
+    {
+        return false;
+    }
+
+    four_fit_span_caps_are_supported(tracks)
+}
+
 pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
     tracks: &[GridTrackSize],
 ) -> bool {
