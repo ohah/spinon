@@ -1,0 +1,120 @@
+{
+  "record": "metadata",
+  "schema": "spinon.c11-4.repeated-text-row-span-three-fit-mixed-auto-min-precomparison/v1",
+  "capturedAtUtc": "2026-11-13T15:56:48.543Z",
+  "browserCli": "agent-browser 0.31.1",
+  "collector": {
+    "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-chrome.mjs",
+    "sha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190"
+  },
+  "chromeBinary": {
+    "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "sha256": "23010a3aeff294b54c6e8dc9a88e61388ec4655e2c10216c8a4ae2c050bfcb1b"
+  },
+  "environment": {
+    "macOS": "26.5.1",
+    "architecture": "arm64",
+    "node": "v24.19.0"
+  },
+  "namespace": "spinon3mix14",
+  "session": "3mixpre",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "devicePixelRatio": 1,
+  "viewportCssPx": [
+    1280,
+    900
+  ],
+  "fixturePath": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison.html",
+  "fixtureBytes": 10632,
+  "fixtureSha256": "48347ce72ac8fc9f13716ce8854f50c0b7b8f5f1236e01ae2b5b8550ac78cf27",
+  "sceneCount": 138240,
+  "uniqueTrackListCount": 720,
+  "fitPositionSets": 20,
+  "orderedCapAssignments": 6,
+  "tailOrders": [
+    [
+      "min-content",
+      "max-content",
+      "auto"
+    ],
+    [
+      "min-content",
+      "auto",
+      "max-content"
+    ],
+    [
+      "max-content",
+      "min-content",
+      "auto"
+    ],
+    [
+      "max-content",
+      "auto",
+      "min-content"
+    ],
+    [
+      "auto",
+      "min-content",
+      "max-content"
+    ],
+    [
+      "auto",
+      "max-content",
+      "min-content"
+    ]
+  ],
+  "capValues": [
+    "0px",
+    "10px",
+    "20%"
+  ],
+  "alignments": [
+    "start",
+    "stretch"
+  ],
+  "topologies": [
+    "span2Six-forward",
+    "span2Six-reverse",
+    "span2Span3Six-forward",
+    "span2Span3Six-reverse"
+  ],
+  "minimumAssignments": {
+    "span2Six": 32,
+    "span2Span3Six": 16
+  },
+  "minimumMaskBitOrder": {
+    "span2Six": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "span2Span3Six": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "observationPath": "chrome157-three-fit-mixed-observation.ndjson.gz",
+  "sampleScreenshot": "chrome157-three-fit-mixed-sample.png",
+  "observationBytes": 4877880,
+  "observationSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+  "sampleScreenshotBytes": 18023,
+  "sampleScreenshotSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+  "sampleIndex": 54448,
+  "topologySceneCounts": {
+    "span2Six-forward": 46080,
+    "span2Six-reverse": 46080,
+    "span2Span3Six-forward": 23040,
+    "span2Span3Six-reverse": 23040
+  },
+  "distinctMasksObserved": {
+    "span2Six-forward": 32,
+    "span2Six-reverse": 32,
+    "span2Span3Six-forward": 16,
+    "span2Span3Six-reverse": 16
+  }
+}
