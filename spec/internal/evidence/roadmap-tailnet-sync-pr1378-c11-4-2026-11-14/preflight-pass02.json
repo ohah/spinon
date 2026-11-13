@@ -1,0 +1,1973 @@
+{
+  "sourceHead": "cbf3b8579b7aa4915998378acd2d0b03c7916077",
+  "sourceTree": "b7ee3035818e546a467c0816818974c7a707715d",
+  "selectedInputsSha256": "ffbd278f31c86891193587363416b2501be1fb7e4735ae8e963200f4fe055272",
+  "tailscaleBackendState": "Running",
+  "previewServerVerified": true,
+  "previewPidUnchanged": 90711,
+  "previewRoot": "SpinonPreview",
+  "backupRoot": "SpinonPreviewBackups/roadmap-tailnet-sync-pr1378-c11-4-2026-11-14/pass02",
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 681402,
+  "localRoadmapSha256": "d37e973ec3bb0b9061182d4b83f1e59cd153f1f0d13f260d7a36dc479f116a7c",
+  "routeCount": 215,
+  "sourceBytes": 28413517,
+  "counts": {
+    "create": 158,
+    "replace": 18,
+    "same": 39
+  },
+  "openHandleCount": 3,
+  "openHandles": [
+    {
+      "command": "node",
+      "route": "static/js/3.d8b550a68d.js"
+    },
+    {
+      "command": "node",
+      "route": "static/css/styles.8d918fd78e.css"
+    },
+    {
+      "command": "node",
+      "route": "static/js/3.d8b550a68d.js"
+    }
+  ],
+  "noDeletes": true,
+  "targets": [
+    {
+      "path": "icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "previousBytes": 638,
+      "previousSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "same"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "sourceBytes": 877869,
+      "sourceSha256": "4ed2f0041d357a7d8ba9d8b8de513afceab96372e07193a6df56c74b272ec1ea",
+      "targetExists": true,
+      "previousBytes": 882930,
+      "previousSha256": "a178a9d5d584016f66ca7e7794f370f63cc61b0608d12f8d345e4b0c9c099e49",
+      "action": "replace"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "sourceBytes": 617587,
+      "sourceSha256": "e2917c74fe776f11fea24502f3040ea2834aed475189340a2e22ee1d276e5606",
+      "targetExists": true,
+      "previousBytes": 614352,
+      "previousSha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c",
+      "action": "replace"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/agent-browser-lifecycle.json",
+      "sourceBytes": 287,
+      "sourceSha256": "158db6cfe2477d8a4ff2aedb9b008cc261e3044cde1633d87b1ca6ee50c840c0",
+      "targetExists": true,
+      "previousBytes": 287,
+      "previousSha256": "158db6cfe2477d8a4ff2aedb9b008cc261e3044cde1633d87b1ca6ee50c840c0",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/build-runtime-sample.py",
+      "sourceBytes": 6094,
+      "sourceSha256": "312a8f7e8fe8473b2822c8228fc0b8d329eafe153733ee71ef9e2e6beaa6ce84",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-chrome.mjs",
+      "sourceBytes": 10413,
+      "sourceSha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190",
+      "targetExists": true,
+      "previousBytes": 10413,
+      "previousSha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-manifest.json",
+      "sourceBytes": 3037,
+      "sourceSha256": "a1e9666f57eb77b50db4692e38b96e8c7deedd0b615b9ff2f8fbd3065fa84d62",
+      "targetExists": true,
+      "previousBytes": 3037,
+      "previousSha256": "a1e9666f57eb77b50db4692e38b96e8c7deedd0b615b9ff2f8fbd3065fa84d62",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/chrome157-three-fit-mixed-observation.ndjson.gz",
+      "sourceBytes": 4877880,
+      "sourceSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+      "targetExists": true,
+      "previousBytes": 4877880,
+      "previousSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/chrome157-three-fit-mixed-sample.png",
+      "sourceBytes": 18023,
+      "sourceSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "targetExists": true,
+      "previousBytes": 18023,
+      "previousSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/README.html",
+      "sourceBytes": 31689,
+      "sourceSha256": "4f6c825abfec7f1a280ac04ddcb0db713aaeb87427961ab1e9a12de4ede73c08",
+      "targetExists": true,
+      "previousBytes": 41328,
+      "previousSha256": "b60a6005259063372b5edeec905c735592361241d98e17cb4947051fa0a64c50",
+      "action": "replace"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/README.md",
+      "sourceBytes": 4405,
+      "sourceSha256": "083b1574ed60f5275ff4d0c1d061d5f5b788e2db0896cc7ae39e8aa95757bb81",
+      "targetExists": true,
+      "previousBytes": 4405,
+      "previousSha256": "083b1574ed60f5275ff4d0c1d061d5f5b788e2db0896cc7ae39e8aa95757bb81",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/representative-scene-54448.json",
+      "sourceBytes": 4787,
+      "sourceSha256": "f646fd83db1a523582bc2be6b18aed4aa982e04b02521169459ea0172d4b5933",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/runtime-matrix-6912.ndjson.gz",
+      "sourceBytes": 274851,
+      "sourceSha256": "6f47cdc9113914dbae393cd41642c6bb34d460e1fecde8a334542f8ea144a47c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/SHA256SUMS",
+      "sourceBytes": 1663,
+      "sourceSha256": "7de1a3062b2b5767d4879e35aedf4c817fc325cc03da9501773d21ceb0f32062",
+      "targetExists": true,
+      "previousBytes": 1663,
+      "previousSha256": "7de1a3062b2b5767d4879e35aedf4c817fc325cc03da9501773d21ceb0f32062",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verification.json",
+      "sourceBytes": 1630,
+      "sourceSha256": "b31217b97143259c80a873f957817a2aafc5fd738a3910d2450e304b857da38a",
+      "targetExists": true,
+      "previousBytes": 1630,
+      "previousSha256": "b31217b97143259c80a873f957817a2aafc5fd738a3910d2450e304b857da38a",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verify-chrome-matrix.py",
+      "sourceBytes": 18265,
+      "sourceSha256": "ac677a6a7f7c390d80c80f4575a59310d129426b144159f39234ed9d897c921e",
+      "targetExists": true,
+      "previousBytes": 18265,
+      "previousSha256": "ac677a6a7f7c390d80c80f4575a59310d129426b144159f39234ed9d897c921e",
+      "action": "same"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verify-runtime-sample.py",
+      "sourceBytes": 8576,
+      "sourceSha256": "147032ab6082fd89d75a06344311a17c17282d05fc886a60cadc11cc89c1a032",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-build-default-profile.log",
+      "sourceBytes": 5344,
+      "sourceSha256": "c84b4fdb5c58153f95332f841525f46a5407fdea8bd1ea5801a5b02d729a4e8c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-build.log",
+      "sourceBytes": 5176,
+      "sourceSha256": "6190d290e866abc543c2096a60a49ad92095a3664b909db1d68a77e6cca9cc69",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-emulator.log",
+      "sourceBytes": 9678,
+      "sourceSha256": "94c745c3dcb8068ad9e8e7a6a26d4a13d6862e102c5e35fe510a57037b0571a9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-environment.txt",
+      "sourceBytes": 208,
+      "sourceSha256": "ead59415be2a8ecad1be977183ed50c7fcd8c7947775a11bbbe5faf2a3e2ac87",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-install.log",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-launch.log",
+      "sourceBytes": 73,
+      "sourceSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-mask16-default-profile.png",
+      "sourceBytes": 100247,
+      "sourceSha256": "c6e352f95e250c9f6a51878cc09facb979b65ed8444d5d002b282a5da9ef7c54",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-mask16.png",
+      "sourceBytes": 97182,
+      "sourceSha256": "66f44f657a0a9b0f28149238dae96228e78283665c0fe5b2cf2cb323c7d6264c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-runtime-default-profile.log",
+      "sourceBytes": 4410,
+      "sourceSha256": "a7394b5aa0f92d3bbadd034eb12295f99c532e0d3c692f2ba7cf3e3f59d60110",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-runtime.log",
+      "sourceBytes": 4411,
+      "sourceSha256": "fd17da3420a10819c2069b10f12529668fb8548d2319ed3bfa566dc9ab229653",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/asset-restoration.txt",
+      "sourceBytes": 215,
+      "sourceSha256": "a0cfb8850399bf20d795616018bb6c0c16c89c56c4a08fb6181e7ce3cae40ebe",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/build-artifact-restoration.txt",
+      "sourceBytes": 440,
+      "sourceSha256": "6c3623b14b41bdcfed7835b9d74cf6dd0d7da886ccdd4cacae4e2ee9ac9408e6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-layout-fail01.log",
+      "sourceBytes": 288,
+      "sourceSha256": "0afc5c9ba6996f939015e6703cbbf39ec0c0e650069c6e67db57c16e242e78e8",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-layout-final.log",
+      "sourceBytes": 72,
+      "sourceSha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-runtime-fixture-all-targets-blocked.log",
+      "sourceBytes": 3741,
+      "sourceSha256": "3654b2c05197b9da3cb70f822a65cf8aa914dee5ccceae99a73f7a15dfac1a23",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-runtime-fixture-lib.log",
+      "sourceBytes": 72,
+      "sourceSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-layout-fixture.log",
+      "sourceBytes": 72,
+      "sourceSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-render-fixture.log",
+      "sourceBytes": 72,
+      "sourceSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-render.log",
+      "sourceBytes": 72,
+      "sourceSha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk01.log",
+      "sourceBytes": 1393,
+      "sourceSha256": "d22b39c4b3421ed84b1ece40a0fa10c7b3f7b6aead0495589227978103c7382a",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk02.log",
+      "sourceBytes": 1168,
+      "sourceSha256": "f35299bfdd4cd901bdb2be08fb0b6910fe9eceaf64351bdae3a7df38d451ccd0",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk03.log",
+      "sourceBytes": 1399,
+      "sourceSha256": "4b6ac8c5e11beff2abcb4333f6d44ed23e078ba1b4a13e1657c70ef9582ac6c2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/format-check-final-fail01.log",
+      "sourceBytes": 222,
+      "sourceSha256": "b6bc820b92c366740c04d8abc85da39f67fa766a28e4e01007b68b9ea7b70dc5",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/format-check-final-pass.log",
+      "sourceBytes": 47,
+      "sourceSha256": "5993ea3468a91b4aa11c4736522d70c3947a36b5553808aec6e3ec71b1568428",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/four-fit-mixed-regression.log",
+      "sourceBytes": 1955,
+      "sourceSha256": "066cf2083a6992334820ad0dd723f58d593d98234e151dab4665f637b9c526a2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/git-diff-check-final.log",
+      "sourceBytes": 67,
+      "sourceSha256": "05faebae4bc1d0cf378a5a36143e1ed3f2f5f06c1ddb15f44147ebe49d759409",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-boot.log",
+      "sourceBytes": 8069,
+      "sourceSha256": "a7708ed94afce407af45f0973b5f2f3b2c6f8b86c3eb049a7c51bc927c6cfeb9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-build-default-profile.log",
+      "sourceBytes": 68463,
+      "sourceSha256": "d8980dd7cb56f1f406e6a76c158ada4be3985ef04c34f80b539d7f66c3cc3ba7",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-build.log",
+      "sourceBytes": 68183,
+      "sourceSha256": "002cf2266ed5d1c7d203606f032499cacceafe7fc2632141381751488cee06b9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-environment.txt",
+      "sourceBytes": 83,
+      "sourceSha256": "1e5aa402fa211a912221e503d3e45175e666958e62abf1d4f8718c0f6c5f714a",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-launch.log",
+      "sourceBytes": 28,
+      "sourceSha256": "fc013923f179c3a27e310e07b370b7a7ced4e337417606642575b99f435795d0",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-mask16-default-profile.png",
+      "sourceBytes": 152543,
+      "sourceSha256": "a9699a0c445ee02c4d90b643037dc7e4f70b294fbe713b145a274c2fef3f7b9f",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-mask16.png",
+      "sourceBytes": 283579,
+      "sourceSha256": "0ebc987c728cc17be33f9191acd19b2c8664e8d642ccb8ff583dc99a238f1f50",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-runtime-default-profile.log",
+      "sourceBytes": 38541,
+      "sourceSha256": "8cca586e038eb2a04de4e3f80cb30d9a0603e7ec2b7e080b86f9d426fe711720",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-runtime.log",
+      "sourceBytes": 38330,
+      "sourceSha256": "e9d6edd4e82f9e490c9d5e4341feddec8c9ced46854b7198d8517c0841ea0aa1",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-screenshot.log",
+      "sourceBytes": 227,
+      "sourceSha256": "d79e4f5a019fa5c356a030bbff96aa4875b24082818d3ab9265c2d77ff9796be",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/layout-tests.log",
+      "sourceBytes": 802,
+      "sourceSha256": "d4468432e8e3ede6981dad2e4a7e89be204374d97fba9c4efb9db448077545c3",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/log-whitespace-normalization.txt",
+      "sourceBytes": 190,
+      "sourceSha256": "a065e056521eba79c62050dcfb8c61d096c3d38c29b85967f0e452ee738c2193",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/merge-PR1378.html",
+      "sourceBytes": 28449,
+      "sourceSha256": "239ad3d66cddda5d0f3b715975b8f26af3e803af6c94b4a02894d2c602405da9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/merge-PR1378.md",
+      "sourceBytes": 1180,
+      "sourceSha256": "e5ab32874615a70b356445db4158281f5d2bdc1a88f0e02b9d7413b7bcd63403",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/one-fit-row-span-regression.log",
+      "sourceBytes": 1123,
+      "sourceSha256": "e3c77201e041221f53121ca2ababe5c8fa0be795492c05e6986b3cafebe3379a",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/pr-diff-review-30.html",
+      "sourceBytes": 35228,
+      "sourceSha256": "b0d8febfdff5a63bb5cb78a73b740efb9e9649c9107facaed1f308105a947e59",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/pr-diff-review-30.md",
+      "sourceBytes": 6884,
+      "sourceSha256": "01e9942e5b57c55b2cb1d25d49950e58c0aadba209ad8185b8cf26f04b9ba439",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.html",
+      "sourceBytes": 35697,
+      "sourceSha256": "36d1cfd3baff99243d836d1eb86fd705ec7dd2470539ebf6be08a63e8623daf3",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.md",
+      "sourceBytes": 6130,
+      "sourceSha256": "7b2ac4755a8a3fb44632c5efa01bfa157bbdb083201e9dd7cef9205274b1e835",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/root-html-mask16-simulator-fixture.html",
+      "sourceBytes": 3422,
+      "sourceSha256": "c2c15cfb1454d80ee56d2d19d945c962dd3aef2acde889fb5637a9c1bf7a874b",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/run-mask16-simulators.sh",
+      "sourceBytes": 9937,
+      "sourceSha256": "fc755e6585160f401eceb9e4daf07f37ed7cf32a777687e04249e8f51f8aeea2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/runtime-matrix-test-fail01.log",
+      "sourceBytes": 2451,
+      "sourceSha256": "03f539773d7bdba3bb3de669756175e7b3ee1e94ae301e8e76897614bc956274",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/runtime-matrix-test-pass02.log",
+      "sourceBytes": 2301,
+      "sourceSha256": "36494a040486a8374063bcc4177e12249ee9d13361bbaeb9653982410efe37d2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/screenshot-sha256.txt",
+      "sourceBytes": 468,
+      "sourceSha256": "2f267145376548d93f6037e1d20f60ea119bbed4ab0e94ee26755b50d1323276",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-fail01.log",
+      "sourceBytes": 1669,
+      "sourceSha256": "5c5992aaabd20e4cbb0fe1038ac221ebd73a09af23ddb8d1c236afc9918567b1",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-fail02.log",
+      "sourceBytes": 1607,
+      "sourceSha256": "e8977f31f31d0d864fab687f1d2b92555952f1e1e1de0ce8d8bcd07623913e60",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-pass01.log",
+      "sourceBytes": 1018,
+      "sourceSha256": "4db6f8ae0dc6003173e3f5ebf70d560d01c4338b908be656577f861209611eeb",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-compile-fail01.log",
+      "sourceBytes": 873,
+      "sourceSha256": "fe5b94ac79fcc5475e80111914e4eadd03037dd969d2a8a1c8ae620f4c18eade",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail01.log",
+      "sourceBytes": 531,
+      "sourceSha256": "9b91552ab3e59927db09c4958199bf882b06cc3b4b3972c17e1217192b25d958",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail02.log",
+      "sourceBytes": 727,
+      "sourceSha256": "a4ba58fbab73108c219edd6f45950900fde04eb7556338ecb1cb729fc4da2ec6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail03.log",
+      "sourceBytes": 593,
+      "sourceSha256": "d3907778fcc1d602fae161855456a4256afb4e28d65504669b55cd8b0a653ede",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-pass01.log",
+      "sourceBytes": 405,
+      "sourceSha256": "fb95a3499b11995dcc1df48c9178a691edf7b02ddd7de0737dd9125ae4554afd",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-pass02.log",
+      "sourceBytes": 918,
+      "sourceSha256": "175fa4f070f6bc4fb0f11d732ebcbb0d96580f813d1526a14d3016021fd9ac4d",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-chunk01-regression.log",
+      "sourceBytes": 1396,
+      "sourceSha256": "544ae53a0b061f493a8f0d2c8ffc4cc03901b8638c4479f17af33096f23a0cc2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-metadata-regression.log",
+      "sourceBytes": 929,
+      "sourceSha256": "f66cde98a32ae19a27e5fdf3d3243ca8d623ca1c3732fe6f8bffa1818deed5f2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-rejection-regression.log",
+      "sourceBytes": 928,
+      "sourceSha256": "c1ffa90d9ef834798e0acc32f8b70b57720e5cf9a50c283e642d24ca70387b2c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/style-tests.log",
+      "sourceBytes": 993,
+      "sourceSha256": "516cf966c022c6ef953b565c41cb7b90769346fe21d07acaafa48a54a1177eee",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/three-fit-auto-placement-regression.log",
+      "sourceBytes": 1105,
+      "sourceSha256": "270c7111cf4ca52baab0d7fe30b5d69c34f7dde259fde1482924c084be0d5a1e",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/three-fit-uniform-runtime-matrix.log",
+      "sourceBytes": 1131,
+      "sourceSha256": "dc9d2173416c0451be428bdf4c035af1d3cf0c5ec10321e9908f97a4e5a8d6d9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/two-fit-row-span-regression.log",
+      "sourceBytes": 1085,
+      "sourceSha256": "efe8948d78f8a92b970382d3076e969bd1f23f0bd17b855a547569e5f87fb9c9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "previousBytes": 568,
+      "previousSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "same"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-implementation-review-20.html",
+      "sourceBytes": 36748,
+      "sourceSha256": "a2b23ca84801066ff82ba8524356730919f215c35021333a6324b5a5c2b896c7",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-implementation-review-20.md",
+      "sourceBytes": 6642,
+      "sourceSha256": "afbf9d6aabfac4a63647f39c0b88653ea7f2aa01b0c92b9887ddd0989967c6d6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-plan-review-20.html",
+      "sourceBytes": 32950,
+      "sourceSha256": "cbbfa3493a4fb824040d5b39c4656352bd6215d950bfb6f0f223342504f72882",
+      "targetExists": true,
+      "previousBytes": 42472,
+      "previousSha256": "e733096c81462d4b3a46ac3b5570e37e36c3571b861731d0c18cd262f507d493",
+      "action": "replace"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-plan-review-20.md",
+      "sourceBytes": 5607,
+      "sourceSha256": "d3cbe595cdd725b44d6c84a92f21d9acade324293c5bbbbd51effa197ce7c163",
+      "targetExists": true,
+      "previousBytes": 5607,
+      "previousSha256": "d3cbe595cdd725b44d6c84a92f21d9acade324293c5bbbbd51effa197ce7c163",
+      "action": "same"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.html",
+      "sourceBytes": 43082,
+      "sourceSha256": "29261bb3a64400e1021f511aedc40a5b3a77bd2dc0aea82e53882c0848784c41",
+      "targetExists": true,
+      "previousBytes": 51610,
+      "previousSha256": "f3eb25b581a0dfaf92f57c65fb54f652ecb180709a64570642fc4ba0adff76aa",
+      "action": "replace"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.md",
+      "sourceBytes": 12528,
+      "sourceSha256": "17421e29ade56a37692443cb485c200c6050c7a88cec7fa4d6fffe6309480505",
+      "targetExists": true,
+      "previousBytes": 12054,
+      "previousSha256": "9cba89581eca7f67ceb07481c1b6f80a4f906c7c9aa1cc3eade045e18305f3f7",
+      "action": "replace"
+    },
+    {
+      "path": "public/icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "previousBytes": 638,
+      "previousSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "same"
+    },
+    {
+      "path": "public/logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "previousBytes": 568,
+      "previousSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "same"
+    },
+    {
+      "path": "public/roadmap.html",
+      "sourceBytes": 682851,
+      "sourceSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "targetExists": true,
+      "previousBytes": 681402,
+      "previousSha256": "d37e973ec3bb0b9061182d4b83f1e59cd153f1f0d13f260d7a36dc479f116a7c",
+      "action": "replace"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "previousBytes": 4835,
+      "previousSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "same"
+    },
+    {
+      "path": "roadmap.html",
+      "sourceBytes": 682851,
+      "sourceSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "targetExists": true,
+      "previousBytes": 681402,
+      "previousSha256": "d37e973ec3bb0b9061182d4b83f1e59cd153f1f0d13f260d7a36dc479f116a7c",
+      "action": "replace"
+    },
+    {
+      "path": "roadmap.svg",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "previousBytes": 4835,
+      "previousSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "sourceBytes": 878017,
+      "sourceSha256": "1ceac0aa6acd5490782200f0e1bb4694a5139dbca9efe580c662f92d6babd560",
+      "targetExists": true,
+      "previousBytes": 883114,
+      "previousSha256": "3ce9b2fb2bb13d1613b23a3d88777a746f470fae531403de934132674eb4dcee",
+      "action": "replace"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "sourceBytes": 617587,
+      "sourceSha256": "e2917c74fe776f11fea24502f3040ea2834aed475189340a2e22ee1d276e5606",
+      "targetExists": true,
+      "previousBytes": 614352,
+      "previousSha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c",
+      "action": "replace"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/agent-browser-lifecycle.json",
+      "sourceBytes": 287,
+      "sourceSha256": "158db6cfe2477d8a4ff2aedb9b008cc261e3044cde1633d87b1ca6ee50c840c0",
+      "targetExists": true,
+      "previousBytes": 287,
+      "previousSha256": "158db6cfe2477d8a4ff2aedb9b008cc261e3044cde1633d87b1ca6ee50c840c0",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/build-runtime-sample.py",
+      "sourceBytes": 6094,
+      "sourceSha256": "312a8f7e8fe8473b2822c8228fc0b8d329eafe153733ee71ef9e2e6beaa6ce84",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-chrome.mjs",
+      "sourceBytes": 10413,
+      "sourceSha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190",
+      "targetExists": true,
+      "previousBytes": 10413,
+      "previousSha256": "0eb82bc0fa967277a767364f8d5eb0562338ff8b3cbf845cfffb7ef026d15190",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-manifest.json",
+      "sourceBytes": 3037,
+      "sourceSha256": "a1e9666f57eb77b50db4692e38b96e8c7deedd0b615b9ff2f8fbd3065fa84d62",
+      "targetExists": true,
+      "previousBytes": 3037,
+      "previousSha256": "a1e9666f57eb77b50db4692e38b96e8c7deedd0b615b9ff2f8fbd3065fa84d62",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/chrome157-three-fit-mixed-observation.ndjson.gz",
+      "sourceBytes": 4877880,
+      "sourceSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+      "targetExists": true,
+      "previousBytes": 4877880,
+      "previousSha256": "d6f96c63404dbf6f432b2abc1f5bc0aea5d630ebdc6dfa8055c9d7456895b4ea",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/chrome157-three-fit-mixed-sample.png",
+      "sourceBytes": 18023,
+      "sourceSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "targetExists": true,
+      "previousBytes": 18023,
+      "previousSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/README.html",
+      "sourceBytes": 31704,
+      "sourceSha256": "4f4dc48e0af1828a4d472e0b5b2102b4d2bad2db0dce59ed89b42cf2b1308a1d",
+      "targetExists": true,
+      "previousBytes": 41248,
+      "previousSha256": "27ce5ac509dbc6030561ddc9861e4558ab746f0660fa1d9e8d08ccb2baed28a1",
+      "action": "replace"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/README.md",
+      "sourceBytes": 4405,
+      "sourceSha256": "083b1574ed60f5275ff4d0c1d061d5f5b788e2db0896cc7ae39e8aa95757bb81",
+      "targetExists": true,
+      "previousBytes": 4405,
+      "previousSha256": "083b1574ed60f5275ff4d0c1d061d5f5b788e2db0896cc7ae39e8aa95757bb81",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/representative-scene-54448.json",
+      "sourceBytes": 4787,
+      "sourceSha256": "f646fd83db1a523582bc2be6b18aed4aa982e04b02521169459ea0172d4b5933",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/runtime-matrix-6912.ndjson.gz",
+      "sourceBytes": 274851,
+      "sourceSha256": "6f47cdc9113914dbae393cd41642c6bb34d460e1fecde8a334542f8ea144a47c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/SHA256SUMS",
+      "sourceBytes": 1663,
+      "sourceSha256": "7de1a3062b2b5767d4879e35aedf4c817fc325cc03da9501773d21ceb0f32062",
+      "targetExists": true,
+      "previousBytes": 1663,
+      "previousSha256": "7de1a3062b2b5767d4879e35aedf4c817fc325cc03da9501773d21ceb0f32062",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verification.json",
+      "sourceBytes": 1630,
+      "sourceSha256": "b31217b97143259c80a873f957817a2aafc5fd738a3910d2450e304b857da38a",
+      "targetExists": true,
+      "previousBytes": 1630,
+      "previousSha256": "b31217b97143259c80a873f957817a2aafc5fd738a3910d2450e304b857da38a",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verify-chrome-matrix.py",
+      "sourceBytes": 18265,
+      "sourceSha256": "ac677a6a7f7c390d80c80f4575a59310d129426b144159f39234ed9d897c921e",
+      "targetExists": true,
+      "previousBytes": 18265,
+      "previousSha256": "ac677a6a7f7c390d80c80f4575a59310d129426b144159f39234ed9d897c921e",
+      "action": "same"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison-2026-11-14/verify-runtime-sample.py",
+      "sourceBytes": 8576,
+      "sourceSha256": "147032ab6082fd89d75a06344311a17c17282d05fc886a60cadc11cc89c1a032",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-build-default-profile.log",
+      "sourceBytes": 5344,
+      "sourceSha256": "c84b4fdb5c58153f95332f841525f46a5407fdea8bd1ea5801a5b02d729a4e8c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-build.log",
+      "sourceBytes": 5176,
+      "sourceSha256": "6190d290e866abc543c2096a60a49ad92095a3664b909db1d68a77e6cca9cc69",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-emulator.log",
+      "sourceBytes": 9678,
+      "sourceSha256": "94c745c3dcb8068ad9e8e7a6a26d4a13d6862e102c5e35fe510a57037b0571a9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-environment.txt",
+      "sourceBytes": 208,
+      "sourceSha256": "ead59415be2a8ecad1be977183ed50c7fcd8c7947775a11bbbe5faf2a3e2ac87",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-install.log",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-launch.log",
+      "sourceBytes": 73,
+      "sourceSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-mask16-default-profile.png",
+      "sourceBytes": 100247,
+      "sourceSha256": "c6e352f95e250c9f6a51878cc09facb979b65ed8444d5d002b282a5da9ef7c54",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-mask16.png",
+      "sourceBytes": 97182,
+      "sourceSha256": "66f44f657a0a9b0f28149238dae96228e78283665c0fe5b2cf2cb323c7d6264c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-runtime-default-profile.log",
+      "sourceBytes": 4410,
+      "sourceSha256": "a7394b5aa0f92d3bbadd034eb12295f99c532e0d3c692f2ba7cf3e3f59d60110",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/android-runtime.log",
+      "sourceBytes": 4411,
+      "sourceSha256": "fd17da3420a10819c2069b10f12529668fb8548d2319ed3bfa566dc9ab229653",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/asset-restoration.txt",
+      "sourceBytes": 215,
+      "sourceSha256": "a0cfb8850399bf20d795616018bb6c0c16c89c56c4a08fb6181e7ce3cae40ebe",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/build-artifact-restoration.txt",
+      "sourceBytes": 440,
+      "sourceSha256": "6c3623b14b41bdcfed7835b9d74cf6dd0d7da886ccdd4cacae4e2ee9ac9408e6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-layout-fail01.log",
+      "sourceBytes": 288,
+      "sourceSha256": "0afc5c9ba6996f939015e6703cbbf39ec0c0e650069c6e67db57c16e242e78e8",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-layout-final.log",
+      "sourceBytes": 72,
+      "sourceSha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-runtime-fixture-all-targets-blocked.log",
+      "sourceBytes": 3741,
+      "sourceSha256": "3654b2c05197b9da3cb70f822a65cf8aa914dee5ccceae99a73f7a15dfac1a23",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-runtime-fixture-lib.log",
+      "sourceBytes": 72,
+      "sourceSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-layout-fixture.log",
+      "sourceBytes": 72,
+      "sourceSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-render-fixture.log",
+      "sourceBytes": 72,
+      "sourceSha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/clippy-style-to-render.log",
+      "sourceBytes": 72,
+      "sourceSha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk01.log",
+      "sourceBytes": 1393,
+      "sourceSha256": "d22b39c4b3421ed84b1ece40a0fa10c7b3f7b6aead0495589227978103c7382a",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk02.log",
+      "sourceBytes": 1168,
+      "sourceSha256": "f35299bfdd4cd901bdb2be08fb0b6910fe9eceaf64351bdae3a7df38d451ccd0",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/five-fit-mixed-chunk03.log",
+      "sourceBytes": 1399,
+      "sourceSha256": "4b6ac8c5e11beff2abcb4333f6d44ed23e078ba1b4a13e1657c70ef9582ac6c2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/format-check-final-fail01.log",
+      "sourceBytes": 222,
+      "sourceSha256": "b6bc820b92c366740c04d8abc85da39f67fa766a28e4e01007b68b9ea7b70dc5",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/format-check-final-pass.log",
+      "sourceBytes": 47,
+      "sourceSha256": "5993ea3468a91b4aa11c4736522d70c3947a36b5553808aec6e3ec71b1568428",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/four-fit-mixed-regression.log",
+      "sourceBytes": 1955,
+      "sourceSha256": "066cf2083a6992334820ad0dd723f58d593d98234e151dab4665f637b9c526a2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/git-diff-check-final.log",
+      "sourceBytes": 67,
+      "sourceSha256": "05faebae4bc1d0cf378a5a36143e1ed3f2f5f06c1ddb15f44147ebe49d759409",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-boot.log",
+      "sourceBytes": 8069,
+      "sourceSha256": "a7708ed94afce407af45f0973b5f2f3b2c6f8b86c3eb049a7c51bc927c6cfeb9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-build-default-profile.log",
+      "sourceBytes": 68463,
+      "sourceSha256": "d8980dd7cb56f1f406e6a76c158ada4be3985ef04c34f80b539d7f66c3cc3ba7",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-build.log",
+      "sourceBytes": 68183,
+      "sourceSha256": "002cf2266ed5d1c7d203606f032499cacceafe7fc2632141381751488cee06b9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-environment.txt",
+      "sourceBytes": 83,
+      "sourceSha256": "1e5aa402fa211a912221e503d3e45175e666958e62abf1d4f8718c0f6c5f714a",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-launch.log",
+      "sourceBytes": 28,
+      "sourceSha256": "fc013923f179c3a27e310e07b370b7a7ced4e337417606642575b99f435795d0",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-mask16-default-profile.png",
+      "sourceBytes": 152543,
+      "sourceSha256": "a9699a0c445ee02c4d90b643037dc7e4f70b294fbe713b145a274c2fef3f7b9f",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-mask16.png",
+      "sourceBytes": 283579,
+      "sourceSha256": "0ebc987c728cc17be33f9191acd19b2c8664e8d642ccb8ff583dc99a238f1f50",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-runtime-default-profile.log",
+      "sourceBytes": 38541,
+      "sourceSha256": "8cca586e038eb2a04de4e3f80cb30d9a0603e7ec2b7e080b86f9d426fe711720",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-runtime.log",
+      "sourceBytes": 38330,
+      "sourceSha256": "e9d6edd4e82f9e490c9d5e4341feddec8c9ced46854b7198d8517c0841ea0aa1",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/ios-screenshot.log",
+      "sourceBytes": 227,
+      "sourceSha256": "d79e4f5a019fa5c356a030bbff96aa4875b24082818d3ab9265c2d77ff9796be",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/layout-tests.log",
+      "sourceBytes": 802,
+      "sourceSha256": "d4468432e8e3ede6981dad2e4a7e89be204374d97fba9c4efb9db448077545c3",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/log-whitespace-normalization.txt",
+      "sourceBytes": 190,
+      "sourceSha256": "a065e056521eba79c62050dcfb8c61d096c3d38c29b85967f0e452ee738c2193",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/one-fit-row-span-regression.log",
+      "sourceBytes": 1123,
+      "sourceSha256": "e3c77201e041221f53121ca2ababe5c8fa0be795492c05e6986b3cafebe3379a",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/pr-diff-review-30.html",
+      "sourceBytes": 35244,
+      "sourceSha256": "b8f6e5341ff633d46b3703eec5a3c8a7c75d31cee2064cb59f754b08e1204919",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/pr-diff-review-30.md",
+      "sourceBytes": 6884,
+      "sourceSha256": "01e9942e5b57c55b2cb1d25d49950e58c0aadba209ad8185b8cf26f04b9ba439",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.html",
+      "sourceBytes": 35594,
+      "sourceSha256": "41cc35d9ec16f7af2e5491bc03ad977708faff9bf1f302ebe5141cbf33cb4df8",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.md",
+      "sourceBytes": 6130,
+      "sourceSha256": "7b2ac4755a8a3fb44632c5efa01bfa157bbdb083201e9dd7cef9205274b1e835",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/root-html-mask16-simulator-fixture.html",
+      "sourceBytes": 3422,
+      "sourceSha256": "c2c15cfb1454d80ee56d2d19d945c962dd3aef2acde889fb5637a9c1bf7a874b",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/run-mask16-simulators.sh",
+      "sourceBytes": 9937,
+      "sourceSha256": "fc755e6585160f401eceb9e4daf07f37ed7cf32a777687e04249e8f51f8aeea2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/runtime-matrix-test-fail01.log",
+      "sourceBytes": 2451,
+      "sourceSha256": "03f539773d7bdba3bb3de669756175e7b3ee1e94ae301e8e76897614bc956274",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/runtime-matrix-test-pass02.log",
+      "sourceBytes": 2301,
+      "sourceSha256": "36494a040486a8374063bcc4177e12249ee9d13361bbaeb9653982410efe37d2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/screenshot-sha256.txt",
+      "sourceBytes": 468,
+      "sourceSha256": "2f267145376548d93f6037e1d20f60ea119bbed4ab0e94ee26755b50d1323276",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-fail01.log",
+      "sourceBytes": 1669,
+      "sourceSha256": "5c5992aaabd20e4cbb0fe1038ac221ebd73a09af23ddb8d1c236afc9918567b1",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-fail02.log",
+      "sourceBytes": 1607,
+      "sourceSha256": "e8977f31f31d0d864fab687f1d2b92555952f1e1e1de0ce8d8bcd07623913e60",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-runtime-check-pass01.log",
+      "sourceBytes": 1018,
+      "sourceSha256": "4db6f8ae0dc6003173e3f5ebf70d560d01c4338b908be656577f861209611eeb",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-compile-fail01.log",
+      "sourceBytes": 873,
+      "sourceSha256": "fe5b94ac79fcc5475e80111914e4eadd03037dd969d2a8a1c8ae620f4c18eade",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail01.log",
+      "sourceBytes": 531,
+      "sourceSha256": "9b91552ab3e59927db09c4958199bf882b06cc3b4b3972c17e1217192b25d958",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail02.log",
+      "sourceBytes": 727,
+      "sourceSha256": "a4ba58fbab73108c219edd6f45950900fde04eb7556338ecb1cb729fc4da2ec6",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-fail03.log",
+      "sourceBytes": 593,
+      "sourceSha256": "d3907778fcc1d602fae161855456a4256afb4e28d65504669b55cd8b0a653ede",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-pass01.log",
+      "sourceBytes": 405,
+      "sourceSha256": "fb95a3499b11995dcc1df48c9178a691edf7b02ddd7de0737dd9125ae4554afd",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/simulator-fixture-snapshot-check-pass02.log",
+      "sourceBytes": 918,
+      "sourceSha256": "175fa4f070f6bc4fb0f11d732ebcbb0d96580f813d1526a14d3016021fd9ac4d",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-chunk01-regression.log",
+      "sourceBytes": 1396,
+      "sourceSha256": "544ae53a0b061f493a8f0d2c8ffc4cc03901b8638c4479f17af33096f23a0cc2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-metadata-regression.log",
+      "sourceBytes": 929,
+      "sourceSha256": "f66cde98a32ae19a27e5fdf3d3243ca8d623ca1c3732fe6f8bffa1818deed5f2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/six-fit-rejection-regression.log",
+      "sourceBytes": 928,
+      "sourceSha256": "c1ffa90d9ef834798e0acc32f8b70b57720e5cf9a50c283e642d24ca70387b2c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/style-tests.log",
+      "sourceBytes": 993,
+      "sourceSha256": "516cf966c022c6ef953b565c41cb7b90769346fe21d07acaafa48a54a1177eee",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/three-fit-auto-placement-regression.log",
+      "sourceBytes": 1105,
+      "sourceSha256": "270c7111cf4ca52baab0d7fe30b5d69c34f7dde259fde1482924c084be0d5a1e",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/three-fit-uniform-runtime-matrix.log",
+      "sourceBytes": 1131,
+      "sourceSha256": "dc9d2173416c0451be428bdf4c035af1d3cf0c5ec10321e9908f97a4e5a8d6d9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/two-fit-row-span-regression.log",
+      "sourceBytes": 1085,
+      "sourceSha256": "efe8948d78f8a92b970382d3076e969bd1f23f0bd17b855a547569e5f87fb9c9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.html",
+      "sourceBytes": 43064,
+      "sourceSha256": "0a8f1566a93dd9752b88ca4cb7fef4118663fee3c7726c7b2bfce4d95999a546",
+      "targetExists": true,
+      "previousBytes": 51616,
+      "previousSha256": "f87a9daab31754586eb3621f8abfc870d0292d3b248bddbdd949b6cba65f7113",
+      "action": "replace"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum.md",
+      "sourceBytes": 12528,
+      "sourceSha256": "17421e29ade56a37692443cb485c200c6050c7a88cec7fa4d6fffe6309480505",
+      "targetExists": true,
+      "previousBytes": 12054,
+      "previousSha256": "9cba89581eca7f67ceb07481c1b6f80a4f906c7c9aa1cc3eade045e18305f3f7",
+      "action": "replace"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "previousBytes": 638,
+      "previousSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "same"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "previousBytes": 568,
+      "previousSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "same"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "sourceBytes": 682851,
+      "sourceSha256": "1f83642931ab7984cd55992fff84074aa7697cb13057ec6e8a0e6f7f4ec4f0d3",
+      "targetExists": true,
+      "previousBytes": 681402,
+      "previousSha256": "d37e973ec3bb0b9061182d4b83f1e59cd153f1f0d13f260d7a36dc479f116a7c",
+      "action": "replace"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "previousBytes": 4835,
+      "previousSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "same"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "sourceBytes": 953537,
+      "sourceSha256": "d936c9c1b23250836aad3cd411241b77fcbc34138643652f0a3c7307306b1487",
+      "targetExists": true,
+      "previousBytes": 962374,
+      "previousSha256": "c49e6e4df9a86823ca1e52cfefbf7b13b02e7fe0433a31f2f399836a94355f01",
+      "action": "replace"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "sourceBytes": 780918,
+      "sourceSha256": "84f92807edd10476142687a2a163b86926368b3d9d606ad4a3e57295c74ee4e3",
+      "targetExists": true,
+      "previousBytes": 780275,
+      "previousSha256": "a3ddada0c9f8e9ef9948ab70e54b25761304ec5729d170efbb0cdf73e3e8f056",
+      "action": "replace"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "previousBytes": 73952,
+      "previousSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "action": "same"
+    },
+    {
+      "path": "static/image/chrome157-three-fit-mixed-sample.e1612ce9fd.png",
+      "sourceBytes": 18023,
+      "sourceSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "targetExists": true,
+      "previousBytes": 18023,
+      "previousSha256": "2f7abf24c6a076d5df60ef644dbc2e4318fa3986a7e1c658b28440e43fcec310",
+      "action": "same"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "sourceBytes": 217061,
+      "sourceSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "targetExists": true,
+      "previousBytes": 217061,
+      "previousSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "action": "same"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "previousBytes": 384,
+      "previousSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "action": "same"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "sourceBytes": 98,
+      "sourceSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "targetExists": true,
+      "previousBytes": 98,
+      "previousSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "action": "same"
+    },
+    {
+      "path": "static/js/async/route-018927d4f64a.7eb9a008d1.js",
+      "sourceBytes": 8551,
+      "sourceSha256": "b927230d3c2998d3c27077e57e5c335a3542d5e4d0638dee892a727dfecd59a5",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-148027058311.11468ff0a5.js",
+      "sourceBytes": 8557,
+      "sourceSha256": "59970e2db2dffceaec8572e77ed8ca62629b4f23e9b6c4be0351a015d7cf8ff5",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-19a46d7be20e.a8b02955dc.js",
+      "sourceBytes": 10263,
+      "sourceSha256": "f8e9677ec383058755fed54c53cc4048f1c76b96b510efa0589c1cec95aa4fec",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-26bb6dd199ec.62788b51f4.js",
+      "sourceBytes": 19515,
+      "sourceSha256": "cab4f7e675034585a689379378425c8f098b2b6285c5f1dcf61ccc5db1863751",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-3b56b2cb3547.30cff0ec8d.js",
+      "sourceBytes": 19516,
+      "sourceSha256": "efbf3447d5888b0e35df32a8e1caff8882bbabf135ab607f59db8f0586deff11",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-55013a112a6d.bcbe29079e.js",
+      "sourceBytes": 13213,
+      "sourceSha256": "17e6878553f55ca918c900b0a5cd0368aa9ccd9c8ef1b8e38e269d6a5e86163f",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-57f3aab3777d.d143c8612d.js",
+      "sourceBytes": 12190,
+      "sourceSha256": "8dc68db81154665f305658b020457aa384cf247c892128d7bf6f30f9ca65a6c3",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.372c26927a.js",
+      "sourceBytes": 1027017,
+      "sourceSha256": "722917820096df4d6439528b27b27d43fe00b439bdb74f250f78c7878f97fe0e",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-72b447d693bd.fc3f20d0d3.js",
+      "sourceBytes": 3112,
+      "sourceSha256": "f07205b537ef037481ee6f85c040a68bd8a8d0cea60a83d6f09e77e26f53b9c2",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.60f5343904.js",
+      "sourceBytes": 916532,
+      "sourceSha256": "19faa42c849164406cdc409d3c607b6dadf4551067939f54d1d42d8aa4f34984",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.e09c1d28d8.js",
+      "sourceBytes": 1027314,
+      "sourceSha256": "2ee17b222d96ffa84f8cb6fb8e0d6e6c84116ce8740bd5017bd35c7cbb6ddb74",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-948accffa7a7.7b9e9bc8f0.js",
+      "sourceBytes": 13176,
+      "sourceSha256": "b9816f00ac18a113efd799e2d1e4b64e02c04b5c408a38de374f00b649b08bf1",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.906bab10d1.js",
+      "sourceBytes": 1006,
+      "sourceSha256": "73008dedc9d64ff8e962abd66e9459d634e69624be6aa97a74fdc86991eebd1c",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-b15d96929922.3a1d3656d3.js",
+      "sourceBytes": 13168,
+      "sourceSha256": "5d0c8718a76ca66985777fd6ec9d28a2a83f6af4c9bca4337fb0f376e2319b81",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.dbfc20b208.js",
+      "sourceBytes": 916517,
+      "sourceSha256": "96f3f9cc2af33e25432bd9e9ca80f43c718cf324f40eb57660564d6c7ed8171b",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/async/route-f50e82b8b3b0.36c641adf4.js",
+      "sourceBytes": 13313,
+      "sourceSha256": "ea3b121f864d678a6ee68a55dffc247d0cb673748c62d99fa16c47ba60e06f57",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/index.8ca95a9215.js",
+      "sourceBytes": 135324,
+      "sourceSha256": "b0ceef4af6e385145377b23ddb6f49c2e749e15a2bf278e795b57d8636a20e70",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "sourceBytes": 218366,
+      "sourceSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "targetExists": true,
+      "previousBytes": 218366,
+      "previousSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "action": "same"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "previousBytes": 1209,
+      "previousSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "action": "same"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "sourceBytes": 35366,
+      "sourceSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "targetExists": true,
+      "previousBytes": 35366,
+      "previousSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "action": "same"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "previousBytes": 222,
+      "previousSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "action": "same"
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "sourceBytes": 471,
+      "sourceSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "targetExists": true,
+      "previousBytes": 471,
+      "previousSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "action": "same"
+    },
+    {
+      "path": "static/search_index.ko.fe3ff9b2.json",
+      "sourceBytes": 2374396,
+      "sourceSha256": "fe3ff9b2852b6f65f913e2e1c02f2608d3272760c7d2dd535c91e52f83b3b7b9",
+      "targetExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "action": "create"
+    },
+    {
+      "path": "STATUS.html",
+      "sourceBytes": 952744,
+      "sourceSha256": "4f83e2281b1aaec5c838cd616fc0f6ce70bda0372831e142145dfad56f6ba1fc",
+      "targetExists": true,
+      "previousBytes": 961510,
+      "previousSha256": "646438471a3a5f13993ec17002376aac9c3f817b75fe93d7a9b650bd51557af0",
+      "action": "replace"
+    },
+    {
+      "path": "STATUS.md",
+      "sourceBytes": 780918,
+      "sourceSha256": "84f92807edd10476142687a2a163b86926368b3d9d606ad4a3e57295c74ee4e3",
+      "targetExists": true,
+      "previousBytes": 780275,
+      "previousSha256": "a3ddada0c9f8e9ef9948ab70e54b25761304ec5729d170efbb0cdf73e3e8f056",
+      "action": "replace"
+    },
+    {
+      "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison.html",
+      "sourceBytes": 10632,
+      "sourceSha256": "48347ce72ac8fc9f13716ce8854f50c0b7b8f5f1236e01ae2b5b8550ac78cf27",
+      "targetExists": true,
+      "previousBytes": 10632,
+      "previousSha256": "48347ce72ac8fc9f13716ce8854f50c0b7b8f5f1236e01ae2b5b8550ac78cf27",
+      "action": "same"
+    }
+  ]
+}
