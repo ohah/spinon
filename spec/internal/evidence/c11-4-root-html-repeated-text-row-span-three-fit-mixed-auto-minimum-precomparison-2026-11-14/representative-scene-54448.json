@@ -1,0 +1,326 @@
+{
+  "record": "scene",
+  "index": 54448,
+  "scene": {
+    "trackList": "fit-content(20%) min-content auto fit-content(0px) fit-content(10px) max-content",
+    "trackMembers": [
+      "fit-content(20%)",
+      "min-content",
+      "auto",
+      "fit-content(0px)",
+      "fit-content(10px)",
+      "max-content"
+    ],
+    "fitPositions": [
+      1,
+      4,
+      5
+    ],
+    "fitCaps": [
+      "20%",
+      "0px",
+      "10px"
+    ],
+    "tail": [
+      "min-content",
+      "auto",
+      "max-content"
+    ],
+    "alignContent": "stretch",
+    "topology": "span2Six-forward",
+    "items": [
+      [
+        "A",
+        2,
+        2
+      ],
+      [
+        "B",
+        3,
+        2
+      ],
+      [
+        "C",
+        4,
+        2
+      ],
+      [
+        "D",
+        5,
+        2
+      ],
+      [
+        "E",
+        6,
+        2
+      ]
+    ],
+    "minimumMask": 16,
+    "maskItemIds": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "autoItems": [
+      "E"
+    ]
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "gridFrame": [
+    0,
+    0,
+    42,
+    222
+  ],
+  "computedAutoRows": "fit-content(20%) min-content auto fit-content(0px) fit-content(10px) max-content",
+  "computedAlignContent": "stretch",
+  "usedRows": "10px 0px 60px 120px 0px 15px 15px",
+  "rowValues": [
+    10,
+    0,
+    60,
+    120,
+    0,
+    15,
+    15
+  ],
+  "items": [
+    {
+      "id": "empty",
+      "frame": [
+        1,
+        1,
+        40,
+        10
+      ],
+      "minHeight": "0px",
+      "text": "",
+      "payloadFrame": null,
+      "lineRects": []
+    },
+    {
+      "id": "A",
+      "frame": [
+        1,
+        11,
+        40,
+        60
+      ],
+      "minHeight": "0px",
+      "text": "AAAA BBBB CCCC DDDD EEEE FFFF",
+      "payloadFrame": [
+        1,
+        11,
+        40,
+        60
+      ],
+      "lineRects": [
+        [
+          1,
+          10,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          20,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          30,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          40,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          50,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          60,
+          24.09375,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "B",
+      "frame": [
+        1,
+        11,
+        40,
+        180
+      ],
+      "minHeight": "0px",
+      "text": "AAAAAA BBBBB CCCC DDD",
+      "payloadFrame": [
+        1,
+        11,
+        40,
+        40
+      ],
+      "lineRects": [
+        [
+          1,
+          10,
+          36.125,
+          11
+        ],
+        [
+          1,
+          20,
+          30.109375,
+          11
+        ],
+        [
+          1,
+          30,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          40,
+          18.0625,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "C",
+      "frame": [
+        1,
+        71,
+        40,
+        120
+      ],
+      "minHeight": "0px",
+      "text": "AAAAA BBBB CCC DDDD",
+      "payloadFrame": [
+        1,
+        71,
+        40,
+        40
+      ],
+      "lineRects": [
+        [
+          1,
+          70,
+          30.109375,
+          11
+        ],
+        [
+          1,
+          80,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          90,
+          18.0625,
+          11
+        ],
+        [
+          1,
+          100,
+          24.09375,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "D",
+      "frame": [
+        1,
+        191,
+        40,
+        15
+      ],
+      "minHeight": "0px",
+      "text": "AAAA BBB CCCCC DDDD",
+      "payloadFrame": [
+        1,
+        191,
+        40,
+        40
+      ],
+      "lineRects": [
+        [
+          1,
+          190,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          200,
+          18.0625,
+          11
+        ],
+        [
+          1,
+          210,
+          30.109375,
+          11
+        ],
+        [
+          1,
+          220,
+          24.09375,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "E",
+      "frame": [
+        1,
+        191,
+        40,
+        30
+      ],
+      "minHeight": "auto",
+      "text": "AAA BBBB CCCCCC",
+      "payloadFrame": [
+        1,
+        191,
+        40,
+        30
+      ],
+      "lineRects": [
+        [
+          1,
+          190,
+          18.0625,
+          11
+        ],
+        [
+          1,
+          200,
+          24.09375,
+          11
+        ],
+        [
+          1,
+          210,
+          36.125,
+          11
+        ]
+      ]
+    }
+  ]
+}

@@ -1,6 +1,4 @@
 use super::*;
-use std::time::Duration;
-
 fn replace_once(source: &str, from: &str, to: &str) -> String {
     assert!(source.contains(from), "fixture fragment missing: {from:?}");
     source.replacen(from, to, 1)
@@ -117,61 +115,4 @@ fn parsed_root_html_three_fit_row_span_rejects_out_of_profile_mutations_atomical
     ] {
         assert_rejected_atomically(name, &invalid);
     }
-}
-
-#[test]
-fn parsed_root_html_three_fit_row_span_auto_minimum_rejects_mixed_items_and_recovers() {
-    use spinon_style::{CssColorScheme, CssMediaEnvironment};
-
-    let record = candidate_record();
-    let source = source_for(&record);
-    let mixed = replace_once(
-        &source,
-        "</style>",
-        "@media (prefers-color-scheme: dark) { .item[data-item=\"B\"] { min-height:0; } } </style>",
-    );
-    let (session, initial) = run(&mixed);
-    assert_eq!(
-        initial.state,
-        crate::session::RuntimeLayoutState::Ready,
-        "initial light candidate is supported: {:?}",
-        initial.error
-    );
-    let initial_completed = initial.completed.as_ref().unwrap();
-    let initial_key = initial_completed.key;
-    let initial_frame = frame_for_paint(
-        initial_completed.render_snapshot.as_ref().unwrap(),
-        color_for_item("A"),
-    );
-
-    let mut media = CssMediaEnvironment::MOBILE;
-    media.color_scheme = CssColorScheme::Dark;
-    session
-        .set_root_html_environment(1280.0, 633.0, 1.0, media)
-        .expect("dark media query applies the mixed item minimum");
-    let rejected = session.wait_for_layout_snapshot(Duration::from_secs(5));
-    assert_eq!(rejected.state, crate::session::RuntimeLayoutState::Failed);
-    assert!(rejected.completed.is_none(), "rejected revision is atomic");
-
-    media.color_scheme = CssColorScheme::Light;
-    session
-        .set_root_html_environment(1280.0, 633.0, 1.0, media)
-        .expect("light media query restores the supported profile");
-    let recovered = session.wait_for_layout_snapshot(Duration::from_secs(5));
-    assert_eq!(
-        recovered.state,
-        crate::session::RuntimeLayoutState::Ready,
-        "same-session recovery publishes a new revision: {:?}",
-        recovered.error
-    );
-    let recovered_completed = recovered.completed.expect("recovered layout is published");
-    assert_ne!(recovered_completed.key, initial_key);
-    assert_frame(
-        frame_for_paint(
-            recovered_completed.render_snapshot.as_ref().unwrap(),
-            color_for_item("A"),
-        ),
-        initial_frame,
-        "recovered row-span item",
-    );
 }

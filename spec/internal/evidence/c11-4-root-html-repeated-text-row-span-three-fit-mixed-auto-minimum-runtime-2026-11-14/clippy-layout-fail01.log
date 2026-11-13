@@ -1,0 +1,3 @@
+Command: cargo clippy --locked -p spinon-layout --all-targets -- -D warnings
+
+Clippy found one issue in the new `three_fit_mixed_row_span_tests.rs`: `tail_orders()[0]` is Copy, so its `.clone()` was unnecessary. The clone was removed; rerun the same command before accepting this result.

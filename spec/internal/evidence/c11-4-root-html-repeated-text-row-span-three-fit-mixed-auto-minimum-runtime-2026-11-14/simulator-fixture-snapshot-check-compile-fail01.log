@@ -1,0 +1,11 @@
+Command:
+cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test simulator_root_html_fixture_matches_mask16_chrome_geometry -- --nocapture
+
+Result: compile failed before the test ran. The regression assertion tried to move `render_snapshot` out of an `Arc<RuntimeLayoutCompleted>` at `mixed_representative.rs:111`. The assertion now clones the optional snapshot before inspecting it.
+
+Compiler diagnostic:
+error[E0507]: cannot move out of an `Arc`
+  --> crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span/three_fit_auto_minimum/mixed_representative.rs:111:31
+   |
+111 |         .and_then(|completed| completed.render_snapshot)
+   |                               ^^^^^^^^^^^^^^^^^^^^^^^^^ move occurs because value has type `Option<RuntimeRenderSnapshot>`, which does not implement the `Copy` trait

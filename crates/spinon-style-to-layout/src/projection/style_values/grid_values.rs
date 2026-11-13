@@ -906,6 +906,60 @@ pub(super) fn root_html_fit_content_auto_rows_with_six_fit_row_span_tracks(
     )
 }
 
+pub(super) fn root_html_fit_content_auto_rows_with_three_fit_mixed_row_span_tracks(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if three_fit_mixed_row_span_track_list(tracks)
+    )
+}
+
+fn three_fit_mixed_row_span_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+    let mut caps_seen = [false; 3];
+    let mut tails_seen = [false; 3];
+    for track in tracks {
+        let cap_index = match track {
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 0.0 => 0,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 10.0 => 1,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::Percentage(value),
+            ) if *value == 0.2 => 2,
+            ComputedCssGridTrackSize::MinContent => {
+                if std::mem::replace(&mut tails_seen[0], true) {
+                    return false;
+                }
+                continue;
+            }
+            ComputedCssGridTrackSize::MaxContent => {
+                if std::mem::replace(&mut tails_seen[1], true) {
+                    return false;
+                }
+                continue;
+            }
+            ComputedCssGridTrackSize::Auto => {
+                if std::mem::replace(&mut tails_seen[2], true) {
+                    return false;
+                }
+                continue;
+            }
+            _ => return false,
+        };
+        if std::mem::replace(&mut caps_seen[cap_index], true) {
+            return false;
+        }
+    }
+    caps_seen.into_iter().all(|seen| seen) && tails_seen.into_iter().all(|seen| seen)
+}
+
 pub(super) fn root_html_fit_content_auto_rows_with_five_fit_row_span_tracks(
     grid: &ComputedCssGridLayout,
 ) -> bool {

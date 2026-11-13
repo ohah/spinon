@@ -67,7 +67,7 @@ fn simulate_blink_row_sizes_with_growth_limit_trace(
         .count();
     if container.rows.len() != 1
         || auto_rows.len() != 6
-        || !(4..=6).contains(&fit_count)
+        || !(3..=6).contains(&fit_count)
         || !grid_height.is_finite()
         || grid_height < 0.0
     {

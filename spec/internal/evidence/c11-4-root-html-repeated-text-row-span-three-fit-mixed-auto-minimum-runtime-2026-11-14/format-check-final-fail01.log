@@ -1,0 +1,3 @@
+Command: cargo fmt --all -- --check
+
+Result: failed only because rustfmt wanted the expected red-paint constructor in `mixed_representative.rs` on one line. The source was formatted to that output and the check was rerun.

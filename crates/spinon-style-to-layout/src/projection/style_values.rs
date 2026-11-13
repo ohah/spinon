@@ -48,6 +48,7 @@ use grid_values::{
     project_grid_layout_with_math,
     project_root_html_direct_text_aspect_ratio_grid_layout_with_math,
     project_root_html_one_axis_grid_layout_with_math, root_html_auto_row_stretch_candidate,
+    root_html_fit_content_auto_rows_with_three_fit_mixed_row_span_tracks,
     root_html_fit_content_implicit_rows_candidate, root_html_has_intrinsic_explicit_tracks,
     root_html_has_supported_intrinsic_implicit_rows, root_html_intrinsic_auto_rows_candidate,
 };
@@ -2424,6 +2425,14 @@ fn validate_root_html_grid_box_inputs(
                 )
             })
         });
+    let allow_three_fit_mixed_border = is_grid_container
+        && element
+            .grid_layout
+            .as_ref()
+            .is_some_and(root_html_fit_content_auto_rows_with_three_fit_mixed_row_span_tracks)
+        && element.layout_dimensions.width == ComputedCssDimension::LengthPx(42.0)
+        && element.layout_dimensions.height == ComputedCssDimension::LengthPx(222.0)
+        && root_html_fit_content_auto_rows::one_pixel_red_border(element);
     let allow_fraction_minmax_border = is_grid_container
         && element
             .grid_layout
@@ -2441,6 +2450,7 @@ fn validate_root_html_grid_box_inputs(
             || value < 0.0
             || (value != 0.0
                 && !allow_percentage_fit_content_border
+                && !allow_three_fit_mixed_border
                 && !fixed_fraction_minmax_border)
         {
             return Err(StyleLayoutError::UnsupportedComputedValue {

@@ -82,6 +82,13 @@ pub(super) fn normalize_layout_frames(
         .get(&grid_id)
         .copied()
         .ok_or(LayoutError::MissingComputedLayout(grid_id))?;
+    let grid_border = input.nodes()[index[&grid_id]].style.border;
+    let content_frame = crate::LayoutFrame {
+        x: grid_frame.x + grid_border.left,
+        y: grid_frame.y + grid_border.top,
+        width: grid_frame.width - grid_border.left - grid_border.right,
+        height: grid_frame.height - grid_border.top - grid_border.bottom,
+    };
     let expected_track_count = positive_implicit_rows + 1;
     let Some(row_sizes) = final_row_track_sizes(output, grid_id, positive_implicit_rows) else {
         return Err(unsupported_trace());
@@ -90,7 +97,12 @@ pub(super) fn normalize_layout_frames(
         return Err(unsupported_trace());
     }
     let Some(snapped_row_size_units) = blink_layout_unit_distribute_rows(
-        input, container, output, grid_id, grid_frame, &row_sizes,
+        input,
+        container,
+        output,
+        grid_id,
+        content_frame,
+        &row_sizes,
     ) else {
         return Err(unsupported_trace());
     };
@@ -137,14 +149,14 @@ pub(super) fn normalize_layout_frames(
             .get(&item_id)
             .copied()
             .ok_or(LayoutError::MissingComputedLayout(item_id))?;
-        let expected_raw_top = grid_frame.y + raw_row_offsets[row_start];
+        let expected_raw_top = content_frame.y + raw_row_offsets[row_start];
         let expected_raw_height = raw_row_offsets[row_end] - raw_row_offsets[row_start];
         if (frame.y - expected_raw_top).abs() > 0.01
             || (frame.height - expected_raw_height).abs() > 0.01
         {
             return Err(unsupported_trace());
         }
-        let snapped_top = grid_frame.y + blink_layout_unit_to_px(snapped_row_offsets[row_start]);
+        let snapped_top = content_frame.y + blink_layout_unit_to_px(snapped_row_offsets[row_start]);
         let snapped_height =
             blink_layout_unit_to_px(snapped_row_offsets[row_end] - snapped_row_offsets[row_start]);
         let delta_y = snapped_top - frame.y;

@@ -5,7 +5,7 @@ const TOPOLOGY_HEIGHT_BASE: usize = 320;
 const MIXED_MINIMUM_HEIGHT_BASE: usize = 400;
 const MIXED_LAYOUT_WIDTH_BASE: usize = 1280;
 
-fn topology_index(topology: &str) -> usize {
+pub(super) fn topology_index(topology: &str) -> usize {
     match topology {
         "span2Six-forward" => 0,
         "span2Six-reverse" => 1,
@@ -15,7 +15,7 @@ fn topology_index(topology: &str) -> usize {
     }
 }
 
-fn variant_items(variant: usize) -> &'static [(&'static str, u64, u64)] {
+pub(super) fn variant_items(variant: usize) -> &'static [(&'static str, u64, u64)] {
     match variant {
         0 => &[
             ("A", 2, 2),
@@ -37,7 +37,7 @@ fn variant_items(variant: usize) -> &'static [(&'static str, u64, u64)] {
     }
 }
 
-fn payload_text(id: &str) -> &'static str {
+pub(super) fn payload_text(id: &str) -> &'static str {
     match id {
         "A" => "AAAA BBBB CCCC DDDD EEEE FFFF",
         "B" => "AAAAAA BBBBB CCCC DDD",
@@ -48,7 +48,7 @@ fn payload_text(id: &str) -> &'static str {
     }
 }
 
-fn variant_color(variant: usize, id: &str, payload: bool) -> OpaqueCssSrgb {
+pub(super) fn variant_color(variant: usize, id: &str, payload: bool) -> OpaqueCssSrgb {
     let base = if payload {
         color_for_payload(id)
     } else {
@@ -61,7 +61,7 @@ fn variant_color(variant: usize, id: &str, payload: bool) -> OpaqueCssSrgb {
     )
 }
 
-fn css_color(color: OpaqueCssSrgb) -> String {
+pub(super) fn css_color(color: OpaqueCssSrgb) -> String {
     format!("rgb({},{},{})", color.red(), color.green(), color.blue())
 }
 
@@ -421,6 +421,7 @@ pub fn observe_current(
         let has_content_based_auto_minimum = if let Some(auto_items) = scene["autoItems"].as_array()
         {
             auto_items.iter().any(|item| item.as_str() == Some(id))
+                && eligible_for_auto_minimum(record, id)
         } else {
             scene["minimum"] == "auto" && eligible_for_auto_minimum(record, id)
         };
@@ -467,7 +468,8 @@ pub fn observe_current(
             let contribution = minimum_contributions[0];
             assert_eq!(contribution.span, span, "{label}: item {id} span trace");
             let uses_auto_minimum = auto_items.iter().any(|item| item.as_str() == Some(id));
-            let source_matches = if uses_auto_minimum {
+            let eligible = eligible_for_auto_minimum(record, id);
+            let source_matches = if uses_auto_minimum && eligible {
                 matches!(
                     contribution.minimum_source,
                     Some(
@@ -480,6 +482,19 @@ pub fn observe_current(
                         }
                     )
                 )
+            } else if uses_auto_minimum {
+                matches!(
+                    contribution.minimum_source,
+                    Some(
+                        spinon_layout::LayoutGridTrackSizingMinimumContributionSource::AutomaticMinimum {
+                            spans_auto_min_track: false,
+                            spans_multiple_tracks: true,
+                            spans_flexible_max_track: false,
+                            content_based: false,
+                            ..
+                        }
+                    )
+                ) && contribution.value.abs() <= 0.01
             } else {
                 matches!(
                     contribution.minimum_source,
@@ -490,8 +505,23 @@ pub fn observe_current(
             };
             assert!(
                 source_matches,
-                "{label}: item {id} trace source matches its computed min-height mask"
+                "{label}: item {id} trace source {:?} matches its computed min-height mask",
+                contribution.minimum_source
             );
+            if uses_auto_minimum && eligible {
+                let payload_height = frame(
+                    &record["items"]
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .find(|item| item["id"] == id)
+                        .expect("automatic-minimum item has an oracle record")["payloadFrame"],
+                )[3];
+                assert!(
+                    contribution.value + 0.01 >= payload_height,
+                    "{label}: eligible item {id} minimum contribution preserves its payload floor"
+                );
+            }
         }
     }
     SceneResult {

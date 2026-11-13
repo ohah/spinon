@@ -1,0 +1,11 @@
+Command:
+cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test simulator_root_html_fixture_matches_mask16_chrome_geometry -- --nocapture
+
+The diagnostic confirms Style and Layout retained the border, while the RenderSnapshot omitted it:
+
+- computed layout border: 1px on all four sides
+- computed border paint: opaque RGB (229, 72, 77) on all four sides
+- computed properties: border style `solid`, border width `1px`, color `rgb(229, 72, 77)`
+- RuntimeRenderBox top border width: 0px
+
+Cause: the Root HTML render admission checks percentage `fit-content()` only in explicit grid columns and rows. This scene authors it in `grid-auto-rows`, so the border was dropped during render-box assembly.

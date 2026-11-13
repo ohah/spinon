@@ -1,0 +1,22 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.43s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+
+running 4 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_representative::parsed_root_html_three_fit_mixed_minimum_preserves_mask16_border_overflow_scene ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_rejections::parsed_root_html_three_fit_mixed_minimum_rejects_out_of_profile_track_list ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_rejections::parsed_root_html_three_fit_mixed_minimum_rejects_control_and_invalid_item_then_recovers ... ok
+
+thread 'session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_matrix::parsed_root_html_three_fit_mixed_minimum_matches_6912_chrome_scenes' (250957851) panicked at crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span.rs:61:9:
+three-fit mixed sample 76: {"alignContent":"start","autoItems":["C","D"],"fitCaps":["0px","20%","10px"],"fitPositions":[2,3,4],"items":[["A",2,2],["B",3,2],["C",4,3],["D",5,3]],"maskItemIds":["A","B","C","D"],"minimumMask":12,"tail":["auto","min-content","max-content"],"topology":"span2Span3Six-forward","trackList":"auto fit-content(0px) fit-content(20%) fit-content(10px) min-content max-content","trackMembers":["auto","fit-content(0px)","fit-content(20%)","fit-content(10px)","min-content","max-content"]}: item C component 3: actual=66.65625, expected=66.671875 ± 0.01 CSS px
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_matrix::parsed_root_html_three_fit_mixed_minimum_matches_6912_chrome_scenes ... FAILED
+
+failures:
+
+failures:
+    session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_matrix::parsed_root_html_three_fit_mixed_minimum_matches_6912_chrome_scenes
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 702 filtered out; finished in 7.84s
+
+error: test failed, to rerun pass `-p spinon-runtime --lib`

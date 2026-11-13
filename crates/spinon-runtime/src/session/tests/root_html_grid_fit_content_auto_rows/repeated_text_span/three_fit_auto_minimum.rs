@@ -3,6 +3,14 @@ use std::collections::BTreeMap;
 
 #[path = "three_fit_auto_minimum/dynamic.rs"]
 mod dynamic;
+#[path = "three_fit_auto_minimum/mixed_dynamic.rs"]
+mod mixed_dynamic;
+#[path = "three_fit_auto_minimum/mixed_matrix.rs"]
+mod mixed_matrix;
+#[path = "three_fit_auto_minimum/mixed_rejections.rs"]
+mod mixed_rejections;
+#[path = "three_fit_auto_minimum/mixed_representative.rs"]
+mod mixed_representative;
 pub(super) use dynamic::{
     configure_scene, configure_six_fit_mixed_minimum_scene, observe_current,
     source_for_six_fit_mixed_minimum_track_list, source_for_track_list,

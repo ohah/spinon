@@ -1,6 +1,6 @@
 # C11.4 · three-fit repeated-text row-span item별 mixed `min-height:0|auto`
 
-**상태:** 다음 제한 Grid slice로 선정 · Chrome 157 사전 oracle 138,240/138,240 scenes와 독립 검증 완료 · 계획 실패 관점 20개 검토 완료 · 구현 시작 전 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 구현 진행 중 · Chrome 157 사전 oracle 138,240/138,240 scenes와 독립 검증 완료 · 계획 검토 20개 및 계획 PR diff 검토 30개 완료 · RuntimeSession mixed 표본 6,912/6,912와 uniform endpoint 11,520/11,520 통과 · three-/one-/two-/four-/five-/six-fit 인접 회귀 통과(세부 분모는 [실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-mixed-auto-minimum-runtime-2026-11-14/README.md)) · Android/iOS Simulator 화면 smoke 통과 · 구현/runtime 검토 20개 및 candidate PR diff 검토 30개 완료 · CI/PR/merge 상태 확인 남음 · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **선행 uniform 구현:** [three-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.md) · 구현 PR [#1338](https://github.com/ohah/spinon/pull/1338)
 

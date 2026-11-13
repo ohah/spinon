@@ -1,0 +1,10 @@
+Command:
+cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test simulator_root_html_fixture_matches_mask16_chrome_geometry -- --nocapture
+
+The geometry assertions passed, but the new render-snapshot assertion failed before color validation:
+
+assertion `left == right` failed: the Grid border is one CSS px
+  left: 0.0
+ right: 1.0
+
+The failure is retained while the next run reports the computed style border fields and source properties to distinguish style collection from render-snapshot assembly.
