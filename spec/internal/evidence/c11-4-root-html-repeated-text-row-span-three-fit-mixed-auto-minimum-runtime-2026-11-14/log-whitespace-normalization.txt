@@ -1,0 +1,1 @@
+After capture, 20 text logs had trailing spaces and repeated blank lines at EOF removed so the PR diff passes git diff --check. Non-whitespace log lines and captured results were preserved.

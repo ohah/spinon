@@ -8,6 +8,8 @@ use spinon_style::{
     ComputedBackgroundPaint, ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize,
     ComputedCssOverflow, ComputedElementStyle, ComputedStyleProfile,
 };
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_style::{ComputedBorderPaint, ComputedCssDimension, ComputedCssGridAutoRows};
 
 use crate::adapter::{
     indexed_styles, validate_revisions, validate_runtime_layout_nodes, validate_style_node_set,
@@ -115,7 +117,9 @@ pub fn build_runtime_render_snapshot(
             && has_percentage_fit_content_track(style);
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         let include_runtime_border = include_runtime_border
-            || styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1;
+            || styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+            || (styles.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && is_three_fit_mixed_auto_rows_border_fixture(style));
         if include_runtime_border {
             render_box = render_box.with_border(runtime_border(style)?);
         }
@@ -184,6 +188,66 @@ fn has_percentage_fit_content_track(style: &ComputedElementStyle) -> bool {
             )
         })
     })
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn is_three_fit_mixed_auto_rows_border_fixture(style: &ComputedElementStyle) -> bool {
+    let Some(grid) = style.grid_layout.as_ref() else {
+        return false;
+    };
+    let ComputedCssGridAutoRows::TrackList(tracks) = &grid.auto_rows else {
+        return false;
+    };
+    let exact_tracks = matches!(
+        tracks.as_slice(),
+        [
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::Percentage(percent)
+            ),
+            ComputedCssGridTrackSize::MinContent,
+            ComputedCssGridTrackSize::Auto,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(zero)
+            ),
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(ten)
+            ),
+            ComputedCssGridTrackSize::MaxContent,
+        ] if (*percent - 0.2).abs() <= f32::EPSILON && *zero == 0.0 && *ten == 10.0
+    );
+    let exact_explicit_tracks = matches!(
+        grid.columns.as_slice(),
+        [ComputedCssGridTrackSize::LengthPx(width)] if *width == 40.0
+    ) && matches!(
+        grid.rows.as_slice(),
+        [ComputedCssGridTrackSize::LengthPx(height)] if *height == 10.0
+    );
+    let red = ComputedBackgroundPaint::Opaque(spinon_style::OpaqueCssSrgb {
+        red: 229,
+        green: 72,
+        blue: 77,
+    });
+
+    exact_tracks
+        && exact_explicit_tracks
+        && style.layout_dimensions.width == ComputedCssDimension::LengthPx(42.0)
+        && style.layout_dimensions.height == ComputedCssDimension::LengthPx(222.0)
+        && style.properties.get("display").map(String::as_str) == Some("grid")
+        && style.properties.get("overflow-x").map(String::as_str) == Some("visible")
+        && style.properties.get("overflow-y").map(String::as_str) == Some("visible")
+        && style.properties.get("align-content").map(String::as_str) == Some("stretch")
+        && style.properties.get("grid-auto-flow").map(String::as_str) == Some("row")
+        && style.layout_border.top == 1.0
+        && style.layout_border.right == 1.0
+        && style.layout_border.bottom == 1.0
+        && style.layout_border.left == 1.0
+        && style.layout_border_paint
+            == Some(ComputedBorderPaint {
+                top: red,
+                right: red,
+                bottom: red,
+                left: red,
+            })
 }
 
 fn computed_paint_to_runtime(

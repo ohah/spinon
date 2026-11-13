@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      #grid {
+        display: grid;
+        width: 42px;
+        height: 222px;
+        border-width: 1px;
+        border-style: solid;
+        color: #e5484d;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-rows: fit-content(20%) min-content auto fit-content(0px) fit-content(10px) max-content;
+        grid-auto-flow: row;
+        align-content: stretch;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        direction: ltr;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+      #grid .item {
+        display: block;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        grid-column: 1 / 2;
+      }
+      #grid .empty {
+        min-height: 0;
+        height: 10px;
+        background-color: rgb(11, 17, 23);
+        grid-row: 1 / 2;
+      }
+      #grid .item[data-item="A"] { background-color: rgb(31, 41, 51); }
+      #grid .item[data-item="B"] { background-color: rgb(61, 71, 81); }
+      #grid .item[data-item="C"] { background-color: rgb(91, 101, 111); }
+      #grid .item[data-item="D"] { background-color: rgb(211, 81, 111); }
+      #grid .item[data-item="E"] { background-color: rgb(241, 121, 151); }
+      #grid .payload {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        font-family: monospace;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        word-break: normal;
+        direction: ltr;
+      }
+      #grid .payload[data-payload="A"] { background-color: rgb(121, 131, 141); }
+      #grid .payload[data-payload="B"] { background-color: rgb(151, 161, 171); }
+      #grid .payload[data-payload="C"] { background-color: rgb(181, 191, 201); }
+      #grid .payload[data-payload="D"] { background-color: rgb(21, 181, 211); }
+      #grid .payload[data-payload="E"] { background-color: rgb(91, 221, 111); }
+      #grid .item[data-item="A"] { grid-row: 2 / span 2; }
+      #grid .item[data-item="B"] { grid-row: 3 / span 2; }
+      #grid .item[data-item="C"] { grid-row: 4 / span 2; }
+      #grid .item[data-item="D"] { grid-row: 5 / span 2; }
+      #grid .item[data-item="E"] { grid-row: 6 / span 2; min-height: auto; }
+    </style>
+  </head>
+  <body>
+    <div id="grid">
+      <div class="item empty" data-item="empty"></div>
+      <div class="item" data-item="A"><div class="payload" data-payload="A">AAAA BBBB CCCC DDDD EEEE FFFF</div></div>
+      <div class="item" data-item="B"><div class="payload" data-payload="B">AAAAAA BBBBB CCCC DDD</div></div>
+      <div class="item" data-item="C"><div class="payload" data-payload="C">AAAAA BBBB CCC DDDD</div></div>
+      <div class="item" data-item="D"><div class="payload" data-payload="D">AAAA BBB CCCCC DDDD</div></div>
+      <div class="item" data-item="E"><div class="payload" data-payload="E">AAA BBBB CCCCCC</div></div>
+    </div>
+  </body>
+</html>

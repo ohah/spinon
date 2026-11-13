@@ -108,8 +108,31 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .flatten();
     let repeated_text_span_profile = repeated_text_span_rows
         .is_some_and(|rows| supports_repeated_span_fit_positions(tracks, rows));
+    let three_fit_mixed_minimum_track_list =
+        profiles::supports_three_fit_mixed_minimum_row_span_track_list(tracks);
+    let three_fit_mixed_border_box = three_fit_mixed_minimum_track_list
+        && style.width == LayoutDimension::Fixed(42.0)
+        && style.height == LayoutDimension::Fixed(222.0)
+        && style.border
+            == crate::LayoutBorder {
+                top: 1.0,
+                right: 1.0,
+                bottom: 1.0,
+                left: 1.0,
+            };
     let repeated_text_span_six_fit_minimum_mask_profile = repeated_text_span_profile
         && profiles::supports_six_fit_row_span_track_list(tracks)
+        && visible_children.first().is_some_and(|item_id| {
+            input.nodes[index[item_id]].style.min_height == LayoutDimension::Fixed(0.0)
+        })
+        && visible_children.iter().copied().skip(1).all(|item_id| {
+            matches!(
+                input.nodes[index[&item_id]].style.min_height,
+                LayoutDimension::Auto | LayoutDimension::Fixed(0.0)
+            )
+        });
+    let repeated_text_span_three_fit_minimum_mask_profile = repeated_text_span_profile
+        && three_fit_mixed_minimum_track_list
         && visible_children.first().is_some_and(|item_id| {
             input.nodes[index[item_id]].style.min_height == LayoutDimension::Fixed(0.0)
         })
@@ -153,6 +176,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && visible_children.iter().copied().skip(1).all(|item_id| {
                 input.nodes[index[&item_id]].style.min_height == LayoutDimension::Auto
             }))
+            || repeated_text_span_three_fit_minimum_mask_profile
             || repeated_text_span_six_fit_minimum_mask_profile
             || repeated_text_span_five_fit_minimum_mask_profile
             || repeated_text_span_four_fit_minimum_mask_profile;
@@ -190,10 +214,11 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     }
 
     let grid_style_is_supported = style.display == LayoutDisplay::Grid
-        && style.width == LayoutDimension::Fixed(40.0)
+        && (style.width == LayoutDimension::Fixed(40.0) || three_fit_mixed_border_box)
         && (style.height == LayoutDimension::Fixed(100.0)
             || ((repeated_text_profile || repeated_text_span_profile)
-                && style.height == LayoutDimension::Fixed(220.0)))
+                && style.height == LayoutDimension::Fixed(220.0))
+            || three_fit_mixed_border_box)
         && style.box_sizing == LayoutBoxSizing::BorderBox
         && style.min_width == LayoutDimension::Auto
         && style.max_width == LayoutDimension::Auto
@@ -205,7 +230,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         && style.overflow_y == crate::LayoutOverflow::Visible
         && style.margin == crate::LayoutEdges::default()
         && style.padding == crate::LayoutEdges::default()
-        && style.border == crate::LayoutBorder::default()
+        && (style.border == crate::LayoutBorder::default() || three_fit_mixed_border_box)
         && style.gap.row == LayoutLengthPercentage::ZERO
         && style.gap.column == LayoutLengthPercentage::ZERO
         && style.align_items == crate::LayoutAlignItems::Normal

@@ -1,0 +1,4 @@
+Command:
+cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test simulator_root_html_fixture_matches_mask16_chrome_geometry -- --nocapture
+
+Result: 1 focused test passed; 0 failed; 706 filtered out. The parsed Root HTML fixture's RenderSnapshot carries 1px opaque RGB (229, 72, 77) borders on all four Grid sides, and its geometry assertions match the Chrome mask-16 sample.

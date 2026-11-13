@@ -98,6 +98,10 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         raw_row_sizes.len() == 7 && fit_content_count == 5 && stages.has_spanning_item;
     let five_fit_span_auto_minimum = five_fit_row_span && stages.has_span_auto_minimum;
     let five_fit_mixed_minimum = five_fit_row_span && has_mixed_span_minimum_modes(input, grid_id);
+    let three_fit_mixed_minimum = raw_row_sizes.len() == 7
+        && fit_content_count == 3
+        && stages.has_spanning_item
+        && has_mixed_span_minimum_modes(input, grid_id);
     let five_fit_has_fractional_auto_track = if five_fit_row_span {
         match &container.auto_rows {
             crate::GridAutoRows::TrackList(tracks) if !tracks.is_empty() => {
@@ -149,7 +153,10 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     };
     let six_fit_row_span =
         raw_row_sizes.len() == 7 && fit_content_count == 6 && stages.has_spanning_item;
-    let fit_content_span_rows = (four_fit_mixed_minimum || five_fit_row_span || six_fit_row_span)
+    let fit_content_span_rows = (three_fit_mixed_minimum
+        || four_fit_mixed_minimum
+        || five_fit_row_span
+        || six_fit_row_span)
         .then(|| {
             fit_content_span_sizing::simulate_blink_row_sizes(
                 input,
@@ -197,13 +204,16 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
                 &stages.final_tracks,
                 container,
                 grid_frame.height,
-                (four_fit_mixed_minimum || five_fit_mixed_minimum) && stages.stretch_applied,
+                (three_fit_mixed_minimum || four_fit_mixed_minimum || five_fit_mixed_minimum)
+                    && stages.stretch_applied,
             ) {
                 return None;
             }
             return Some(snapped_rows);
         }
-        Some(None) if four_fit_mixed_minimum || six_fit_row_span => return None,
+        Some(None) if three_fit_mixed_minimum || four_fit_mixed_minimum || six_fit_row_span => {
+            return None;
+        }
         Some(None) | None => {}
     }
     let pre_alignment_units = blink_layout_unit_distribute_rows_from_stages(
@@ -225,7 +235,8 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         &stages.final_tracks,
         container,
         grid_frame.height,
-        (four_fit_mixed_minimum || five_fit_mixed_minimum) && stages.stretch_applied,
+        (three_fit_mixed_minimum || four_fit_mixed_minimum || five_fit_mixed_minimum)
+            && stages.stretch_applied,
     ) {
         return None;
     }

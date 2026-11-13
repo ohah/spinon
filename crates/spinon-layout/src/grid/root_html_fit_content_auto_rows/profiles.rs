@@ -249,6 +249,58 @@ pub(super) fn supports_six_fit_row_span_track_list(tracks: &[GridTrackSize]) -> 
     six_fit_span::supports_six_fit_row_span_track_list(tracks)
 }
 
+pub(super) fn supports_three_fit_mixed_minimum_row_span_track_list(
+    tracks: &[GridTrackSize],
+) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+    let mut caps_seen = [false; 3];
+    let mut tails_seen = [false; 3];
+    for track in tracks {
+        let cap_index = match track {
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 0.0 =>
+            {
+                0
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 10.0 =>
+            {
+                1
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(value))
+                if *value == 0.2 =>
+            {
+                2
+            }
+            GridTrackSize::MinContent => {
+                if std::mem::replace(&mut tails_seen[0], true) {
+                    return false;
+                }
+                continue;
+            }
+            GridTrackSize::MaxContent => {
+                if std::mem::replace(&mut tails_seen[1], true) {
+                    return false;
+                }
+                continue;
+            }
+            GridTrackSize::Auto => {
+                if std::mem::replace(&mut tails_seen[2], true) {
+                    return false;
+                }
+                continue;
+            }
+            _ => return false,
+        };
+        if std::mem::replace(&mut caps_seen[cap_index], true) {
+            return false;
+        }
+    }
+    caps_seen.into_iter().all(|seen| seen) && tails_seen.into_iter().all(|seen| seen)
+}
+
 pub(super) fn supports_five_fit_row_span_track_list(tracks: &[GridTrackSize]) -> bool {
     five_fit_span::supports_five_fit_row_span_track_list(tracks)
 }
@@ -461,6 +513,10 @@ mod six_fit_auto_placement_tests;
 #[cfg(test)]
 #[path = "profiles/six_fit_span_tests.rs"]
 mod six_fit_span_tests;
+
+#[cfg(test)]
+#[path = "profiles/three_fit_mixed_row_span_tests.rs"]
+mod three_fit_mixed_row_span_tests;
 
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
     supports_min_content_auto_track_list(tracks)

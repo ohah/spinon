@@ -1,0 +1,22 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.34s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+
+running 2 tests
+
+thread 'session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_representative::simulator_root_html_fixture_matches_mask16_chrome_geometry' (251091572) panicked at crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span/three_fit_auto_minimum/mixed_representative.rs:69:5:
+assertion `left == right` failed: simulator fixture initializes: Some(RuntimeLayoutFailure { code: "cascade_failed", node_id: None, property: None })
+  left: Failed
+ right: Ready
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_representative::simulator_root_html_fixture_matches_mask16_chrome_geometry ... FAILED
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_representative::parsed_root_html_three_fit_mixed_minimum_preserves_mask16_border_overflow_scene ... ok
+
+failures:
+
+failures:
+    session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::mixed_representative::simulator_root_html_fixture_matches_mask16_chrome_geometry
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 705 filtered out; finished in 1.18s
+
+error: test failed, to rerun pass `-p spinon-runtime --lib`

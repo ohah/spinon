@@ -1,0 +1,66 @@
+    Checking spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+error: this function has too many arguments (11/7)
+   --> crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_hyphens.rs:117:1
+    |
+117 | / const fn case(
+118 | |     scene_id: &'static str,
+119 | |     text: &'static str,
+120 | |     columns: &'static str,
+...   |
+128 | |     lines: &'static [f32],
+129 | | ) -> Case {
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+    = note: `-D clippy::too-many-arguments` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::too_many_arguments)]`
+
+error: this function has too many arguments (9/7)
+   --> crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_text_transform.rs:507:1
+    |
+507 | / const fn full_size_kana_case(
+508 | |     scene_id: &'static str,
+509 | |     text: &'static str,
+510 | |     expected_text: &'static str,
+...   |
+516 | |     max_content_height: f32,
+517 | | ) -> Case {
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+
+error: this expression creates a reference which is immediately dereferenced by the compiler
+   --> crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span/three_fit_auto_minimum/five_fit/matrix.rs:110:61
+    |
+110 |         let (session, initial) = run(&source_for_track_list(&track_list));
+    |                                                             ^^^^^^^^^^^ help: change this to: `track_list`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_borrow
+    = note: `-D clippy::needless-borrow` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::needless_borrow)]`
+
+error: this expression creates a reference which is immediately dereferenced by the compiler
+   --> crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span/three_fit_auto_minimum/five_fit/matrix.rs:121:39
+    |
+121 |             configure_scene(&session, &record);
+    |                                       ^^^^^^^ help: change this to: `record`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_borrow
+
+error: this expression creates a reference which is immediately dereferenced by the compiler
+   --> crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span/three_fit_auto_minimum/five_fit/matrix.rs:122:52
+    |
+122 |             let result = observe_current(&session, &record, &label);
+    |                                                    ^^^^^^^ help: change this to: `record`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_borrow
+
+error: this expression creates a reference which is immediately dereferenced by the compiler
+   --> crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span/three_fit_auto_minimum/five_fit/matrix.rs:126:64
+    |
+126 |                 if id == "empty" || !eligible_for_auto_minimum(&record, id) {
+    |                                                                ^^^^^^^ help: change this to: `record`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_borrow
+
+error: could not compile `spinon-runtime` (lib test) due to 6 previous errors

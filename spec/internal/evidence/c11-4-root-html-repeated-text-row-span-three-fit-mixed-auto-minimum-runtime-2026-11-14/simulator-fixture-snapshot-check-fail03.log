@@ -1,0 +1,4 @@
+Command:
+cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test simulator_root_html_fixture_matches_mask16_chrome_geometry -- --nocapture
+
+The stricter fixture guard initially failed because `ComputedElementStyle.properties` retains the expanded `overflow-x` and `overflow-y` values but not the `overflow` shorthand. The same test diagnostic confirmed the remaining exact guard inputs: `display:grid`, `align-content:stretch`, `grid-auto-flow:row`, explicit tracks `40px`/`10px`, and the intended six auto rows. The guard now checks both expanded overflow axes.
