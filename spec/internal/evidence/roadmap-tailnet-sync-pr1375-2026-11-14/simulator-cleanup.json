@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-14",
+  "iosRuntime": "iOS 26.2",
+  "bootedDeviceCount": 0,
+  "registeredDevices": [
+    { "name": "Hwpjs-RN-Owned-20261025", "udid": "FB7FE4BE-C84D-4C01-82CB-FC3C6A309E78", "state": "Shutdown" },
+    { "name": "iPhone 17 Pro", "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D", "state": "Shutdown" },
+    { "name": "iPhone 17 Pro Max", "udid": "2735DBB2-0B04-4FC4-9349-D3478860BAF1", "state": "Shutdown" },
+    { "name": "iPhone Air", "udid": "37CF9256-3A8D-4330-848A-EC63D093132C", "state": "Shutdown" },
+    { "name": "iPhone 17", "udid": "D6E8EEE5-62C2-4BED-960A-F49F06158B06", "state": "Shutdown" },
+    { "name": "iPhone 16e", "udid": "A11C482D-783E-436C-9FA1-C7993B5431C8", "state": "Shutdown" },
+    { "name": "iPad Pro 13-inch (M5)", "udid": "9F29B0ED-C7E6-46AE-A933-14E1A87FC4DF", "state": "Shutdown" },
+    { "name": "iPad Pro 11-inch (M5)", "udid": "0642DBC5-0430-42BF-86C7-907971BD2172", "state": "Shutdown" },
+    { "name": "iPad mini (A17 Pro)", "udid": "161CDA69-4C4F-4682-8B07-E25C4F65676C", "state": "Shutdown" },
+    { "name": "iPad (A16)", "udid": "0E6F555E-EDA4-460A-A200-207630C187C4", "state": "Shutdown" },
+    { "name": "iPad Air 13-inch (M3)", "udid": "5AA82B38-3960-4C9D-8F5A-53741C8D234B", "state": "Shutdown" },
+    { "name": "iPad Air 11-inch (M3)", "udid": "0D6B3DD4-93B0-4960-BD4D-CE47E0F2B545", "state": "Shutdown" }
+  ],
+  "s03Matches": [],
+  "simulatorAppRunning": false,
+  "coreSimulatorXpcServicesLeftRunning": true,
+  "cleanup": "No task-owned booted device or Simulator.app process remained. Shared registered devices were preserved."
+}

@@ -1,0 +1,1916 @@
+{
+  "sourceHead": "22161976cab0bfd68a1d545eeb616441a0ab7a0e",
+  "sourceTree": "3aafe576ae6dcc479b482bdd51ceba7bf2513be6",
+  "trackedDiffSha256": "ebfa4e3a8129e8e9dd6760b4100e648afc98dc061d7e2a3331d10ce99375fd46",
+  "selectedRouteCount": 130,
+  "localHttp200AndHashVerified": 130,
+  "httpsHttp200AndHashVerified": 130,
+  "backupsVerified": 15,
+  "correctionApplied": false,
+  "previewServerPid": 90711,
+  "previewServerRestarted": false,
+  "officialCount": "78/214",
+  "c11Complete": false,
+  "noDeletes": true,
+  "localResults": [
+    {
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 875765,
+      "sha256": "d8f4b426f7c739e9a97781293331e89a18a113cb0766ab6b8e5e18ae50fa448c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 614352,
+      "sha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "bytes": 5269,
+      "sha256": "cc676639456dda4348ee876b714b89a42d13fcd649f5dae8e3dbba7061748f9b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "bytes": 2802,
+      "sha256": "b765cdc287389d66bbf13513d3e665dea91d6b77a0314f0ddad1de99f62bd9ab",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.html",
+      "bytes": 32125,
+      "sha256": "090df7adab567d4f705bee1e3fbafb9f2d6e2768890fac83f4f7c4897c783db8",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "bytes": 2668,
+      "sha256": "9694cfcc20bf9f3779989ce238b5ea3c8c4fc0a70b052ea2252408ffb25f3012",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "bytes": 6386,
+      "sha256": "8e7f82b164a5763f724a4b881863d1bffd46f9c846ea604a8643c76df7743281",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "bytes": 28906,
+      "sha256": "9440c3c1b23c458b80abddb799bed623c7ae8782c03965f07200e834bfb86732",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "bytes": 165,
+      "sha256": "555d7dbcf9af968bf6b351381c1a2293035cdfb3bb2bbd23e0b75f6ab9746b33",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "bytes": 7816,
+      "sha256": "c90e50724cdb1162da6d19a0ac4330120b61e8fcf5c7df1f559a6a7ddbb2ca89",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "bytes": 6382,
+      "sha256": "9c27ef6ac7b69911bd2bf593e67cffaede45e2c0d4ba83c88c58e081c837da8d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "bytes": 28641,
+      "sha256": "c594ed7142b098a45bc708d1247015bce9e851ad98fbfb90484ec77c7addd357",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "bytes": 3770,
+      "sha256": "0ea235654cdd09b9f50ccef7531a2b07a7133fe418a475821f3939d45a4d6c39",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "bytes": 7883,
+      "sha256": "afad65d7a4c4a3d2ccd372c98e3312534d3f656ba9efe864aae559e384cacfff",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "bytes": 278095,
+      "sha256": "2adb578879743b6695499e0d7a452b82c42c2f14818760fbcda3195d6fec9ec9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.html",
+      "bytes": 36399,
+      "sha256": "d9f649e8d1906256e09aa55cdafea73c2f685de06af9b572674d0e9e69843418",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "bytes": 6473,
+      "sha256": "696e0afbd6335858a687fa1d478ed67c70eb1d017815be20456a275306937a1f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "bytes": 126074,
+      "sha256": "01631a6fd3aeb525d2a06c75b08bca5bbb0092267162a38b8363041fdabc81c7",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "bytes": 54988,
+      "sha256": "839b1e2cf38ff9fd788cd26070db964d419a0372b11ce36023ea0b8af5a22e1c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "bytes": 39340,
+      "sha256": "91ff3b0350273883dc10714d61063b010b521115279f8d42672efa356e7de927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "bytes": 88244,
+      "sha256": "64350660cc0ac710725fd0938bbc886db17cf7d7797d27e7404a67130ee8c937",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "bytes": 82355,
+      "sha256": "29a65e1e98331936c2cd37cb1303ddf1ff14112d4037cd25c88daf6a4688cebb",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "bytes": 44560,
+      "sha256": "43155738973323c129adfbb8f56e9fe6006aed9c7b63f4e200bbb734a7cfa65e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "bytes": 44708,
+      "sha256": "438ef879c9acbb41fd096979b8cd06fa4e793d4c166f2129598875ea9bc51899",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "bytes": 82392,
+      "sha256": "632b64233df4c9ec72f5103c708e2d29f5f20cc48f519e526a240debae9f13e0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "bytes": 37,
+      "sha256": "de4bff81535245d8f1ba1805a98de2a5e97836ff423bcecfc16d796fce75896a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "bytes": 194692,
+      "sha256": "3a13aade618bb7424563828814cc4bd62345521e78fed321c5e0f51151aa654c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "bytes": 30647,
+      "sha256": "5d467d2fbee49f6f3eed03de054cd20a17648cd94cebcc77edd8e8f1b379a8ce",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "bytes": 1115,
+      "sha256": "fcb9d6d540b9588bb15004dec6e53f3a0909c0c4c1338a0db91f76b4d92c72bc",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.html",
+      "bytes": 38858,
+      "sha256": "e3d5d21048a7b76ef347d57c10e99b7fde3b29db4eb4825caecfe2101c23782f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "bytes": 7827,
+      "sha256": "6d373182625b0f43f6cbb066c938f17afc405158388bdc1738ef9aa2413eadc3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "bytes": 37872,
+      "sha256": "1f9e5d655f6870c63dcc3052febb693e9cd2f68ae7b946f604f14cac36a5b3a5",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "bytes": 5874,
+      "sha256": "5d8d53b4091932998854a1a5f7bd7ad655f97f65224b208140c2ec3e00b96686",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "bytes": 2981,
+      "sha256": "8652e462dc743fa0e511acce5c625cc7025ef12119c92c649b0dfb856307ec38",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "bytes": 2731,
+      "sha256": "71f9ae52bd2c677273cb2e50a821e9c3a28fb4781fd129b2e5f7adf341f76f18",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.html",
+      "bytes": 37212,
+      "sha256": "bef8b193948a44fb7729fbdbaf2cb6b51bf6ec3a922e13043447d8acf3ee7c8f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.md",
+      "bytes": 3372,
+      "sha256": "994b7e67300927c3525dbec8405863ed262827684ca433c287276754bd6fda8a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.html",
+      "bytes": 30096,
+      "sha256": "a8cda18966f1cf6d4d9878e07388654a69221af04723369e11fc11790e3db671",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.md",
+      "bytes": 1425,
+      "sha256": "fa5b51914cc91c7134f3c23b7126e2f742e78b505a04747944f562bc7093a1d0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 412871,
+      "sha256": "35a21ee2f967405ba3555927c768f5e36975b23d6d7c3b575f810fe1aa594a31",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 249696,
+      "sha256": "91a68e037f45dfd41ab5c027d34f50eab600a9720d552c0066b4c00e1ebd3088",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "bytes": 46738,
+      "sha256": "1de174caf424bf9fc22ea08ecf26c38837e5b8046b38dfc82175fb58af06416a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "bytes": 12863,
+      "sha256": "f34a8d821841e6834331518eba760172a9ecb9888a67f56bda5f18db7bf0df4a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 875929,
+      "sha256": "bfcedb594b6aa9eef48cb218466309658e2b60b0c29cea765fddbdc5a41b8346",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 614352,
+      "sha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "bytes": 5269,
+      "sha256": "cc676639456dda4348ee876b714b89a42d13fcd649f5dae8e3dbba7061748f9b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "bytes": 2802,
+      "sha256": "b765cdc287389d66bbf13513d3e665dea91d6b77a0314f0ddad1de99f62bd9ab",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.html",
+      "bytes": 32135,
+      "sha256": "4a541e7fa5290b8ce82365eca83f5c238d315d9a5f7e115bb645d653f3d9c217",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "bytes": 2668,
+      "sha256": "9694cfcc20bf9f3779989ce238b5ea3c8c4fc0a70b052ea2252408ffb25f3012",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "bytes": 6386,
+      "sha256": "8e7f82b164a5763f724a4b881863d1bffd46f9c846ea604a8643c76df7743281",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "bytes": 28906,
+      "sha256": "9440c3c1b23c458b80abddb799bed623c7ae8782c03965f07200e834bfb86732",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "bytes": 165,
+      "sha256": "555d7dbcf9af968bf6b351381c1a2293035cdfb3bb2bbd23e0b75f6ab9746b33",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "bytes": 7816,
+      "sha256": "c90e50724cdb1162da6d19a0ac4330120b61e8fcf5c7df1f559a6a7ddbb2ca89",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "bytes": 6382,
+      "sha256": "9c27ef6ac7b69911bd2bf593e67cffaede45e2c0d4ba83c88c58e081c837da8d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "bytes": 28641,
+      "sha256": "c594ed7142b098a45bc708d1247015bce9e851ad98fbfb90484ec77c7addd357",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "bytes": 3770,
+      "sha256": "0ea235654cdd09b9f50ccef7531a2b07a7133fe418a475821f3939d45a4d6c39",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "bytes": 7883,
+      "sha256": "afad65d7a4c4a3d2ccd372c98e3312534d3f656ba9efe864aae559e384cacfff",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "bytes": 278095,
+      "sha256": "2adb578879743b6695499e0d7a452b82c42c2f14818760fbcda3195d6fec9ec9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.html",
+      "bytes": 36419,
+      "sha256": "79637897e58e9e1e61d40894bd37d503bf908f9c06c7ea8038b850a0f5fbd1c1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "bytes": 6473,
+      "sha256": "696e0afbd6335858a687fa1d478ed67c70eb1d017815be20456a275306937a1f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "bytes": 126074,
+      "sha256": "01631a6fd3aeb525d2a06c75b08bca5bbb0092267162a38b8363041fdabc81c7",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "bytes": 54988,
+      "sha256": "839b1e2cf38ff9fd788cd26070db964d419a0372b11ce36023ea0b8af5a22e1c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "bytes": 39340,
+      "sha256": "91ff3b0350273883dc10714d61063b010b521115279f8d42672efa356e7de927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "bytes": 88244,
+      "sha256": "64350660cc0ac710725fd0938bbc886db17cf7d7797d27e7404a67130ee8c937",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "bytes": 82355,
+      "sha256": "29a65e1e98331936c2cd37cb1303ddf1ff14112d4037cd25c88daf6a4688cebb",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "bytes": 44560,
+      "sha256": "43155738973323c129adfbb8f56e9fe6006aed9c7b63f4e200bbb734a7cfa65e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "bytes": 44708,
+      "sha256": "438ef879c9acbb41fd096979b8cd06fa4e793d4c166f2129598875ea9bc51899",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "bytes": 82392,
+      "sha256": "632b64233df4c9ec72f5103c708e2d29f5f20cc48f519e526a240debae9f13e0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "bytes": 37,
+      "sha256": "de4bff81535245d8f1ba1805a98de2a5e97836ff423bcecfc16d796fce75896a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "bytes": 194692,
+      "sha256": "3a13aade618bb7424563828814cc4bd62345521e78fed321c5e0f51151aa654c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "bytes": 30657,
+      "sha256": "9cb3d7454528ae627d3d30575702b0a586705225d8cdd764bb79a368fe96cc83",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "bytes": 1115,
+      "sha256": "fcb9d6d540b9588bb15004dec6e53f3a0909c0c4c1338a0db91f76b4d92c72bc",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.html",
+      "bytes": 38868,
+      "sha256": "0efd2f12b1b5b5e2f3132977d3587871292d8c076b683347a08a02b96b743f11",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "bytes": 7827,
+      "sha256": "6d373182625b0f43f6cbb066c938f17afc405158388bdc1738ef9aa2413eadc3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "bytes": 37817,
+      "sha256": "ac2dad3d0007abd28ac3d01b791f0b5ebe98237353a839738d3a818100a3492d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "bytes": 5874,
+      "sha256": "5d8d53b4091932998854a1a5f7bd7ad655f97f65224b208140c2ec3e00b96686",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "bytes": 2981,
+      "sha256": "8652e462dc743fa0e511acce5c625cc7025ef12119c92c649b0dfb856307ec38",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "bytes": 2731,
+      "sha256": "71f9ae52bd2c677273cb2e50a821e9c3a28fb4781fd129b2e5f7adf341f76f18",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 412924,
+      "sha256": "7f4c2bf58f6c7b219c6131d3cc9cde6f15d6233462f23ae288d431b22ae5f62a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 249696,
+      "sha256": "91a68e037f45dfd41ab5c027d34f50eab600a9720d552c0066b4c00e1ebd3088",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "bytes": 46721,
+      "sha256": "ab38298dc38f449002cb71c273c42966e357428847a9040390f7e0a61e46e445",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "bytes": 12863,
+      "sha256": "f34a8d821841e6834331518eba760172a9ecb9888a67f56bda5f18db7bf0df4a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "bytes": 954233,
+      "sha256": "13d777ca62d6f5adde5bc22b8bd595d82fc8b3b911868763fa9eb052a72a56fb",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "bytes": 779444,
+      "sha256": "8900cf6ddbca4cb304b87b33a1643a2fa7fa381ad6c8d19d75e9916e5808ec6f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.353859f1c5.js",
+      "bytes": 399173,
+      "sha256": "8954d01b0519066e2b4a7fe1dbcc2b5f8d09720cc8ee0dd41fc908807be6edf1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-0b0148dcc33f.cf684e338c.js",
+      "bytes": 12032,
+      "sha256": "eb355bef9fe16800a67ab0d1955d880e9744fd9e095e9e5a39c415b8dfef1b24",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-31c078db30a7.52c6ae24f6.js",
+      "bytes": 3619,
+      "sha256": "a1007f10427cedeac664bb878b2ba0453b049ff137c543a8f3cb5fb411a95b6a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-4017025ae96a.a19f864821.js",
+      "bytes": 20570,
+      "sha256": "a0acf59ffc52228d9b617fb08f96f65a243b7dbff07cc3ee508ce0fab5d9a3e8",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-527cd6760b1d.5c9af47b22.js",
+      "bytes": 14691,
+      "sha256": "55aaa26a577a7c01d5057e7aa9e2b5123c5733676c53f6a4338d572bcba85055",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.f05a16b782.js",
+      "bytes": 1025123,
+      "sha256": "e19668fc4a0eb710575ed97052898fc000f5d942b02a1a1b9391905536937fae",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-7298cf69fcb9.e8e8334ebb.js",
+      "bytes": 14699,
+      "sha256": "65ca420960c19f2d0aef3bd9e3e8c7cfdc70f8d9d751d97de0b9b167926f73e5",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.0b728f6023.js",
+      "bytes": 911825,
+      "sha256": "2b758f9304c55b0347168e2d8c29fdd9a6841ee486a1cb44eea6b6e0c9f0bdf0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-79928e1dacd1.3d0844dda9.js",
+      "bytes": 11764,
+      "sha256": "aba3ca6853d6401748bdb5118a467e6a4a3a732a3fa1a29c1a90d1b83c6d96d6",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.6520cc77b3.js",
+      "bytes": 1025423,
+      "sha256": "87b3b7bfffc0edec07a0d0a3ea67297ce3d53e97fad934747304d7a5aa257469",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-86e14dc9e361.f5851347ab.js",
+      "bytes": 11730,
+      "sha256": "d335b7fedd93af68e90bbee30c3b0d57d79a2a8b2e52448eed6f08b91949415c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-9a0cbf6d2172.030b4e7abe.js",
+      "bytes": 5819,
+      "sha256": "cc120958158fc241d0fb5ac6c45ba679cc3277d7ee43def809ce1f2e02addf57",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-9c2c77370949.bab38df948.js",
+      "bytes": 5812,
+      "sha256": "2453e2591a1e33806b49dd36f3a88bb89799e2aae6f01943798345e2a3745984",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.031d0f173c.js",
+      "bytes": 1008,
+      "sha256": "b5b3024390d3d4139d30957f3bbb8a7d8985b9292a50b8f466ffd60977fc9abc",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-ae62585142c9.1dd12739c6.js",
+      "bytes": 12016,
+      "sha256": "49fe7212ea8b5bb487fe0d44670883fed4a0010fa585d6f29cfdf8c37676782f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b7ce154f07b0.ca43f15664.js",
+      "bytes": 399191,
+      "sha256": "f7a361b7b7132e851408230d1eb8108eb59a4c07515de79a6f42e24da24a68f8",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-c0f9bdfc9245.4f8936f17f.js",
+      "bytes": 2882,
+      "sha256": "367119f1f4900d343dfe6e79e1b782a0a1bb6fc6aa0d987bf7708dd60a86a9c1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.57a8da152e.js",
+      "bytes": 911775,
+      "sha256": "1ed18cfe2eba88816566fe4253dfb354e95b844988ee20bdfbe9a62a9ca7bc6c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-dfe079832357.44dd7c13e6.js",
+      "bytes": 20575,
+      "sha256": "aebe7b2308dddd0dacb86aaea6b1d3cf0ec98576145c7dcfac29b0a1048acd4a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-eda7e75192dc.a9065c2e7d.js",
+      "bytes": 2892,
+      "sha256": "2bbf64e9531365d158bf631f8911550d11406c7db5ad251a0a8dd633e72b239e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-f244d4392510.52990d427b.js",
+      "bytes": 5655,
+      "sha256": "6c9554bb904cf613a86c85f5330c6b26508dc5c09335175a4f72773ce05c89dc",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/index.00108fe0c4.js",
+      "bytes": 197789,
+      "sha256": "5381bf1aa2f7e44e481ac4f3f3020762e7c30744a7682366fa608dcd7e40b6f1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/search_index.ko.d1b4227d.json",
+      "bytes": 2808599,
+      "sha256": "d1b4227d95d5687ce29ddc680b908a146e805eda53ce60e9f2521d8833fbf43a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "STATUS.html",
+      "bytes": 953417,
+      "sha256": "d07fff92249e37b096a493d1318a9ce562e98be669ad5a6283cfafdc437c2670",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "STATUS.md",
+      "bytes": 779444,
+      "sha256": "8900cf6ddbca4cb304b87b33a1643a2fa7fa381ad6c8d19d75e9916e5808ec6f",
+      "httpStatus": 200,
+      "verified": true
+    }
+  ],
+  "httpsResults": [
+    {
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 875765,
+      "sha256": "d8f4b426f7c739e9a97781293331e89a18a113cb0766ab6b8e5e18ae50fa448c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 614352,
+      "sha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "bytes": 5269,
+      "sha256": "cc676639456dda4348ee876b714b89a42d13fcd649f5dae8e3dbba7061748f9b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "bytes": 2802,
+      "sha256": "b765cdc287389d66bbf13513d3e665dea91d6b77a0314f0ddad1de99f62bd9ab",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.html",
+      "bytes": 32125,
+      "sha256": "090df7adab567d4f705bee1e3fbafb9f2d6e2768890fac83f4f7c4897c783db8",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "bytes": 2668,
+      "sha256": "9694cfcc20bf9f3779989ce238b5ea3c8c4fc0a70b052ea2252408ffb25f3012",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "bytes": 6386,
+      "sha256": "8e7f82b164a5763f724a4b881863d1bffd46f9c846ea604a8643c76df7743281",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "bytes": 28906,
+      "sha256": "9440c3c1b23c458b80abddb799bed623c7ae8782c03965f07200e834bfb86732",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "bytes": 165,
+      "sha256": "555d7dbcf9af968bf6b351381c1a2293035cdfb3bb2bbd23e0b75f6ab9746b33",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "bytes": 7816,
+      "sha256": "c90e50724cdb1162da6d19a0ac4330120b61e8fcf5c7df1f559a6a7ddbb2ca89",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "bytes": 6382,
+      "sha256": "9c27ef6ac7b69911bd2bf593e67cffaede45e2c0d4ba83c88c58e081c837da8d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "bytes": 28641,
+      "sha256": "c594ed7142b098a45bc708d1247015bce9e851ad98fbfb90484ec77c7addd357",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "bytes": 3770,
+      "sha256": "0ea235654cdd09b9f50ccef7531a2b07a7133fe418a475821f3939d45a4d6c39",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "bytes": 7883,
+      "sha256": "afad65d7a4c4a3d2ccd372c98e3312534d3f656ba9efe864aae559e384cacfff",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "bytes": 278095,
+      "sha256": "2adb578879743b6695499e0d7a452b82c42c2f14818760fbcda3195d6fec9ec9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.html",
+      "bytes": 36399,
+      "sha256": "d9f649e8d1906256e09aa55cdafea73c2f685de06af9b572674d0e9e69843418",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "bytes": 6473,
+      "sha256": "696e0afbd6335858a687fa1d478ed67c70eb1d017815be20456a275306937a1f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "bytes": 126074,
+      "sha256": "01631a6fd3aeb525d2a06c75b08bca5bbb0092267162a38b8363041fdabc81c7",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "bytes": 54988,
+      "sha256": "839b1e2cf38ff9fd788cd26070db964d419a0372b11ce36023ea0b8af5a22e1c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "bytes": 39340,
+      "sha256": "91ff3b0350273883dc10714d61063b010b521115279f8d42672efa356e7de927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "bytes": 88244,
+      "sha256": "64350660cc0ac710725fd0938bbc886db17cf7d7797d27e7404a67130ee8c937",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "bytes": 82355,
+      "sha256": "29a65e1e98331936c2cd37cb1303ddf1ff14112d4037cd25c88daf6a4688cebb",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "bytes": 44560,
+      "sha256": "43155738973323c129adfbb8f56e9fe6006aed9c7b63f4e200bbb734a7cfa65e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "bytes": 44708,
+      "sha256": "438ef879c9acbb41fd096979b8cd06fa4e793d4c166f2129598875ea9bc51899",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "bytes": 82392,
+      "sha256": "632b64233df4c9ec72f5103c708e2d29f5f20cc48f519e526a240debae9f13e0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "bytes": 37,
+      "sha256": "de4bff81535245d8f1ba1805a98de2a5e97836ff423bcecfc16d796fce75896a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "bytes": 194692,
+      "sha256": "3a13aade618bb7424563828814cc4bd62345521e78fed321c5e0f51151aa654c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "bytes": 30647,
+      "sha256": "5d467d2fbee49f6f3eed03de054cd20a17648cd94cebcc77edd8e8f1b379a8ce",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "bytes": 1115,
+      "sha256": "fcb9d6d540b9588bb15004dec6e53f3a0909c0c4c1338a0db91f76b4d92c72bc",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.html",
+      "bytes": 38858,
+      "sha256": "e3d5d21048a7b76ef347d57c10e99b7fde3b29db4eb4825caecfe2101c23782f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "bytes": 7827,
+      "sha256": "6d373182625b0f43f6cbb066c938f17afc405158388bdc1738ef9aa2413eadc3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "bytes": 37872,
+      "sha256": "1f9e5d655f6870c63dcc3052febb693e9cd2f68ae7b946f604f14cac36a5b3a5",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "bytes": 5874,
+      "sha256": "5d8d53b4091932998854a1a5f7bd7ad655f97f65224b208140c2ec3e00b96686",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "bytes": 2981,
+      "sha256": "8652e462dc743fa0e511acce5c625cc7025ef12119c92c649b0dfb856307ec38",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "bytes": 2731,
+      "sha256": "71f9ae52bd2c677273cb2e50a821e9c3a28fb4781fd129b2e5f7adf341f76f18",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.html",
+      "bytes": 37212,
+      "sha256": "bef8b193948a44fb7729fbdbaf2cb6b51bf6ec3a922e13043447d8acf3ee7c8f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.md",
+      "bytes": 3372,
+      "sha256": "994b7e67300927c3525dbec8405863ed262827684ca433c287276754bd6fda8a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.html",
+      "bytes": 30096,
+      "sha256": "a8cda18966f1cf6d4d9878e07388654a69221af04723369e11fc11790e3db671",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.md",
+      "bytes": 1425,
+      "sha256": "fa5b51914cc91c7134f3c23b7126e2f742e78b505a04747944f562bc7093a1d0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 412871,
+      "sha256": "35a21ee2f967405ba3555927c768f5e36975b23d6d7c3b575f810fe1aa594a31",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 249696,
+      "sha256": "91a68e037f45dfd41ab5c027d34f50eab600a9720d552c0066b4c00e1ebd3088",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "bytes": 46738,
+      "sha256": "1de174caf424bf9fc22ea08ecf26c38837e5b8046b38dfc82175fb58af06416a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "bytes": 12863,
+      "sha256": "f34a8d821841e6834331518eba760172a9ecb9888a67f56bda5f18db7bf0df4a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 875929,
+      "sha256": "bfcedb594b6aa9eef48cb218466309658e2b60b0c29cea765fddbdc5a41b8346",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 614352,
+      "sha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "bytes": 5269,
+      "sha256": "cc676639456dda4348ee876b714b89a42d13fcd649f5dae8e3dbba7061748f9b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "bytes": 2802,
+      "sha256": "b765cdc287389d66bbf13513d3e665dea91d6b77a0314f0ddad1de99f62bd9ab",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.html",
+      "bytes": 32135,
+      "sha256": "4a541e7fa5290b8ce82365eca83f5c238d315d9a5f7e115bb645d653f3d9c217",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "bytes": 2668,
+      "sha256": "9694cfcc20bf9f3779989ce238b5ea3c8c4fc0a70b052ea2252408ffb25f3012",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "bytes": 6386,
+      "sha256": "8e7f82b164a5763f724a4b881863d1bffd46f9c846ea604a8643c76df7743281",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "bytes": 28906,
+      "sha256": "9440c3c1b23c458b80abddb799bed623c7ae8782c03965f07200e834bfb86732",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "bytes": 165,
+      "sha256": "555d7dbcf9af968bf6b351381c1a2293035cdfb3bb2bbd23e0b75f6ab9746b33",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "bytes": 7816,
+      "sha256": "c90e50724cdb1162da6d19a0ac4330120b61e8fcf5c7df1f559a6a7ddbb2ca89",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "bytes": 6382,
+      "sha256": "9c27ef6ac7b69911bd2bf593e67cffaede45e2c0d4ba83c88c58e081c837da8d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "bytes": 28641,
+      "sha256": "c594ed7142b098a45bc708d1247015bce9e851ad98fbfb90484ec77c7addd357",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "bytes": 3770,
+      "sha256": "0ea235654cdd09b9f50ccef7531a2b07a7133fe418a475821f3939d45a4d6c39",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "bytes": 7883,
+      "sha256": "afad65d7a4c4a3d2ccd372c98e3312534d3f656ba9efe864aae559e384cacfff",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "bytes": 278095,
+      "sha256": "2adb578879743b6695499e0d7a452b82c42c2f14818760fbcda3195d6fec9ec9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.html",
+      "bytes": 36419,
+      "sha256": "79637897e58e9e1e61d40894bd37d503bf908f9c06c7ea8038b850a0f5fbd1c1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "bytes": 6473,
+      "sha256": "696e0afbd6335858a687fa1d478ed67c70eb1d017815be20456a275306937a1f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "bytes": 126074,
+      "sha256": "01631a6fd3aeb525d2a06c75b08bca5bbb0092267162a38b8363041fdabc81c7",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "bytes": 54988,
+      "sha256": "839b1e2cf38ff9fd788cd26070db964d419a0372b11ce36023ea0b8af5a22e1c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "bytes": 39340,
+      "sha256": "91ff3b0350273883dc10714d61063b010b521115279f8d42672efa356e7de927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "bytes": 88244,
+      "sha256": "64350660cc0ac710725fd0938bbc886db17cf7d7797d27e7404a67130ee8c937",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "bytes": 82355,
+      "sha256": "29a65e1e98331936c2cd37cb1303ddf1ff14112d4037cd25c88daf6a4688cebb",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "bytes": 44560,
+      "sha256": "43155738973323c129adfbb8f56e9fe6006aed9c7b63f4e200bbb734a7cfa65e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "bytes": 44708,
+      "sha256": "438ef879c9acbb41fd096979b8cd06fa4e793d4c166f2129598875ea9bc51899",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "bytes": 82392,
+      "sha256": "632b64233df4c9ec72f5103c708e2d29f5f20cc48f519e526a240debae9f13e0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "bytes": 37,
+      "sha256": "de4bff81535245d8f1ba1805a98de2a5e97836ff423bcecfc16d796fce75896a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "bytes": 194692,
+      "sha256": "3a13aade618bb7424563828814cc4bd62345521e78fed321c5e0f51151aa654c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.html",
+      "bytes": 30657,
+      "sha256": "9cb3d7454528ae627d3d30575702b0a586705225d8cdd764bb79a368fe96cc83",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "bytes": 1115,
+      "sha256": "fcb9d6d540b9588bb15004dec6e53f3a0909c0c4c1338a0db91f76b4d92c72bc",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.html",
+      "bytes": 38868,
+      "sha256": "0efd2f12b1b5b5e2f3132977d3587871292d8c076b683347a08a02b96b743f11",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "bytes": 7827,
+      "sha256": "6d373182625b0f43f6cbb066c938f17afc405158388bdc1738ef9aa2413eadc3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.html",
+      "bytes": 37817,
+      "sha256": "ac2dad3d0007abd28ac3d01b791f0b5ebe98237353a839738d3a818100a3492d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "bytes": 5874,
+      "sha256": "5d8d53b4091932998854a1a5f7bd7ad655f97f65224b208140c2ec3e00b96686",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "bytes": 2981,
+      "sha256": "8652e462dc743fa0e511acce5c625cc7025ef12119c92c649b0dfb856307ec38",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "bytes": 2731,
+      "sha256": "71f9ae52bd2c677273cb2e50a821e9c3a28fb4781fd129b2e5f7adf341f76f18",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 412924,
+      "sha256": "7f4c2bf58f6c7b219c6131d3cc9cde6f15d6233462f23ae288d431b22ae5f62a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 249696,
+      "sha256": "91a68e037f45dfd41ab5c027d34f50eab600a9720d552c0066b4c00e1ebd3088",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.html",
+      "bytes": 46721,
+      "sha256": "ab38298dc38f449002cb71c273c42966e357428847a9040390f7e0a61e46e445",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "bytes": 12863,
+      "sha256": "f34a8d821841e6834331518eba760172a9ecb9888a67f56bda5f18db7bf0df4a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "bytes": 954233,
+      "sha256": "13d777ca62d6f5adde5bc22b8bd595d82fc8b3b911868763fa9eb052a72a56fb",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "bytes": 779444,
+      "sha256": "8900cf6ddbca4cb304b87b33a1643a2fa7fa381ad6c8d19d75e9916e5808ec6f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.353859f1c5.js",
+      "bytes": 399173,
+      "sha256": "8954d01b0519066e2b4a7fe1dbcc2b5f8d09720cc8ee0dd41fc908807be6edf1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-0b0148dcc33f.cf684e338c.js",
+      "bytes": 12032,
+      "sha256": "eb355bef9fe16800a67ab0d1955d880e9744fd9e095e9e5a39c415b8dfef1b24",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-31c078db30a7.52c6ae24f6.js",
+      "bytes": 3619,
+      "sha256": "a1007f10427cedeac664bb878b2ba0453b049ff137c543a8f3cb5fb411a95b6a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-4017025ae96a.a19f864821.js",
+      "bytes": 20570,
+      "sha256": "a0acf59ffc52228d9b617fb08f96f65a243b7dbff07cc3ee508ce0fab5d9a3e8",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-527cd6760b1d.5c9af47b22.js",
+      "bytes": 14691,
+      "sha256": "55aaa26a577a7c01d5057e7aa9e2b5123c5733676c53f6a4338d572bcba85055",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.f05a16b782.js",
+      "bytes": 1025123,
+      "sha256": "e19668fc4a0eb710575ed97052898fc000f5d942b02a1a1b9391905536937fae",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-7298cf69fcb9.e8e8334ebb.js",
+      "bytes": 14699,
+      "sha256": "65ca420960c19f2d0aef3bd9e3e8c7cfdc70f8d9d751d97de0b9b167926f73e5",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.0b728f6023.js",
+      "bytes": 911825,
+      "sha256": "2b758f9304c55b0347168e2d8c29fdd9a6841ee486a1cb44eea6b6e0c9f0bdf0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-79928e1dacd1.3d0844dda9.js",
+      "bytes": 11764,
+      "sha256": "aba3ca6853d6401748bdb5118a467e6a4a3a732a3fa1a29c1a90d1b83c6d96d6",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.6520cc77b3.js",
+      "bytes": 1025423,
+      "sha256": "87b3b7bfffc0edec07a0d0a3ea67297ce3d53e97fad934747304d7a5aa257469",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-86e14dc9e361.f5851347ab.js",
+      "bytes": 11730,
+      "sha256": "d335b7fedd93af68e90bbee30c3b0d57d79a2a8b2e52448eed6f08b91949415c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-9a0cbf6d2172.030b4e7abe.js",
+      "bytes": 5819,
+      "sha256": "cc120958158fc241d0fb5ac6c45ba679cc3277d7ee43def809ce1f2e02addf57",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-9c2c77370949.bab38df948.js",
+      "bytes": 5812,
+      "sha256": "2453e2591a1e33806b49dd36f3a88bb89799e2aae6f01943798345e2a3745984",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.031d0f173c.js",
+      "bytes": 1008,
+      "sha256": "b5b3024390d3d4139d30957f3bbb8a7d8985b9292a50b8f466ffd60977fc9abc",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-ae62585142c9.1dd12739c6.js",
+      "bytes": 12016,
+      "sha256": "49fe7212ea8b5bb487fe0d44670883fed4a0010fa585d6f29cfdf8c37676782f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b7ce154f07b0.ca43f15664.js",
+      "bytes": 399191,
+      "sha256": "f7a361b7b7132e851408230d1eb8108eb59a4c07515de79a6f42e24da24a68f8",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-c0f9bdfc9245.4f8936f17f.js",
+      "bytes": 2882,
+      "sha256": "367119f1f4900d343dfe6e79e1b782a0a1bb6fc6aa0d987bf7708dd60a86a9c1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.57a8da152e.js",
+      "bytes": 911775,
+      "sha256": "1ed18cfe2eba88816566fe4253dfb354e95b844988ee20bdfbe9a62a9ca7bc6c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-dfe079832357.44dd7c13e6.js",
+      "bytes": 20575,
+      "sha256": "aebe7b2308dddd0dacb86aaea6b1d3cf0ec98576145c7dcfac29b0a1048acd4a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-eda7e75192dc.a9065c2e7d.js",
+      "bytes": 2892,
+      "sha256": "2bbf64e9531365d158bf631f8911550d11406c7db5ad251a0a8dd633e72b239e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-f244d4392510.52990d427b.js",
+      "bytes": 5655,
+      "sha256": "6c9554bb904cf613a86c85f5330c6b26508dc5c09335175a4f72773ce05c89dc",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/index.00108fe0c4.js",
+      "bytes": 197789,
+      "sha256": "5381bf1aa2f7e44e481ac4f3f3020762e7c30744a7682366fa608dcd7e40b6f1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/search_index.ko.d1b4227d.json",
+      "bytes": 2808599,
+      "sha256": "d1b4227d95d5687ce29ddc680b908a146e805eda53ce60e9f2521d8833fbf43a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "STATUS.html",
+      "bytes": 953417,
+      "sha256": "d07fff92249e37b096a493d1318a9ce562e98be669ad5a6283cfafdc437c2670",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "STATUS.md",
+      "bytes": 779444,
+      "sha256": "8900cf6ddbca4cb304b87b33a1643a2fa7fa381ad6c8d19d75e9916e5808ec6f",
+      "httpStatus": 200,
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "dc81bb1b50c9cb9a9cb6481ce1af019fdcacf1c105575290967640e976af9eb8",
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "sha256": "65dfe1295989c459f47a851213f7f1b09f0f78637b6bf4297786ce01dba37ad7",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "sha256": "0288de94bdc1e097108ac9082724e640e8cd79ed7297728d292ed3e99fdf5241",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "sha256": "d6068a9602af25291ec27ef3b7ab3ff36bef4ce87dbb4d6d2d0ab5ad9767e2b4",
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba",
+      "verified": true
+    },
+    {
+      "route": "roadmap.html",
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "sha256": "8de3c6acac9dc0326a2e363c5fe07c07f8391640fcc986139be7e337d5175b8e",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "sha256": "65dfe1295989c459f47a851213f7f1b09f0f78637b6bf4297786ce01dba37ad7",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-grid-track-sizing.html",
+      "sha256": "9055f62e977106da449aecedd8540208c4d9d165bccf521496f576266bda88b7",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-grid-track-sizing.md",
+      "sha256": "d7da3956c3c8d1040d222f1dcd9356b549ce8457bbabc20aba9004b523549269",
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba",
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "sha256": "085713e04cbfd1302c880166ebb3597ba0a20e2e1244afc8c6d9b0919bc8d175",
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "sha256": "eb624aa829b07c5fd64b37a8ada383da9f4ce10d7db82d7823ecd31bfdedb3da",
+      "verified": true
+    },
+    {
+      "route": "STATUS.html",
+      "sha256": "5550cc7c784d3a83063e058d7068277a8851415ba6a2451eae3e402704968f74",
+      "verified": true
+    },
+    {
+      "route": "STATUS.md",
+      "sha256": "eb624aa829b07c5fd64b37a8ada383da9f4ce10d7db82d7823ecd31bfdedb3da",
+      "verified": true
+    }
+  ]
+}

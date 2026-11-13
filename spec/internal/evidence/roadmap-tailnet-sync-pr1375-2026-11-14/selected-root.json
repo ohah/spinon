@@ -1,0 +1,488 @@
+{
+  "sourceHead": "22161976cab0bfd68a1d545eeb616441a0ab7a0e",
+  "sourceTree": "3aafe576ae6dcc479b482bdd51ceba7bf2513be6",
+  "trackedDiffSha256": "ebfa4e3a8129e8e9dd6760b4100e648afc98dc061d7e2a3331d10ce99375fd46",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr1375-2026-11-14/root",
+  "stagedFileCount": 79,
+  "stagedBytes": 7705672,
+  "sourceTreesFromGitIndexOnly": true,
+  "noSymlinks": true,
+  "officialCount": "78/214",
+  "c11Complete": false,
+  "files": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 681192,
+      "sha256": "9f1dc838222412235da28657f654aaedb0b13264e270c66b957e8361c02ec65f"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 779444,
+      "sha256": "8900cf6ddbca4cb304b87b33a1643a2fa7fa381ad6c8d19d75e9916e5808ec6f"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 779444,
+      "sha256": "8900cf6ddbca4cb304b87b33a1643a2fa7fa381ad6c8d19d75e9916e5808ec6f"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 614352,
+      "sha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 614352,
+      "sha256": "17af4e49c259dd78d19c5b9c233cd287a20b2bdc7443fc33a21001b916a8585c"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "bytes": 12863,
+      "sha256": "f34a8d821841e6834331518eba760172a9ecb9888a67f56bda5f18db7bf0df4a"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "route": "spec/plan/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum.md",
+      "bytes": 12863,
+      "sha256": "f34a8d821841e6834331518eba760172a9ecb9888a67f56bda5f18db7bf0df4a"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 249696,
+      "sha256": "91a68e037f45dfd41ab5c027d34f50eab600a9720d552c0066b4c00e1ebd3088"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "route": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 249696,
+      "sha256": "91a68e037f45dfd41ab5c027d34f50eab600a9720d552c0066b4c00e1ebd3088"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "bytes": 5874,
+      "sha256": "5d8d53b4091932998854a1a5f7bd7ad655f97f65224b208140c2ec3e00b96686"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/README.md",
+      "bytes": 5874,
+      "sha256": "5d8d53b4091932998854a1a5f7bd7ad655f97f65224b208140c2ec3e00b96686"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "bytes": 5269,
+      "sha256": "cc676639456dda4348ee876b714b89a42d13fcd649f5dae8e3dbba7061748f9b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/app-build.log",
+      "bytes": 5269,
+      "sha256": "cc676639456dda4348ee876b714b89a42d13fcd649f5dae8e3dbba7061748f9b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "bytes": 2802,
+      "sha256": "b765cdc287389d66bbf13513d3e665dea91d6b77a0314f0ddad1de99f62bd9ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/avd-create.log",
+      "bytes": 2802,
+      "sha256": "b765cdc287389d66bbf13513d3e665dea91d6b77a0314f0ddad1de99f62bd9ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "bytes": 2668,
+      "sha256": "9694cfcc20bf9f3779989ce238b5ea3c8c4fc0a70b052ea2252408ffb25f3012"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/crash-analysis.md",
+      "bytes": 2668,
+      "sha256": "9694cfcc20bf9f3779989ce238b5ea3c8c4fc0a70b052ea2252408ffb25f3012"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "bytes": 6386,
+      "sha256": "8e7f82b164a5763f724a4b881863d1bffd46f9c846ea604a8643c76df7743281"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.log",
+      "bytes": 6386,
+      "sha256": "8e7f82b164a5763f724a4b881863d1bffd46f9c846ea604a8643c76df7743281"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "bytes": 28906,
+      "sha256": "9440c3c1b23c458b80abddb799bed623c7ae8782c03965f07200e834bfb86732"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/dark.png",
+      "bytes": 28906,
+      "sha256": "9440c3c1b23c458b80abddb799bed623c7ae8782c03965f07200e834bfb86732"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "bytes": 165,
+      "sha256": "555d7dbcf9af968bf6b351381c1a2293035cdfb3bb2bbd23e0b75f6ab9746b33"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/device-info.txt",
+      "bytes": 165,
+      "sha256": "555d7dbcf9af968bf6b351381c1a2293035cdfb3bb2bbd23e0b75f6ab9746b33"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "bytes": 7816,
+      "sha256": "c90e50724cdb1162da6d19a0ac4330120b61e8fcf5c7df1f559a6a7ddbb2ca89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/emulator.log",
+      "bytes": 7816,
+      "sha256": "c90e50724cdb1162da6d19a0ac4330120b61e8fcf5c7df1f559a6a7ddbb2ca89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "bytes": 6382,
+      "sha256": "9c27ef6ac7b69911bd2bf593e67cffaede45e2c0d4ba83c88c58e081c837da8d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.log",
+      "bytes": 6382,
+      "sha256": "9c27ef6ac7b69911bd2bf593e67cffaede45e2c0d4ba83c88c58e081c837da8d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "bytes": 28641,
+      "sha256": "c594ed7142b098a45bc708d1247015bce9e851ad98fbfb90484ec77c7addd357"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/light.png",
+      "bytes": 28641,
+      "sha256": "c594ed7142b098a45bc708d1247015bce9e851ad98fbfb90484ec77c7addd357"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "bytes": 3770,
+      "sha256": "0ea235654cdd09b9f50ccef7531a2b07a7133fe418a475821f3939d45a4d6c39"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-emulator.log",
+      "bytes": 3770,
+      "sha256": "0ea235654cdd09b9f50ccef7531a2b07a7133fe418a475821f3939d45a4d6c39"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "bytes": 7883,
+      "sha256": "afad65d7a4c4a3d2ccd372c98e3312534d3f656ba9efe864aae559e384cacfff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/shared-avd-headless-smoke.log",
+      "bytes": 7883,
+      "sha256": "afad65d7a4c4a3d2ccd372c98e3312534d3f656ba9efe864aae559e384cacfff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "bytes": 278095,
+      "sha256": "2adb578879743b6695499e0d7a452b82c42c2f14818760fbcda3195d6fec9ec9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/android/v8-build.log",
+      "bytes": 278095,
+      "sha256": "2adb578879743b6695499e0d7a452b82c42c2f14818760fbcda3195d6fec9ec9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "bytes": 6473,
+      "sha256": "696e0afbd6335858a687fa1d478ed67c70eb1d017815be20456a275306937a1f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/implementation-runtime-review-20.md",
+      "bytes": 6473,
+      "sha256": "696e0afbd6335858a687fa1d478ed67c70eb1d017815be20456a275306937a1f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "bytes": 126074,
+      "sha256": "01631a6fd3aeb525d2a06c75b08bca5bbb0092267162a38b8363041fdabc81c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/app-build.log",
+      "bytes": 126074,
+      "sha256": "01631a6fd3aeb525d2a06c75b08bca5bbb0092267162a38b8363041fdabc81c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "bytes": 54988,
+      "sha256": "839b1e2cf38ff9fd788cd26070db964d419a0372b11ce36023ea0b8af5a22e1c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/build.log",
+      "bytes": 54988,
+      "sha256": "839b1e2cf38ff9fd788cd26070db964d419a0372b11ce36023ea0b8af5a22e1c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "bytes": 39340,
+      "sha256": "91ff3b0350273883dc10714d61063b010b521115279f8d42672efa356e7de927"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark-run.log",
+      "bytes": 39340,
+      "sha256": "91ff3b0350273883dc10714d61063b010b521115279f8d42672efa356e7de927"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "bytes": 88244,
+      "sha256": "64350660cc0ac710725fd0938bbc886db17cf7d7797d27e7404a67130ee8c937"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.log",
+      "bytes": 88244,
+      "sha256": "64350660cc0ac710725fd0938bbc886db17cf7d7797d27e7404a67130ee8c937"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "bytes": 82355,
+      "sha256": "29a65e1e98331936c2cd37cb1303ddf1ff14112d4037cd25c88daf6a4688cebb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/dark.png",
+      "bytes": 82355,
+      "sha256": "29a65e1e98331936c2cd37cb1303ddf1ff14112d4037cd25c88daf6a4688cebb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "bytes": 44560,
+      "sha256": "43155738973323c129adfbb8f56e9fe6006aed9c7b63f4e200bbb734a7cfa65e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light-run.log",
+      "bytes": 44560,
+      "sha256": "43155738973323c129adfbb8f56e9fe6006aed9c7b63f4e200bbb734a7cfa65e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "bytes": 44708,
+      "sha256": "438ef879c9acbb41fd096979b8cd06fa4e793d4c166f2129598875ea9bc51899"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.log",
+      "bytes": 44708,
+      "sha256": "438ef879c9acbb41fd096979b8cd06fa4e793d4c166f2129598875ea9bc51899"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "bytes": 82392,
+      "sha256": "632b64233df4c9ec72f5103c708e2d29f5f20cc48f519e526a240debae9f13e0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/light.png",
+      "bytes": 82392,
+      "sha256": "632b64233df4c9ec72f5103c708e2d29f5f20cc48f519e526a240debae9f13e0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "bytes": 37,
+      "sha256": "de4bff81535245d8f1ba1805a98de2a5e97836ff423bcecfc16d796fce75896a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/simulator-udid.txt",
+      "bytes": 37,
+      "sha256": "de4bff81535245d8f1ba1805a98de2a5e97836ff423bcecfc16d796fce75896a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "bytes": 194692,
+      "sha256": "3a13aade618bb7424563828814cc4bd62345521e78fed321c5e0f51151aa654c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/ios/v8-build.log",
+      "bytes": 194692,
+      "sha256": "3a13aade618bb7424563828814cc4bd62345521e78fed321c5e0f51151aa654c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "bytes": 1115,
+      "sha256": "fcb9d6d540b9588bb15004dec6e53f3a0909c0c4c1338a0db91f76b4d92c72bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/merge-PR1375.md",
+      "bytes": 1115,
+      "sha256": "fcb9d6d540b9588bb15004dec6e53f3a0909c0c4c1338a0db91f76b4d92c72bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "bytes": 7827,
+      "sha256": "6d373182625b0f43f6cbb066c938f17afc405158388bdc1738ef9aa2413eadc3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/pr-diff-review-30.md",
+      "bytes": 7827,
+      "sha256": "6d373182625b0f43f6cbb066c938f17afc405158388bdc1738ef9aa2413eadc3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "bytes": 2981,
+      "sha256": "8652e462dc743fa0e511acce5c625cc7025ef12119c92c649b0dfb856307ec38"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/runtime-mixed.log",
+      "bytes": 2981,
+      "sha256": "8652e462dc743fa0e511acce5c625cc7025ef12119c92c649b0dfb856307ec38"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "bytes": 2731,
+      "sha256": "71f9ae52bd2c677273cb2e50a821e9c3a28fb4781fd129b2e5f7adf341f76f18"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-mixed-auto-minimum-runtime-2026-11-13/v8-sync.log",
+      "bytes": 2731,
+      "sha256": "71f9ae52bd2c677273cb2e50a821e9c3a28fb4781fd129b2e5f7adf341f76f18"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.md",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/README.md",
+      "bytes": 1425,
+      "sha256": "fa5b51914cc91c7134f3c23b7126e2f742e78b505a04747944f562bc7093a1d0"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.md",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1375-2026-11-14/post-merge-docs-pr-diff-review-30.md",
+      "bytes": 3372,
+      "sha256": "994b7e67300927c3525dbec8405863ed262827684ca433c287276754bd6fda8a"
+    },
+    {
+      "source": "generated:index.md",
+      "route": "index.md",
+      "bytes": 118,
+      "sha256": "98f5f66ca57749850760e883691514f38cc55eb9698f6fd36369e0c5c4dd6ac4"
+    }
+  ]
+}
