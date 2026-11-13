@@ -1,0 +1,45 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-three-fit-mixed-auto-min-independent-verification/v1",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-three-fit-mixed-auto-minimum-precomparison.html",
+    "sha256": "48347ce72ac8fc9f13716ce8854f50c0b7b8f5f1236e01ae2b5b8550ac78cf27"
+  },
+  "observation": {
+    "path": "chrome157-three-fit-mixed-observation.ndjson.gz",
+    "bytes": 4877880
+  },
+  "sceneCount": 138240,
+  "uniqueTrackLists": 720,
+  "scenesByTopology": {
+    "span2Six-forward": 46080,
+    "span2Six-reverse": 46080,
+    "span2Span3Six-forward": 23040,
+    "span2Span3Six-reverse": 23040
+  },
+  "maskCountsByTopology": {
+    "span2Six-forward": 32,
+    "span2Six-reverse": 32,
+    "span2Span3Six-forward": 16,
+    "span2Span3Six-reverse": 16
+  },
+  "sourceOrderPairs": 69120,
+  "alignmentPairs": 69120,
+  "candidateEligibleItemOccurrences": 304128,
+  "candidateContentFloorViolations": 0,
+  "gridEndOverflowScenes": 1344,
+  "mixedMaskGridEndOverflowScenes": 1236,
+  "maximumGridEndOverflowCssPx": 20.0,
+  "representativeOverflowScene": {
+    "index": 54448,
+    "minimumMask": 16,
+    "topology": "span2Six-forward",
+    "overflowItemDByCssPx": 10
+  },
+  "maximumSpanRowSumErrorCssPx": 0.0004500000000007276,
+  "maximumSourceOrderDeltaCssPx": 0.0,
+  "maximumNonAutoStretchDeltaCssPx": 0.0,
+  "maximumAutoStretchDeltaCssPx": 130.0002,
+  "uniformEndpointScenesCompared": 11520,
+  "maximumUniformEndpointDeltaCssPx": 0.0
+}
