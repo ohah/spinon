@@ -30,7 +30,7 @@
 | 13 | source, fixture, 실행 결과 또는 generated binary가 문서 PR에 포함 | **PASS.** 해당 파일은 없다. |
 | 14 | manifest, lockfile, build output 또는 Cargo/V8 artifact가 포함 | **PASS.** diff에 없다. |
 | 15 | root C11 WIP나 untracked log가 PR tree로 복사됨 | **PASS.** C11은 동시성 조건으로만 언급되며 root source/log/evidence는 변경되지 않았다. |
-| 16 | PR 본문의 plan/review 링크가 stale SHA 또는 경로를 사용 | **PASS.** 두 permalink는 head `9d368f2…`에 고정되고 GitHub에서 resolve된다. |
+| 16 | 최초 PR 본문의 plan/review 링크가 검토 당시 SHA·경로를 벗어남 | **PASS.** 초기 본문 링크는 최초 검토 head `9d368f2…`에 고정돼 resolve됐다. artifact 추가 뒤 본문은 최종 head로 갱신했고 final check에서 링크를 다시 열어 확인했다. |
 | 17 | 문서의 상대 링크가 저장소 내 없는 파일을 가리킴 | **PASS.** STATUS, `spec/0005`, CLI·MCP 설계 및 plan 상대 링크가 존재한다. |
 | 18 | 계획 검토 artifact의 표 행 수와 “20” 제목이 불일치 | **PASS.** 검토 표에 1–20 번호가 각 한 번 있다. |
 | 19 | 계획 검토의 세 렌즈가 같은 행을 중복하거나 분배 수가 불일치 | **PASS.** 기록은 #1–7, #8–14, #15–20으로 7/7/6을 지정한다. |
@@ -53,4 +53,4 @@
 
 ## 판정 경계
 
-최초 두 파일 diff를 세 렌즈에서 검토한 뒤 이 artifact를 별도 추가했다. final PR tree와 본문 링크는 report 추가 후 final check에서 다시 확인한다. 이 점검은 X14 CLI 구현, JSON output runtime, device/browser 동작 또는 성능을 검증하지 않는다. status/workflow가 비어 있다는 사실은 통과한 CI가 있다는 뜻이 아니다.
+최초 두 파일 diff를 세 렌즈에서 검토한 뒤 이 artifact를 별도 추가했다. artifact 추가 뒤 세 렌즈가 최종 3파일 tree, 본문 permalink, labels, status/workflow와 mergeability를 재확인했다. 이 점검은 X14 CLI 구현, JSON output runtime, device/browser 동작 또는 성능을 검증하지 않는다. status/workflow가 비어 있다는 사실은 통과한 CI가 있다는 뜻이 아니다.
