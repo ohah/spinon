@@ -61,7 +61,7 @@ X08은 앱 개발자가 Kotlin·Swift·Rust·C++로 작성한 플랫폼 기능�
 3. 별도의 20개 실패 관점으로 계획 초안을 검토하고, 보정된 항목을 다시 확인한다([계획 검토 기록](./x08-j15-native-module-contract-plan-review-20.md)). 이 검토는 모듈 코드·API 지원·플랫폼 동작 통과가 아니다.
 4. X08 구현 PR에는 승인된 버전 있는 계약·예제·Android/iOS/web 동작 evidence와 S03/D02/X16 dependency closure를 연결하고, 실제 코드·runtime 실패 관점 및 별도 PR diff 검토를 수행한다.
 
-2026-11-15 계획 작성 중 main checkout에서 C11.4 Cargo matrix가 별도로 실행되었다. 그 결과는 C11 작업에만 속하며 X08/J15의 선행조건이나 근거가 아니다. 계획은 공유 중인 더티 checkout을 건드리지 않도록 별도 worktree에서 작성했다. X08/J15 작업은 공식 의존성인 S03·D02·X16이 준비되면 깨끗한 격리 worktree에서 진행할 수 있으며, C11 완료를 기다릴 필요는 없다. 다른 활성 작업과 Cargo/V8 빌드·테스트를 겹칠 경우에는 CPU/I/O 자원 경합을 별도로 확인한다.
+계획은 공유 중인 더티 checkout을 건드리지 않도록 별도 worktree에서 작성했다. X08/J15 작업은 공식 의존성인 S03·D02·X16이 준비되면 깨끗한 격리 worktree에서 진행할 수 있으며, C11 완료를 기다릴 필요는 없다. 다른 활성 작업과 Cargo/V8 빌드·테스트를 겹칠 경우에는 CPU/I/O 자원 경합을 별도로 확인한다.
 
 ## 중단 조건과 완료 경계
 
