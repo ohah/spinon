@@ -1,0 +1,64 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [optimized + debuginfo] target(s) in 5.37s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-73974810db017696)
+
+running 56 tests
+test grid::root_html_fit_content_auto_rows::profiles::four_fit_auto_placement_tests::repeated_four_fit_auto_placement_rejects_wrong_counts_tails_lengths_and_caps ... ok
+test grid::root_html_fit_content_auto_rows::profiles::five_fit_auto_placement_tests::repeated_five_fit_auto_placement_rejects_wrong_counts_lengths_and_caps ... ok
+test grid::root_html_fit_content_auto_rows::profiles::four_fit_span_tests::repeated_four_fit_row_span_rejects_wrong_tail_counts_caps_and_positions ... ok
+test grid::root_html_fit_content_auto_rows::profiles::four_fit_auto_placement_tests::repeated_four_fit_auto_placement_accepts_all_positions_and_tail_orders ... ok
+test grid::root_html_fit_content_auto_rows::profiles::five_fit_auto_placement_tests::repeated_five_fit_auto_placement_accepts_every_position_and_tail ... ok
+test grid::root_html_fit_content_auto_rows::profiles::tests::repeated_two_fit_auto_placement_rejects_bad_multiplicity_caps_and_span_expansion ... ok
+test grid::root_html_fit_content_auto_rows::profiles::six_fit_auto_placement_tests::six_fit_auto_placement_rejects_unlisted_caps_duplicates_and_wrong_lengths ... ok
+test grid::root_html_fit_content_auto_rows::profiles::five_fit_span_tests::repeated_five_fit_row_span_rejects_unregistered_caps_duplicate_caps_and_bad_tails ... ok
+test grid::root_html_fit_content_auto_rows::profiles::tests::repeated_span_keeps_single_fit_positions_and_rejects_wrong_fit_counts_or_tail_order ... ok
+test grid::root_html_fit_content_auto_rows::profiles::three_fit_auto_placement_tests::repeated_three_fit_auto_placement_rejects_wrong_count_multiplicity_and_caps ... ok
+test grid::root_html_fit_content_auto_rows::profiles::six_fit_span_tests::six_fit_row_span_rejects_wrong_lengths_caps_types_duplicates_and_tails ... ok
+test grid::root_html_fit_content_auto_rows::profiles::three_fit_mixed_row_span_tests::three_fit_mixed_row_span_rejects_wrong_cap_types_duplicates_lengths_and_tails ... ok
+test grid::root_html_fit_content_auto_rows::profiles::three_fit_tests::repeated_span_three_fit_rejects_four_fit_with_unregistered_caps ... ok
+test grid::root_html_fit_content_auto_rows::profiles::six_fit_span_tests::six_fit_row_span_accepts_all_720_exact_typed_cap_orders ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::tests::content_grammar_rejects_non_ascii_and_malformed_spacing ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::tests::content_grammar_accepts_ascii_word_and_byte_boundaries ... ok
+test grid::root_html_fit_content_auto_rows::profiles::three_fit_mixed_row_span_tests::three_fit_mixed_row_span_accepts_exact_caps_tails_and_positions ... ok
+test grid::root_html_fit_content_auto_rows::profiles::tests::repeated_auto_placement_accepts_all_two_fit_positions_and_tail_orders ... ok
+test grid::root_html_fit_content_auto_rows::profiles::six_fit_auto_placement_tests::six_fit_auto_placement_accepts_all_720_exact_cap_orders ... ok
+test grid::root_html_fit_content_auto_rows::profiles::tests::repeated_span_accepts_all_two_fit_positions_and_only_the_fixed_tail_orders ... ok
+test grid::root_html_fit_content_auto_rows::profiles::three_fit_auto_placement_tests::repeated_three_fit_auto_placement_accepts_all_positions_and_tail_orders ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_does_not_exceed_a_saturated_fit_content_limit ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_nearest_row_rounding_respects_fit_content_cap_tolerance ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_nearest_rounding_skips_a_rejected_row_and_distributes_to_an_eligible_row ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_auto_minimum_rounding_keeps_fit_cap_out_of_base_growth_priority ... ok
+test grid::root_html_fit_content_auto_rows::profiles::three_fit_tests::repeated_span_and_auto_placement_accept_all_three_fit_positions_and_tail_permutations ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_rounds_fractional_spanning_rows_within_point_zero_one_px ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_five_fit_rounding_prefers_a_fractional_auto_track_over_fit_caps ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_rounds_minimum_forced_fit_content_base_above_its_cap ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_preserves_intrinsic_fractional_growth_on_unconstrained_tracks ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_prefers_an_auto_track_for_an_equal_growth_remainder ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::span::tests::repeated_text_row_span_trace_accepts_only_the_expected_three_or_six_rows ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::span::tests::repeated_text_row_span_missing_or_stale_owner_trace_rejects_atomically ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::span::tests::repeated_text_row_span_wrong_track_count_or_internal_index_rejects_atomically ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_stretch_auto_rows_assigns_an_indivisible_unit_to_the_later_row ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_stretch_stage_keeps_a_used_prefix_without_auto_rows_unchanged ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::repeated_text_two_fit_auto_placement_rejects_missing_duplicate_and_wrong_owner_trace ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::repeated_text_two_fit_auto_placement_rejects_out_of_order_and_incomplete_trace_stages ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::repeated_text_two_fit_auto_placement_rejects_stale_revision_without_mutating_output ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::repeated_text_two_fit_auto_placement_accepts_a_complete_ordered_trace ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_lists_reject_stretch_without_the_exact_intrinsic_pattern ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_lists_reject_unmodeled_minimum_floor_shape ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_track_lists_reject_auto_without_fit_content_or_other_types ... ok
+test grid::root_html_fit_content_auto_rows::profiles::four_fit_span_tests::repeated_four_fit_row_span_accepts_all_fit_positions_and_tail_orders ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_rejects_out_of_profile_inputs ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::four_member_intrinsic_track_lists_reject_nearby_types_counts_and_other_profiles ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::six_member_repeated_intrinsic::six_member_repeated_intrinsic_profile_rejects_wrong_fit_position_multiplicities_and_item_counts ... ok
+test grid::root_html_fit_content_auto_rows::profiles::five_fit_span_tests::repeated_five_fit_row_span_accepts_all_positions_caps_and_tails ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_list_preserves_minimum_above_first_cap ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_track_lists_repeat_in_order_for_implicit_rows ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_matches_cap_max_content_and_minimum_oracle ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_min_content_auto_lists_stretch_only_auto_tracks ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::four_member_intrinsic_track_lists_accept_zero_and_over_100_percent_caps ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::fit_content_cap_keeps_track_bounded_while_payload_overflows_the_grid ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::four_member_intrinsic_track_lists_cover_all_orders_caps_and_auto_stretch ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::six_member_repeated_intrinsic::six_member_repeated_intrinsic_track_list_preserves_all_positions_orders_caps_and_alignment ... ok
+
+test result: ok. 56 passed; 0 failed; 0 ignored; 0 measured; 491 filtered out; finished in 0.08s
+

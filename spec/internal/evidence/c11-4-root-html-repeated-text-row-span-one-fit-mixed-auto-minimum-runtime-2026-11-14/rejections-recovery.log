@@ -1,0 +1,9 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-6e4c21fbd40413e7)
+
+running 2 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::rejections::parsed_root_html_one_fit_row_span_auto_minimum_rejects_atomically_and_recovers_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::rejections::parsed_root_html_one_fit_row_span_auto_minimum_rejects_unsupported_minimum_and_position_four ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 712 filtered out; finished in 0.80s
+

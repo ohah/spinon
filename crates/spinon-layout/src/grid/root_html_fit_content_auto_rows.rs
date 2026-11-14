@@ -164,6 +164,32 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
                 LayoutDimension::Auto | LayoutDimension::Fixed(0.0)
             )
         });
+    let one_fit_span_track_list = six_member_span_list
+        && tracks
+            .iter()
+            .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+            .count()
+            == 1;
+    let repeated_text_span_one_fit_minimum_mask_profile = repeated_text_span_profile
+        && one_fit_span_track_list
+        && visible_children.first().is_some_and(|item_id| {
+            input.nodes[index[item_id]].style.min_height == LayoutDimension::Fixed(0.0)
+        })
+        && visible_children.iter().copied().skip(1).all(|item_id| {
+            matches!(
+                input.nodes[index[&item_id]].style.min_height,
+                LayoutDimension::Auto | LayoutDimension::Fixed(0.0)
+            )
+        });
+    if one_fit_span_track_list
+        && repeated_text_span_profile
+        && !repeated_text_span_one_fit_minimum_mask_profile
+    {
+        return Err(LayoutError::UnsupportedGridContainerStyle {
+            node,
+            property: "C11.4 one-fit row-span item minimum profile",
+        });
+    }
     let repeated_text_span_auto_minimum_candidate =
         (repeated_text_span_profile
             && matches!(
@@ -179,7 +205,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             || repeated_text_span_three_fit_minimum_mask_profile
             || repeated_text_span_six_fit_minimum_mask_profile
             || repeated_text_span_five_fit_minimum_mask_profile
-            || repeated_text_span_four_fit_minimum_mask_profile;
+            || repeated_text_span_four_fit_minimum_mask_profile
+            || repeated_text_span_one_fit_minimum_mask_profile;
     let repeated_text_span_auto_minimum_profile = repeated_text_span_auto_minimum_candidate
         && visible_children.first().is_some_and(|item_id| {
             input.nodes[index[item_id]].style.min_height == LayoutDimension::Fixed(0.0)

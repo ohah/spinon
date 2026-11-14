@@ -1,6 +1,8 @@
 use super::*;
 use std::collections::BTreeMap;
 
+#[path = "automatic_minimum/mixed_minimum.rs"]
+mod mixed_minimum;
 #[path = "automatic_minimum/positions_4_6.rs"]
 mod positions_4_6;
 #[path = "automatic_minimum/rejections.rs"]

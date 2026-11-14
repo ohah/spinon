@@ -4,6 +4,30 @@ pub(super) fn supports_topology(input: &LayoutInput, items: &[NodeId]) -> bool {
     implicit_row_count(input, items).is_some()
 }
 
+pub(super) fn supports_one_fit_item_minimums(input: &LayoutInput, items: &[NodeId]) -> bool {
+    let Some(control_id) = items.first() else {
+        return false;
+    };
+    let Some(control) = input.nodes().iter().find(|node| node.id == *control_id) else {
+        return false;
+    };
+    if control.style.min_height != LayoutDimension::Fixed(0.0) {
+        return false;
+    }
+    items.iter().copied().skip(1).all(|item_id| {
+        input
+            .nodes()
+            .iter()
+            .find(|node| node.id == item_id)
+            .is_some_and(|item| {
+                matches!(
+                    item.style.min_height,
+                    LayoutDimension::Fixed(0.0) | LayoutDimension::Auto
+                )
+            })
+    })
+}
+
 pub(super) fn implicit_row_count(input: &LayoutInput, items: &[NodeId]) -> Option<usize> {
     if !matches!(items.len(), 3..=6) {
         return None;
@@ -82,7 +106,13 @@ pub(super) fn normalize_layout_frames(
         .get(&grid_id)
         .copied()
         .ok_or(LayoutError::MissingComputedLayout(grid_id))?;
-    let grid_border = input.nodes()[index[&grid_id]].style.border;
+    let Some(grid_node_index) = index.get(&grid_id).copied() else {
+        return Err(unsupported_trace());
+    };
+    let Some(grid_node) = input.nodes().get(grid_node_index) else {
+        return Err(unsupported_trace());
+    };
+    let grid_border = grid_node.style.border;
     let content_frame = crate::LayoutFrame {
         x: grid_frame.x + grid_border.left,
         y: grid_frame.y + grid_border.top,

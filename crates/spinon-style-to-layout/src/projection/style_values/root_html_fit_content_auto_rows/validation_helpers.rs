@@ -274,7 +274,7 @@ mod tests {
     use super::repeated_span_fit_positions_are_supported;
 
     #[test]
-    fn repeated_span_six_fit_positions_require_six_implicit_rows() {
+    fn repeated_span_five_and_six_fit_positions_require_six_implicit_rows() {
         assert!(repeated_span_fit_positions_are_supported(
             6,
             &[1, 2, 3, 4, 5, 6]
@@ -283,10 +283,24 @@ mod tests {
             3,
             &[1, 2, 3, 4, 5, 6]
         ));
-        assert!(!repeated_span_fit_positions_are_supported(
+        assert!(repeated_span_fit_positions_are_supported(
             6,
             &[1, 2, 3, 4, 5]
         ));
+        assert!(!repeated_span_fit_positions_are_supported(
+            3,
+            &[1, 2, 3, 4, 5]
+        ));
+    }
+
+    #[test]
+    fn repeated_span_one_fit_positions_follow_their_row_profile() {
+        assert!(repeated_span_fit_positions_are_supported(3, &[1]));
+        assert!(repeated_span_fit_positions_are_supported(3, &[3]));
+        assert!(!repeated_span_fit_positions_are_supported(3, &[4]));
+        assert!(!repeated_span_fit_positions_are_supported(6, &[1]));
+        assert!(repeated_span_fit_positions_are_supported(6, &[4]));
+        assert!(repeated_span_fit_positions_are_supported(6, &[6]));
     }
 
     #[test]

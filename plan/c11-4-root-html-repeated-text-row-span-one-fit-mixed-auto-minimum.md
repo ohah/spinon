@@ -1,6 +1,6 @@
 # C11.4 · one-fit repeated-text row-span item별 mixed min-height:0|auto
 
-**상태:** 계획 후보 · 구현 전 Chrome 157 비교 120,960/120,960 scene · C11.4/C11 미완료 · 공식 완료 78/214 유지
+**상태:** 구현 검증 완료 · 구현 PR 준비 중 · Chrome 157 및 RuntimeSession 120,960/120,960 scene · C11.4/C11 미완료 · 공식 완료 78/214 유지
 
 **선행 uniform 구현:** [positions 1–3](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum.md) · PR #1326 · [positions 4–6](./c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md) · PR #1331
 
@@ -47,6 +47,14 @@
 5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일 source revision의 Root HTML route를 실행한다. Chrome 사전 비교의 mixed item mask를 고정한 화면, layout-ready, draw/present와 앱 입력 hash를 기록한다. 화면은 visual smoke이며 fixture matrix 전체, PixelCopy/Metal drawable readback, compositor parity, 실기기 또는 hardware GPU를 뜻하지 않는다.
 6. 한정 구현 뒤 별도 실패 관점 20개 implementation/runtime review와 실제 변경 PR diff의 서로 다른 실패 관점 30개를 기록한다. PR 본문에는 범위·측정 분모·남은 검증 경계와 raw Android/iOS screenshot을 commit-pinned 링크로 넣고 Agent Browser에서 실제 로드를 확인한다.
 7. 구현 PR이 병합된 뒤 spec/STATUS.md, 이 계획, 내부 계약 0059와 공개 roadmap을 같은 상태로 갱신한다. 공식 78/214, C11.4/C11 unchecked, internal contract 0.1.0을 유지한다. 사용자가 정한 Tailscale preview만 선택 경로 백업·hash 검증과 Agent Browser desktop/mobile 확인으로 갱신한다.
+
+## 2026-11-14 구현 실행 결과 · PR 준비 단계
+
+- 기본 Root HTML RuntimeSession matrix: 120,960/120,960 scenes, unique track-list batch 900/900, eligible automatic-minimum item occurrence 169,344; 실행 2,633.00초.
+- 별도 회귀: one-fit uniform positions 1–3 2,880 pairs, positions 4–6 4,320 pairs, two-fit row-span 3,840 scenes, one-fit auto-placement 1,440 scenes, two-fit auto-placement 및 repeated-text 810 corpus 통과. 관련 rejection/recovery와 invalid-trace controls도 통과했다.
+- 수정 발견: empty trace owner index의 panic을 fail-closed 오류로 바꾸고 layout regression 56/56을 재실행했다. five-fit position helper 테스트의 오래된 기대값도 고쳤고 projection 관련 5/5 통과했다. 전체 matrix의 한 장면이 5초 제한에서 Pending으로 반환되어 wait를 30초로 늘린 뒤 전체 matrix를 다시 통과했다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 입력 SHA-256 `a944c85929ac16065cd950d4edc58788f8eb98ab2759644aa6ceb23874b57676`를 사용한 app light/dark 화면 smoke를 완료했다. 모두 `layout=ready`, 12 boxes, `draw status=0 presented`를 기록했다. Android는 Vulkan llvmpipe 소프트웨어 renderer다. 화면은 pixel parity 검증이 아니다. [플랫폼 화면·정리 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-mixed-auto-minimum-runtime-2026-11-14/platform-visual-smoke.md).
+- 구현/runtime 실패 관점 20개를 작성했다. 구현 PR diff 별도 30관점 검토, PR check 상태, 병합과 문서 동기화는 남아 있다. 공식 `78/214`, C11.4/C11 미완료 및 내부 계약 `0.1.0`은 유지한다.
 
 ## 완료 판정
 

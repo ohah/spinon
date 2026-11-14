@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Spinon one-fit mixed row-span screen</title>
+    <style>
+      :root { color-scheme: light dark; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      #grid {
+        display: grid;
+        width: 40px;
+        height: 220px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        grid-auto-rows: min-content max-content min-content fit-content(0%) max-content auto;
+        align-content: stretch;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        direction: ltr;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+      #grid .item {
+        display: block;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        grid-column: 1 / 2;
+      }
+      #grid .empty { height: 10px; background-color: rgb(11,17,23); }
+      #grid .item[data-item="D"] { background-color: rgb(125,111,118); }
+      #grid .item[data-item="C"] { background-color: rgb(120,104,107); }
+      #grid .item[data-item="B"] { background-color: rgb(115,97,96); }
+      #grid .item[data-item="A"] { background-color: rgb(110,90,85); }
+      #grid .payload {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        background-color: rgb(210,185,170);
+        font-family: monospace;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        word-break: normal;
+        direction: ltr;
+      }
+      #grid .payload[data-payload="B"] { background-color: rgb(214,191,173); }
+      #grid .payload[data-payload="C"] { background-color: rgb(218,197,176); }
+      #grid .payload[data-payload="D"] { background-color: rgb(222,203,179); }
+    </style>
+  </head>
+  <body>
+    <div id="grid">
+      <div class="item empty" data-item="empty" style="grid-row:1 / 2; min-height:0"></div>
+      <div class="item" data-item="D" style="grid-row:5 / span 3; min-height:auto"><div class="payload" data-payload="D">A A A A A A A A A A</div></div>
+      <div class="item" data-item="C" style="grid-row:4 / span 3"><div class="payload" data-payload="C">A A A A A A A A A A A A</div></div>
+      <div class="item" data-item="B" style="grid-row:3 / span 2"><div class="payload" data-payload="B">A A A A A A A A A A A A A A</div></div>
+      <div class="item" data-item="A" style="grid-row:2 / span 2; min-height:auto"><div class="payload" data-payload="A">A A A A A A A A A A A A A A A A</div></div>
+    </div>
+  </body>
+</html>

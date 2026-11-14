@@ -88,6 +88,10 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     };
     let span_auto_minimum = raw_row_sizes.len() == 7 && stages.has_span_auto_minimum;
     let one_fit_span_auto_minimum = span_auto_minimum && fit_content_count == 1;
+    let one_fit_mixed_minimum = matches!(raw_row_sizes.len(), 4 | 7)
+        && fit_content_count == 1
+        && stages.has_spanning_item
+        && has_mixed_span_minimum_modes(input, grid_id);
     let three_fit_span_auto_minimum = span_auto_minimum && fit_content_count == 3;
     let four_fit_row_span = raw_row_sizes.len() == 7 && fit_content_count == 4;
     let four_fit_span_auto_minimum = four_fit_row_span && stages.has_span_auto_minimum;
@@ -153,7 +157,8 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     };
     let six_fit_row_span =
         raw_row_sizes.len() == 7 && fit_content_count == 6 && stages.has_spanning_item;
-    let fit_content_span_rows = (three_fit_mixed_minimum
+    let fit_content_span_rows = (one_fit_mixed_minimum
+        || three_fit_mixed_minimum
         || four_fit_mixed_minimum
         || five_fit_row_span
         || six_fit_row_span)
@@ -169,7 +174,59 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         });
     match fit_content_span_rows {
         Some(Some(rows)) => {
-            let rows = if four_fit_mixed_minimum {
+            let rows = if one_fit_mixed_minimum {
+                let target_total = blink_layout_unit_round_total(
+                    pre_alignment_sizes
+                        .iter()
+                        .map(|size| f64::from(*size))
+                        .sum(),
+                    residual_rounding,
+                );
+                let fallback_units = blink_layout_unit_distribute_rows_from_stages(
+                    container,
+                    grid_frame,
+                    &pre_alignment_sizes,
+                    &stages.intrinsic_tracks,
+                    &stages.pre_alignment_tracks,
+                    residual_rounding,
+                );
+                let rows_match_trace = |units: &[i64]| {
+                    if units.iter().sum::<i64>() != target_total {
+                        return false;
+                    }
+                    let snapped = if stages.stretch_applied {
+                        blink_layout_unit_stretch_auto_rows(
+                            container,
+                            grid_frame.height,
+                            units.to_vec(),
+                        )
+                    } else {
+                        Some(units.to_vec())
+                    };
+                    snapped.is_some_and(|snapped| {
+                        snapped_rows_match_final_tracks(
+                            &snapped,
+                            &stages.final_tracks,
+                            container,
+                            grid_frame.height,
+                            stages.stretch_applied,
+                        )
+                    })
+                };
+                let simulation_matches_trace = rows_match_trace(&rows);
+                let fallback_matches_trace = fallback_units
+                    .as_ref()
+                    .is_some_and(|units| rows_match_trace(units));
+                // Prefer the phase replay when it preserves the LayoutUnit total and Taffy trace.
+                // The generic residual allocator is only a fallback for replay totals that drift.
+                if simulation_matches_trace {
+                    rows
+                } else if fallback_matches_trace {
+                    fallback_units.expect("trace-matching one-fit fallback exists")
+                } else {
+                    return None;
+                }
+            } else if four_fit_mixed_minimum {
                 let target_total = blink_layout_unit_round_total(
                     pre_alignment_sizes
                         .iter()
@@ -204,14 +261,22 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
                 &stages.final_tracks,
                 container,
                 grid_frame.height,
-                (three_fit_mixed_minimum || four_fit_mixed_minimum || five_fit_mixed_minimum)
+                (one_fit_mixed_minimum
+                    || three_fit_mixed_minimum
+                    || four_fit_mixed_minimum
+                    || five_fit_mixed_minimum)
                     && stages.stretch_applied,
             ) {
                 return None;
             }
             return Some(snapped_rows);
         }
-        Some(None) if three_fit_mixed_minimum || four_fit_mixed_minimum || six_fit_row_span => {
+        Some(None)
+            if one_fit_mixed_minimum
+                || three_fit_mixed_minimum
+                || four_fit_mixed_minimum
+                || six_fit_row_span =>
+        {
             return None;
         }
         Some(None) | None => {}
@@ -235,7 +300,10 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         &stages.final_tracks,
         container,
         grid_frame.height,
-        (three_fit_mixed_minimum || four_fit_mixed_minimum || five_fit_mixed_minimum)
+        (one_fit_mixed_minimum
+            || three_fit_mixed_minimum
+            || four_fit_mixed_minimum
+            || five_fit_mixed_minimum)
             && stages.stretch_applied,
     ) {
         return None;

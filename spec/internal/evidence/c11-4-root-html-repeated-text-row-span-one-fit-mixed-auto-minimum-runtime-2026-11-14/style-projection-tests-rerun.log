@@ -1,0 +1,13 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [optimized + debuginfo] target(s) in 1.24s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-10a0d74abc2c179c)
+
+running 5 tests
+test projection::style_values::root_html_fit_content_auto_rows::repeated_text::tests::content_grammar_rejects_non_ascii_and_malformed_spacing ... ok
+test projection::style_values::root_html_fit_content_auto_rows::repeated_text::tests::content_grammar_accepts_ascii_word_and_byte_boundaries ... ok
+test projection::style_values::root_html_fit_content_auto_rows::validation_helpers::tests::repeated_span_five_and_six_fit_positions_require_six_implicit_rows ... ok
+test projection::style_values::root_html_fit_content_auto_rows::validation_helpers::tests::repeated_span_one_fit_positions_follow_their_row_profile ... ok
+test projection::style_values::root_html_fit_content_auto_rows::validation_helpers::tests::repeated_span_three_fit_positions_are_limited_to_six_rows ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 479 filtered out; finished in 0.00s
+

@@ -1,0 +1,39 @@
+   Compiling icu_collections v2.3.0
+   Compiling taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling icu_segmenter v2.3.0
+   Compiling parley_data v0.12.0
+   Compiling idna_adapter v1.2.2
+   Compiling idna v1.1.0
+   Compiling parley_engine v0.12.0
+   Compiling url v2.5.8
+   Compiling parley v0.12.0
+   Compiling stylo_traits v0.22.0
+   Compiling spinon-text-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-text-layout)
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling stylo v0.22.0
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [optimized + debuginfo] target(s) in 42.75s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-10a0d74abc2c179c)
+
+running 4 tests
+test projection::style_values::root_html_fit_content_auto_rows::repeated_text::tests::content_grammar_rejects_non_ascii_and_malformed_spacing ... ok
+test projection::style_values::root_html_fit_content_auto_rows::repeated_text::tests::content_grammar_accepts_ascii_word_and_byte_boundaries ... ok
+test projection::style_values::root_html_fit_content_auto_rows::validation_helpers::tests::repeated_span_three_fit_positions_are_limited_to_six_rows ... ok
+
+thread 'projection::style_values::root_html_fit_content_auto_rows::validation_helpers::tests::repeated_span_six_fit_positions_require_six_implicit_rows' (252127672) panicked at crates/spinon-style-to-layout/src/projection/style_values/root_html_fit_content_auto_rows/validation_helpers.rs:286:9:
+assertion failed: !repeated_span_fit_positions_are_supported(6, &[1, 2, 3, 4, 5])
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test projection::style_values::root_html_fit_content_auto_rows::validation_helpers::tests::repeated_span_six_fit_positions_require_six_implicit_rows ... FAILED
+
+failures:
+
+failures:
+    projection::style_values::root_html_fit_content_auto_rows::validation_helpers::tests::repeated_span_six_fit_positions_require_six_implicit_rows
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 479 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spinon-style-to-layout --lib`
