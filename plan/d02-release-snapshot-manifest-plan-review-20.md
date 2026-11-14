@@ -5,7 +5,7 @@
 - **검토 범위:** 계획의 의존성, 계약·상태 경계, 파일 범위, 입력·오류, 자원 격리. D02 구현이나 OTA 실행 검증은 아니다.
 - **수행 방식:** dependency lens가 1–7, file/scope lens가 8–14, runtime/resource lens가 15–20을 독립적으로 검토했다. 발견한 부분 판정은 계획을 수정한 뒤 해당 관점을 다시 확인했다.
 - **검토 기록 한계:** 부분 판정과 수정 후 재검토는 세 검토자의 이번 세션 검토 결과를 기록했다. Git commit에는 최종 문서만 담겨 있어 중간 초안 이력 자체를 증명하지는 않는다.
-- **실행 제한:** build/test, agent-browser, 터미널 브라우저, ADB, iOS/Android Simulator를 실행하지 않았다. 변경은 D02 계획서와 이 검토 기록 두 Markdown뿐이다.
+- **실행 제한:** build/test, agent-browser, 터미널 브라우저, ADB, iOS/Android Simulator를 실행하지 않았다. 이 계획 검토 단계에서 추가한 문서는 D02 계획서와 이 검토 기록 두 Markdown뿐이다. PR diff 검토 기록은 별도 문서로 추가한다.
 
 | # | 적대 관점 | 발견 사항과 보정 | 최종 판정 |
 |---:|---|---|---|
@@ -16,7 +16,7 @@
 | 5 | `runtimeId`를 추정해 고정하거나 CSS/C11 완료를 D02 계획 선행조건으로 요구 | `runtimeId`를 현재 미정·불투명하게 두고 C11을 D02 계획의 선행조건으로 만들지 않았다. native/host/permission 변경은 새 바이너리 경계로 남겼다. | PASS |
 | 6 | signed claim에서 channel, sequence 또는 rollback target이 빠져 replay/mix-up 가능 | 첫 검토에서 sequence/rollback target 서명 binding이 모호하다는 지적을 받았다. 전체 target tuple·`baseSnapshotId`·sequence·해당 시 rollback target을 서명 결정에 추가하고 D03 CAS를 같은 tuple로 분리해 재검토했다. | PASS · 재검토 |
 | 7 | 기술적 호환·서명 성공을 App Store나 플랫폼 정책 승인으로 간주 | R09/D05의 출시 정책 gate와 기술 검증을 분리했다. | PASS |
-| 8 | dirty root의 C11/C15/C19 source·lock·evidence 변경과 D02 문서가 섞임 | root WIP를 그대로 두고 `origin/main` 기준 별도 worktree에 D02 계획서와 이 검토 기록 두 파일만 추가했다. | PASS |
+| 8 | dirty root의 C11/C15/C19 source·lock·evidence 변경과 D02 문서가 섞임 | root WIP를 그대로 두고 `origin/main` 기준 별도 worktree에서 계획 검토 단계의 diff를 D02 계획서와 이 검토 기록 두 파일로 제한했다. PR diff 검토 기록은 별도 후속 파일로 관리한다. | PASS |
 | 9 | 계획의 상대 링크가 없는 파일이나 잘못된 경로를 가리킴 | 공식 상태·0004·OTA design·R15 상대 링크가 존재함을 확인했다. | PASS |
 | 10 | 계획이 STATUS 완료 수, API 또는 내부 contract version을 몰래 변경 | STATUS와 API/version 파일을 바꾸지 않았고 공식 완료 수·공개 API·numeric contract version을 유지한다고 적었다. | PASS |
 | 11 | OS-conditional capability field 미결 상태가 빠져 unsupported API를 OTA 허용 | 첫 검토에서 capability 결정 질문 누락을 지적받았다. field 필요성, 원본·platform/OS mapping, 검사 시점·owner, unsupported rejection 범위를 추가했고 계약 전 0004 gate도 유지해 재검토했다. | PASS · 재검토 |
