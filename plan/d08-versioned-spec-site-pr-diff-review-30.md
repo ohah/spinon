@@ -26,7 +26,7 @@
 | 15 | Rspress 경로·버전·Pages workflow를 잘못 설명 | 계획은 `spec/`, `/spinon/`, `packages/docs/build/site`, Rspress `2.0.22`와 수동 workflow를 현재 설정에 맞춰 기록한다. **PASS** |
 | 16 | PR 본문이 계획을 구현 증거로 과장 | 구현 근거 체크는 비워 두고 계획 전용 범위와 site QA 미실행을 구분한다. **PASS** |
 | 17 | PR base/head/라벨이 계획 scope와 불일치 | base는 `main`, 대상 라벨은 `documentation`, `planning`, `area: docs`다. **PASS** |
-| 18 | 계획 검토 기록이 최종 PR 파일 수를 잘못 표시 | 검토 기록 19행은 계획과 검토 기록 두 파일만 추가된다고 정확히 적는다. **PASS** |
+| 18 | 계획 검토 기록이 PR 파일 수를 잘못 표시 | 계획 검토 19행은 검토 당시 head `bd766fd4`의 두 파일 diff를 설명한다. 이후 이 30개 검토 기록이 추가되어 현재 PR은 세 Markdown 파일이다. **PASS** |
 | 19 | 과거 공개 집계 `72/213`을 현재값으로 표시 | 계획 74행의 `78/214`는 현재 STATUS·README 집계와 일치한다. **PASS** |
 | 20 | D08 사이트 구현·publication·완료를 계획으로 주장 | 계획 3·6·10·42·74행과 PR 본문은 후속으로 남긴다. **PASS** |
 | 21 | 검토 중 활성 Tailscale preview를 종료 | 계획은 기존 process/output을 보존하고, PID `90711`은 검토 중 계속 실행됐다. **PASS** |
