@@ -21,7 +21,7 @@ D02의 일은 이 graph를 참조하는 인증된 release envelope와 호환·an
 | 바이너리 대 OTA 범위 | native code, V8, GPU renderer, host API 또는 permission 변경에는 새 앱 바이너리가 필요하다. | release metadata가 이를 어떻게 나타내고 unsupported change를 어디서 거부할지 정한다. 서명된 OTA가 바이너리 경계를 우회한다고 쓰지 않는다. |
 | Feature 영향 범위 | R15의 `affectedScope=features|app`, graph closure diff와 앱 설치 단위 cohort 제안. 안전한 diff가 증명되지 않으면 app 범위로 넓힌다. | `affectedScope`, `affectedFeatureIds`, `baseSnapshotId`, changed intent 가운데 어떤 값이 release 서명 대상이며 D03 publish 판정에 쓰이는지 결정한다. |
 | Channel 및 동시 publish | channel head/CAS는 app·platform·ABI·runtime·channel 타깃별이며 stale base는 publish를 거부한다. STATUS/R15는 대상 channel과 `baseSnapshotId`를 서명 범위에 둔다. | D02는 `applicationId`·platform·architecture/ABI·`runtimeId`·channel의 전체 target tuple, `baseSnapshotId`, sequence, 해당 시 rollback target을 서명에 결합하고, D03은 같은 tuple별 CAS를 실행한다. channel 승격·이동은 별도 권한으로 분리한다. |
-| 객체 무결성 | graph는 원본 객체의 SHA-256과 byte size를 참조한다. 후보 재사용도 적용 전 다시 검증하고 평가 전 읽은 bytes를 검증한다. | envelope 인증과 object digest 검증의 관계, 입력 제한, 실패 순서·진단 owner와 hash/size가 틀린 객체를 재사용 가능한 cache/staging에서 격리·정리하는 경계를 정한다. manifest 서명만으로 C02 graph completeness를 주장하지 않는다. |
+| 객체 무결성 | graph는 원본 객체의 SHA-256과 byte size를 참조한다. 후보 재사용도 적용 전 다시 검증하고 소비 전에 읽은 bytes를 검증한다. | envelope 인증과 object digest 검증의 관계, 입력 제한, 실패 순서·진단 owner, 검증된 동일 bytes가 parser/evaluator/resource consumer로 전달되는 보장, hash/size가 틀린 객체의 cache/staging 격리·정리 경계를 정한다. manifest 서명만으로 C02 graph completeness를 주장하지 않는다. |
 | Strict parsing | 0004는 strict parsing과 오류 계약을 D02에서 정할 항목으로 남긴다. | 중복 key, 누락·중복 필드, 잘못된 타입, oversized input, 미지원 필드/schema의 거부 정책과 canonicalization 선택을 정한다. 구체적인 serialization이나 알고리즘은 승인 전 선택하지 않는다. |
 | Key와 signature | R15/0004는 signature envelope와 key 운영을 제안하지만 공개 형식과 알고리즘은 미정이다. | key ID/version, 신뢰 anchor, rotation·revocation·compromise, 서명 생성 주체와 보관 경계를 누가 정하고 검증하는지 선택지·위협 모델로 정리한다. 안전한 key storage 방식을 추정하지 않는다. |
 | Sequence와 replay | 타깃별 sequence/high-water exact order, 오래된 envelope replay 거부, built-in snapshot 별도 복구를 제안한다. | sequence scope를 channel을 포함한 전체 target tuple에 묶고 서명하는 방법, 발급자 권한, 상태 소유·영속화·복원 후 보장 및 D03 publish와 D04 install 간 race 책임을 정한다. |
@@ -48,7 +48,7 @@ D02의 일은 이 graph를 참조하는 인증된 release envelope와 호환·an
 | 입력·실패 상황 | 계획에서 정할 검증·거부 경계 |
 |---|---|
 | 서명 payload byte 또는 signed `baseSnapshotId`/target tuple/channel/sequence/rollback-target claim 변조 | client 전달 후 변조 후보는 envelope 서명·target 호환 검증을 content object fetch 전에 하고, content object fetch·활성 snapshot·D04 client high-water 변경 없이 거부한다. D03이 받는 publish 후보의 signature/base/target 검증 실패는 channel head·CAS 변경 전에 거부한다. post-publish 객체 변조 검사는 이 client 경계와 분리해 owner를 정한다. |
-| 수신·압축 해제·cache 재사용 중 객체 bytes가 signed digest/size와 다름 | D04가 압축 해제 후 원본 전체 bytes와 평가 직전 실제 읽는 bytes를 확인하고, 하나라도 다르면 후보 전체를 활성화 전에 거부한다. 활성 snapshot·high-water는 유지하고 잘못된 객체가 재사용 가능한 cache/staging에 노출되지 않도록 격리·정리 owner를 정한다. |
+| 수신·압축 해제·cache 재사용 중 객체 bytes가 signed digest/size와 다름 | D04가 압축 해제 후 원본 전체 bytes를 검사하고, 검증한 동일 bytes만 CSS/JS parser·evaluator·image/font decode 등 어떤 resource consumer에도 전달하도록 보장한다. mismatch면 후보 전체를 활성화 전에 거부하고 활성 snapshot·high-water를 유지하며 잘못된 객체를 재사용 가능한 cache/staging에서 격리·정리할 owner를 정한다. |
 | app·platform·ABI·`runtimeId`가 설치 대상과 다름 | signature-valid라도 호환 검사에서 거부하고 다른 타깃의 sequence/channel을 소비하지 않는지 정한다. |
 | release가 OS 조건부 capability를 요구하지만 field·검사 계약이 없거나 target에서 지원되지 않음 | manifest field 필요성과 declaration owner, X01/D04 중 검사 owner, unsupported 결과 범위를 정한다. 계약 전에는 해당 API를 OTA chunk에서 사용하지 않는 0004 gate를 유지한다. |
 | 알 수 없는 graph/release schema 또는 unsupported required field | 정확한 지원 버전 확인 위치, 진단 분류, 무시와 fail-closed 사이의 필드 규칙을 정한다. |
