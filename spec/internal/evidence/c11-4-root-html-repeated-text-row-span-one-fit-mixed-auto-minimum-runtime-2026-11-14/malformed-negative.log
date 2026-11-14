@@ -1,0 +1,12 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-6e4c21fbd40413e7)
+
+running 1 test
+
+thread 'session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::rejections::malformed_fit_position_in_fixture_fails_closed' (252052315) panicked at crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span.rs:157:18:
+fit position should be an unsigned integer
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::rejections::malformed_fit_position_in_fixture_fails_closed - should panic ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 713 filtered out; finished in 0.03s
+

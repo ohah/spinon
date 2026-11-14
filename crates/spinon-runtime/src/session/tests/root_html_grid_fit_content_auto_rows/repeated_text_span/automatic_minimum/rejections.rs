@@ -39,16 +39,23 @@ fn assert_rejected_atomically(name: &str, source: &str) {
 }
 
 #[test]
-fn parsed_root_html_one_fit_row_span_auto_minimum_rejects_mixed_control_and_position_four() {
+fn parsed_root_html_one_fit_row_span_auto_minimum_rejects_unsupported_minimum_and_position_four() {
     let record = first_candidate();
     let source = source_for(&record);
 
-    let mixed_minimum = replace_once(
+    let nonzero_minimum = replace_once(
         &source,
         "data-item=\"B\" style=\"grid-row:3 / span 2\"",
-        "data-item=\"B\" style=\"grid-row:3 / span 2; min-height:0\"",
+        "data-item=\"B\" style=\"grid-row:3 / span 2; min-height:1px\"",
     );
-    assert_rejected_atomically("mixed auto|0 item minimums", &mixed_minimum);
+    assert_rejected_atomically("nonzero item min-height", &nonzero_minimum);
+
+    let intrinsic_minimum = replace_once(
+        &source,
+        "data-item=\"B\" style=\"grid-row:3 / span 2\"",
+        "data-item=\"B\" style=\"grid-row:3 / span 2; min-height:min-content\"",
+    );
+    assert_rejected_atomically("intrinsic item min-height", &intrinsic_minimum);
 
     let automatic_control = replace_once(
         &source,
@@ -87,7 +94,7 @@ fn parsed_root_html_one_fit_row_span_auto_minimum_rejects_atomically_and_recover
     let source = replace_once(
         &source,
         "</style>",
-        "@media (prefers-color-scheme: dark) { #span-b { min-height:0; } }\n</style>",
+        "@media (prefers-color-scheme: dark) { #span-b { min-height:1px; } }\n</style>",
     );
     let (session, initial) = run(&source);
     assert_eq!(
@@ -113,7 +120,7 @@ fn parsed_root_html_one_fit_row_span_auto_minimum_rejects_atomically_and_recover
     media.color_scheme = CssColorScheme::Dark;
     session
         .set_root_html_environment(1280.0, 633.0, 1.0, media)
-        .expect("dark scheme should apply the unsupported mixed minimum");
+        .expect("dark scheme should apply the unsupported nonzero minimum");
     let rejected = session.wait_for_layout_snapshot(Duration::from_secs(5));
     assert_eq!(rejected.state, crate::session::RuntimeLayoutState::Failed);
     assert!(rejected.completed.is_none(), "rejected revision is atomic");

@@ -1,0 +1,10 @@
+--------- beginning of main
+11-14 08:56:38.259  4619  4637 I SpinonBootstrap: SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE case=default bytes=2951 sha256=f124a98094b5c20e5f40fcbef468f4c9276c46487d034bcd85c5916c553cbfb6
+11-14 08:56:38.303  4619  4637 I SpinonBootstrap: SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST=session=ready owner_tid=4639 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=2363 session_startup_us=43042
+11-14 08:56:38.334  4619  4637 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 root HTML Canvas 색 선택 실패: CascadeFailed
+11-14 08:56:38.462  4619  4619 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+11-14 08:56:38.463  4619  4619 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true
+11-14 08:56:38.476  4619  4637 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 root HTML Canvas 색 선택 실패: CascadeFailed
+11-14 08:56:38.477  4619  4637 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=320.0x240.0 scale=2.625 dark=false sequence=3 status=-11 root HTML Canvas 색 선택 실패: CascadeFailed
+11-14 08:56:38.635  4619  4647 I SpinonBootstrap: SPINON_C0410_RENDERER=backend=Vulkan device=Goldfish GFXStream (llvmpipe (LLVM 21.1.4, 128 bits)) format=Rgba8Unorm size=840x630 selection=auto
+11-14 08:56:38.635  4619  4647 I SpinonBootstrap: SPINON_C0410_RENDERER generation=2 size=840x630

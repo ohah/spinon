@@ -105,6 +105,13 @@ pub(super) fn normalize_layout_frames(
             ) {
                 return Err(repeated_text_track_trace_error(grid_id));
             }
+            let fit_content_count = tracks
+                .iter()
+                .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+                .count();
+            if fit_content_count == 1 && !span::supports_one_fit_item_minimums(input, &items) {
+                return Err(repeated_text_track_trace_error(grid_id));
+            }
             span::normalize_layout_frames(
                 input,
                 output,

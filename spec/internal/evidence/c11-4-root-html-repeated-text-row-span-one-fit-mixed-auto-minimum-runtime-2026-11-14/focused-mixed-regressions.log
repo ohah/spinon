@@ -1,0 +1,12 @@
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.38s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-6e4c21fbd40413e7)
+
+running 5 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::mixed_minimum::parsed_root_html_one_fit_mixed_minimum_accepts_single_auto_item_for_scene_2 ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::mixed_minimum::parsed_root_html_one_fit_mixed_minimum_preserves_residual_total_for_scene_110 ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::mixed_minimum::parsed_root_html_one_fit_mixed_minimum_replays_reversed_tail_for_scene_99449 ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::mixed_minimum::parsed_root_html_one_fit_mixed_minimum_preserves_auto_leading_row_for_scene_5774 ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::mixed_minimum::parsed_root_html_one_fit_mixed_minimum_replays_three_row_tail_for_scene_1164 ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 709 filtered out; finished in 1.51s
+

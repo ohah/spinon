@@ -67,7 +67,7 @@ fn simulate_blink_row_sizes_with_growth_limit_trace(
         .count();
     if container.rows.len() != 1
         || auto_rows.len() != 6
-        || !(3..=6).contains(&fit_count)
+        || !(1..=6).contains(&fit_count)
         || !grid_height.is_finite()
         || grid_height < 0.0
     {
@@ -114,7 +114,7 @@ fn simulate_blink_row_sizes_with_growth_limit_trace(
             functions,
         });
     }
-    if tracks.len() != 7
+    if !matches!(tracks.len(), 4 | 7)
         || tracks
             .iter()
             .enumerate()
@@ -167,6 +167,15 @@ fn simulate_blink_row_sizes_with_growth_limit_trace(
         }
         if sync_growth_limits {
             sync_growth_limits_from_stage(&mut tracks, stage)?;
+        }
+    }
+
+    if fit_count == 1 && super::has_mixed_span_minimum_modes(input, grid_id) {
+        let values_match = tracks_match_values(&tracks, pre_alignment_tracks);
+        if values_match == Some(true) {
+            // 이 one-fit mixed profile에서는 trace에 맞는 intrinsic base size를 반환한다.
+            // Growth limit 쪽 1/64px residual을 다시 base size에 올리지 않는다.
+            return Some(tracks.into_iter().map(|track| track.base_size).collect());
         }
     }
 

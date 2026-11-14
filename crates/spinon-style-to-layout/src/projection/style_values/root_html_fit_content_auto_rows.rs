@@ -299,6 +299,24 @@ pub(super) fn validate(
             three_fit_mixed_minimum_track_list,
             repeated_text_span_profile,
         );
+    let one_fit_span_row_track_list = six_member_span_list && span_fit_positions.len() == 1;
+    let repeated_text_span_one_fit_minimum_mask_profile =
+        repeated_text::span_one_fit_minimum_mask_profile(
+            &items,
+            &styles,
+            one_fit_span_row_track_list,
+            repeated_text_span_profile,
+        );
+    if one_fit_span_row_track_list
+        && repeated_text_span_profile
+        && !repeated_text_span_one_fit_minimum_mask_profile
+    {
+        return Err(unsupported(
+            node,
+            "grid-auto-rows",
+            "One-fit row-span items require min-height:0 or auto and the explicit control requires 0",
+        ));
+    }
     let repeated_text_span_auto_minimum_candidate = repeated_text::span_auto_minimum_items_candidate(
         &items,
         &styles,
@@ -308,7 +326,8 @@ pub(super) fn validate(
         || repeated_text_span_three_fit_minimum_mask_profile
         || repeated_text_span_six_fit_minimum_mask_profile
         || repeated_text_span_five_fit_minimum_mask_profile
-        || repeated_text_span_four_fit_minimum_mask_profile;
+        || repeated_text_span_four_fit_minimum_mask_profile
+        || repeated_text_span_one_fit_minimum_mask_profile;
     let repeated_text_span_auto_minimum_profile = repeated_text::span_auto_minimum_profile(
         &items,
         &styles,
@@ -318,7 +337,8 @@ pub(super) fn validate(
         || repeated_text_span_three_fit_minimum_mask_profile
         || repeated_text_span_six_fit_minimum_mask_profile
         || repeated_text_span_five_fit_minimum_mask_profile
-        || repeated_text_span_four_fit_minimum_mask_profile;
+        || repeated_text_span_four_fit_minimum_mask_profile
+        || repeated_text_span_one_fit_minimum_mask_profile;
     if (four_member_list && items.len() != 6)
         || (six_member_candidate && items.len() != 9 && !repeated_text_span_profile)
         || (two_fit_span_track_list && !repeated_text_span_profile && !repeated_text_profile)
