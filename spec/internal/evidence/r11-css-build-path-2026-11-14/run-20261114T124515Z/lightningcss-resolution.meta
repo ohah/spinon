@@ -1,0 +1,4 @@
+argv=["mise","exec","--","node","--input-type=module","-e",<contents of lightningcss-resolution.script.txt>]
+cwd=/private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout
+exit=0
+The exact unescaped JavaScript argument bytes are preserved in lightningcss-resolution.script.txt and are the inline source passed to -e.

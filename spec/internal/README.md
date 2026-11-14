@@ -371,6 +371,7 @@ C06.1~C06.6a 및 C07.1 누적 변경의 ABI·캐시·CSS 의미·Android/iOS run
 - [R15 · 청크 OTA 호환 모델](./evidence/r15-ota-chunk-model-2026-10-02.md) — 기존 OTA·C02 문서 사이의 그래프·기능 rollout·runtime 호환·서명/rollback 경계를 정리한 설계 추적 근거. 실행 기능 검증은 포함하지 않음.
 
 - [R10 · Taffy 적합성 실험](./evidence/taffy-r10-2026-09-28.md) — 시뮬레이터·에뮬레이터 로그, 화면 캡처, fixture 범위와 해석 한계.
+- [R11 · CSS 빌드 경로 제한 조사](./evidence/r11-css-build-path-2026-11-14/run-20261114T124515Z/README.md) — R10 sample의 current-revision JSON 재현, R10/R14 provenance와 미확인 경계. R11 공식 항목은 미완료.
 - [R03 · 공통 호스트 계약 검토](./evidence/r03-host-contract-review-2026-09-29.md) — 제안 계약을 기존 DOM·Rust 트리·렌더러 계획과 대조한 문서 검토 기록.
 - [R06 · 스레드·소유권 소스 감사](./evidence/r06-thread-ownership-source-audit-2026-09-29.md) — V8·Rust FFI·트리·GPU 코드를 대조한 정적 조사. 경합을 실행 검증하지 않음.
 - [R06 · V8 런타임 세션 실험](./evidence/r06-v8-runtime-thread-2026-09-30.md) — Android 16 에뮬레이터와 iOS 26.2 시뮬레이터의 취소·입력·세션 재생성 근거와 한계.

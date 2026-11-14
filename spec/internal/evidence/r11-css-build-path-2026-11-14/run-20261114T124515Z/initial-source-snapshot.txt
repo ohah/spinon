@@ -1,0 +1,31 @@
+Captured before creating an evidence output directory or invoking the converter.
+run_id=run-20261114T124515Z
+captured_at_utc=2026-11-14T12:45:15Z
+repository_realpath=/private/tmp/spinon-r11-css-build-path-plan-20261114
+head=401911e6b78b543e3c9553c3e6e162e43ca381b2
+branch=codex/r11-css-build-path-plan-2026-11-14
+full_status_porcelain_v2:
+# branch.oid 401911e6b78b543e3c9553c3e6e162e43ca381b2
+# branch.head codex/r11-css-build-path-plan-2026-11-14
+? plan/r11-css-build-path-experiment-plan-review-20.md
+? plan/r11-css-build-path-experiment.md
+source_scoped_status=empty for spikes/style-layout/, R10/R14 evidence, and R14 plan
+source_scoped_unstaged_diff=empty
+source_scoped_staged_diff=empty
+run_evidence_path_existed=no
+run_temp_realpath=/private/tmp/spinon-r11-css-build-path-20261114.VBV0nL
+run_temp_outside_repository=yes (canonical paths compared)
+
+Current working-copy and HEAD blob SHA-256 values:
+spikes/style-layout/package.json=e49b9b27202d62fa04030f464109afe86a1cdb238f2003c4a5ec9b698850cddc
+spikes/style-layout/bun.lock=34b613f25802725aca7da4684078ea09460220c21f1aba9cae2586d5966ae380
+spikes/style-layout/compile-css.mjs=f2151ab9534cd2dd8f343bc10a25b267636b296818bb81422ac304ebe0a8944b
+spikes/style-layout/verify.mjs=4fe004d89b278a24bcbe293cc2297ed63692194b4381a002733362571a9dacb4
+spikes/style-layout/sample.css=f4d10322596540140100fa91cd1af77320624723220e1d7e9a74c141a5fd5a53
+spikes/style-layout/styles.json=83c2f74e00d92a5789ce4cb405263fb0f875e8e64fe9fff228a4accff233ae5a
+spec/internal/evidence/taffy-r10-2026-09-28.md=476b60eaa350bdc1b421642cadf234959bab88557653dc1da94ec10ae4c1d901
+plan/r14-tailwind-css-experiment.md=962a96d92a0904466e1058a36d66ea8a72b8687ff6ac89266567b656ace8d31b
+spec/internal/evidence/r14-tailwind-css-2026-10-16/README.md=21525b4d35843f2df34279363616b9c57e4f5684b5c910e54ab853981cb3c0f8
+spec/internal/evidence/r14-tailwind-css-2026-10-16/converter-results.json=e34d8a121550ce679d48fde51de21ccf6ce65eb36ec488a0aaff81269b9f1f96
+spec/internal/evidence/r14-tailwind-css-2026-10-16/tailwind-v4.3.3-generated.css=c11cf6cff5c8e4b3053da8d328cda229884a6b59f9b4f3910d5b1a1f2023740b
+For every row above, worktree SHA-256 equals `git show HEAD:<path> | shasum -a 256`.
