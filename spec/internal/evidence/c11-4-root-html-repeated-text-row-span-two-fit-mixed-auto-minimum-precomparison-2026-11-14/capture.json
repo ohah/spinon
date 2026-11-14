@@ -1,0 +1,39 @@
+{
+  "schema": "spinon.c11-4.root-html-row-span-two-fit-mixed.capture/v1",
+  "capturedAtUtc": "2026-11-14T02:05:59.808Z",
+  "browserCli": "/opt/homebrew/bin/agent-browser",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "viewport": [
+    1280,
+    900
+  ],
+  "sceneCount": 92160,
+  "batchSize": 240,
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-two-fit-mixed-auto-minimum-precomparison.html",
+    "sha256": "e85e475a36fcc518955b0a81e88ed258b6d6e101cc8a4590f0546235ef9847c8"
+  },
+  "collector": {
+    "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-mixed-auto-minimum-precomparison-2026-11-14/capture-chrome.mjs",
+    "sha256": "7694a6850f14c79710f54be984c80e02074febe3d9affe5de7742291984dd17a"
+  },
+  "observation": {
+    "path": "chrome-observation.ndjson.gz",
+    "sha256": "c128e3f56f27a23c1e6f08f0f07cc7c33f5ebb53a35c49deb97e582136044fe2"
+  },
+  "screenshots": {
+    "mixed": {
+      "path": "chrome157-two-fit-mixed-sample.png",
+      "sha256": "16442baba69f24c4adc24b00a2473818c4531dfc4ac06fe560915c11165386a9"
+    },
+    "visibleOverflow": {
+      "path": "chrome157-two-fit-mixed-overflow-sample.png",
+      "sha256": "53829254186a7162de4c8d5c5e6c65bd6d13598cf1a064a9aad6c1cbd6a32ee3"
+    }
+  },
+  "representativeScene": 44725,
+  "visibleOverflowControlScene": 73824,
+  "visibleOverflowScreenshot": "chrome157-two-fit-mixed-overflow-sample.png",
+  "lifecycle": "agent-browser-lifecycle.json"
+}

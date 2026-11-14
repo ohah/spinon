@@ -1,0 +1,93 @@
+{
+  "schema": "spinon.c11-4.root-html-row-span-two-fit-mixed.verification/v1",
+  "capture": "capture.json",
+  "fixtureSha256": "e85e475a36fcc518955b0a81e88ed258b6d6e101cc8a4590f0546235ef9847c8",
+  "collectorSha256": "7694a6850f14c79710f54be984c80e02074febe3d9affe5de7742291984dd17a",
+  "observationSha256": "c128e3f56f27a23c1e6f08f0f07cc7c33f5ebb53a35c49deb97e582136044fe2",
+  "screenshots": {
+    "mixedSha256": "16442baba69f24c4adc24b00a2473818c4531dfc4ac06fe560915c11165386a9",
+    "visibleOverflowSha256": "53829254186a7162de4c8d5c5e6c65bd6d13598cf1a064a9aad6c1cbd6a32ee3"
+  },
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "devicePixelRatio": 1,
+    "viewport": [
+      1280,
+      900
+    ]
+  },
+  "matrix": {
+    "sceneCount": 92160,
+    "formula": "480 track lists × 2 alignments × 2 source orders × (32 span2Six masks + 16 span2Span3Six masks) = 92,160",
+    "uniqueTrackListCount": 480,
+    "uniqueSceneIdentityCount": 92160,
+    "topologyCounts": {
+      "span2Six-forward": 30720,
+      "span2Six-reverse": 30720,
+      "span2Span3Six-forward": 15360,
+      "span2Span3Six-reverse": 15360
+    },
+    "endpointCounts": {
+      "allZero": 3840,
+      "allAuto": 3840
+    },
+    "automaticMinimumItemOccurrences": 215040,
+    "sourceOrderPairs": 46080,
+    "alignmentPairs": 46080,
+    "maskCountsPerProfile": {
+      "span2Six": 32,
+      "span2Span3Six": 16
+    }
+  },
+  "relations": {
+    "maximumSpanRowSumErrorCssPx": 0.0003750000000053433,
+    "maximumSourceOrderGeometryErrorCssPx": 0,
+    "maximumNonAutoTrackStretchErrorCssPx": 0,
+    "autoTrackStretchDeltaRangeCssPx": [
+      25,
+      130.0002
+    ],
+    "minimumUsedRowCssPx": 0,
+    "maximumUsedRowCssPx": 170,
+    "visibleOverflowSceneCount": 320,
+    "visibleOverflowSceneCountsByMinimumMask": {
+      "0": 24,
+      "1": 24,
+      "2": 24,
+      "3": 24,
+      "4": 16,
+      "5": 16,
+      "6": 16,
+      "7": 16,
+      "8": 16,
+      "9": 16,
+      "10": 16,
+      "11": 16,
+      "12": 16,
+      "13": 16,
+      "14": 16,
+      "15": 16,
+      "16": 8,
+      "17": 8,
+      "18": 8,
+      "19": 8
+    },
+    "visibleOverflowSceneCountsByOrderedCapPair": {
+      "0%|0px": 160,
+      "0px|0%": 160
+    },
+    "visibleOverflowSceneCountsByTopology": {
+      "span2Six-forward": 160,
+      "span2Six-reverse": 160
+    },
+    "gridItemOverflowSceneCount": 0,
+    "payloadOverflowSceneCount": 320,
+    "textLineRectOverflowSceneCount": 320,
+    "maximumGridItemOverflowCssPx": 0,
+    "maximumPayloadOverflowCssPx": 30,
+    "maximumTextLineOverflowCssPx": 30,
+    "endpointPairCount": 3840,
+    "zeroToAllAutoEndpointFrameDeltaMaxCssPx": 65
+  },
+  "scope": "Chrome 157 CSS Grid oracle only; this file does not verify Spinon RuntimeSession or mobile rendering."
+}
