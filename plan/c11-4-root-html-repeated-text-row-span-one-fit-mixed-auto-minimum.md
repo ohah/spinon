@@ -1,6 +1,6 @@
 # C11.4 · one-fit repeated-text row-span item별 mixed min-height:0|auto
 
-**상태:** 구현 검증 완료 · PR #1381 검토 중 · Chrome 157 및 RuntimeSession 120,960/120,960 scene · C11.4/C11 미완료 · 공식 완료 78/214 유지
+**상태:** bounded 구현 PR #1381 Rebase and merge · 2026-11-14T00:42:53Z · merge SHA `416bd54519269851f07192bfc15a8c539154d866` · RuntimeSession 120,960/120,960 scene · C11.4/C11 미완료 · 공식 완료 78/214 유지
 
 **선행 uniform 구현:** [positions 1–3](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum.md) · PR #1326 · [positions 4–6](./c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md) · PR #1331
 
@@ -48,13 +48,13 @@
 6. 한정 구현 뒤 별도 실패 관점 20개 implementation/runtime review와 실제 변경 PR diff의 서로 다른 실패 관점 30개를 기록한다. PR 본문에는 범위·측정 분모·남은 검증 경계와 raw Android/iOS screenshot을 commit-pinned 링크로 넣고 Agent Browser에서 실제 로드를 확인한다.
 7. 구현 PR이 병합된 뒤 spec/STATUS.md, 이 계획, 내부 계약 0059와 공개 roadmap을 같은 상태로 갱신한다. 공식 78/214, C11.4/C11 unchecked, internal contract 0.1.0을 유지한다. 사용자가 정한 Tailscale preview만 선택 경로 백업·hash 검증과 Agent Browser desktop/mobile 확인으로 갱신한다.
 
-## 2026-11-14 구현 실행 결과 · PR 준비 단계
+## 2026-11-14 구현 실행 결과 · PR #1381 병합
 
 - 기본 Root HTML RuntimeSession matrix: 120,960/120,960 scenes, unique track-list batch 900/900, eligible automatic-minimum item occurrence 169,344; 실행 2,633.00초.
 - 별도 회귀: one-fit uniform positions 1–3 2,880 pairs, positions 4–6 4,320 pairs, two-fit row-span 3,840 scenes, one-fit auto-placement 1,440 scenes, two-fit auto-placement 및 repeated-text 810 corpus 통과. 관련 rejection/recovery와 invalid-trace controls도 통과했다.
 - 수정 발견: empty trace owner index의 panic을 fail-closed 오류로 바꾸고 layout regression 56/56을 재실행했다. five-fit position helper 테스트의 오래된 기대값도 고쳤고 projection 관련 5/5 통과했다. 전체 matrix의 한 장면이 5초 제한에서 Pending으로 반환되어 wait를 30초로 늘린 뒤 전체 matrix를 다시 통과했다.
 - Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 입력 SHA-256 `a944c85929ac16065cd950d4edc58788f8eb98ab2759644aa6ceb23874b57676`를 사용한 app light/dark 화면 smoke를 완료했다. 모두 `layout=ready`, 12 boxes, `draw status=0 presented`를 기록했다. Android는 Vulkan llvmpipe 소프트웨어 renderer다. 화면은 pixel parity 검증이 아니다. [플랫폼 화면·정리 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-mixed-auto-minimum-runtime-2026-11-14/platform-visual-smoke.md).
-- 구현/runtime 20개와 실제 PR #1381 diff 30개 실패 관점 검토를 작성했다. PR은 draft이며 GitHub check/workflow 상태 확인, 병합과 최종 Tailnet roadmap 동기화가 남아 있다. 공식 `78/214`, C11.4/C11 미완료 및 내부 계약 `0.1.0`은 유지한다.
+- 구현/runtime 20개와 실제 PR #1381 diff 30개 실패 관점 검토를 작성했다. PR source head `886e1b586c405f061f9cc10946a2818e244086b8`는 `2026-11-14T00:42:53Z` Rebase and merge됐고 main에 반영된 SHA는 `416bd54519269851f07192bfc15a8c539154d866`다. GitHub workflow/status check는 0개, main 필수 status check도 없어 CI green으로 기록하지 않는다. iOS light PR 이미지 `src`의 SHA 오타를 수정해 네 장을 Agent Browser에서 재확인했다. [병합 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-mixed-auto-minimum-runtime-2026-11-14/merge-PR1381.md)와 최종 Tailnet roadmap 동기화가 남아 있다. 공식 `78/214`, C11.4/C11 미완료 및 내부 계약 `0.1.0`은 유지한다.
 
 ## 완료 판정
 
