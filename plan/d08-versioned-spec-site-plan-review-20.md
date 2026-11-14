@@ -16,7 +16,7 @@
 | 6 | 검증하지 않은 예제나 API migration을 실행 가능·호환으로 표시 | 계획 24·52–53행은 source version, dependency lock, 대상 release와 실행 검증 상태를 연결한다. **PASS** |
 | 7 | 이전/대상 release가 불연속인데 migration 완료를 주장 | 계획 21·24·50·52행은 URL inventory, 지원 기간과 건너뛴 migration 안내를 요구한다. **PASS** |
 | 8 | root의 dirty C11/C15/C19 WIP를 D08 계획에 섞음 | 별도 worktree는 main `0aac7f0` 기준이고 root 작업은 보존됐다. **PASS** |
-| 9 | 계획 PR에 문서 site 설정·source·lockfile·workflow 변경이 포함 | 최종 PR에는 D08 계획과 이 검토 기록 두 Markdown 파일만 추가되고, site source/config/lockfile/workflow 변경은 없다. **PASS** |
+| 9 | 계획 PR에 문서 site 설정·source·lockfile·workflow 변경이 포함 | 검토 당시 head `bd766fd4`의 PR diff에는 D08 계획과 이 검토 기록 두 파일만 있었고, 이후 추가된 PR 검토 기록까지 포함한 현재 세 파일 diff에도 site source/config/lockfile/workflow 변경은 없다. **PASS** |
 | 10 | 계획 상대 링크가 없는 파일을 가리킴 | STATUS, README, 명세/API 문서, Rspress config와 Pages workflow의 일곱 링크가 모두 존재한다. **PASS** |
 | 11 | D08 체크, API 지원 수, contract version이 계획 작성만으로 바뀜 | STATUS/API/version 파일을 수정하지 않으며 D08은 미완료로 남는다(계획 3·14·74행). **PASS** |
 | 12 | 현재 public URL·preview URL을 검증된 계약처럼 단정 | 계획 21·63행은 현재 주소 inventory와 owner를 먼저 확인하도록 하고 새 URL/redirect 선택은 미결로 둔다. **PASS** |
