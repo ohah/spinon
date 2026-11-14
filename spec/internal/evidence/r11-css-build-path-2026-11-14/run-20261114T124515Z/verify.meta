@@ -1,0 +1,6 @@
+argv=["env","TMPDIR=/private/tmp/spinon-r11-css-build-path-20261114.VBV0nL/verify-tmp","mise","exec","--","bun","run","verify"]
+cwd=/private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout
+tmp_realpath=/private/tmp/spinon-r11-css-build-path-20261114.VBV0nL/verify-tmp
+source_verify_sha256=4fe004d89b278a24bcbe293cc2297ed63692194b4381a002733362571a9dacb4
+exit=0
+remaining_tmp_entries=0

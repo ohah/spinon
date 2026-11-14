@@ -1,0 +1,9 @@
+command=mise exec -- bun --version
+cwd=/private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout
+1.4.2
+exit=0
+
+command=mise exec -- node --version
+cwd=/private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout
+v24.20.0
+exit=0

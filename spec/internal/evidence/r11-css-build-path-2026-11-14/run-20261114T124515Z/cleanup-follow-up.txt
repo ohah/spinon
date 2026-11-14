@@ -1,0 +1,12 @@
+R11 조사 임시 디렉터리 정리 후속 (2026-11-14)
+
+임시 디렉터리를 제거할 당시 evidence copy의 final-evidence-sha256.txt에는 32개 항목이 있었다. 당시 shasum 검증 결과는 모두 OK였지만 원본 manifest bytes/hash와 명령 출력을 보존하지 않았다. 현재 최종 manifest는 그 시점 자료가 아니라 후속 문서와 검증 로그까지 포함한다.
+
+제거 전 lsof +D /private/tmp/spinon-r11-css-build-path-2026-11-14.VBV0nL 결과에는 표시된 행이 없었다. 원시 출력과 종료 코드는 저장하지 않았다. find 명령은 maxdepth 2까지만 조회했으므로 전체 파일 목록은 아니었다. 안쪽 case 파일은 별도 evidence에 남아 있다.
+
+작업 전용 경로는 rm -r /private/tmp/spinon-r11-css-build-path-2026-11-14.VBV0nL 명령으로 삭제했다. 뒤이어 다음 검사를 실행했고, 출력 task-run-temp-removed를 확인했다.
+test ! -e /private/tmp/spinon-r11-css-build-path-2026-11-14.VBV0nL && echo task-run-temp-removed
+
+당시 전체 디렉터리 인벤토리와 프로세스 상태는 재구성할 수 없다. 현재 지정한 임시 경로가 없다는 것만 확인한다.
+
+worktree 안의 무시된 spikes/style-layout/node_modules는 남겨 두었다. 실행 전 상태와 내부 파일을 기록하지 않아 보존했다. 아직 worktree도 제거하지 않았다. 검토와 병합 후 격리 worktree를 정리할 때 같이 없어지지만, 그 정리는 아직 하지 않았다.

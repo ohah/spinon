@@ -1,0 +1,14 @@
+file:///private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout/compile-css.mjs:52
+      throw new Error(`${property}: 이 실험에서는 지원하지 않습니다`);
+            ^
+
+Error: color: 이 실험에서는 지원하지 않습니다
+    at parseDeclaration (file:///private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout/compile-css.mjs:52:13)
+    at Rule (file:///private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout/compile-css.mjs:71:71)
+    at /private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout/node_modules/lightningcss/node/index.js:56:14
+    at file:///private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout/compile-css.mjs:57:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.20.0

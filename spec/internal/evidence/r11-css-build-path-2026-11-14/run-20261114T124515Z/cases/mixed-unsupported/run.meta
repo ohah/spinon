@@ -1,0 +1,5 @@
+argv=["mise","exec","--","node","compile-css.mjs","/private/tmp/spinon-r11-css-build-path-20261114.VBV0nL/cases/mixed-unsupported/input.css","/private/tmp/spinon-r11-css-build-path-20261114.VBV0nL/cases/mixed-unsupported/output.json"]
+cwd=/private/tmp/spinon-r11-css-build-path-plan-20261114/spikes/style-layout
+input_sha256=9446f0a6446585776fa864383c7f9aff1cb0a87607a8f5730bed8e417e55e4f3
+exit=1
+output_exists=no

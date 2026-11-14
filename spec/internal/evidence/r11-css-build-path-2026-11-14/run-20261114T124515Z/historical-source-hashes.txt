@@ -1,0 +1,44 @@
+Historical R10 source revision 5ad70525de730b6ad1e354fbf4a466034120346d (2026-09-29):
+spikes/style-layout/package.json=e49b9b27202d62fa04030f464109afe86a1cdb238f2003c4a5ec9b698850cddc
+spikes/style-layout/bun.lock=34b613f25802725aca7da4684078ea09460220c21f1aba9cae2586d5966ae380
+spikes/style-layout/compile-css.mjs=f2151ab9534cd2dd8f343bc10a25b267636b296818bb81422ac304ebe0a8944b
+spikes/style-layout/verify.mjs=4fe004d89b278a24bcbe293cc2297ed63692194b4381a002733362571a9dacb4
+spikes/style-layout/sample.css=f4d10322596540140100fa91cd1af77320624723220e1d7e9a74c141a5fd5a53
+spikes/style-layout/styles.json=83c2f74e00d92a5789ce4cb405263fb0f875e8e64fe9fff228a4accff233ae5a
+spec/internal/evidence/taffy-r10-2026-09-28.md=eb3fd799ae5c879de840724d4a520d141fe0bd70ccb2eecfd7942daa69154c3a
+
+R10 files at R14 source/evidence commit d72606f7ee76b4ac122722d7d74af03335002f20:
+spikes/style-layout/package.json=e49b9b27202d62fa04030f464109afe86a1cdb238f2003c4a5ec9b698850cddc
+spikes/style-layout/bun.lock=34b613f25802725aca7da4684078ea09460220c21f1aba9cae2586d5966ae380
+spikes/style-layout/compile-css.mjs=f2151ab9534cd2dd8f343bc10a25b267636b296818bb81422ac304ebe0a8944b
+spikes/style-layout/verify.mjs=4fe004d89b278a24bcbe293cc2297ed63692194b4381a002733362571a9dacb4
+spikes/style-layout/sample.css=f4d10322596540140100fa91cd1af77320624723220e1d7e9a74c141a5fd5a53
+spikes/style-layout/styles.json=83c2f74e00d92a5789ce4cb405263fb0f875e8e64fe9fff228a4accff233ae5a
+spec/internal/evidence/taffy-r10-2026-09-28.md=476b60eaa350bdc1b421642cadf234959bab88557653dc1da94ec10ae4c1d901
+plan/r14-tailwind-css-experiment.md=962a96d92a0904466e1058a36d66ea8a72b8687ff6ac89266567b656ace8d31b
+spec/internal/evidence/r14-tailwind-css-2026-10-16/README.md=3829c9086047542bde2d170d6364ba4944d8d59c6e83630cfb159780007aa656
+spec/internal/evidence/r14-tailwind-css-2026-10-16/converter-results.json=e34d8a121550ce679d48fde51de21ccf6ce65eb36ec488a0aaff81269b9f1f96
+spec/internal/evidence/r14-tailwind-css-2026-10-16/tailwind-v4.3.3-generated.css=c11cf6cff5c8e4b3053da8d328cda229884a6b59f9b4f3910d5b1a1f2023740b
+
+R14 plan and report at commit 7ff0430550cdfdd604ccc591244dabed2d113182:
+plan/r14-tailwind-css-experiment.md=962a96d92a0904466e1058a36d66ea8a72b8687ff6ac89266567b656ace8d31b
+spec/internal/evidence/r14-tailwind-css-2026-10-16/README.md=3829c9086047542bde2d170d6364ba4944d8d59c6e83630cfb159780007aa656
+The R10 converter source package, lockfile, script, verify script, sample input and styles.json are byte-identical at the R10 commit, R14 source/evidence commits and current HEAD. R10 evidence Markdown and R14 README have later edits; their historical hashes differ from current. R14 generated CSS and converter-results JSON bytes match their cited historical commit and current HEAD.
+
+R10 downstream JSON consumer source, also byte-identical at R10 source commit 5ad70525… / R14 source commit d72606f7… / current HEAD:
+spikes/style-layout/Cargo.toml=fe774ef84b43361d0e15944d966aa15b9083622827d908a0cd992425d4208d0e
+spikes/style-layout/src/main.rs=aafbfdc363bd5bef01855d8f7886d246a1ab28e9696cf1f131518ccbea0f3c32
+
+Commit ancestry check:
+5ad70525de730b6ad1e354fbf4a466034120346d is an ancestor of current HEAD.
+7ff0430550cdfdd604ccc591244dabed2d113182 is an ancestor of current HEAD.
+d72606f7ee76b4ac122722d7d74af03335002f20 is not an ancestor of current HEAD, but has the same parent and tree as 7ff0430550cdfdd604ccc591244dabed2d113182 (tree eecb8f19382196312a5e859655e68743140d4177); the R14 evidence/source paths inspected have identical blob hashes at both commits.
+
+Supplemental R14 Tailwind generator-source hash audit (2026-11-14):
+The following blobs match at the cited R14 evidence commit d72606f7ee76b4ac122722d7d74af03335002f20, current HEAD, and the worktree. This pins generator inputs and verification source; it does not recreate the historical generated-CSS command or preserve per-control raw logs.
+spikes/tailwind-generated-css/bun.lock=5008208294233b8df17110a70d5a28cb2c078dcb0de1d44dd60f3922e25e34fd
+spikes/tailwind-generated-css/fixture.html=6a794b5b81dd9add3955ec7ab144cb13957a58ab05d8d24d9b9fd8bb740fdfeb
+spikes/tailwind-generated-css/input.css=1156f3ce810c0753eaa65b97ec400f6d1d6660208c889ba27d0bd542f5eda8b5
+spikes/tailwind-generated-css/package.json=d155f99a839bf4ba787d6883c92d41947dfd7b09479659bdb4e273861d85c904
+spikes/tailwind-generated-css/preview-frame.css=c9545db1c3f09eae4ef43cbb2ee16bac5a8bf0ef41d51cb4e6365b5029a9165a
+spikes/tailwind-generated-css/verify.mjs=0513eb79b64d4e2925b264d0d04b8adc074c79be1a65797994e9f0f8514c9d0c
