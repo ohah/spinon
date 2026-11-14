@@ -23,7 +23,7 @@
 | 13 | 문서 계획에 manifest, lockfile, generated binding, build artifact 또는 제품 코드를 끌어들임 | **PASS.** 변경 범위를 계획 문서에 한정하고 구현 산출물과 분리한다. |
 | 14 | 0003/0004 제안이 이미 확정·구현된 런타임 동작이라고 잘못 읽힘 | **PASS.** acceptance 질문과 소유자만 정하며 실행 결과나 OTA 허용을 주장하지 않는다. (계획 §목적과 계획 범위, §계약 질문과 후보) |
 | 15 | C11 실행 결과를 X08/J15의 선행조건·제품 근거로 재사용하거나 자원 경합을 무시함 | **PASS.** C11 결과는 C11 범위로 한정하며 X08/J15 의존성이나 근거가 아니다. 겹치는 Cargo/V8 검증은 별도 CPU/I/O 자원 확인 대상으로 둔다. (계획 §계획 단계와 자원 경계, §중단 조건과 완료 경계) |
-| 16 | C11의 특정 matrix 통과를 C11 전체 완료 또는 X08 준비 완료로 확대 해석함 | **PASS.** 해당 run을 X08/J15와 분리하고 STATUS 완료 상태를 유지한다. (계획 머리말, §계획 단계와 자원 경계, §중단 조건과 완료 경계) |
+| 16 | 별도 C11 작업의 진행 상태를 이 계획에서 C11 전체 완료 또는 X08 준비 완료로 확대 해석함 | **PASS.** 계획과 검토 기록은 C11 완료나 C11 동작 근거를 주장하지 않고 STATUS 상태도 바꾸지 않는다. (계획 머리말, §계획 단계와 자원 경계, §중단 조건과 완료 경계) |
 | 17 | 권한 없음·거부·철회·OS 미지원 시 prompt 중복 또는 웹 fallback 오작동 | **PASS.** J14, 앱, 사용자 모듈 간 owner와 웹 대체의 유무를 결정 질문으로 남긴다. (계획 §계약 질문과 후보, §계획 acceptance matrix) |
 | 18 | 잘못된 입력·비동기 취소·늦은 callback·session 종료·thread affinity에서 side effect나 stale 호출 발생 | **PASS.** validation, error mapping, cancellation race, late completion 및 호출 thread의 owner를 acceptance 항목으로 둔다. (계획 §계약 질문과 후보, §계획 acceptance matrix) |
 | 19 | 대용량 image/frame payload를 일반 호출에 넣어 ownership·release·backpressure를 잃음 | **PASS.** 고용량 경로를 별도 계약 후보로 분리하고 zero-copy를 기본 가정하지 않는다. (계획 §계약 질문과 후보, §중단 조건과 완료 경계) |
