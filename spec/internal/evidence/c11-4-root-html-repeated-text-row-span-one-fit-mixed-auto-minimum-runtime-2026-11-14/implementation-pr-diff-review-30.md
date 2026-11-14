@@ -35,7 +35,7 @@
 | 27 | timeout을 제품 실패나 성공으로 잘못 분류함 | 5초 `Pending` 종료와 scene 99449 단독 1.78초 재현을 보존했다. per-scene wait 30초에서 전체 matrix가 실제로 끝난 로그가 있다. |
 | 28 | Android/iOS 앱 이미지가 다른 source revision이나 잘못된 route에서 옴 | APK 및 iOS bundle의 HTML SHA-256이 fixture `a944…7676`과 일치하고 C04.12 Root HTML route launch args를 기록했다. 최초 잘못된 Android route/CSS와 iOS launch 실패 자료는 성공 증거와 분리 보존했다. |
 | 29 | simulator 캡처가 PixelCopy, Metal readback, 실기기 또는 hardware GPU 결과로 과장됨 | 실행 문서는 이를 light/dark visual smoke로 한정한다. Android는 Vulkan llvmpipe, iOS는 simulator이며 surface parity 주장은 없다. 시작 시 superseded `status=-12`와 이후 성공 request도 기록했다. |
-| 30 | PR 본문 그림/상태·라벨·검토·CI가 실제 원격 PR과 다름 | Agent Browser PR 페이지에서 labels `enhancement`, `area:layout`, `area:testing` 및 네 이미지가 로드되는 것을 확인했다. natural size는 Android 각 1080×2400, iOS 각 1206×2622다. PR은 현재 draft이고 Checks 0개이므로 CI green으로 말하지 않는다. `STATUS.md` 78/214와 C11.4/C11 unchecked 상태는 유지한다. |
+| 30 | PR 본문 그림/상태·라벨·검토·CI가 실제 원격 PR과 다름 | Agent Browser PR 페이지에서 labels `enhancement`, `area:layout`, `area:testing`을 확인했다. 첫 최종 점검에서 iOS light `<img src>`만 commit SHA 8자 누락을 발견했다 (`<a href>`와 PNG는 정상). 본문 `src`를 고친 뒤 다시 확인해 네 그림이 모두 로드됐고 natural size는 Android 각 1080×2400, iOS 각 1206×2622다. PR은 이 시점에 draft이고 Checks 0개라 CI green으로 말하지 않는다. `STATUS.md` 78/214와 C11.4/C11 unchecked 상태는 유지한다. |
 
 ## 발견 후 정리
 
