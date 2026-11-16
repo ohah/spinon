@@ -17,7 +17,7 @@ Chrome의 [C15.3 관찰 JSON](../c15-3-unicode-shaping-precomparison-2026-10-17/
 
 ## 범위
 
-세 번의 독립성 적대 검토에서 이 test-only 범위가 C11.4와 파일이 겹치지 않는다고 판정했다. Cargo `target`은 공유하므로 C11.4 장시간 매트릭스가 끝난 뒤 테스트를 빌드·실행했다. 별도 구현 20관점 검토도 GO이며 제한 범위와 관찰 공백은 [검토 기록](./implementation-review-20.md)에 정리했다.
+세 번의 초기 독립성 적대 검토에서 이 test-only 범위가 C11.4와 파일이 겹치지 않는다고 판정했다. 2026-11-16에 별도로 진행한 두 번째 읽기 전용 검토도 test-only 범위의 독립성을 확인했다. oracle 차이, measurement-path 한계와 공유 Cargo 경계는 [scope review pass02](./scope-review-pass02.md)에 기록했다. Cargo `target`은 공유하므로 C11.4 장시간 매트릭스가 끝난 뒤 테스트를 빌드·실행했다. 별도 구현 20관점 검토도 GO이며 제한 범위와 관찰 공백은 [검토 기록](./implementation-review-20.md)에 정리했다.
 
 이것은 Rust `LayoutInput`/Taffy Flex intrinsic consumer 검사다. Chrome fixture 전체 파싱, CSS `inline-flex` 투영, HostDocument/runtime 경로, 앱 simulator/device 동작이나 text paint를 증명하지 않는다. C15.3/C15 완료 상태와 공식 완료 수 `78/214`는 바꾸지 않는다.
 
