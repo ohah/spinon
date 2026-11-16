@@ -6,6 +6,8 @@
 
 Chrome의 [C15.3 관찰 JSON](../c15-3-unicode-shaping-precomparison-2026-10-17/chrome155-observation.json)은 `#flex-sizing` rect가 `56.8125×24px`이라고 기록한다. 고정 폰트의 파일 hash와 license는 [fixture README](../../../../tests/fixtures/resources/c15/c15-3/README.md)에 있다.
 
+입력 차이는 유지한다. Chrome HTML은 `inline-flex`/`span`, `width:max-content`, `height:auto`, 기본 `align-items:normal`(Flex의 used value는 stretch)을 사용한다. 이 Rust test는 Taffy `Flex`/Paragraph를 직접 구성하고 parent height를 max-content, `align-items`를 `FlexStart`로 설정한다. 한 줄 표본의 24px 높이 일치는 CSS auto-height나 stretch 동등성을 입증하지 않는다.
+
 ## 실행
 
 - 실행: `mise exec -- cargo test --locked -p spinon-layout c15_3_flex_max_content_item_matches_noto_intrinsic_text_oracle -- --test-threads=1 --nocapture`
