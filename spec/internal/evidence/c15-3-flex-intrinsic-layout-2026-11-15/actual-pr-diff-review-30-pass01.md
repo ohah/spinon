@@ -45,7 +45,7 @@
 | 23 | C15 test-only PR이 공식 상태를 조용히 바꾸는가 — **PASS** | `spec/STATUS.md`와 `spec/public/roadmap.html`은 PR 변경 파일이 아니며 본문은 `78/214`/C15.3 미완료를 유지한다. |
 | 24 | 오래된 pass01 PR 초안이 최신 본문과 모순되는가 — **PASS** | `pr-body-draft-pass01.md`는 branch commit에서 제거돼 실제 PR diff에 없다. 로컬 원본은 보존했다. |
 | 25 | PR head/base 및 mergeability가 불명확하거나 충돌 상태인가 — **PASS, 시점 한정** | GitHub는 base `5ab794c…`, head `4b1eb27…`, `mergeable=true`, `CLEAN`을 반환했다. merge 전 재확인한다. |
-| 26 | 리뷰 전 PR을 ready로 바꾸거나 병합했다고 오해하는가 — **PASS** | PR #1390은 open draft 상태다. |
+| 26 | 리뷰 전 PR을 ready로 바꾸거나 병합했다고 오해하는가 — **PASS** | 30관점 review 완료 뒤에만 PR #1390을 ready로 바꿨다. 최신 상태는 open/unmerged다. |
 | 27 | 빈 status check 목록을 CI green으로 해석하는가 — **PASS** | `gh pr checks`는 no checks reported이며 main required status-check endpoint는 enabled가 아니다. 이는 green CI가 아니다. |
 | 28 | 기록된 pass02를 이번 turn에서 다시 실행했다고 주장하는가 — **PASS** | 본문은 기록된 실행이라고 표현한다. 이번 PR review에서는 build/test를 실행하지 않았다. |
 | 29 | 이 test-only 변경에 동작 화면을 억지로 붙여 오해를 만드는가 — **PASS** | 앱 UI가 없는 범위라 screenshot 미첨부 사유를 본문에 썼다. |
@@ -53,4 +53,4 @@
 
 ## 결론
 
-세 검토자의 30관점에서 이 제한 test-only diff의 blocker는 발견되지 않았다. 주요 **PARTIAL**은 CSS/HTML/runtime 동등성, child frame의 독립 Chrome oracle, exact intrinsic callback attribution, glyph advance 비교와 toolchain 차이다. PR 본문과 evidence는 이를 범위 밖 또는 기록 환경으로 표시한다. PR은 아직 draft이며 head `4b1eb273c`에 checks가 보고되지 않았다. 30관점 검토만으로 CI, merge readiness, C15.3 완료 또는 공식 집계 변경을 주장하지 않는다.
+세 검토자의 30관점에서 이 제한 test-only diff의 blocker는 발견되지 않았다. 주요 **PARTIAL**은 CSS/HTML/runtime 동등성, child frame의 독립 Chrome oracle, exact intrinsic callback attribution, glyph advance 비교와 toolchain 차이다. PR 본문과 evidence는 이를 범위 밖 또는 기록 환경으로 표시한다. 검토 snapshot은 source/evidence patch head `4b1eb273c`다. 이후 `8a2abf1e0`에는 이 기록과 README 링크만 추가됐고 test/source/fixture는 변경되지 않았다. PR #1390은 30관점 검토 뒤 ready로 전환했으며 현재 checks는 보고되지 않았다. 30관점 검토만으로 CI, C15.3 완료 또는 공식 집계 변경을 주장하지 않는다.
