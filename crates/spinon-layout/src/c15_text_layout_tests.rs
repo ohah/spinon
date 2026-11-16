@@ -521,3 +521,6 @@ mod grid_fit_content;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c15_text_layout_tests/grid_text_baseline.rs"]
 mod grid_text_baseline;
+
+#[path = "c15_text_layout_tests/flex_intrinsic.rs"]
+mod flex_intrinsic;

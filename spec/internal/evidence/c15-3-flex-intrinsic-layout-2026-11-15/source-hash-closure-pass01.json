@@ -1,0 +1,42 @@
+{
+  "audit": "C15.3 Flex intrinsic test source hash closure after C11.4 sibling pass07",
+  "head": "401911e6b78b543e3c9553c3e6e162e43ca381b2",
+  "c11Pass07": {
+    "selectedTestCount": 43,
+    "counts": {
+      "passed": 36,
+      "failed": 7
+    },
+    "inputCount": 1920,
+    "comparedInputCount": 1920,
+    "hashMismatchCount": 0,
+    "matrixPassed": false,
+    "interpretation": "36 passed and 7 failed; hash closure is not a green matrix result"
+  },
+  "candidateSourceCount": 2,
+  "allCandidateSourcesMatchC15FocusedRunAndC11Pass07BeforeAfterAndCurrent": true,
+  "files": [
+    {
+      "path": "crates/spinon-layout/src/c15_text_layout_tests.rs",
+      "bytes": 18441,
+      "currentSha256": "5ec8955dabc7ed2100d3a537478bc8e5d9551e1d1b9d9361971e1f4d7d853e51",
+      "c15Pass02BeforeSha256": "5ec8955dabc7ed2100d3a537478bc8e5d9551e1d1b9d9361971e1f4d7d853e51",
+      "c15Pass02AfterSha256": "5ec8955dabc7ed2100d3a537478bc8e5d9551e1d1b9d9361971e1f4d7d853e51",
+      "c11Pass07BeforeSha256": "5ec8955dabc7ed2100d3a537478bc8e5d9551e1d1b9d9361971e1f4d7d853e51",
+      "c11Pass07AfterSha256": "5ec8955dabc7ed2100d3a537478bc8e5d9551e1d1b9d9361971e1f4d7d853e51",
+      "c11Pass07BeforeBytes": 18441,
+      "c11Pass07AfterBytes": 18441
+    },
+    {
+      "path": "crates/spinon-layout/src/c15_text_layout_tests/flex_intrinsic.rs",
+      "bytes": 2790,
+      "currentSha256": "3d0509431f725880edf0af93f9ef13e025bbc87608aff4f948607b0fa43843fa",
+      "c15Pass02BeforeSha256": "3d0509431f725880edf0af93f9ef13e025bbc87608aff4f948607b0fa43843fa",
+      "c15Pass02AfterSha256": "3d0509431f725880edf0af93f9ef13e025bbc87608aff4f948607b0fa43843fa",
+      "c11Pass07BeforeSha256": "3d0509431f725880edf0af93f9ef13e025bbc87608aff4f948607b0fa43843fa",
+      "c11Pass07AfterSha256": "3d0509431f725880edf0af93f9ef13e025bbc87608aff4f948607b0fa43843fa",
+      "c11Pass07BeforeBytes": 2790,
+      "c11Pass07AfterBytes": 2790
+    }
+  ]
+}

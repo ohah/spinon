@@ -1,0 +1,22 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>README</title><body><pre style="white-space:pre-wrap;font:14px/1.55 system-ui,sans-serif;max-width:1000px;margin:2rem auto;padding:0 1rem"># C15.3 Flex intrinsic text layout · 2026-11-15
+
+## 결과
+
+`spinon-layout` 테스트에서 Noto Sans KR 20px, line-height 24px, `한글字`를 no-wrap Flex item으로 배치했다. `TextLayoutEngine::new_without_system_fonts()`에 저장소의 고정 Noto Sans KR fixture만 등록하고, `width:auto`·`height:auto`·`flex-basis:auto`인 item을 Taffy Flex max-content 경로에 전달했다. Flex box와 item frame은 Chrome 155 사전 기준 `56.8125×24px`에서 각각 0.05 CSS px 이내였고, 최종 text snapshot의 owner, source, font/style, revision, 한 줄 높이와 available width도 확인했다.
+
+Chrome의 [C15.3 관찰 JSON](../c15-3-unicode-shaping-precomparison-2026-10-17/chrome155-observation.json)은 `#flex-sizing` rect가 `56.8125×24px`이라고 기록한다. 고정 폰트의 파일 hash와 license는 [fixture README](../../../../tests/fixtures/resources/c15/c15-3/README.md)에 있다.
+
+## 실행
+
+- 실행: `mise exec -- cargo test --locked -p spinon-layout c15_3_flex_max_content_item_matches_noto_intrinsic_text_oracle -- --test-threads=1 --nocapture`
+- toolchain: `rustc 1.100.0 (0ef1bc386 2026-11-09)`, `cargo 1.100.0 (3acc79c0c 2026-11-05)`
+- 결과: 1 passed, 0 failed, 555 filtered out
+- 원본 로그: [focused-layout-pass01.log](./focused-layout-pass01.log)
+- 로그 SHA-256: `960efc0b5b04be9f84ab8e14f3db0d568bbc39bf2594f2adc8f81929b291b03a`
+
+## 범위
+
+세 번의 독립성 적대 검토에서 이 test-only 범위가 C11.4와 파일이 겹치지 않는다고 판정했다. Cargo `target`은 공유하므로 C11.4 장시간 매트릭스가 끝난 뒤 테스트를 빌드·실행했다. 별도 구현 20관점 검토도 GO이며 제한 범위와 관찰 공백은 [검토 기록](./implementation-review-20.md)에 정리했다.
+
+이것은 Rust `LayoutInput`/Taffy Flex intrinsic consumer 검사다. Chrome fixture 전체 파싱, CSS `inline-flex` 투영, HostDocument/runtime 경로, 앱 simulator/device 동작이나 text paint를 증명하지 않는다. C15.3/C15 완료 상태와 공식 완료 수 `78/214`는 바꾸지 않는다.
+</pre></body></html>
